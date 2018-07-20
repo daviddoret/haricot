@@ -1,0 +1,5 @@
+"0","```r
+create_binum_1 <- function(){
+  return(TRUE);
+}
+```"

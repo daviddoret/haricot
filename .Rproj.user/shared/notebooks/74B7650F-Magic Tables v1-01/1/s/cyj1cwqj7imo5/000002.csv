@@ -1,0 +1,5 @@
+"0","```r
+increment_binum()
+```"
+"1","Error in increment_binum() : argument \"b\" is missing, with no default
+"

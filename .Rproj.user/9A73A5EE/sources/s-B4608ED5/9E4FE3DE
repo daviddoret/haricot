@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1532118400141.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "394208490",
+    "id" : "9E4FE3DE",
+    "lastKnownWriteTime" : 1532120676,
+    "last_content_update" : 1532120676304,
+    "path" : "C:/Users/david/OneDrive/GitHub/haricot/R/TruthTable_FlexOutput.R",
+    "project_path" : "R/TruthTable_FlexOutput.R",
+    "properties" : {
+        "cursorPosition" : "2,24",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

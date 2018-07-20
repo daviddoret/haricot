@@ -1,0 +1,7 @@
+"0","```r
+create_binumoset_1 <- function(){
+  return(c(
+      create_binum_0(),
+      create_binum_1()));
+}
+```"
