@@ -1,0 +1,40 @@
+
+
+t1 <- TruthTable_FlexOutput$new(3,2);
+t1$do_randomize_outputs()
+t1
+
+
+# Find the dimensional input size of the original function.
+# This will become the output size of the inverse function.
+inverse_output_dimension <- t1$get_input_dimension();
+
+# Find the dimensional output size of the original function.
+# This will become the input size of the inverse function.
+inverse_input_dimension <- t1$get_output_dimension();
+
+# Name rows in the truthtable.
+# Like this we may reorder them and still match them to their original inputs.
+# Here we use the original position as the row identifier.
+logical_matrix_copy <- t1$get_logical_matrix();
+rownames(logical_matrix_copy) <- 1 : nrow(logical_matrix_copy);
+
+# Get rid of duplicate outputs.
+logical_matrix_unique <- unique(logical_matrix_copy);
+
+# Initializes an empty truthtable.
+# We use all zeros as the default.
+inverse_truthtable <- TruthTable_FlexOutput$new(inverse_input_dimension,inverse_output_dimension);
+inverse_truthtable
+
+for(unique_position in 1:nrow(logical_matrix_unique)){
+  input_position <- as.integer(rownames(logical_matrix_unique)[unique_position]);
+  output_logical_vector <- logical_matrix_unique[unique_position,];
+  # Apply this to the new truthtable
+  inverse_output_logical_vector <- convert_position_to_logical_vector(input_position, size = inverse_output_dimension);
+  inverse_input_logical_vector <- output_logical_vector;
+  inverse_truthtable$set_output(inverse_input_logical_vector, inverse_output_logical_vector);
+}
+
+# Return the inverted truthtable.
+print(inverse_truthtable);

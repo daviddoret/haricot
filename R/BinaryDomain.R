@@ -26,6 +26,9 @@ BinaryDomain <- R6Class(
     get_length = function() {
       return(nrow(self$logical_matrix));
     },
+    get_logical_matrix = function() {
+      return(self$logical_matrix);
+    },
     get_prettystring = function() {
       # Take a logical matrix reprensenting a truthtable and returns a "pretty" string representation.
       num <- as.numeric(self$logical_matrix);
@@ -34,7 +37,7 @@ BinaryDomain <- R6Class(
       pas <- paste(col, collapse = "\n");
       return(pas);
     },
-    do_print = function(){
+    print = function(){
       cat(self$get_prettystring());
     }
   )

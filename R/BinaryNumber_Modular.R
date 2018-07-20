@@ -40,7 +40,7 @@ BinaryNumber_Modular <- R6Class(
       # we end up with all 0s.
       # This is intentional as we are using modulo arithmetic.
     },
-    do_print = function(){
+    print = function(){
       print(self$get_prettystring());
     },
     set_bit = function(bit_position, input){

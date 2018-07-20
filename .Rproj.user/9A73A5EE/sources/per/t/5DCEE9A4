@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1532124025664.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1211935522",
+    "id" : "5DCEE9A4",
+    "lastKnownWriteTime" : 1532123700,
+    "last_content_update" : 1532123700,
+    "path" : "C:/Users/david/OneDrive/GitHub/haricot/tests/_Setup_Testing.R",
+    "project_path" : "tests/_Setup_Testing.R",
+    "properties" : {
+        "cursorPosition" : "31,6",
+        "scrollLine" : "18"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

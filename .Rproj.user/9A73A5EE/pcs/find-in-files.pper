@@ -1,0 +1,10 @@
+{
+    "dialog-state" : {
+        "caseSensitive" : false,
+        "filePatterns" : [
+        ],
+        "path" : "C:/Users/david/OneDrive/GitHub/haricot",
+        "query" : "do_print",
+        "regex" : false
+    }
+}

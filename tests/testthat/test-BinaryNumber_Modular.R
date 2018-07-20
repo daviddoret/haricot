@@ -5,6 +5,8 @@ library(testthat);
 
 test_that('BinaryNumber_Modular initializes properly', {
 
+  #browser();
+
   b1 <- BinaryNumber_Modular$new(input = "1111");
   expect_equal(object = b1$get_prettystring(), expected = "1111");
 
@@ -14,6 +16,8 @@ test_that('BinaryNumber_Modular initializes properly', {
 });
 
 test_that('BinaryNumber_Modular increments properly', {
+
+  #browser();
 
   b2 <- BinaryNumber_Modular$new(input = "00");
   expect_equal(object = b2$get_prettystring(), expected = "00");

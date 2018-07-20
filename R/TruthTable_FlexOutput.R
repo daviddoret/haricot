@@ -64,15 +64,20 @@ TruthTable_FlexOutput <- R6Class(
       # Alternative solution: infer input_dimension from the logical_matrix.
       # return(log2(nrow(self$logical_matrix)));
     },
+    get_input_size = function() {
+      # Returns the number of different input values.
+      # = 2 ^ input_dimension.
+      return(2 ^ self$get_input_dimension());
+    },
     get_inverse = function() {
 
       # Find the dimensional input size of the original function.
       # This will become the output size of the inverse function.
-      inverse_output_size <- self$get_input_dimension();
+      inverse_output_dimension <- self$get_input_dimension();
 
       # Find the dimensional output size of the original function.
       # This will become the input size of the inverse function.
-      inverse_input_size <- self$get_output_dimension();
+      inverse_input_dimension <- self$get_output_dimension();
 
       # Name rows in the truthtable.
       # Like this we may reorder them and still match them to their original inputs.
@@ -86,15 +91,14 @@ TruthTable_FlexOutput <- R6Class(
       # Initializes an empty truthtable.
       # We use all zeros as the default.
       inverse_truthtable <- TruthTable_FlexOutput$new(
-        input_dimension = inverse_input_size,
-        output_dimension = inverse_output_size,
-        init_value = FALSE);
+        input_dimension = inverse_input_dimension,
+        output_dimension = inverse_output_dimension);
 
       for(unique_position in 1:nrow(logical_matrix_unique)){
         input_position <- as.integer(rownames(logical_matrix_unique)[unique_position]);
         output_logical_vector <- logical_matrix_unique[unique_position,];
         # Apply this to the new truthtable
-        inverse_output_logical_vector <- convert_position_to_logical_vector(input_position, size = inverse_output_size);
+        inverse_output_logical_vector <- convert_position_to_logical_vector(input_position, size = inverse_output_dimension);
         inverse_input_logical_vector <- output_logical_vector;
         inverse_truthtable$set_output(inverse_input_logical_vector, inverse_output_logical_vector);
       }
@@ -108,6 +112,29 @@ TruthTable_FlexOutput <- R6Class(
     },
     get_output_dimension = function() {
       return(self$output_dimension);
+    },
+    get_prettystring = function(){
+
+      output_integer_vector <- as.numeric(self$get_logical_matrix());
+      output_integer_matrix <- matrix(output_integer_vector, nrow = self$get_input_size());
+      output_character_vector <- apply(output_integer_matrix, 1, paste, collapse = "");
+      output_character_vector
+
+      domain <- BinaryDomain$new(self$get_input_dimension());
+
+      input_integer_vector <- as.numeric(domain$get_logical_matrix());
+      input_integer_matrix <- matrix(input_integer_vector, nrow = self$get_input_size());
+      input_character_vector <- apply(input_integer_matrix, 1, paste, collapse = "");
+      input_character_vector
+
+      final_character_vector <- c(input_character_vector, rep(" > ", self$get_input_size()), output_character_vector)
+      final_character_matrix <- matrix(final_character_vector, ncol = 3, nrow = self$get_input_size())
+      final_character <- paste(apply(final_character_matrix, 1, paste, collapse = ""), collapse = "\n");
+
+      return(final_character);
+    },
+    print = function(){
+      cat(self$get_prettystring(), "\n");
     },
     set_output = function(input, output){
       input_logical_vector <- convert_any_to_logical_vector(input);
