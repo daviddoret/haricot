@@ -1,0 +1,4 @@
+library(testthat);
+
+binum1 <- BinaryNumber$new(dimension = 4, init_value = TRUE);
+expect_equal(object = binum1$get_prettystring(), expected = "1111");
