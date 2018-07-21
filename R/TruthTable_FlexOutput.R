@@ -17,7 +17,7 @@ library(R6);
 #'
 #' @export
 TruthTable_FlexOutput <- R6Class(
-  "TruthTable",
+  "TruthTable_FlexOutput",
   public = list(
     # Private Members
     input_dimension = NULL,
