@@ -2,18 +2,49 @@
 
 #install.packages("testthat");
 library(testthat);
+library(data.table);
 
-test_that('BinaryDomain length is correct', {
+test_that('NandTree: stupid tree without Nand nodes works properly', {
 
   #browser();
 
   nt <- NandTree_FirstIdea$new(input_dimension = 2, output_dimension = 2);
-  n1 <- nt$set_nand_node(param1_id = "i1", param2_id = "i2");
-  nt$set_output_node(node_id = "o1", param1_id = "n1");
-  nt$set_output_node(node_id = "o2", param1_id = "i1");
-  nt$logical_datatable;
-  print(nt$logical_datatable);
-  nt$do_apply_algorithm("01");
+  nt$set_output_node(node_id = "o1", param1_id = "i1");
+  nt$set_output_node(node_id = "o2", param1_id = "i2");
+  print(nt);
+  expect_equal(nt$do_apply_algorithm("00"), "00");
+  expect_equal(nt$do_apply_algorithm("10"), "10");
+  expect_equal(nt$do_apply_algorithm("01"), "01");
+  expect_equal(nt$do_apply_algorithm("11"), "11");
 
 });
+
+test_that('NandTree: stupid tree mimicking a single Nand works properly', {
+
+  #browser();
+
+  nt <- NandTree_FirstIdea$new(input_dimension = 2, output_dimension = 1);
+  nt$set_nand_node(node_id = "n1", param1_id = "i1", param2_id = "i2");
+  nt$set_output_node(node_id = "o1", param1_id = "n1");
+  print(nt);
+  expect_equal(nt$do_apply_algorithm("00"), "1");
+  expect_equal(nt$do_apply_algorithm("10"), "1");
+  expect_equal(nt$do_apply_algorithm("01"), "1");
+  expect_equal(nt$do_apply_algorithm("11"), "0");
+
+});
+
+
+test_that('NandTree: Nand of single input node invert that node', {
+
+  #browser();
+
+  nt <- NandTree_FirstIdea$new(input_dimension = 1, output_dimension = 1);
+  n1 <- nt$set_nand_node(param1_id = "i1", param2_id = "i1");
+  nt$set_output_node(node_id = "o1", param1_id = "n1");
+  print(nt);
+  expect_equal(nt$do_apply_algorithm("0"), "1");
+  expect_equal(nt$do_apply_algorithm("1"), "0");
+
+  });
 
