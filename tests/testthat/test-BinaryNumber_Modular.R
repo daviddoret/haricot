@@ -32,3 +32,11 @@ test_that('BinaryNumber_Modular increments properly', {
   b2$do_increment();
 
 });
+
+test_that("BinaryNumber_Modular$get_equal_0()", {
+
+  b <- BinaryNumber_Modular$new(input = "11111");
+  b$do_increment();
+  expect_equal(b$get_equal_0(), TRUE);
+
+  });

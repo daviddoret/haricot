@@ -14,6 +14,9 @@ BinaryNumber_Modular <- R6Class(
     get_dimension = function() {
       return(length(self$logical_vector));
     },
+    get_equal_0 = function() {
+      return(!any(self$logical_vector));
+    },
     get_logical_vector = function() {
       return(self$logical_vector);
     },
