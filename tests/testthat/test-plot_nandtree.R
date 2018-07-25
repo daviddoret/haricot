@@ -19,5 +19,7 @@ test_that('NandTree: plot', {
   nt$set_output_node(node_id = "o3", param1_id = "n5");
   nt$set_output_node(node_id = "o4", param1_id = "n6");
   nt$do_plot();
+
+  expect_equal(object = 1, expected = 1);
 });
 

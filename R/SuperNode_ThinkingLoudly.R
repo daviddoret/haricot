@@ -26,22 +26,15 @@ SuperNode_ThinkingLoudly <- R6Class(
       self$node_id <- node_id;
       self$input_dimension <- input_dimension;
       self$output_dimension <- output_dimension;
-      # Initializes the input nodes
-      for(input_node_number in 1 : input_dimension){
-        node_id <- paste0("i", input_node_number);
-        self$set_input_node(node_id);
-      }
-      # Initializes the output nodes
-      for(output_node_number in 1 : output_dimension){
-        node_id <- paste0("o", output_node_number);
-        self$set_output_node(node_id);
-      }
     },
     do_apply_algorithm = function(input) {
+      stop("This method is abstract, please implement it in the subclass.");
     },
     do_plot = function() {
+      stop("This method is abstract, please implement it in the subclass.");
     },
     do_randomize_outputs = function() {
+      stop("This method is abstract, please implement it in the subclass.");
     },
     get_input_dimension = function() {
       return(self$input_dimension);
@@ -51,12 +44,16 @@ SuperNode_ThinkingLoudly <- R6Class(
       return(2 ^ self$get_input_dimension());
     },
     get_inverse = function() {
+      stop("This method is abstract, please implement it in the subclass.");
+    },
+    get_node_id = function(){
+      return(self$node_id);
     },
     get_output_dimension = function() {
       return(self$output_dimension);
     },
     get_prettystring = function(){
-      return(paste(self$logical_datatable[,"prettystring"], collapse = "\n"));
+      stop("This method is abstract, please implement it in the subclass.");
     },
     print = function(){
       cat(self$get_prettystring(), "\n");

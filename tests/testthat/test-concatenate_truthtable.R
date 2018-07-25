@@ -3,9 +3,11 @@
 #install.packages("testthat");
 library(testthat);
 
-test_that('concatenate_truthtable: check that the concatenation of random truthtables yields the expected output', {
+test_that(
+  'concatenate_truthtable: check that the concatenation of random truthtables yields the expected output',
+  {
 
-  browser();
+  #browser();
 
   for(i in 1:4){
 
@@ -15,14 +17,14 @@ test_that('concatenate_truthtable: check that the concatenation of random trutht
 
     tt1 <- TruthTable_FlexOutput$new(input_dimension = input_dimension, output_dimension = output_dimension_1);
     tt1$do_randomize_outputs();
-    print(tt1);
+    # print(tt1);
 
     tt2 <- TruthTable_FlexOutput$new(input_dimension = input_dimension, output_dimension = output_dimension_2);
     tt2$do_randomize_outputs();
-    print(tt2);
+    # print(tt2);
 
     ttm <- concatenate_truthtable(tt1, tt2);
-    print(ttm);
+    # print(ttm);
 
     bn <- BinaryNumber_Modular$new(input = rep(FALSE, input_dimension));
 
@@ -31,15 +33,15 @@ test_that('concatenate_truthtable: check that the concatenation of random trutht
       o1 <- tt1$do_apply_algorithm(i);
       o2 <- tt2$do_apply_algorithm(i);
       om <- ttm$do_apply_algorithm(i);
-      cat(o1, " & ", o2, " = ", om, "\n");
+      # cat(o1, " & ", o2, " = ", om, "\n");
       expect_equal(
         object = om,
         expected = c(o1, o2));
       bn$do_increment();
       if(bn$get_equal_0()){
         break;
+        }
       }
     }
-  }
-});
+  });
 

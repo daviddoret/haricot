@@ -26,8 +26,7 @@ concatenate_truthtable <- function(truthtable_1, truthtable_2){
     input_dimension = truthtable_1$get_input_dimension(),
     output_dimension =
       truthtable_1$get_output_dimension() +
-      truthtable_2$get_output_dimension()
-  );
+      truthtable_2$get_output_dimension());
 
   truthtable_merged$set_logical_matrix(logical_matrix_merged);
 

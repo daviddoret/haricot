@@ -11,7 +11,7 @@ test_that('NandTree: stupid tree without Nand nodes works properly', {
   nt <- NandTree_FirstIdea$new(input_dimension = 2, output_dimension = 2);
   nt$set_output_node(node_id = "o1", param1_id = "i1");
   nt$set_output_node(node_id = "o2", param1_id = "i2");
-  print(nt);
+  #print(nt);
   expect_equal(nt$do_apply_algorithm("00"), "00");
   expect_equal(nt$do_apply_algorithm("10"), "10");
   expect_equal(nt$do_apply_algorithm("01"), "01");
@@ -26,7 +26,7 @@ test_that('NandTree: stupid tree mimicking a single Nand works properly', {
   nt <- NandTree_FirstIdea$new(input_dimension = 2, output_dimension = 1);
   nt$set_nand_node(node_id = "n1", param1_id = "i1", param2_id = "i2");
   nt$set_output_node(node_id = "o1", param1_id = "n1");
-  print(nt);
+  #print(nt);
   expect_equal(nt$do_apply_algorithm("00"), "1");
   expect_equal(nt$do_apply_algorithm("10"), "1");
   expect_equal(nt$do_apply_algorithm("01"), "1");
@@ -42,7 +42,7 @@ test_that('NandTree: Nand of single input node invert that node', {
   nt <- NandTree_FirstIdea$new(input_dimension = 1, output_dimension = 1);
   n1 <- nt$set_nand_node(param1_id = "i1", param2_id = "i1");
   nt$set_output_node(node_id = "o1", param1_id = "n1");
-  print(nt);
+  #print(nt);
   expect_equal(nt$do_apply_algorithm("0"), "1");
   expect_equal(nt$do_apply_algorithm("1"), "0");
 

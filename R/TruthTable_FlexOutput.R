@@ -131,7 +131,9 @@ TruthTable_FlexOutput <- R6Class(
 
       final_character_vector <- c(input_character_vector, rep(" > ", self$get_input_size()), output_character_vector)
       final_character_matrix <- matrix(final_character_vector, ncol = 3, nrow = self$get_input_size())
-      final_character <- paste(apply(final_character_matrix, 1, paste, collapse = ""), collapse = "\n");
+      final_character <- paste(
+        apply(final_character_matrix, 1, paste, collapse = ""),
+        collapse = "\n");
 
       return(final_character);
     },

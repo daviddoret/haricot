@@ -1,6 +1,8 @@
-library(R6);
 #install.packages("data.table");
+library(R6);
 library(data.table);
+library(igraph);
+library(RColorBrewer)
 
 #' NandTree_FirstIdea
 #'
