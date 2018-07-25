@@ -23,7 +23,9 @@ TruthTable_FlexOutput <- R6Class(
     input_dimension = NULL,
     output_dimension = NULL,
     logical_matrix = NULL,
-    initialize = function(input_dimension = 1, output_dimension = 1) {
+    initialize = function(
+      input_dimension,
+      output_dimension) {
       init_value <- FALSE;
       # Store private members
       self$input_dimension <- input_dimension;
@@ -135,6 +137,9 @@ TruthTable_FlexOutput <- R6Class(
     },
     print = function(){
       cat(self$get_prettystring(), "\n");
+    },
+    set_logical_matrix = function(logical_matrix){
+      self$logical_matrix <- logical_matrix;
     },
     set_output = function(input, output){
       input_logical_vector <- convert_any_to_logical_vector(input);

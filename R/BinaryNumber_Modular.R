@@ -8,6 +8,12 @@ BinaryNumber_Modular <- R6Class(
     initialize = function(input, dimension = 1) {
       self$logical_vector <- convert_any_to_logical_vector(input);
     },
+    convert_to_character_vector = function(){
+      return(convert_logical_vector_to_character(self));
+    },
+    convert_to_logical_vector = function(){
+      return(self$logical_vector);
+    },
     get_bit = function(bit_position){
       return(self$logical_vector[bit_position]);
     },

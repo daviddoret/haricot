@@ -118,6 +118,9 @@ NandTree_FirstIdea <- R6Class(
         stop(input);
       }
     },
+    do_plot = function() {
+      plot_nandtree(self);
+    },
     do_randomize_outputs = function() {
       # Randomizes the outputs of the TruthTable.
 
