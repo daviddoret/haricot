@@ -8,7 +8,7 @@ BinaryNumber_Modular <- R6Class(
     initialize = function(input, dimension = 1) {
       self$logical_vector <- convert_any_to_logical_vector(input);
     },
-    convert_to_character_vector = function(){
+    convert_to_character = function(){
       return(convert_logical_vector_to_character(self));
     },
     convert_to_logical_vector = function(){
@@ -28,6 +28,7 @@ BinaryNumber_Modular <- R6Class(
     },
     get_prettystring = function() {
       return(paste(as.numeric(self$logical_vector), collapse=""));
+      #return(self$convert_to_character());
     },
     do_increment = function(){
       # do_increment is a function that adds 1 to a "binary number".

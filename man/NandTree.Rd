@@ -3,12 +3,12 @@
 \docType{data}
 \name{NandTree}
 \alias{NandTree}
-\title{NandTree}
+\title{NAND tree.}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 NandTree
 }
 \description{
-NandTree
+NAND tree.
 }
 \keyword{datasets}

@@ -14,7 +14,7 @@
 #' # R6 method style:
 #' nandtree$execute_algorithm(input);
 #'
-#' @param nandtree A NandTree (R6 Class TruthTable)
+#' @param nandtree A NandTree (R6 Class NandTree)
 #' @param input The input bits (logical vector | character vector of "0"s and "1"s | R6 Class BinaryNumber)
 #' @return The corresponding output (same type than input)
 #' @export
@@ -47,7 +47,7 @@ execute_algorithm_nandtree = function(nandtree, input) {
       answer <- subnode_answers[subnode_id];
       if(!is.na(answer)){
         # This is a "cache hit".
-        message("Cache hit", subnode_id);
+        # message("Cache hit", subnode_id);
       } else {
         subnode <- nandtree$get_subnode_by_subnode_id(subnode_id);
         if(subnode$type == "i"){
@@ -76,7 +76,7 @@ execute_algorithm_nandtree = function(nandtree, input) {
         }
       }
     }
-    message("Node answer", subnode_id, answer);
+    # message("Node answer", subnode_id, answer);
     return(answer);
   }
 

@@ -4,7 +4,7 @@ library(data.table);
 library(igraph);
 library(RColorBrewer)
 
-#' NandTree
+#' NAND tree.
 #'
 #' @export
 NandTree <- R6Class(
@@ -27,6 +27,9 @@ NandTree <- R6Class(
         subnode_id <- paste0("o", output_subnode_number);
         self$set_output_subnode(subnode_id);
       }
+    },
+    convert_to_truthtable = function(){
+      return(convert_nandtree_to_truthtable(self));
     },
     do_apply_algorithm = function(input) {
       return(execute_algorithm_nandtree(self, input));

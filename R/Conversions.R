@@ -59,30 +59,3 @@ convert_any_to_logical_vector <- function(input){
   }
 }
 
-# Convert a NandTree to a TruthTable.
-# The algorithm is inefficient,
-# it simply loops through all input values,
-# to build the truth table one item at a time.
-convert_nandtree_to_truthtable <- function(nandtree){
-  input_dimension <- nandtree$get_input_dimension();
-  output_dimension <- nandtree$get_output_dimension();
-  truthtable <- TruthTable_FlexOutput$new(
-    input_dimension = input_dimension,
-    output_dimension = output_dimension);
-  input_binarynumber <- BinaryNumber_Modular$new(input = rep(FALSE, input_dimension));
-  repeat{
-    print(input_binarynumber);
-    output_binarynumber = nandtree$do_apply_algorithm(input_binarynumber);
-    print(output_binarynumber);
-    truthtable$set_output(input = input_binarynumber, output_binarynumber);
-
-    input_binarynumber$do_increment();
-    if(input_binarynumber$get_equal_0()){
-      break;
-    }
-  }
-
-  return(truthtable);
-
-}
-

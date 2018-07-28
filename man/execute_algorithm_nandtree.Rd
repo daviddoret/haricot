@@ -11,7 +11,7 @@ execute_algorithm_nandtree(nandtree, input);
 nandtree$execute_algorithm(input);
 }
 \arguments{
-\item{nandtree}{A NandTree (R6 Class TruthTable)}
+\item{nandtree}{A NandTree (R6 Class NandTree)}
 
 \item{input}{The input bits (logical vector | character vector of "0"s and "1"s | R6 Class BinaryNumber)}
 }
