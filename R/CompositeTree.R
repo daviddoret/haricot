@@ -2,14 +2,14 @@ library(R6);
 #install.packages("data.table");
 library(data.table);
 
-#' SuperTree_ThinkingLoudly.
+#' CompositeTree
 #'
-#' A SuperTree is an algorithm that is composed of SuperNodes.
-#' A SuperTree should itself be a SuperNode, enabling complex and deep trees.
+#' A CompositeTree is an algorithm that is composed of AbstractNodes.
+#' A CompositeTree should itself be a AbstractNode, enabling complex and deep trees.
 #' @export
-SuperTree_ThinkingLoudly <- R6Class(
-  "SuperTree_ThinkingLoudly",
-  inherit = SuperNode_ThinkingLoudly,
+CompositeTree <- R6Class(
+  "CompositeTree",
+  inherit = AbstractNode,
   public = list(
     # Private Members
     # Constructor

@@ -1,18 +1,18 @@
 library(R6);
 
-#' SuperNode_ThinkingLoudly.
+#' AbstractNode.
 #'
-#' SuperNode is an abstract class.
+#' AbstractNode is an abstract class.
 #' It defines the interfaces required for subclasses,
-#' that must be compatible as a node in a SuperTree.
+#' that must be compatible as a node in a CompositeTree.
 #' Its basic definition is that it comprises:
 #' - a number of input bits,
 #' - a number of output bits,
 #' - a method to run its algorithm for a given input and return its output,
 #' - utility methods of general usage.
 #' @export
-SuperNode_ThinkingLoudly <- R6Class(
-  "SuperNode",
+AbstractNode <- R6Class(
+  "AbstractNode",
   public = list(
     # Private Members
     node_id = NULL,
