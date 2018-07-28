@@ -2,7 +2,7 @@
 
 export(AbstractNode)
 export(CompositeTree)
-export(NandTree_FirstIdea)
+export(NandTree)
 export(TruthTable_FlexOutput)
 export(concatenate_truthtable)
 export(convert_int_to_logical_vector)

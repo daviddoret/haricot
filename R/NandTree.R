@@ -4,11 +4,11 @@ library(data.table);
 library(igraph);
 library(RColorBrewer)
 
-#' NandTree_FirstIdea
+#' NandTree
 #'
 #' @export
-NandTree_FirstIdea <- R6Class(
-  "NandTree_FirstIdea",
+NandTree <- R6Class(
+  "NandTree",
   inherit = AbstractNode,
   public = list(
     last_nand_subnode_number = NULL,
@@ -75,7 +75,8 @@ NandTree_FirstIdea <- R6Class(
     },
     get_subnode_count = function() {
       # Return the total number of subnodes in the tree.
-      return(length(self$logical_datatable[,]));
+      # return(length(self$logical_datatable[,]));
+      return(nrow(self$logical_datatable));
     },
     get_prettystring = function(){
       return(paste(self$logical_datatable[,"prettystring"], collapse = "\n"));
