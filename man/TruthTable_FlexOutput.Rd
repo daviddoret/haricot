@@ -18,7 +18,9 @@ Row index position = 3 --> Input = binum of value 2.
 Row index position = 2 ^ N --> Input = binum of value 2 ^ N - 1.
 }
 \examples{
-t1 <- TruthTable_FlexOutput$new(input_dimension = 2, output_dimension = 2, init_value = FALSE);
+t1 <- TruthTable_FlexOutput$new(
+  input_dimension = 2,
+  output_dimension = 2);
 t1$set_output(input = "01", output = "11");
 t1$do_apply_algorithm("01");
 

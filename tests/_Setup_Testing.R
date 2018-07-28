@@ -1,18 +1,18 @@
 
-install.packages("roxygen2");
-install.packages('installr');
-install.packages('Rcpp');
-install.packages('pkgbuild');
-devtools::install_github("r-lib/devtools");
+#install.packages("roxygen2");
+#install.packages('installr');
+#install.packages('Rcpp');
+#install.packages('pkgbuild');
+#devtools::install_github("r-lib/devtools");
 
-library(devtools);
-library(installr);
-library(Rcpp);
-library(pkgbuild);
+#library(devtools);
+#library(installr);
+#library(Rcpp);
+#library(pkgbuild);
 
-installr::install.Rtools();
-devtools::find_rtools();
-Sys.getenv("PATH")
+#installr::install.Rtools();
+#devtools::find_rtools();
+#Sys.getenv("PATH")
 #Sys.setenv(PATH = paste("C:\\Rtools\\bin", Sys.getenv("PATH"), sep=";"))
 #Sys.setenv(PATH = paste("C:\\Rtools\\mingw_64\\bin", Sys.getenv("PATH"), sep=";"));
 #Sys.setenv(PATH = paste("C:\\Rtools", Sys.getenv("PATH"), sep=";"))
@@ -20,10 +20,10 @@ Sys.getenv("PATH")
 
 #assignInNamespace("version_info", c(devtools:::version_info, list("3.5" = list(version_min = "3.3.0", version_max = "99.99.99", path = "bin"))), "devtools");
 
-find_rtools();
+#find_rtools();
 
 # Setup testing
-devtools::use_testthat();
+#devtools::use_testthat();
 
 # REF: https://stackoverflow.com/questions/31548796/debugging-testthat-tests-in-rstudio
 # The following works for me:

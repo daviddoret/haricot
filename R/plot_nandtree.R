@@ -10,16 +10,16 @@ plot_nandtree <- function(nandtree){
   nand_filter <- nandtree$get_logical_datatable()$type == "n";
   output_filter <- nandtree$get_logical_datatable()$type == "o";
 
-  nodes <- c(nandtree$get_logical_datatable()$node_id);
+  subnodes <- c(nandtree$get_logical_datatable()$subnode_id);
   vertices <- data.frame(
-    name = nandtree$get_logical_datatable()$node_id,
+    name = nandtree$get_logical_datatable()$subnode_id,
     type = nandtree$get_logical_datatable()$type);
   param1 <- nandtree$get_logical_datatable()$param1_id;
   param2 <- nandtree$get_logical_datatable()$param2_id;
 
-  nand1_edges <- data.frame(source = param1[nand_filter], target = nodes[nand_filter]);
-  nand2_edges <- data.frame(source = param2[nand_filter], target = nodes[nand_filter]);
-  output_edges <- data.frame(source = param1[output_filter], target = nodes[output_filter]);
+  nand1_edges <- data.frame(source = param1[nand_filter], target = subnodes[nand_filter]);
+  nand2_edges <- data.frame(source = param2[nand_filter], target = subnodes[nand_filter]);
+  output_edges <- data.frame(source = param1[output_filter], target = subnodes[output_filter]);
   edges_all <- rbind(nand1_edges, nand2_edges, output_edges);
 
   #edges_all
@@ -55,9 +55,9 @@ plot_nandtree <- function(nandtree){
     vertex.label.dist=0,
     edge.curved=0.0,
     mark.groups=list(
-      nodes[input_filter],
-      nodes[nand_filter],
-      nodes[output_filter]) #, # draws polygon around nodes
+      subnodes[input_filter],
+      subnodes[nand_filter],
+      subnodes[output_filter]) #, # draws polygon around subnodes
     #mark.border=vertice_label_color,
     #mark.col=,
     )

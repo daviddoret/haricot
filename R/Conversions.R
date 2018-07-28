@@ -1,7 +1,3 @@
-convert_int_to_logical_vector <- function(i, size){
-  # TODO: Check that size is enough to store i, otherwise do something, maybe modulo.
-  return(as.logical(intToBits(i))[seq.int(from=1,to=size)]);
-}
 
 convert_int_to_position <- function(i){
   # converter function
@@ -70,8 +66,9 @@ convert_any_to_logical_vector <- function(input){
 convert_nandtree_to_truthtable <- function(nandtree){
   input_dimension <- nandtree$get_input_dimension();
   output_dimension <- nandtree$get_output_dimension();
-  truthtable <- TruthTable_FlexOutput$new(input_dimension = input_dimension,
-                                          output_dimension = output_dimension);
+  truthtable <- TruthTable_FlexOutput$new(
+    input_dimension = input_dimension,
+    output_dimension = output_dimension);
   input_binarynumber <- BinaryNumber_Modular$new(input = rep(FALSE, input_dimension));
   repeat{
     print(input_binarynumber);

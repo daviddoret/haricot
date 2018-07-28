@@ -2,12 +2,12 @@
 % Please edit documentation in R/execute_algorithm_nandtree.R
 \name{execute_algorithm_nandtree}
 \alias{execute_algorithm_nandtree}
-\title{Execute (run) the Algorithm of a NANDTree on a given input.}
+\title{Execute the algorithm of a NAND tree on a given input.}
 \usage{
-# R function
+# R function style:
 execute_algorithm_nandtree(nandtree, input);
-\cr
-# R6 method
+
+# R6 method style:
 nandtree$execute_algorithm(input);
 }
 \arguments{
@@ -19,9 +19,10 @@ nandtree$execute_algorithm(input);
 The corresponding output (same type than input)
 }
 \description{
-A NandTree, by definition, is an algorithm
-that takes X bits as input,
-and returns Y bits as output.
+A NAND tree, by definition, is an algorithm
+that takes x bits as input,
+applies to them a tree (or directed graph) of NAND functions,
+and returns y bits as output.
 This function applies / executes / runs
 that algorithm on a given input
 and returns the corresponding output.
