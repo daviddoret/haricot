@@ -13,8 +13,8 @@ NandTree <- R6Class(
   public = list(
     last_nand_subnode_number = NULL,
     logical_datatable = NULL,
-    initialize = function(input_dimension, output_dimension) {
-      super$initialize(input_dimension = input_dimension, output_dimension = output_dimension);
+    initialize = function(node_id, input_dimension, output_dimension) {
+      super$initialize(node_id = node_id, input_dimension = input_dimension, output_dimension = output_dimension);
       init_value <- FALSE;
       self$last_nand_subnode_number <- 0;
       # Initializes the input subnodes

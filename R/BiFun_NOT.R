@@ -5,8 +5,8 @@ BiFun_NOT <- R6Class(
   "BiFun_NOT",
   inherit = BiFun_10,
   public = list(
-    initialize = function() {
-      super$initialize();
+    initialize = function(node_id) {
+      super$initialize(node_id = node_id);
     },
     do_randomize_outputs = function() {
       stop("Not supported");

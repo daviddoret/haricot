@@ -5,8 +5,8 @@ BiFun_01 <- R6Class(
   "BiFun_01",
   inherit = NandTree,
   public = list(
-    initialize = function() {
-      super$initialize(input_dimension = 1, output_dimension = 1);
+    initialize = function(node_id) {
+      super$initialize(node_id = node_id, input_dimension = 1, output_dimension = 1);
 
       self$set_output_subnode(
         subnode_id = "o1",

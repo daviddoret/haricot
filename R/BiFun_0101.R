@@ -5,8 +5,8 @@ BiFun_0101 <- R6Class(
   "BiFun_0101",
   inherit = NandTree,
   public = list(
-    initialize = function() {
-      super$initialize(input_dimension = 2, output_dimension = 1);
+    initialize = function(node_id) {
+      super$initialize(node_id = node_id, input_dimension = 2, output_dimension = 1);
 
       # Inverse input bit 1.
       self$set_nand_subnode(
