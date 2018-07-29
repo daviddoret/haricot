@@ -10,8 +10,12 @@ BiFun <- R6Class(
       # TODO: Check that we receive a one dimensional truthtable.
       truthtable_character <- convert_modbinum_any_to_modbinum_character(truthtable);
       # Instanciates a specialized algorithm.
-      bifun_xxxx <- switch(
+      bifun <- switch(
         truthtable_character,
+        "00" = BiFun_00$new(),
+        "10" = BiFun_10$new(),
+        "01" = BiFun_01$new(),
+        "11" = BiFun_11$new(),
         "0000" = BiFun_0000$new(),
         "1000" = BiFun_1000$new(),
         "0100" = BiFun_0100$new(),
@@ -30,7 +34,7 @@ BiFun <- R6Class(
         "1111" = BiFun_1100$new()
       );
       # Copy the internal logic of the specialized BiFun algorithm.
-      self$logical_datatable <- bifun_xxxx$get_logical_datatable();
+      self$logical_datatable <- bifun$get_logical_datatable();
     },
     do_randomize_outputs = function() {
       stop("Not supported");
