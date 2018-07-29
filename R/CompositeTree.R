@@ -1,6 +1,7 @@
-library(R6);
+require(R6);
 #install.packages("data.table");
-library(data.table);
+require(data.table);
+require(rlang);
 
 #' CompositeTree
 #'
@@ -12,7 +13,7 @@ CompositeTree <- R6Class(
   inherit = AbstractNode,
   private = list(
     subedges = NULL,
-    subnodes = NULL
+    inner_nodes = NULL
   ),
   public = list(
     # Constructor
@@ -32,7 +33,7 @@ CompositeTree <- R6Class(
         input_dimension = input_dimension,
         output_dimension = output_dimension);
       # Initializes the nodes list
-      private$subnodes <- list();
+      private$inner_nodes <- list();
     },
     do_apply_algorithm = function(input) {
       stop("ooops");
@@ -44,24 +45,24 @@ CompositeTree <- R6Class(
       stop("ooops");
     },
     get_subedge_filter = function(
-      source_subnode_id = NULL,
-      source_subnode_bitid = NULL,
-      target_subnode_id = NULL,
-      target_subnode_bitid = NULL) {
+      source_node_id = NULL,
+      source_bit_id = NULL,
+      target_node_id = NULL,
+      target_bit_id = NULL) {
       # Return a logical vector for filtering purposes on the edge datatable.
       # TODO: This code is probably awfully inefficient, clean this up.
       filter <- private$subedges;
-      if(!is.null(source_subnode_id)){
-        filter <- filter[, "source_subnode_id"] == source_subnode_id;
+      if(!is.null(source_node_id)){
+        filter <- filter[, "source_node_id"] == source_node_id;
       }
-      if(!is.null(source_subnode_bitid)){
-        filter <- filter[, "source_subnode_bitid"] == source_subnode_bitid;
+      if(!is.null(source_bit_id)){
+        filter <- filter[, "source_bit_id"] == source_bit_id;
       }
-      if(!is.null(target_subnode_id)){
-        filter <- filter[, "target_subnode_id"] == target_subnode_id;
+      if(!is.null(target_node_id)){
+        filter <- filter[, "target_node_id"] == target_node_id;
       }
-      if(!is.null(target_subnode_bitid)){
-        filter <- filter[, "target_subnode_bitid"] == target_subnode_bitid;
+      if(!is.null(target_bit_id)){
+        filter <- filter[, "target_bit_id"] == target_bit_id;
       }
       return(filter);
     },
@@ -75,28 +76,40 @@ CompositeTree <- R6Class(
       stop("ooops");
     },
     set_subedge = function(
-      source_subnode_id,
-      source_subnode_bit_id,
-      target_subnode_id,
-      target_subnode_bit_id){
+      source_node_id,
+      source_bit_id,
+      target_node_id,
+      target_bit_id){
+      if(is_missing(source_node_id)){
+        # If the subnode is not specified,
+        # we assume the intention is to work directly
+        # on the input and output bits of the current node.
+        source_node_id <- self$get_node_id();
+      }
+      if(is_missing(target_node_id)){
+        # If the subnode is not specified,
+        # we assume the intention is to work directly
+        # on the input and output bits of the current node.
+        target_node_id <- self$get_node_id();
+      }
       prettystring <- paste0(
-        source_subnode_id, ".", source_subnode_bit_id,
+        source_node_id, ".", source_bit_id,
         " > ",
-        target_subnode_id, ".", target_subnode_bit_id
+        target_node_id, ".", target_bit_id
         );
       new_subedge <- data.table(
-        source_subnode_id = source_subnode_id,
-        source_subnode_bit_id = source_subnode_bit_id,
-        target_subnode_id = target_subnode_id,
-        target_subnode_bit_id = target_subnode_bit_id,
+        source_node_id = source_node_id,
+        source_bit_id = source_bit_id,
+        target_node_id = target_node_id,
+        target_bit_id = target_bit_id,
         prettystring = prettystring);
       if(is.null(private$subedges)){
-        # Initializes the data table if this is the first subnode.
+        # Initializes the data table if this is the first inner_node.
         private$subedges <- new_subedge;
       } else {
         filter <- self$get_subedge_filter(
-          target_subnode_id = target_subnode_id,
-          target_subnode_bit_id = target_subnode_bit_id);
+          target_node_id = target_node_id,
+          target_bit_id = target_bit_id);
         if(any(filter)){
           # This target bit has already an incoming edge.
           # By definition, a single bit cannot bit targetted multiple times.
@@ -104,14 +117,14 @@ CompositeTree <- R6Class(
           filtered_rows <- private$subedges[!filter,];
           private$subedges <- rbind(filtered_rows, new_subedge);
         } else {
-          # This subnode does not exist, we need to insert it.
+          # This inner_node does not exist, we need to insert it.
           private$subedges <- rbind(private$subedges, new_subedge);
         }
       }
     },
-    set_subnode = function(subnode){
-      subnode_id <- subnode$get_node_id();
-      private$subnodes[[subnode_id]] <- subnode;
+    set_inner_node = function(inner_node){
+      inner_node_id <- inner_node$get_node_id();
+      private$inner_nodes[[inner_node_id]] <- inner_node;
     },
     print = function(){
       cat(self$get_prettystring(), "\n");
