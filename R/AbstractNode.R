@@ -13,22 +13,36 @@ library(R6);
 #' @export
 AbstractNode <- R6Class(
   "AbstractNode",
+  private = list(
+    node_id = NULL,
+    node_label = NULL,
+    node_notes = NULL,
+    node_style = NULL,
+    input_dimension = NULL,
+    output_dimension = NULL
+  ),
   public = list(
     # Private Members
-    node_id = NULL,
-    input_dimension = NULL,
-    output_dimension = NULL,
     initialize = function(
       node_id = NULL,
+      node_label = NULL,
+      node_notes = NULL,
+      node_style = NULL,
       input_dimension,
       output_dimension) {
       if(is.null(node_id)){
         node_id <- get_node_guid();
       }
+      if(is.null(node_label)){
+        node_label <- node_id;
+      }
       # Store private members
-      self$node_id <- node_id;
-      self$input_dimension <- input_dimension;
-      self$output_dimension <- output_dimension;
+      private$node_id <- node_id;
+      private$node_label <- node_label;
+      private$node_notes <- node_notes;
+      private$node_style <- node_style;
+      private$input_dimension <- input_dimension;
+      private$output_dimension <- output_dimension;
     },
     do_apply_algorithm = function(input) {
       stop("This method is abstract, please implement it in the subclass.");
@@ -40,7 +54,7 @@ AbstractNode <- R6Class(
       stop("This method is abstract, please implement it in the subclass.");
     },
     get_input_dimension = function() {
-      return(self$input_dimension);
+      return(private$input_dimension);
     },
     get_input_size = function() {
       # Returns the number of different input values.
@@ -50,10 +64,10 @@ AbstractNode <- R6Class(
       stop("This method is abstract, please implement it in the subclass.");
     },
     get_node_id = function(){
-      return(self$node_id);
+      return(private$node_id);
     },
     get_output_dimension = function() {
-      return(self$output_dimension);
+      return(private$output_dimension);
     },
     get_prettystring = function(){
       stop("This method is abstract, please implement it in the subclass.");

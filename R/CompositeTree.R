@@ -17,12 +17,18 @@ CompositeTree <- R6Class(
   public = list(
     # Constructor
     initialize = function(
-      node_id,
+      node_id = NULL,
+      node_label = NULL,
+      node_notes = NULL,
+      node_style = NULL,
       input_dimension,
       output_dimension) {
       # Call the supercall constructor
       super$initialize(
         node_id = node_id,
+        node_label = node_label,
+        node_notes = node_notes,
+        node_style = node_style,
         input_dimension = input_dimension,
         output_dimension = output_dimension);
       # Initializes the nodes list
@@ -44,7 +50,7 @@ CompositeTree <- R6Class(
       target_subnode_bitid = NULL) {
       # Return a logical vector for filtering purposes on the edge datatable.
       # TODO: This code is probably awfully inefficient, clean this up.
-      filter <- self$logical_datatable;
+      filter <- private$edges;
       if(!is.null(source_subnode_id)){
         filter <- filter[, "source_subnode_id"] == source_subnode_id;
       }
@@ -63,7 +69,7 @@ CompositeTree <- R6Class(
       stop("ooops");
     },
     get_node = function(node_id){
-      return(self$nodes[[node_id]]);
+      return(private$nodes[[node_id]]);
     },
     get_prettystring = function(){
       stop("ooops");
@@ -84,9 +90,9 @@ CompositeTree <- R6Class(
         target_subnode_id = target_subnode_id,
         target_subnode_bit_id = target_subnode_bit_id,
         prettystring = prettystring);
-      if(is.null(self$edges)){
+      if(is.null(private$edges)){
         # Initializes the data table if this is the first subnode.
-        self$edges <- new_edge;
+        private$edges <- new_edge;
       } else {
         filter <- self$get_filter_by_subnode_id(
           target_subnode_id = target_subnode_id,
@@ -95,17 +101,17 @@ CompositeTree <- R6Class(
           # This target bit has already an incoming edge.
           # By definition, a single bit cannot bit targetted multiple times.
           # Hence we must assume the intention was to substitute the existing edge.
-          filtered_rows <- self$edges[!filter,];
-          self$edges <- rbind(filtered_rows, new_edge);
+          filtered_rows <- private$edges[!filter,];
+          private$edges <- rbind(filtered_rows, new_edge);
         } else {
           # This subnode does not exist, we need to insert it.
-          self$edges <- rbind(self$edges, new_edge);
+          private$edges <- rbind(private$edges, new_edge);
         }
       }
     },
     set_node = function(node){
       node_id <- node$get_node_id();
-      self$nodes[[node_id]] <- node;
+      private$nodes[[node_id]] <- node;
     },
     print = function(){
       cat(self$get_prettystring(), "\n");
