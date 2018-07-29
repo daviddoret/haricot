@@ -5,10 +5,21 @@ BiFun <- R6Class(
   "BiFun",
   inherit = NandTree,
   public = list(
-    initialize = function(node_id, truthtable) {
+    initialize = function(
+      node_id = NULL,
+      node_label = NULL,
+      node_notes = NULL,
+      node_style = NULL,
+      truthtable) {
       truthtable_character <- convert_modbinum_any_to_modbinum_character(truthtable);
       input_dimension <- nchar(truthtable_character);
-      super$initialize(node_id = node_id, input_dimension = input_dimension, output_dimension = 1);
+      super$initialize(
+        node_id = node_id,
+        node_label = node_label,
+        node_notes = node_notes,
+        node_style = node_style,
+        input_dimension = input_dimension,
+        output_dimension = 1);
       # Instanciates a specialized algorithm.
       bifun <- switch(
         truthtable_character,

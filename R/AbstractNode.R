@@ -1,4 +1,6 @@
-library(R6);
+require(R6);
+#install.packages("rlang");
+require(rlang);
 
 #' AbstractNode.
 #'
@@ -30,11 +32,17 @@ AbstractNode <- R6Class(
       node_style = NULL,
       input_dimension,
       output_dimension) {
-      if(is.null(node_id)){
+      if(is_missing(node_id)){
         node_id <- get_node_guid();
       }
-      if(is.null(node_label)){
+      if(is_missing(node_label)){
         node_label <- node_id;
+      }
+      if(is_missing(node_notes)){
+        node_notes <- NULL;
+      }
+      if(is_missing(node_style)){
+        node_style <- NULL;
       }
       # Store private members
       private$node_id <- node_id;
