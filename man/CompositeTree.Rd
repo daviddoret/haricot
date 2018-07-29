@@ -10,6 +10,6 @@ CompositeTree
 }
 \description{
 A CompositeTree is an algorithm that is composed of AbstractNodes.
-A CompositeTree should itself be a AbstractNode, enabling complex and deep trees.
+A CompositeTree is itself an AbstractNode, enabling complex and deep trees.
 }
 \keyword{datasets}

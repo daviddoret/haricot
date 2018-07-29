@@ -19,9 +19,12 @@ AbstractNode <- R6Class(
     input_dimension = NULL,
     output_dimension = NULL,
     initialize = function(
-      node_id,
+      node_id = NULL,
       input_dimension,
       output_dimension) {
+      if(is.null(node_id)){
+        node_id <- get_node_guid();
+      }
       # Store private members
       self$node_id <- node_id;
       self$input_dimension <- input_dimension;

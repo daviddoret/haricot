@@ -26,7 +26,7 @@ CompositeTree <- R6Class(
         input_dimension = input_dimension,
         output_dimension = output_dimension);
       # Initializes the nodes list
-      self$nodes <- list();
+      private$nodes <- list();
     },
     do_apply_algorithm = function(input) {
       stop("ooops");
@@ -62,7 +62,7 @@ CompositeTree <- R6Class(
     get_inverse = function() {
       stop("ooops");
     },
-    get_node <- function(node_id){
+    get_node = function(node_id){
       return(self$nodes[[node_id]]);
     },
     get_prettystring = function(){
@@ -103,7 +103,7 @@ CompositeTree <- R6Class(
         }
       }
     },
-    set_node <- function(node){
+    set_node = function(node){
       node_id <- node$get_node_id();
       self$nodes[[node_id]] <- node;
     },
