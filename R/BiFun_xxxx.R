@@ -15,6 +15,15 @@
 #' }
 #' There is a generic R6 class \code{BiFun} whose constructor takes a \code{truthtable} parameter of any supported type
 #' that builds its internal NAND tree on the fly.
+#' Finally, well-known logical gates have their dedicated alias classes:
+#' \itemize{
+#' \item \code{BiFun_AND},
+#' \item \code{BiFun_NAND},
+#' \item \code{BiFun_NOT},
+#' \item \code{BiFun_OR},
+#' \item \code{BiFun_XNOR},
+#' \item \code{BiFun_XOR}.
+#' }
 #'
 #' @usage # Specialized BiFun_xxxx R6 classes:
 #' BiFun_00$new();
@@ -31,6 +40,10 @@
 #' BiFun$new(truthtable = "1000");
 #' BiFun$new(truthtable = "0100");
 #' # etc.
+#'
+#' Well-known logical gates R6 class:
+#' BiFun_AND$new();
+#' BiFun_XOR$new();
 #'
 #' @name BiFun_xxxx
 NULL

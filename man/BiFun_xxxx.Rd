@@ -4,7 +4,8 @@
 %   R/BiFun_0100.R, R/BiFun_0101.R, R/BiFun_0110.R, R/BiFun_0111.R,
 %   R/BiFun_10.R, R/BiFun_1000.R, R/BiFun_1001.R, R/BiFun_1010.R,
 %   R/BiFun_1011.R, R/BiFun_11.R, R/BiFun_1100.R, R/BiFun_1101.R,
-%   R/BiFun_1110.R, R/BiFun_1111.R, R/BiFun_xxxx.R
+%   R/BiFun_1110.R, R/BiFun_1111.R, R/BiFun_AND.R, R/BiFun_NAND.R,
+%   R/BiFun_NOT.R, R/BiFun_OR.R, R/BiFun_XNOR.R, R/BiFun_XOR.R, R/BiFun_xxxx.R
 \docType{data}
 \name{BiFun}
 \alias{BiFun}
@@ -28,6 +29,12 @@
 \alias{BiFun_1101}
 \alias{BiFun_1110}
 \alias{BiFun_1111}
+\alias{BiFun_AND}
+\alias{BiFun_NAND}
+\alias{BiFun_NOT}
+\alias{BiFun_NOT}
+\alias{BiFun_XNOR}
+\alias{BiFun_XOR}
 \alias{BiFun_xxxx}
 \title{Binary Function XXXX}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
@@ -74,31 +81,62 @@ BiFun_1110
 
 BiFun_1111
 
+BiFun_AND
+
+BiFun_NAND
+
+BiFun_NOT
+
+BiFun_NOT
+
+BiFun_XNOR
+
+BiFun_XOR
+
 # Specialized BiFun_xxxx R6 classes:
+BiFun_00$new();
+BiFun_10$new();
 BiFun_0000$new();
 BiFun_1000$new();
 BiFun_0100$new();
 # etc.
 
 Generic BiFun R6 class:
+BiFun$new(truthtable = "00");
+BiFun$new(truthtable = "10");
 BiFun$new(truthtable = "0000");
 BiFun$new(truthtable = "1000");
 BiFun$new(truthtable = "0100");
 # etc.
+
+Well-known logical gates R6 class:
+BiFun_AND$new();
+BiFun_XOR$new();
 }
 \description{
 The most basic algorithm is NAND, that is the atomic building block of all higher-level algorithms.
-\cr A second abstraction (or complexity) layer is composed of the binary functions (aka BiFun).
-\cr These are NAND trees that take 2 input bits and return 1 output bit.
-\cr There are \eqn{2^4 = 16} distinct such functions.
+\cr A second abstraction (or complexity) layer is composed of the binary functions (aka BiFun) of dimension 1x1 and 2x1.
+\cr These are NAND trees that take 1 or 2 input bits and return 1 output bit.
+\cr There are \eqn{2^2 + 2^4 = 4 + 16 = 20} distinct such functions.
 \cr These are the building block functions from which any more complex algorithm may be built.
 \cr There is one specialized R6 class for every binary function, in the form \code{BiFun_xxxx} where "xxxx" is the binary number representation of the algorithm's truth table.
 \cr Amongst these, some are particularly useless, especially:
 \cr \itemize{
+\item \code{BiFun_00}: The constant 0.
+\item \code{BiFun_11}: The constant 1.
 \item \code{BiFun_0000}: The constant 0.
 \item \code{BiFun_1111}: The constant 1.
 }
 There is a generic R6 class \code{BiFun} whose constructor takes a \code{truthtable} parameter of any supported type
 that builds its internal NAND tree on the fly.
+Finally, well-known logical gates have their dedicated alias classes:
+\itemize{
+\item \code{BiFun_AND},
+\item \code{BiFun_NAND},
+\item \code{BiFun_NOT},
+\item \code{BiFun_OR},
+\item \code{BiFun_XNOR},
+\item \code{BiFun_XOR}.
+}
 }
 \keyword{datasets}
