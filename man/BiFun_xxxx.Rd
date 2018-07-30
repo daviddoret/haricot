@@ -32,7 +32,7 @@
 \alias{BiFun_AND}
 \alias{BiFun_NAND}
 \alias{BiFun_NOT}
-\alias{BiFun_NOT}
+\alias{BiFun_OR}
 \alias{BiFun_XNOR}
 \alias{BiFun_XOR}
 \alias{BiFun_xxxx}
@@ -87,31 +87,31 @@ BiFun_NAND
 
 BiFun_NOT
 
-BiFun_NOT
+BiFun_OR
 
 BiFun_XNOR
 
 BiFun_XOR
 
 # Specialized BiFun_xxxx R6 classes:
-BiFun_00$new(node_id = "n1");
-BiFun_10$new(node_id = "n2");
-BiFun_0000$new(node_id = "n3");
-BiFun_1000$new(node_id = "n4");
-BiFun_0100$new(node_id = "n5");
+BiFun_00$new();
+BiFun_10$new();
+BiFun_0000$new();
+BiFun_1000$new();
+BiFun_0100$new();
 # etc.
 
 Generic BiFun R6 class:
-BiFun$new(node_id = "n6", truthtable = "00");
-BiFun$new(node_id = "n7", truthtable = "10");
-BiFun$new(node_id = "n8", truthtable = "0000");
-BiFun$new(node_id = "n9", truthtable = "1000");
-BiFun$new(node_id = "n10", truthtable = "0100");
+BiFun$new(truthtable = "00");
+BiFun$new(truthtable = "10");
+BiFun$new(truthtable = "0000");
+BiFun$new(truthtable = "1000");
+BiFun$new(truthtable = "0100");
 # etc.
 
 Well-known logical gates R6 class:
-BiFun_AND$new(node_id = "n11");
-BiFun_XOR$new(node_id = "n12");
+BiFun_AND$new();
+BiFun_XOR$new();
 }
 \description{
 The most basic algorithm is NAND, that is the atomic building block of all higher-level algorithms.

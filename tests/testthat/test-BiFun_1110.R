@@ -5,7 +5,7 @@ test_that('BiFun_1110: exhaustive output test', {
 
   #browser();
 
-  nt <- BiFun_1110$new(node_id = "n1");
+  nt <- BiFun_1110$new();
 
   #print(nt);
   #plot_nandtree(nt);

@@ -16,39 +16,15 @@ require(rlang);
 AbstractNode <- R6Class(
   "AbstractNode",
   private = list(
-    node_id = NULL,
-    node_label = NULL,
-    node_notes = NULL,
-    node_style = NULL,
     input_dimension = NULL,
     output_dimension = NULL
   ),
   public = list(
     # Private Members
     initialize = function(
-      node_id = NULL,
-      node_label = NULL,
-      node_notes = NULL,
-      node_style = NULL,
       input_dimension,
       output_dimension) {
-      if(is_missing(node_id)){
-        node_id <- get_node_guid();
-      }
-      if(is_missing(node_label)){
-        node_label <- node_id;
-      }
-      if(is_missing(node_notes)){
-        node_notes <- NULL;
-      }
-      if(is_missing(node_style)){
-        node_style <- NULL;
-      }
       # Store private members
-      private$node_id <- node_id;
-      private$node_label <- node_label;
-      private$node_notes <- node_notes;
-      private$node_style <- node_style;
       private$input_dimension <- input_dimension;
       private$output_dimension <- output_dimension;
     },
@@ -70,9 +46,6 @@ AbstractNode <- R6Class(
     },
     get_inverse = function() {
       stop("This method is abstract, please implement it in the subclass.");
-    },
-    get_node_id = function(){
-      return(private$node_id);
     },
     get_output_dimension = function() {
       return(private$output_dimension);
