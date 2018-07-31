@@ -7,7 +7,7 @@ test_that('NandTree: plot', {
 
   #browser();
 
-  nt <- NandTree$new(node_id = "super1", input_dimension = 4, output_dimension = 4);
+  nt <- NandTree$new(input_dimension = 4, output_dimension = 4);
   nt$set_nand_subnode(subnode_id = "n1", param1 = "i1", param2_id = "i2");
   nt$set_nand_subnode(subnode_id = "n2", param1 = "i3", param2_id = "i4");
   nt$set_nand_subnode(subnode_id = "n3", param1 = "n1", param2_id = "n2");

@@ -40,3 +40,4 @@ test_that("BinaryNumber_Modular$get_equal_0()", {
   expect_equal(b$get_equal_0(), TRUE);
 
   });
+
