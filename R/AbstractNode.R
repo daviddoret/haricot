@@ -1,6 +1,7 @@
 require(R6);
 #install.packages("rlang");
 require(rlang);
+require(igraph);
 
 #' AbstractNode.
 #'
@@ -32,10 +33,46 @@ AbstractNode <- R6Class(
       stop("This method is abstract, please implement it in the subclass.");
     },
     do_plot = function() {
-      stop("This method is abstract, please implement it in the subclass.");
+      plot(self$get_graph());
     },
     do_randomize_outputs = function() {
       stop("This method is abstract, please implement it in the subclass.");
+    },
+    get_graph = function(){
+      # Default igraph representation of an AbstractNode.
+      g <- make_empty_graph(directed = TRUE) %>%
+        add_vertices(
+          nv = self$get_input_dimension(),
+          bit_id = paste0("i", 1:self$get_input_dimension()),
+          label = paste0("i", 1:self$get_input_dimension()),
+          name = paste0("_self",".",paste0("i", 1:self$get_input_dimension())),
+          node_id = "_self",
+          type = "i") %>%
+        add_vertices(
+          nv = 1,
+          bit_id = NA,
+          label = NA,
+          name = "_self",
+          node_id = "_self",
+          type = "x") %>%
+        add_vertices(
+          nv = self$get_output_dimension(),
+          bit_id = paste0("o", 1:self$get_output_dimension()),
+          label = paste0("o", 1:self$get_output_dimension()),
+          name = paste0("_self",".",paste0("o", 1:self$get_output_dimension())),
+          node_id = "_self",
+          type = "o") %>%
+        add_edges(
+          c(
+            rbind(
+              1:self$get_input_dimension(),
+              rep(self$get_input_dimension() + 1, self$get_input_dimension())))) %>%
+        add_edges(
+          c(
+            rbind(
+              rep(self$get_input_dimension() + 1, self$get_output_dimension()),
+              self$get_input_dimension() + 1 + 1:self$get_output_dimension())));
+      return(g);
     },
     get_input_dimension = function() {
       return(private$input_dimension);

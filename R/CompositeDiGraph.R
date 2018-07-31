@@ -18,7 +18,8 @@ CompositeDiGraph <- R6Class(
     # - a list inner_nodes_obj for the node objects,
     # - a data.table inner_nodes_info for the complementary information.
     inner_nodes_obj = NULL,
-    inner_nodes_info = NULL
+    inner_nodes_info = NULL,
+    inner_graph = NULL
   ),
   public = list(
     # Constructor
@@ -30,15 +31,21 @@ CompositeDiGraph <- R6Class(
         input_dimension = input_dimension,
         output_dimension = output_dimension);
       private$inner_nodes_obj <- list();
+
+      private$inner_graph <- super$get_graph();
+
     },
     do_apply_algorithm = function(input) {
       stop("ooops");
     },
     do_plot = function() {
-      stop("ooops");
+      plot(self$get_graph());
     },
     do_randomize_outputs = function() {
       stop("ooops");
+    },
+    get_graph = function(){
+      return(private$inner_graph);
     },
     get_inner_edge_count = function(){
       return(nrow(private$inner_edges));
@@ -65,6 +72,9 @@ CompositeDiGraph <- R6Class(
       }
       return(filter);
     },
+    get_inner_node_count = function(){
+      return(nrow(private$inner_nodes_info));
+    },
     get_inner_node_info = function(inner_node_id){
       return(private$inner_nodes_info[
         self$get_inner_node_filter(inner_node_id = inner_node_id)]);
@@ -72,8 +82,10 @@ CompositeDiGraph <- R6Class(
     get_inner_node_object = function(inner_node_id){
       return(private$inner_nodes_obj[[inner_node_id]]);
     },
-    get_inner_node_count = function(){
-      return(length(private$inner_nodes_info));
+    get_inner_node_predecessors = function(inner_node_id){
+      # Return a vector of node ids
+      # corresponding to the direct predecessors of the target node.
+
     },
     get_inner_node_filter = function(
       inner_node_id = NULL,
@@ -120,35 +132,7 @@ CompositeDiGraph <- R6Class(
         target_node_id <- "_self"; #TODO: If we use a keyword like this,
                                    #ensure it can't be used as a normal id.
       }
-      prettystring <- paste0(
-        source_node_id, ".", source_bit_id,
-        " > ",
-        target_node_id, ".", target_bit_id
-        );
-      new_inner_edge <- data.table(
-        source_node_id = source_node_id,
-        source_bit_id = source_bit_id,
-        target_node_id = target_node_id,
-        target_bit_id = target_bit_id,
-        prettystring = prettystring);
-      if(is.null(private$inner_edges)){
-        # Initializes the data table if this is the first inner_node.
-        private$inner_edges <- new_inner_edge;
-      } else {
-        filter <- self$get_inner_edge_filter(
-          target_node_id = target_node_id,
-          target_bit_id = target_bit_id);
-        if(any(filter)){
-          # This target bit has already an incoming edge.
-          # By definition, a single bit cannot bit targetted multiple times.
-          # Hence we must assume the intention was to substitute the existing edge.
-          filtered_rows <- private$inner_edges[!filter,];
-          private$inner_edges <- rbind(filtered_rows, new_inner_edge);
-        } else {
-          # This inner_node does not exist, we need to insert it.
-          private$inner_edges <- rbind(private$inner_edges, new_inner_edge);
-        }
-      }
+      #E(private$inner_graph)[[]]
     },
     set_inner_node = function(
       inner_node,
@@ -165,32 +149,19 @@ CompositeDiGraph <- R6Class(
         # e.g. "AND1", "AND2", etc. Or something like that...
         inner_node_label <- class(inner_node)[1];
       }
-      inner_node_depth <- -1;
       inner_node_status <- "nok";
-      new_row <- data.table(
-        inner_node_id = inner_node_id,
-        inner_node_label = inner_node_label,
-        inner_node_notes = inner_node_notes,
-        inner_node_style = inner_node_style,
-        inner_node_depth = inner_node_depth,
-        inner_node_status = inner_node_status);
       private$inner_nodes_obj[[inner_node_id]] <- inner_node;
-      if(is.null(private$inner_nodes_info)){
-        # Initializes the data table if this is the first inner_node.
-        private$inner_nodes_info <- new_row;
-      } else {
-        filter <- self$get_inner_node_filter(
-          inner_node_id = inner_node_id);
-        if(any(filter)){
-          # If an attempt is made to set a node with the same node_id,
-          # we must assume the intention was to substitute the existing node.
-          filtered_rows <- private$inner_nodes_info[!filter,];
-          private$inner_nodes_info <- rbind(filtered_rows, new_row);
-        } else {
-          # This inner_node does not exist, we need to insert it.
-          private$inner_nodes_info <- rbind(private$inner_nodes_info, new_row);
-        }
-      }
+
+      inner_node_graph <- inner_node$get_graph();
+      V(inner_node_graph)$name <- paste0(
+        inner_node_id, ".",V(inner_node_graph)$bit_id);
+
+      V(inner_node_graph)$node_id <- inner_node_id;
+      private$inner_graph <- graph.union(
+        private$inner_graph,
+        inner_node_graph,
+        byname = TRUE);
+
       return(inner_node_id);
     },
     print = function(){
