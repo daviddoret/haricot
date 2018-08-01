@@ -1,14 +1,14 @@
 #install.packages("testthat");
 library(testthat);
 
-test_that('CompositeDiGraph test 01', {
+test_that('CompositeAlgo test 01', {
 
   #browser();
 
   input_dimension <- 2;
   output_dimension <- 1;
 
-  ct <- CompositeDiGraph$new(
+  ct <- CompositeAlgo$new(
     input_dimension = input_dimension,
     output_dimension = output_dimension);
 

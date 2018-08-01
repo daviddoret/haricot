@@ -1,6 +1,6 @@
-#' Execute the algorithm of a composite digraph on a given input.
+#' Execute the algorithm of a CompositeAlgo on a given input.
 #'
-#' @description A composite digraph, by definition in this context, is an algorithm
+#' @description A CompositeAlgo, by definition in this context, is an algorithm
 #' that takes x bits as input,
 #' applies to them a directed graph set of abstract node functions,
 #' and returns y bits as output.
@@ -9,16 +9,16 @@
 #' and returns the corresponding output.
 #'
 #' @usage # R function style:
-#' execute_algorithm_compositedigraph(compositedigraph, input);
+#' execute_algorithm_CompositeAlgo(algo, input);
 #'
 #' # R6 method style:
-#' compositedigraph$execute_algorithm(input);
+#' algo$execute_algorithm(input);
 #'
-#' @param compositedigraph A composite tree (R6 Class CompositeDiGraph)
+#' @param algo A composite algorithm (R6 Class CompositeAlgo)
 #' @param input The input bits (logical vector | character vector of "0"s and "1"s | R6 Class BinaryNumber)
 #' @return The corresponding output (same type than input)
 #' @export
-execute_algorithm_compositedigraph = function(compositedigraph, input) {
+execute_algorithm_CompositeAlgo = function(algo, input) {
   # Applies the TruthTable algorithm and returns its output.
   # Returns a type that is consistent with the type of the input.
   input_logical_vector <- convert_any_to_logical_vector(input);
@@ -32,7 +32,7 @@ execute_algorithm_compositedigraph = function(compositedigraph, input) {
 
 
   # Assign the correct answers to the input inner_nodes.
-  for(input_inner_node_number in 1:compositedigraph$get_input_dimension()){
+  for(input_inner_node_number in 1:algo$get_input_dimension()){
     inner_node_id <- paste0("i", input_inner_node_number);
     inner_node_answers[inner_node_id] <- input_logical_vector[input_inner_node_number];
   }
@@ -52,7 +52,7 @@ execute_algorithm_compositedigraph = function(compositedigraph, input) {
         # This is a "cache hit".
         # message("Cache hit", inner_node_id);
       } else {
-        inner_node <- compositedigraph$get_inner_node_by_inner_node_id(inner_node_id);
+        inner_node <- algo$get_inner_node_by_inner_node_id(inner_node_id);
         if(inner_node$type == "i"){
           # It should have been a "cache hit",
           # the input value should have answered this inner_node.
@@ -84,10 +84,10 @@ execute_algorithm_compositedigraph = function(compositedigraph, input) {
   }
 
   # Prepare the algorithm output.
-  output_logical_vector <- rep(NA, compositedigraph$get_output_dimension());
+  output_logical_vector <- rep(NA, algo$get_output_dimension());
 
   # Loop on all output inner_nodes.
-  for(output_inner_node_number in 1:compositedigraph$get_output_dimension()){
+  for(output_inner_node_number in 1:algo$get_output_dimension()){
     inner_node_id <- paste0("o", output_inner_node_number);
     output_inner_node_output <- do_solve_inner_node(inner_node_id);
     if(output_inner_node_output == "NA"){

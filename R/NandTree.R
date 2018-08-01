@@ -9,7 +9,7 @@ library(RColorBrewer)
 #' @export
 NandTree <- R6Class(
   "NandTree",
-  inherit = AbstractNode,
+  inherit = CompositeAlgoInnerNode,
   public = list(
     last_nand_subnode_number = NULL,
     logical_datatable = NULL,
