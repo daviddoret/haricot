@@ -35,7 +35,7 @@ AlgoNode <- R6Class(
       private$output_dimension <- output_dimension;
       if(is.null(node_id)){ node_id <- get_node_guid(); }
       private$node_id <- node_id;
-      if(is.null(label)){ label <- "algo"; }
+      if(is.null(label)){ label <- "α"; }
       private$label <- label;
     },
     do_convert_to_igraph = function(...){

@@ -57,7 +57,7 @@ AlgoNAND <- R6Class(
       return(private$output_dimension);
     },
     get_prettystring = function(){
-      return("NAND");
+      return("nand");
     },
     print = function(){
       cat(self$get_prettystring(), "\n");

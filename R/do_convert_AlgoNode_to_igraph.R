@@ -20,23 +20,32 @@ do_convert_AlgoNode_to_igraph <- function(node, ...){
     add_vertices(
       nv = node$get_input_dimension(),
       bit_id = paste0("i", 1:node$get_input_dimension()),
+      color = "#ccffe5",
       label = paste0("i", 1:node$get_input_dimension()),
       name = paste0(node$get_node_id(), ".", paste0("i", 1:node$get_input_dimension())),
       node_id = node$get_node_id(),
+      shape = "circle",
+      size = 10,
       type = "inputbit") %>%
     add_vertices(
       nv = 1,
       bit_id = NA,
+      color = "#eeeeee",
       label = node$get_label(),
       name = paste0(node$get_node_id(), ".", "algo"),
       node_id = node$get_node_id(),
+      shape = "circle",
+      size = 20,
       type = "algo") %>%
     add_vertices(
       nv = node$get_output_dimension(),
       bit_id = paste0("o", 1:node$get_output_dimension()),
+      color = "#cce5ff",
       label = paste0("o", 1:node$get_output_dimension()),
       name = paste0(node$get_node_id(),".",paste0("o", 1:node$get_output_dimension())),
       node_id = node$get_node_id(),
+      shape = "circle",
+      size = 10,
       type = "outputbit") %>%
     add_edges(
       c(rbind(
@@ -44,6 +53,10 @@ do_convert_AlgoNode_to_igraph <- function(node, ...){
           rep(node$get_input_dimension() + 1, node$get_input_dimension())
           )),
       node_id = node$get_node_id(),
+      arrow.size = .1,
+      arrow.width = 1,
+      color = "#00994c",
+      lty = "solid",
       type = "input_algo") %>%
     add_edges(
       c(rbind(
@@ -51,6 +64,10 @@ do_convert_AlgoNode_to_igraph <- function(node, ...){
           node$get_input_dimension() + 1 + 1:node$get_output_dimension()
           )),
       node_id = node$get_node_id(),
+      arrow.size = .1,
+      arrow.width = 1,
+      color = "#004c99",
+      lty = "solid",
       type = "algo_output");
   return(g);
 

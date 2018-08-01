@@ -92,17 +92,32 @@ AlgoComposite <- R6Class(
       source_vertex <- V(g)[V(g)$name == source_name];
       target_vertex <- V(g)[V(g)$name == target_name];
       type <- paste0(source_vertex$type, "_", target_vertex$type);
-      print(type);
       # TODO: Check that we only manipulate manipulatable vertexes,
       # i.e. only InputBits and OutputBits.
 
       # InputBit and OutputBit nodes can only have a single inbound edge.
       # Delete the existing edges to guarantee graph consistency.
-      # g <- delete_edges(graph = g, edges = E(g)[to(target_name)]);
+      g <- delete_edges(graph = g, edges = E(g)[to(target_name)]);
+
+      color <- switch(
+        type,
+        "inputbit_inputbit" = "#00994c",
+        "outputbit_outputbit" = "#004c99",
+        "inputbit_outputbit" = "#00994c",
+        "outputbit_inputbit" = "#004c99");
+
+      new_edges <- c(source_name, target_name);
+      #print(paste0("new_edges:", new_edges));
+      #print(paste0("type:", type));
+      #print(paste0("color:", color));
 
       g <- add_edges(
         graph = g,
-        edges = c(source_name, target_name),
+        edges = new_edges,
+        arrow.size = .1,
+        arrow.width = 2,
+        color = color,
+        lty = "solid",
         type = type);
       # TODO: Add attributes for style, etc.
 
