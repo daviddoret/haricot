@@ -22,82 +22,57 @@ do_execute_AlgoComposite = function(algo, input) {
   # Applies the TruthTable algorithm and returns its output.
   # Returns a type that is consistent with the type of the input.
   input_logical_vector <- convert_any_to_logical_vector(input);
+  #input_character <- convert_logical_vector_to_character(input_logical_vector);
 
-  # Prepare a copy of the TODO: RESUME FROM HERE
-
-  # Prepare lists of inputs and outputs for inner nodes.
-  # This will help us compute every inner_node only once.
-  inner_nodes_inputs <- list();
-  inner_nodes_outputs <- list();
-
-
-  # Assign the correct answers to the input inner_nodes.
-  for(input_inner_node_number in 1:algo$get_input_dimension()){
-    inner_node_id <- paste0("i", input_inner_node_number);
-    inner_node_answers[inner_node_id] <- input_logical_vector[input_inner_node_number];
-  }
-
-  do_solve_inner_node <- function(inner_node_id){
-    # Check if this is a proper inner_node.
-    if(inner_node_id == "NA"){
-      warning("Attempt to solve NA");
-      answer <- "NA";
-    } else if(1 == 2) {
-      # TODO: Add here logic to check if the inner_node does not exist.
-      answer <- "NA";
-    } else {
-      # Check if we already have a final value for this inner_node.
-      answer <- inner_node_answers[inner_node_id];
-      if(!is.na(answer)){
-        # This is a "cache hit".
-        # message("Cache hit", inner_node_id);
-      } else {
-        inner_node <- algo$get_inner_node_by_inner_node_id(inner_node_id);
-        if(inner_node$type == "i"){
-          # It should have been a "cache hit",
-          # the input value should have answered this inner_node.
-          stop("Input Node without value.", inner_node);
-        } else if (inner_node$type == "n"){
-          # This is a NAND Node.
-          sub_answer_1 <- do_solve_inner_node(inner_node$param1_id);
-          sub_answer_2 <- do_solve_inner_node(inner_node$param2_id);
-          if(sub_answer_1 == "NA" | sub_answer_2 == "NA"){
-            warning("NAND Node based on NA", inner_node);
-            answer <- "NA";
-          } else {
-            answer <- do_nand(sub_answer_1, sub_answer_2);
-          }
-        } else if (inner_node$type == "o"){
-          # This is a NAND Node.
-          sub_answer_1 <- do_solve_inner_node(inner_node$param1_id);
-          if(sub_answer_1 == "NA"){
-            warning("Output Node based on NA", inner_node);
-            answer <- "NA";
-          } else {
-            answer <- sub_answer_1;
-          }
-        }
-      }
-    }
-    # message("Node answer", inner_node_id, answer);
-    return(answer);
-  }
+  # Get a copy of the igraph to store execution values.
+  g <- algo$get_inner_graph();
 
   # Prepare the algorithm output.
   output_logical_vector <- rep(NA, algo$get_output_dimension());
 
-  # Loop on all output inner_nodes.
-  for(output_inner_node_number in 1:algo$get_output_dimension()){
-    inner_node_id <- paste0("o", output_inner_node_number);
-    output_inner_node_output <- do_solve_inner_node(inner_node_id);
-    if(output_inner_node_output == "NA"){
-      # To avoid issues when rbinding tables,
-      # we improperly used the string "NA".
-      output_inner_node_output <- NA;
+  execute_vertex <- function(vertex_name, phushed_value){
+    # Execute whatever can be executed.
+
+    vertex <- V(g)[V(g)$name == vertex_name];
+
+    print(paste0("node_id: ", vertex$node_id));
+
+    # InputBit.
+    if(type == "inputbit"){
+      vertex$exec_value <- pushed_value;
+      # Push its value to the successor vertices.
+      next_vertex <- neighbors(graph = g, v = vertex, mode = "out");
+      for(sub_vertex in next_vertex){
+        # TODO
+      }
     }
-    output_logical_vector[output_inner_node_number] <- output_inner_node_output;
+
+    # Algo.
+    if(type == "algo"){
+      # Check if all InputBits have their value.
+      # If not, stop here.
+      # If yes, execute the algo and push the result to its OutputBits.
+    }
+
+    # OutpuBit.
+    if(type == "outputbit"){
+      V(g)[vertex_filter]$exec_value <- pushed_value;
+      # Push its value to the successor vertices.
+      # TODO
+    }
   }
 
+  for(bit_position in 1:algo$get_input_dimension()){
+    bit_id <- paste0("i", bit_position);
+    node_id <- algo$get_node_id();
+    vertex_name <- paste0(node_id, ".", bit_id);
+    execute_vertex(vertex_name, pushed_value = input[bit_position]);
+  }
+
+  # Retrieve the result of the algo from the parent OutputBits.
+  # TODO
+
+  # Return the output in the requested type.
   if(is(input, "logical")){
     return(output_logical_vector);
   } else if(is(input, "character")){
