@@ -30,9 +30,9 @@ test_that(
 
     repeat{
       i <- bn$convert_to_logical_vector();
-      o1 <- tt1$do_apply_algorithm(i);
-      o2 <- tt2$do_apply_algorithm(i);
-      om <- ttm$do_apply_algorithm(i);
+      o1 <- tt1$do_execute(i);
+      o2 <- tt2$do_execute(i);
+      om <- ttm$do_execute(i);
       # cat(o1, " & ", o2, " = ", om, "\n");
       expect_equal(
         object = om,

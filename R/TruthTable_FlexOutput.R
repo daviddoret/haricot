@@ -15,7 +15,7 @@ library(R6);
 #'   input_dimension = 2,
 #'   output_dimension = 2);
 #' t1$set_output(input = "01", output = "11");
-#' t1$do_apply_algorithm("01");
+#' t1$do_execute("01");
 #'
 #' @export
 TruthTable_FlexOutput <- R6Class(
@@ -37,7 +37,7 @@ TruthTable_FlexOutput <- R6Class(
       # Transform the vector in a matrix.
       self$logical_matrix <- matrix(data = v, nrow = 2 ^ input_dimension, ncol = output_dimension, byrow = TRUE);
     },
-    do_apply_algorithm = function(input) {
+    do_execute = function(input) {
       # Applies the TruthTable algorithm and returns its output.
       # Returns a type that is consistent with the type of the input.
       input_logical_vector <- convert_any_to_logical_vector(input);

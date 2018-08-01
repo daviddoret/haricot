@@ -10,7 +10,7 @@ test_that('BiFun_11: exhaustive output test', {
   #print(nt);
   #plot_nandtree(nt);
 
-  expect_equal(nt$do_apply_algorithm("0"), "1");
-  expect_equal(nt$do_apply_algorithm("1"), "1");
+  expect_equal(nt$do_execute("0"), "1");
+  expect_equal(nt$do_execute("1"), "1");
 
 });

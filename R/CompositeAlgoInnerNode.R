@@ -41,7 +41,7 @@ CompositeAlgoInnerNode <- R6Class(
     convert_to_igraph = function(...){
       return(convert_CompositeAlgoInnerNode_to_igraph(node = self, ...));
     },
-    do_apply_algorithm = function(input) {
+    do_execute = function(input) {
       stop("This method is abstract, please implement it in the subclass.");
     },
     do_plot = function() {

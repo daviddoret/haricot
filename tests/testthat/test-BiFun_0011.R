@@ -10,9 +10,9 @@ test_that('BiFun_0011: exhaustive output test', {
   #print(nt);
   #plot_nandtree(nt);
 
-  expect_equal(nt$do_apply_algorithm("00"), "0");
-  expect_equal(nt$do_apply_algorithm("10"), "0");
-  expect_equal(nt$do_apply_algorithm("01"), "1");
-  expect_equal(nt$do_apply_algorithm("11"), "1");
+  expect_equal(nt$do_execute("00"), "0");
+  expect_equal(nt$do_execute("10"), "0");
+  expect_equal(nt$do_execute("01"), "1");
+  expect_equal(nt$do_execute("11"), "1");
 
 });

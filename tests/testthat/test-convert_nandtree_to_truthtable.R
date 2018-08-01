@@ -15,17 +15,17 @@ test_that('convert_nandtree_to_truthtable: test 1', {
   nt$set_nand_subnode(subnode_id = "n1", param1_id = "i1", param2_id = "i2");
   nt$set_output_subnode(subnode_id = "o1", param1_id = "n1");
 
-  expect_equal(nt$do_apply_algorithm("00"), "1");
-  expect_equal(nt$do_apply_algorithm("10"), "1");
-  expect_equal(nt$do_apply_algorithm("01"), "1");
-  expect_equal(nt$do_apply_algorithm("11"), "0");
+  expect_equal(nt$do_execute("00"), "1");
+  expect_equal(nt$do_execute("10"), "1");
+  expect_equal(nt$do_execute("01"), "1");
+  expect_equal(nt$do_execute("11"), "0");
 
   tt <- convert_nandtree_to_truthtable(nt);
 
-  expect_equal(tt$do_apply_algorithm("00"), "1");
-  expect_equal(tt$do_apply_algorithm("10"), "1");
-  expect_equal(tt$do_apply_algorithm("01"), "1");
-  expect_equal(tt$do_apply_algorithm("11"), "0");
+  expect_equal(tt$do_execute("00"), "1");
+  expect_equal(tt$do_execute("10"), "1");
+  expect_equal(tt$do_execute("01"), "1");
+  expect_equal(tt$do_execute("11"), "0");
 
 });
 

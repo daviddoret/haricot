@@ -6,7 +6,7 @@ require(rlang);
 #' CompositeAlgo
 #'
 #' A CompositeAlgo is an algorithm that is composed of sub-algorithms.
-#' A CompositeAlgo is itself an CompositeAlgoInnerNode, enabling complex and deep trees.
+#' A CompositeAlgo is itself of type CompositeAlgoInnerNode, enabling complex and deep trees.
 #' @export
 CompositeAlgo <- R6Class(
   "CompositeAlgo",
@@ -28,10 +28,12 @@ CompositeAlgo <- R6Class(
         node_id = node_id);
       private$inner_nodes <- list();
 
-      private$inner_graph <- super$convert_to_igraph();
+      # We start from the default node graph.
+      # It will then be enriched with inner nodes and edges as sub-algorithms will be included in the composition.
+      private$inner_graph <- convert_CompositeAlgoInnerNode_to_igraph(self);
 
     },
-    do_apply_algorithm = function(input) {
+    do_execute = function(input) {
       stop("ooops");
     },
     do_plot = function() {
@@ -84,33 +86,28 @@ CompositeAlgo <- R6Class(
       }
       #E(private$inner_graph)[[]]
     },
-    set_inner_node = function(
-      inner_node,
-      inner_node_id = NULL,
-      inner_node_label = ""){
-      if(is_missing(inner_node_id) || is.null(inner_node_id)){
-        inner_node_id <- get_node_guid();
-      }
-      if(is_missing(inner_node_label)){
-        # TODO: Use a default_label attribute in CompositeAlgoInnerNode instead,
-        # and enrich this with an automated numbering system,
-        # e.g. "AND1", "AND2", etc. Or something like that...
-        inner_node_label <- class(inner_node)[1];
-      }
-      inner_node_status <- "nok";
-      private$inner_nodes[[inner_node_id]] <- inner_node;
+    set_inner_node = function(node){
 
-      inner_node_graph <- inner_node$get_graph();
-      V(inner_node_graph)$name <- paste0(
-        inner_node_id, ".",V(inner_node_graph)$bit_id);
+      # Retrieve the node unique ID
+      node_id <- node$get_node_id();
+      print(node_id);
 
-      V(inner_node_graph)$node_id <- inner_node_id;
+      # Store the sub-algorithm node in the private list.
+      private$inner_nodes[[node_id]] <- node;
+      print("2");
+
+      # Retrieve the graph of the new node.
+      node_graph <- node$get_graph();
+      print("3");
+
+      # Merge the current graph with the new one.
       private$inner_graph <- graph.union(
         private$inner_graph,
-        inner_node_graph,
+        node_graph,
         byname = TRUE);
+      print("4");
 
-      return(inner_node_id);
+      # Of course, at this point the new sub-graph will be disconnected.
     },
     print = function(){
       cat(self$get_prettystring(), "\n");

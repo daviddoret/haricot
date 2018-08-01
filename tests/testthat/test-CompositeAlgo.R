@@ -17,9 +17,11 @@ test_that('CompositeAlgo test 01', {
 
   ct$do_plot();
 
-  i1_id <- ct$set_inner_node(
-    inner_node = BiFun_OR$new(),
-    inner_node_id = "NAND");
+  or1 <- BiFun_OR$new();
+  or1$get_node_id();
+  or1$do_plot();
+
+  i1_id <- ct$set_inner_node(node = or1);
 
   ct$do_plot();
 

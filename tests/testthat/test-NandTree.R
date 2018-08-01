@@ -27,10 +27,10 @@ test_that('NandTree: stupid tree mimicking a single Nand works properly', {
   nt$set_nand_subnode(subnode_id = "n1", param1_id = "i1", param2_id = "i2");
   nt$set_output_subnode(subnode_id = "o1", param1_id = "n1");
   #print(nt);
-  expect_equal(nt$do_apply_algorithm("00"), "1");
-  expect_equal(nt$do_apply_algorithm("10"), "1");
-  expect_equal(nt$do_apply_algorithm("01"), "1");
-  expect_equal(nt$do_apply_algorithm("11"), "0");
+  expect_equal(nt$do_execute("00"), "1");
+  expect_equal(nt$do_execute("10"), "1");
+  expect_equal(nt$do_execute("01"), "1");
+  expect_equal(nt$do_execute("11"), "0");
 
 });
 
@@ -43,8 +43,8 @@ test_that('NandTree: Nand of single input subnode invert that subnode', {
   n1 <- nt$set_nand_subnode(param1_id = "i1", param2_id = "i1");
   nt$set_output_subnode(subnode_id = "o1", param1_id = "n1");
   #print(nt);
-  expect_equal(nt$do_apply_algorithm("0"), "1");
-  expect_equal(nt$do_apply_algorithm("1"), "0");
+  expect_equal(nt$do_execute("0"), "1");
+  expect_equal(nt$do_execute("1"), "0");
 
   });
 

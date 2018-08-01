@@ -10,6 +10,6 @@ CompositeAlgo
 }
 \description{
 A CompositeAlgo is an algorithm that is composed of sub-algorithms.
-A CompositeAlgo is itself an CompositeAlgoInnerNode, enabling complex and deep trees.
+A CompositeAlgo is itself of type CompositeAlgoInnerNode, enabling complex and deep trees.
 }
 \keyword{datasets}

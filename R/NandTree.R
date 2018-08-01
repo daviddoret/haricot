@@ -35,7 +35,7 @@ NandTree <- R6Class(
     convert_to_truthtable = function(){
       return(convert_nandtree_to_truthtable(self));
     },
-    do_apply_algorithm = function(input) {
+    do_execute = function(input) {
       return(execute_algorithm_nandtree(self, input));
     },
     do_plot = function() {
