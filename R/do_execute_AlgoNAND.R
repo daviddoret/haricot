@@ -12,7 +12,7 @@
 #' @param input The input bits (logical vector | character vector of "0"s and "1"s | R6 Class BinaryNumber)
 #' @return The corresponding output (same type than input)
 #' @export
-execute_AlgoNAND = function(algo, input) {
+do_execute_AlgoNAND = function(algo, input) {
   # Applies the TruthTable algorithm and returns its output.
   # Returns a type that is consistent with the type of the input.
   input_logical_vector <- convert_any_to_logical_vector(input);

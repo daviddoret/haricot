@@ -9,7 +9,7 @@ require(igraph);
 #' @export
 AlgoNAND <- R6Class(
   "AlgoNAND",
-  inherit = CompositeAlgoInnerNode,
+  inherit = AlgoNode,
   private = list(
   ),
   public = list(
@@ -29,10 +29,10 @@ AlgoNAND <- R6Class(
         ...);
     },
     do_execute = function(input, ...) {
-      return(execute_AlgoNAND(algo = self, input, ...));
+      return(do_execute_AlgoNAND(algo = self, input, ...));
     },
     do_plot = function() {
-      plot_CompositeAlgoInnerNode(self);
+      do_plot_AlgoNode(self);
     },
     do_randomize_outputs = function() {
       stop("This method is abstract, please implement it in the subclass.");

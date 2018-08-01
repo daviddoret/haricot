@@ -1,25 +1,25 @@
 require(igraph);
 require(RColorBrewer)
-#' Plot the igraph of a CompositeAlgoInnerNode
+#' Plot the igraph of a AlgoComposite
 #'
-#' @description Plot the igraph of a CompositeAlgoInnerNode with adequate style, etc.
+#' @description Plot the igraph of a AlgoComposite with adequate style, etc.
 #'
-#' @usage plot_CompositeAlgoInnerNode(node, ...);
+#' @usage do_plot_AlgoComposite(node, ...);
 #'
 #' @param ... For future usage.
 #' @return A plotted network graph.
 #' @export
-plot_CompositeAlgoInnerNode <- function(node, ...){
+do_plot_AlgoComposite <- function(algo, ...){
 
-  g <- convert_CompositeAlgoInnerNode_to_igraph(node = node, ...);
+  g <- do_convert_AlgoComposite_to_igraph(node = algo, ...);
 
   # Make a palette of 3 colors
   vertice_fill_palette = brewer.pal(3, "Set1");
   vertice_fill_palette = c("#ffdddd", "#ddddff", "#ddffdd");
-  names(vertice_fill_palette) <- c("inputbit_vertex", "algo_vertex", "outputbit_vertex");
+  names(vertice_fill_palette) <- c("inputbit", "algo", "outputbit");
 
   vertice_border_palette <- c("#660000", "#000066", "#006600");
-  names(vertice_border_palette) <- c("inputbit_vertex", "algo_vertex", "outputbit_vertex");
+  names(vertice_border_palette) <- c("inputbit", "algo", "outputbit");
 
   legend <- c("Input Bit", "Algorithm", "Output Bit");
 

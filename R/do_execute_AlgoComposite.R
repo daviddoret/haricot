@@ -1,6 +1,6 @@
-#' Execute the algorithm of a CompositeAlgo on a given input.
+#' Execute the algorithm of a AlgoComposite on a given input.
 #'
-#' @description A CompositeAlgo, by definition in this context, is an algorithm
+#' @description A AlgoComposite, by definition in this context, is an algorithm
 #' that takes x bits as input,
 #' applies to them a directed graph set of abstract node functions,
 #' and returns y bits as output.
@@ -9,16 +9,16 @@
 #' and returns the corresponding output.
 #'
 #' @usage # R function style:
-#' execute_algorithm_CompositeAlgo(algo, input);
+#' execute_algorithm_AlgoComposite(algo, input);
 #'
 #' # R6 method style:
 #' algo$execute_algorithm(input);
 #'
-#' @param algo A composite algorithm (R6 Class CompositeAlgo)
+#' @param algo A composite algorithm (R6 Class AlgoComposite)
 #' @param input The input bits (logical vector | character vector of "0"s and "1"s | R6 Class BinaryNumber)
 #' @return The corresponding output (same type than input)
 #' @export
-execute_algorithm_CompositeAlgo = function(algo, input) {
+do_execute_AlgoComposite = function(algo, input) {
   # Applies the TruthTable algorithm and returns its output.
   # Returns a type that is consistent with the type of the input.
   input_logical_vector <- convert_any_to_logical_vector(input);

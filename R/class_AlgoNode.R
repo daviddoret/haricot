@@ -3,9 +3,9 @@ require(R6);
 require(rlang);
 require(igraph);
 
-#' CompositeAlgoInnerNode.
+#' AlgoNode
 #'
-#' CompositeAlgoInnerNode is an abstract class that should be inherited from.
+#' AlgoNode is an abstract class that should be inherited from.
 #' It defines the interfaces required for objects that must be compatible as a node in a CompositeTree.
 #' Its basic definition is that it comprises:
 #' - identification, labeling and other decorative information,
@@ -14,8 +14,8 @@ require(igraph);
 #' - a method to run its algorithm for a given input and return its output,
 #' - utility methods of general usage.
 #' @export
-CompositeAlgoInnerNode <- R6Class(
-  "CompositeAlgoInnerNode",
+AlgoNode <- R6Class(
+  "AlgoNode",
   private = list(
     input_dimension = NULL,
     output_dimension = NULL,
@@ -38,14 +38,14 @@ CompositeAlgoInnerNode <- R6Class(
       if(is.null(label)){ label <- "algo"; }
       private$label <- label;
     },
-    convert_to_igraph = function(...){
-      return(convert_CompositeAlgoInnerNode_to_igraph(node = self, ...));
+    do_convert_to_igraph = function(...){
+      return(do_convert_AlgoNode_to_igraph(node = self, ...));
     },
     do_execute = function(input) {
       stop("This method is abstract, please implement it in the subclass.");
     },
     do_plot = function() {
-      plot_CompositeAlgoInnerNode(self);
+      plot_AlgoNode(self);
     },
     do_randomize_outputs = function() {
       stop("This method is abstract, please implement it in the subclass.");

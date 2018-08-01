@@ -12,10 +12,10 @@ test_that('NandTree: stupid tree without Nand subnodes works properly', {
   nt$set_output_subnode(subnode_id = "o1", param1_id = "i1");
   nt$set_output_subnode(subnode_id = "o2", param1_id = "i2");
   #print(nt);
-  expect_equal(nt$do_apply_algorithm("00"), "00");
-  expect_equal(nt$do_apply_algorithm("10"), "10");
-  expect_equal(nt$do_apply_algorithm("01"), "01");
-  expect_equal(nt$do_apply_algorithm("11"), "11");
+  expect_equal(nt$do_execute("00"), "00", info = "00==00");
+  expect_equal(nt$do_execute("10"), "10");
+  expect_equal(nt$do_execute("01"), "01");
+  expect_equal(nt$do_execute("11"), "11");
 
 });
 
