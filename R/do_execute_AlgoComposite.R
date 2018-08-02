@@ -27,38 +27,77 @@ do_execute_AlgoComposite = function(algo, input) {
   # Get a copy of the igraph to store execution values.
   g <- algo$get_inner_graph();
 
+  # UNCERTAINTY: g is a copy of the original graph,
+  # hence we may work with its push_execution_*** attributes freely.
+  # This is important to support parallel algo execution.
+  # TODO: Confirm this.
+
   # Prepare the algorithm output.
   output_logical_vector <- rep(NA, algo$get_output_dimension());
 
-  execute_vertex <- function(vertex_name, phushed_value){
-    # Execute whatever can be executed.
+  push_execution <- function(
+    vertex_name,
+    push_execution_value,
+    target_position = NULL){
 
     vertex <- V(g)[V(g)$name == vertex_name];
-
     print(paste0("node_id: ", vertex$node_id));
 
     # InputBit.
-    if(type == "inputbit"){
-      vertex$exec_value <- pushed_value;
+    if(vertex$type == "inputbit"){
+      bit_id <- vertex$bit_id;
+      position <- substr(bit_id, 2, nchar(bit_id));
+      vertex$push_execution_value[target_position] <- push_execution_value;
       # Push its value to the successor vertices.
-      next_vertex <- neighbors(graph = g, v = vertex, mode = "out");
-      for(sub_vertex in next_vertex){
-        # TODO
-      }
+      next_vertices <- neighbors(graph = g, v = vertex, mode = "out");
+      if(length(next_vertices) > 0){
+      for(next_vertex_name in next_vertices$name){
+        push_execution(
+          vertex_name = next_vertex_name,
+          push_execution_value = push_execution_value,
+          target_position = position);
+      }}
     }
 
     # Algo.
-    if(type == "algo"){
+    if(vertex$type == "algo"){
+      vertex$push_execution_value[target_position] <- push_execution_value;
+
       # Check if all InputBits have their value.
-      # If not, stop here.
-      # If yes, execute the algo and push the result to its OutputBits.
+      if(!any(is.na(vertex$push_execution_value))){
+        # If yes, execute the algo.
+        node_id <- vertex$node_id;
+        node <- algo$get_inner_node(node_id);
+        algo_output <- node$do_execute(vertex$push_execution_value);
+        # Push the algo result to the OutputBit vertices.
+        next_vertices <- neighbors(graph = g, v = vertex, mode = "out");
+        for(next_vertex in next_vertices){
+          next_vertex_name <- next_vertex$name;
+          next_vertex_bit_id <- next_vertex$bit_id;
+          next_vertex_bit_position <- substr(next_vertex_bit_id, 2, nchar(next_vertex_bit_id));
+
+          push_execution(
+            vertex_name = next_vertex_name,
+            push_execution_value = push_execution_value[next_vertex_bit_position],
+            target_position = 1);
+        }
+      } else {
+        # If not, stop here.
+      }
     }
 
     # OutpuBit.
-    if(type == "outputbit"){
-      V(g)[vertex_filter]$exec_value <- pushed_value;
+    if(vertex$type == "outputbit"){
+      vertex$push_execution_value[target_position] <- push_execution_value;
       # Push its value to the successor vertices.
-      # TODO
+      next_vertices <- neighbors(graph = g, v = vertex, mode = "out");
+      for(next_vertex in next_vertices){
+        next_vertex_name <- next_vertex$name;
+        push_execution(
+          vertex_name = next_vertex_name,
+          push_execution_value = push_execution_value,
+          target_position = 1);
+      }
     }
   }
 
@@ -66,7 +105,10 @@ do_execute_AlgoComposite = function(algo, input) {
     bit_id <- paste0("i", bit_position);
     node_id <- algo$get_node_id();
     vertex_name <- paste0(node_id, ".", bit_id);
-    execute_vertex(vertex_name, pushed_value = input[bit_position]);
+    push_execution(
+      vertex_name,
+      push_execution_value = input_logical_vector[bit_position],
+      target_position = 1);
   }
 
   # Retrieve the result of the algo from the parent OutputBits.

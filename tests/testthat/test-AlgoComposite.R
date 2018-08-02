@@ -39,6 +39,11 @@ test_that('CompositeAlgo: faking NAND', {
 
   a$do_plot();
 
+  expect_equal(a$do_execute("00"), "1");
+  expect_equal(a$do_execute("10"), "1");
+  expect_equal(a$do_execute("01"), "1");
+  expect_equal(a$do_execute("11"), "0");
+
 });
 
 test_that('CompositeAlgo: basic composition', {

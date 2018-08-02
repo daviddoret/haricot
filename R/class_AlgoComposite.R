@@ -34,7 +34,7 @@ AlgoComposite <- R6Class(
 
     },
     do_execute = function(input) {
-      stop("ooops");
+      return(do_execute_AlgoComposite(algo = self, input = input));
     },
     do_plot = function() {
       do_plot_AlgoComposite(self);
