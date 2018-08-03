@@ -2,6 +2,7 @@ require(R6);
 #install.packages("data.table");
 require(data.table);
 require(rlang);
+require(igraph);
 
 #' AlgoComposite
 #'
@@ -28,10 +29,30 @@ AlgoComposite <- R6Class(
         node_id = node_id);
       private$inner_nodes <- list();
 
-      # We start from the default node graph.
-      # It will then be enriched with inner nodes and edges as sub-algorithms will be included in the composition.
-      private$inner_graph <- do_convert_AlgoNode_to_igraph(self);
-
+      # WARNING: NEARLY REDUNDANT CODE WITH do_convert_AlgoNode_to_igraph
+      private$inner_graph <- make_empty_graph(directed = TRUE) %>%
+        add_vertices(
+          nv = self$get_input_dimension(),
+          bit_id = paste0("i", 1:self$get_input_dimension()),
+          color = "#ccffe5",
+          label = paste0("i", 1:self$get_input_dimension()),
+          name = paste0(self$get_node_id(), ".", paste0("i", 1:self$get_input_dimension())),
+          node_id = self$get_node_id(),
+          push_execution_value = list(), # A vector of pushed execution values.
+          shape = "circle",
+          size = 10,
+          type = "inputbit") %>%
+        add_vertices(
+          nv = self$get_output_dimension(),
+          bit_id = paste0("o", 1:self$get_output_dimension()),
+          color = "#cce5ff",
+          label = paste0("o", 1:self$get_output_dimension()),
+          name = paste0(self$get_node_id(),".",paste0("o", 1:self$get_output_dimension())),
+          node_id = self$get_node_id(),
+          push_execution_value = list(), # A vector of pushed execution values.
+          shape = "circle",
+          size = 10,
+          type = "outputbit")
     },
     do_execute = function(input) {
       return(do_execute_AlgoComposite(algo = self, input = input));

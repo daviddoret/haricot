@@ -24,7 +24,7 @@ do_convert_AlgoNode_to_igraph <- function(node, ...){
       label = paste0("i", 1:node$get_input_dimension()),
       name = paste0(node$get_node_id(), ".", paste0("i", 1:node$get_input_dimension())),
       node_id = node$get_node_id(),
-      push_execution_value = list(NA), # A vector of pushed execution values.
+      push_execution_value = list(), # A vector of pushed execution values.
       shape = "circle",
       size = 10,
       type = "inputbit") %>%
@@ -35,7 +35,7 @@ do_convert_AlgoNode_to_igraph <- function(node, ...){
       label = node$get_label(),
       name = paste0(node$get_node_id(), ".", "algo"),
       node_id = node$get_node_id(),
-      push_execution_value = list(rep(NA, node$get_input_dimension())), # A vector of pushed execution values.
+      push_execution_value = list(), # A vector of pushed execution values.
       shape = "circle",
       size = 20,
       type = "algo") %>%
@@ -46,7 +46,7 @@ do_convert_AlgoNode_to_igraph <- function(node, ...){
       label = paste0("o", 1:node$get_output_dimension()),
       name = paste0(node$get_node_id(),".",paste0("o", 1:node$get_output_dimension())),
       node_id = node$get_node_id(),
-      push_execution_value = list(NA), # A vector of pushed execution values.
+      push_execution_value = list(), # A vector of pushed execution values.
       shape = "circle",
       size = 10,
       type = "outputbit") %>%
