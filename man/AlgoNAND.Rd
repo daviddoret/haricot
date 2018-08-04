@@ -3,7 +3,7 @@
 \docType{data}
 \name{AlgoNAND}
 \alias{AlgoNAND}
-\title{AlgoNAND}
+\title{AlgoNAND (R6 class)}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 a <- AlgoNAND$new();

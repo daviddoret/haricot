@@ -4,7 +4,7 @@ require(data.table);
 require(rlang);
 require(igraph);
 
-#' AlgoComposite
+#' AlgoComposite (R6 class)
 #'
 #' A AlgoComposite is an algorithm that is composed of sub-algorithms.
 #' A AlgoComposite is itself of type AlgoNode, enabling complex and deep trees.

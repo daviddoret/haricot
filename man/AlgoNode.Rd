@@ -3,7 +3,7 @@
 \docType{data}
 \name{AlgoNode}
 \alias{AlgoNode}
-\title{AlgoNode}
+\title{AlgoNode (R6 class)}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 AlgoNode

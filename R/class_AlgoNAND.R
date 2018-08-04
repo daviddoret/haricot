@@ -2,7 +2,7 @@ require(R6);
 require(rlang);
 require(igraph);
 
-#' AlgoNAND
+#' AlgoNAND (R6 class)
 #'
 #' @description Any algorithm may be built from the atomic NAND algorithm.
 #'

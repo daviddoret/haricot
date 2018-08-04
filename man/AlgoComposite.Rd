@@ -3,7 +3,7 @@
 \docType{data}
 \name{AlgoComposite}
 \alias{AlgoComposite}
-\title{AlgoComposite}
+\title{AlgoComposite (R6 class)}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 AlgoComposite

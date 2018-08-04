@@ -3,7 +3,7 @@ require(R6);
 require(rlang);
 require(igraph);
 
-#' AlgoNode
+#' AlgoNode (R6 class)
 #'
 #' AlgoNode is an abstract class that should be inherited from.
 #' It defines the interfaces required for objects that must be compatible as a node in a CompositeTree.

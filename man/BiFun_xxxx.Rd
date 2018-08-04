@@ -2,10 +2,10 @@
 % Please edit documentation in R/BiFun.R, R/BiFun_00.R, R/BiFun_0000.R,
 %   R/BiFun_0001.R, R/BiFun_0010.R, R/BiFun_0011.R, R/BiFun_01.R,
 %   R/BiFun_0100.R, R/BiFun_0101.R, R/BiFun_0110.R, R/BiFun_0111.R,
-%   R/BiFun_10.R, R/BiFun_1000.R, R/BiFun_1001.R, R/BiFun_1010.R,
-%   R/BiFun_1011.R, R/BiFun_11.R, R/BiFun_1100.R, R/BiFun_1101.R,
-%   R/BiFun_1110.R, R/BiFun_1111.R, R/BiFun_AND.R, R/BiFun_NAND.R, R/BiFun_OR.R,
-%   R/BiFun_XNOR.R, R/BiFun_XOR.R, R/BiFun_xxxx.R
+%   R/BiFun_1000.R, R/BiFun_1001.R, R/BiFun_1010.R, R/BiFun_1011.R,
+%   R/BiFun_11.R, R/BiFun_1100.R, R/BiFun_1101.R, R/BiFun_1110.R,
+%   R/BiFun_1111.R, R/BiFun_AND.R, R/BiFun_NAND.R, R/BiFun_OR.R, R/BiFun_XNOR.R,
+%   R/BiFun_XOR.R, R/BiFun_xxxx.R
 \docType{data}
 \name{BiFun}
 \alias{BiFun}
@@ -19,7 +19,6 @@
 \alias{BiFun_0101}
 \alias{BiFun_0110}
 \alias{BiFun_0111}
-\alias{BiFun_10}
 \alias{BiFun_1000}
 \alias{BiFun_1001}
 \alias{BiFun_1010}
@@ -59,8 +58,6 @@ BiFun_0101
 BiFun_0110
 
 BiFun_0111
-
-BiFun_10
 
 BiFun_1000
 

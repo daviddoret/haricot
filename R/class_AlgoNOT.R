@@ -1,8 +1,9 @@
 require(R6);
 
-#' AlgoNOT
+#' AlgoNOT (R6 class)
 #'
 #' @description The NOT logical algorithm implemented as a NAND-composite.
+#' In practice, since NOT has the truthtable {1,0}, this class inherits from Algo10.
 #'
 #' @section Graph:
 #' {\figure{algo_not_graph.png}{Graph of the algorithm}}
@@ -14,49 +15,21 @@ require(R6);
 #' @param node_id A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)
 #' @param label A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)
 #' @param ... For future usage.
-#' @return An object instance of class AlgoNOT:AlgoComposite:AlgoNode.
+#' @return An object instance of class AlgoNOT:Algo10:AlgoComposite:AlgoNode.
 #' @export
 AlgoNOT <- R6Class(
   "AlgoNOT",
-  inherit = AlgoComposite,
+  inherit = Algo10,
   public = list(
     initialize = function(
       node_id = NULL,
       label = NULL,
       ...) {
-      input_dimension <- 1;
-      output_dimension <- 1;
       if(is.null(label)){ label <- "NOT"; }
       super$initialize(
-        input_dimension = input_dimension,
-        output_dimension = output_dimension,
         node_id = node_id); #,
         #label = label,
         #...);
-
-      # Design the algorithm.
-
-      nand1 <- AlgoNAND$new();
-
-      self$set_inner_node(node = nand1);
-
-      self$set_inner_edge(
-        source_node_id = self$get_node_id(),
-        source_bit_id = "i1",
-        target_node_id = nand1$get_node_id(),
-        target_bit_id = "i1");
-
-      self$set_inner_edge(
-        source_node_id = self$get_node_id(),
-        source_bit_id = "i1",
-        target_node_id = nand1$get_node_id(),
-        target_bit_id = "i2");
-
-      self$set_inner_edge(
-        source_node_id = nand1$get_node_id(),
-        source_bit_id = "o1",
-        target_node_id = self$get_node_id(),
-        target_bit_id = "o1");
     }
   )
 )
