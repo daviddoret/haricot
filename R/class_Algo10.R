@@ -40,23 +40,9 @@ Algo10 <- R6Class(
 
       self$set_inner_node(node = nand1);
 
-      self$set_inner_edge(
-        source_node_id = self$get_node_id(),
-        source_bit_id = "i1",
-        target_node_id = nand1$get_node_id(),
-        target_bit_id = "i1");
-
-      self$set_inner_edge(
-        source_node_id = self$get_node_id(),
-        source_bit_id = "i1",
-        target_node_id = nand1$get_node_id(),
-        target_bit_id = "i2");
-
-      self$set_inner_edge(
-        source_node_id = nand1$get_node_id(),
-        source_bit_id = "o1",
-        target_node_id = self$get_node_id(),
-        target_bit_id = "o1");
+      self$set_inner_edge(source_node = self, source_bit_id = "i1", target_node = nand1, target_bit_id = "i1");
+      self$set_inner_edge(source_node = self, source_bit_id = "i1", target_node = nand1, target_bit_id = "i2");
+      self$set_inner_edge(source_node = nand1, source_bit_id = "o1", target_node = self, target_bit_id = "o1");
     }
   )
 )

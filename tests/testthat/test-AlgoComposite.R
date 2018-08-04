@@ -20,21 +20,21 @@ test_that('CompositeAlgo: faking NAND', {
   a$set_inner_node(node = nand1);
 
   a$set_inner_edge(
-    source_node_id = a$get_node_id(),
+    source_node = a,
     source_bit_id = "i1",
-    target_node_id = nand1$get_node_id(),
+    target_node = nand1,
     target_bit_id = "i1");
 
   a$set_inner_edge(
-    source_node_id = a$get_node_id(),
+    source_node = a,
     source_bit_id = "i2",
-    target_node_id = nand1$get_node_id(),
+    target_node = nand1,
     target_bit_id = "i2");
 
   a$set_inner_edge(
-    source_node_id = nand1$get_node_id(),
+    source_node = nand1,
     source_bit_id = "o1",
-    target_node_id = a$get_node_id(),
+    target_node = a,
     target_bit_id = "o1");
 
   a$do_plot();
@@ -66,21 +66,21 @@ test_that('CompositeAlgo: faking NOT', {
   a$set_inner_node(node = nand1);
 
   a$set_inner_edge(
-    source_node_id = a$get_node_id(),
+    source_node = a,
     source_bit_id = "i1",
-    target_node_id = nand1$get_node_id(),
+    target_node = nand1,
     target_bit_id = "i1");
 
   a$set_inner_edge(
-    source_node_id = a$get_node_id(),
+    source_node = a,
     source_bit_id = "i1",
-    target_node_id = nand1$get_node_id(),
+    target_node = nand1,
     target_bit_id = "i2");
 
   a$set_inner_edge(
-    source_node_id = nand1$get_node_id(),
+    source_node = nand1,
     source_bit_id = "o1",
-    target_node_id = a$get_node_id(),
+    target_node = a,
     target_bit_id = "o1");
 
   a$do_plot();
@@ -113,59 +113,15 @@ test_that('CompositeAlgo: basic composition', {
   a$set_inner_node(node = nand2);
   a$set_inner_node(node = nand3);
 
-  a$set_inner_edge(
-    source_node_id = a$get_node_id(),
-    source_bit_id = "i1",
-    target_node_id = nand1$get_node_id(),
-    target_bit_id = "i1");
-
-  a$set_inner_edge(
-    source_node_id = a$get_node_id(),
-    source_bit_id = "i2",
-    target_node_id = nand1$get_node_id(),
-    target_bit_id = "i2");
-
-  a$set_inner_edge(
-    source_node_id = a$get_node_id(),
-    source_bit_id = "i3",
-    target_node_id = nand2$get_node_id(),
-    target_bit_id = "i1");
-
-  a$set_inner_edge(
-    source_node_id = a$get_node_id(),
-    source_bit_id = "i4",
-    target_node_id = nand2$get_node_id(),
-    target_bit_id = "i2");
-
-  a$set_inner_edge(
-    source_node_id = nand1$get_node_id(),
-    source_bit_id = "o1",
-    target_node_id = nand3$get_node_id(),
-    target_bit_id = "i1");
-
-  a$set_inner_edge(
-    source_node_id = nand2$get_node_id(),
-    source_bit_id = "o1",
-    target_node_id = nand3$get_node_id(),
-    target_bit_id = "i2");
-
-  a$set_inner_edge(
-    source_node_id = nand1$get_node_id(),
-    source_bit_id = "o1",
-    target_node_id = a$get_node_id(),
-    target_bit_id = "o1");
-
-  a$set_inner_edge(
-    source_node_id = nand2$get_node_id(),
-    source_bit_id = "o1",
-    target_node_id = a$get_node_id(),
-    target_bit_id = "o2");
-
-  a$set_inner_edge(
-    source_node_id = nand3$get_node_id(),
-    source_bit_id = "o1",
-    target_node_id = a$get_node_id(),
-    target_bit_id = "o3");
+  a$set_inner_edge(source_node = a, source_bit_id = "i1", target_node = nand1, target_bit_id = "i1");
+  a$set_inner_edge(source_node = a, source_bit_id = "i2", target_node = nand1, target_bit_id = "i2");
+  a$set_inner_edge(source_node = a, source_bit_id = "i3", target_node = nand2, target_bit_id = "i1");
+  a$set_inner_edge(source_node = a, source_bit_id = "i4", target_node = nand2, target_bit_id = "i2");
+  a$set_inner_edge(source_node = nand1, source_bit_id = "o1", target_node = nand3, target_bit_id = "i1");
+  a$set_inner_edge(source_node = nand2, source_bit_id = "o1", target_node = nand3, target_bit_id = "i2");
+  a$set_inner_edge(source_node = nand1, source_bit_id = "o1", target_node = a, target_bit_id = "o1");
+  a$set_inner_edge(source_node = nand2, source_bit_id = "o1", target_node = a, target_bit_id = "o2");
+  a$set_inner_edge(source_node = nand3, source_bit_id = "o1", target_node = a, target_bit_id = "o3");
 
   a$do_plot();
 

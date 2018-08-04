@@ -91,22 +91,24 @@ AlgoComposite <- R6Class(
       stop("ooops");
     },
     set_inner_edge = function(
-      source_node_id,
+      source_node,
       source_bit_id,
-      target_node_id,
+      target_node,
       target_bit_id){
-      if(is_missing(source_node_id)){
+      if(is_missing(source_node)){
         # If the inner_node is not specified,
         # we assume the intention is to work directly
         # on the input and output bits of the current node.
-        source_node_id <- self$get_node_id();
+        source_node <- self;
       }
-      if(is_missing(target_node_id)){
+      if(is_missing(target_node)){
         # If the inner_node is not specified,
         # we assume the intention is to work directly
         # on the input and output bits of the current node.
-        target_node_id <- self$get_node_id();
+        target_node <- self;
       }
+      source_node_id <- source_node$get_node_id();
+      target_node_id <- target_node$get_node_id();
 
       source_name <- paste0(source_node_id, ".", source_bit_id);
       target_name <- paste0(target_node_id, ".", target_bit_id);
