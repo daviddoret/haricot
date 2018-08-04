@@ -2,6 +2,7 @@
 
 export(AlgoComposite)
 export(AlgoNAND)
+export(AlgoNOT)
 export(AlgoNode)
 export(BiFun_0000)
 export(BiFun_AND)

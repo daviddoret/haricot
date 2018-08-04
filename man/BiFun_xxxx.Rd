@@ -4,8 +4,8 @@
 %   R/BiFun_0100.R, R/BiFun_0101.R, R/BiFun_0110.R, R/BiFun_0111.R,
 %   R/BiFun_10.R, R/BiFun_1000.R, R/BiFun_1001.R, R/BiFun_1010.R,
 %   R/BiFun_1011.R, R/BiFun_11.R, R/BiFun_1100.R, R/BiFun_1101.R,
-%   R/BiFun_1110.R, R/BiFun_1111.R, R/BiFun_AND.R, R/BiFun_NAND.R,
-%   R/BiFun_NOT.R, R/BiFun_OR.R, R/BiFun_XNOR.R, R/BiFun_XOR.R, R/BiFun_xxxx.R
+%   R/BiFun_1110.R, R/BiFun_1111.R, R/BiFun_AND.R, R/BiFun_NAND.R, R/BiFun_OR.R,
+%   R/BiFun_XNOR.R, R/BiFun_XOR.R, R/BiFun_xxxx.R
 \docType{data}
 \name{BiFun}
 \alias{BiFun}
@@ -31,7 +31,6 @@
 \alias{BiFun_1111}
 \alias{BiFun_AND}
 \alias{BiFun_NAND}
-\alias{BiFun_NOT}
 \alias{BiFun_OR}
 \alias{BiFun_XNOR}
 \alias{BiFun_XOR}
@@ -84,8 +83,6 @@ BiFun_1111
 BiFun_AND
 
 BiFun_NAND
-
-BiFun_NOT
 
 BiFun_OR
 

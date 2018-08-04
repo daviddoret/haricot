@@ -21,12 +21,16 @@ AlgoComposite <- R6Class(
     initialize = function(
       input_dimension,
       output_dimension,
-      node_id = NULL) {
+      node_id = NULL,
+      label = NULL,
+      ...) {
       # Call the supercall constructor
       super$initialize(
         input_dimension = input_dimension,
         output_dimension = output_dimension,
-        node_id = node_id);
+        node_id = node_id,
+        label = label,
+        ...);
       private$inner_nodes <- list();
 
       # WARNING: NEARLY REDUNDANT CODE WITH do_convert_AlgoNode_to_igraph

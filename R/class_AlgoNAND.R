@@ -1,11 +1,22 @@
 require(R6);
-#install.packages("rlang");
 require(rlang);
 require(igraph);
 
 #' AlgoNAND
 #'
-#' The atomic NAND algorithm node.
+#' @description Any algorithm may be built from the atomic NAND algorithm.
+#'
+#' @section Graph:
+#' {\figure{algo_nand_graph.png}{Graph of the algorithm}}
+#'
+#' @usage a <- AlgoNAND$new();
+#' a$do_plot();
+#' a$do_execute("01");
+#'
+#' @param node_id A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)
+#' @param label A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)
+#' @param ... For future usage.
+#' @return An object instance of class AlgoNAND:AlgoNode.
 #' @export
 AlgoNAND <- R6Class(
   "AlgoNAND",
@@ -13,7 +24,6 @@ AlgoNAND <- R6Class(
   private = list(
   ),
   public = list(
-    # Private Members
     initialize = function(
       node_id = NULL,
       label = NULL,
