@@ -13,6 +13,7 @@ build_export_figures <- function(){
   }
 
   export_figure("algo_10_graph", Algo10$new()$do_plot);
+  export_figure("algo_1001_graph", Algo1001$new()$do_plot);
   export_figure("algo_nand_graph", AlgoNAND$new()$do_plot);
   export_figure("algo_not_graph", AlgoNOT$new()$do_plot);
 

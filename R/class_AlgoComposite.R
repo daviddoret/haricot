@@ -90,6 +90,26 @@ AlgoComposite <- R6Class(
     get_prettystring = function(){
       stop("ooops");
     },
+    # Shortcut method to quickly add atomic NANDs.
+    add_nand = function(
+      source_1_node = NULL,
+      source_1_bit,
+      source_2_node = NULL,
+      source_2_bit,
+      target_node = NULL,
+      target_bit = NULL){
+      if(is.null(source_1_node)){source_1_node <- self;}
+      if(is.null(source_2_node)){source_2_node <- self;}
+      if(is.null(target_node)){target_node <- self;}
+      nand1 <- AlgoNAND$new();
+      self$set_inner_node(nand1);
+      self$set_inner_edge(source_1_node,source_1_bit,nand1,"i1");
+      self$set_inner_edge(source_2_node,source_2_bit,nand1,"i2");
+      if(!is.null(target_bit)){
+        self$set_inner_edge(nand1,"o1",target_node,target_bit);
+      }
+      return(nand1);
+    },
     set_inner_edge = function(
       source_node,
       source_bit_id,
