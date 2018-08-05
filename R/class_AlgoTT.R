@@ -66,6 +66,9 @@ AlgoTT <- R6Class(
         stop(input);
       }
     },
+    do_convert_to_character_dataframe = function(...){
+      return(do_convert_AlgoTT_to_character_dataframe(self, ...));
+    },
     do_randomize_outputs = function() {
       # Randomizes the outputs of the TruthTable.
       # Build a random vector with enough items to fill in the truthtable

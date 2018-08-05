@@ -14,5 +14,9 @@
 #' @return A vector where each item correspond to a binary number of the binary domain (character vector)
 #' @export
 do_convert_BinaryDomain_to_character_vector = function(binary_domain, ...) {
-  return(apply(X = binary_domain$get_logical_matrix(), MARGIN = 1, FUN = convert_logical_vector_to_character));
+  return(
+    apply(
+      X = binary_domain$get_logical_matrix(),
+      MARGIN = 1,
+      FUN = convert_logical_vector_to_character));
 }

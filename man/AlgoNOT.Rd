@@ -29,4 +29,13 @@ In practice, since NOT has the truthtable {1,0}, this class inherits from Algo10
 {\figure{algo_not_graph.png}{Graph of the algorithm}}
 }
 
+\section{Truth table}{
+
+\tabular{ll}{
+\strong{input} \tab \strong{output}\cr
+0 \tab 1\cr
+1 \tab 0
+}
+}
+
 \keyword{datasets}

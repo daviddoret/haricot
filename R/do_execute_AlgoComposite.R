@@ -37,20 +37,20 @@ do_execute_AlgoComposite = function(algo, input) {
     pushed_value,
     pusher_position){
 
-    cat(
-      "\n\nPUSH EXEC ",
-      "vertex_name: ", vertex_name,
-      "push_exec_value: ", pushed_value,
-      "pusher_position: ", pusher_position,
-      sep = "\n");
+    #cat(
+    #  "\n\nPUSH EXEC ",
+    #  "vertex_name: ", vertex_name,
+    #  "push_exec_value: ", pushed_value,
+    #  "pusher_position: ", pusher_position,
+    #  sep = "\n");
 
     vertex <- V(g)[V(g)$name == vertex_name];
     label <- vertex$label;
-    print(paste0("label: ", label));
+    # print(paste0("label: ", label));
     node_id <- vertex$node_id;
-    print(paste0("node_id: ", node_id));
+    # print(paste0("node_id: ", node_id));
     vertex_type <- vertex$type;
-    print(paste0("vertex_type: ", vertex_type));
+    # print(paste0("vertex_type: ", vertex_type));
     node <- NULL;
     if(node_id == algo$get_node_id()){
       # The node we are working on is the parent node.
@@ -59,16 +59,16 @@ do_execute_AlgoComposite = function(algo, input) {
       node <- algo$get_inner_node(node_id);
     }
     node_input_dimension <- node$get_input_dimension();
-    print(paste0("node_input_dimension: ", node_input_dimension));
+    # print(paste0("node_input_dimension: ", node_input_dimension));
 
     # InputBit.
     if(vertex_type == "inputbit"){
-      print(paste0("type == inputbit"));
+      # print(paste0("type == inputbit"));
 
       bit_id <- vertex$bit_id;
-      print(paste0("bit_id: ", bit_id));
+      # print(paste0("bit_id: ", bit_id));
       position <- as.integer(substr(bit_id, 2, nchar(bit_id)));
-      print(paste0("position: ", position));
+      # print(paste0("position: ", position));
 
       vertices_execution_value[[vertex_name]] <<- pushed_value;
       # Push its value to the successor vertices.
@@ -81,27 +81,27 @@ do_execute_AlgoComposite = function(algo, input) {
           pusher_position = position);
       }}
     } else if(vertex_type == "algo"){
-      print(paste0("type == algo"));
+      # print(paste0("type == algo"));
       if(is.null(vertices_execution_value[[vertex_name]])){
         init_vector <- c(rep(NA, node_input_dimension));
-        print(paste0("init_vector: ", init_vector));
+        # print(paste0("init_vector: ", init_vector));
         vertices_execution_value[[vertex_name]] <<- init_vector;
       }
       vertices_execution_value[[vertex_name]][pusher_position] <<- pushed_value;
 
       # Check if all InputBits have their value.
       if(!any(is.na(vertices_execution_value[[vertex_name]]))){
-        print("ALGO COMPLETED");
+        # print("ALGO COMPLETED");
         # If yes, execute the algo.
         algo_input <- vertices_execution_value[[vertex_name]];
-        print(paste0("algo_input", algo_input));
+        # print(paste0("algo_input", algo_input));
         algo_output <- node$do_execute(vertices_execution_value[[vertex_name]]);
-        print(paste0("algo_output: ", algo_output));
+        # print(paste0("algo_output: ", algo_output));
         # Push the algo result to the OutputBit vertices.
         next_vertices <- neighbors(graph = g, v = vertex, mode = "out");
         for(next_vertex_name in next_vertices$name){
           next_vertex <- next_vertices[next_vertices$name == next_vertex_name];
-          print(paste0("next_vertex_name", next_vertex_name));
+          # print(paste0("next_vertex_name", next_vertex_name));
           next_vertex_bit_id <- next_vertex$bit_id;
           next_vertex_bit_position <- as.integer(substr(next_vertex_bit_id, 2, nchar(next_vertex_bit_id)));
           next_pushed_value <- algo_output[next_vertex_bit_position];
@@ -114,7 +114,7 @@ do_execute_AlgoComposite = function(algo, input) {
         # If not, stop here.
       }
     } else if(vertex_type == "outputbit"){
-      print(paste0("OutputBit"));
+      # print(paste0("OutputBit"));
 
       vertices_execution_value[[vertex_name]] <<- pushed_value;
       # Push its value to the successor vertices.
@@ -134,13 +134,13 @@ do_execute_AlgoComposite = function(algo, input) {
     node_id <- algo$get_node_id();
     vertex_name <- paste0(node_id, ".", bit_id);
     pushed_value <- input_logical_vector[bit_position];
-    cat("\n\n\nSTAGE 1: EXECUTE INPUTBIT",
-      "bit_id: ", bit_id,
-      "node_id", node_id,
-      "vertex_name", vertex_name,
-      "pushed_value", pushed_value,
-      "bit_position", bit_position,
-      sep = "\n");
+    # cat("\n\n\nSTAGE 1: EXECUTE INPUTBIT",
+    #  "bit_id: ", bit_id,
+    #  "node_id", node_id,
+    #  "vertex_name", vertex_name,
+    #  "pushed_value", pushed_value,
+    #  "bit_position", bit_position,
+    #  sep = "\n");
     push_execution(
       vertex_name = vertex_name,
       pushed_value = pushed_value,
@@ -151,13 +151,13 @@ do_execute_AlgoComposite = function(algo, input) {
   output_logical_vector <- rep(NA, algo$get_output_dimension());
   for(position in 1:algo$get_output_dimension()){
     bit_id <- paste0("o", position);
-    print(paste0("\n\n\n\nSTAGE 2: RETRIEVE FROM BitOutput: bit_id: ", bit_id));
+    # print(paste0("\n\n\n\nSTAGE 2: RETRIEVE FROM BitOutput: bit_id: ", bit_id));
     vertex_name <- paste0(algo$get_node_id(), ".", bit_id);
     bit_exec_value <- vertices_execution_value[[vertex_name]];
-    print(paste0("bit_exec_value: ", bit_exec_value));
+    # print(paste0("bit_exec_value: ", bit_exec_value));
     output_logical_vector[position] <- bit_exec_value;
   }
-  print(output_logical_vector);
+  # print(output_logical_vector);
 
   # Return the output in the requested type.
   if(is(input, "logical")){

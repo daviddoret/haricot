@@ -8,6 +8,13 @@ require(R6);
 #' @section Graph:
 #' {\figure{algo_not_graph.png}{Graph of the algorithm}}
 #'
+#' @section Truth table:
+#' \tabular{ll}{
+#' \strong{input} \tab \strong{output}\cr
+#' 0 \tab 1\cr
+#' 1 \tab 0
+#'}
+#'
 #' @usage a <- AlgoNOT$new();
 #' a$do_plot();
 #' a$do_execute("1");

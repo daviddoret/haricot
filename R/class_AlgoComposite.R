@@ -112,9 +112,9 @@ AlgoComposite <- R6Class(
     },
     set_inner_edge = function(
       source_node,
-      source_bit_id,
+      source_bit,
       target_node,
-      target_bit_id){
+      target_bit){
       if(is_missing(source_node)){
         # If the inner_node is not specified,
         # we assume the intention is to work directly
@@ -130,8 +130,8 @@ AlgoComposite <- R6Class(
       source_node_id <- source_node$get_node_id();
       target_node_id <- target_node$get_node_id();
 
-      source_name <- paste0(source_node_id, ".", source_bit_id);
-      target_name <- paste0(target_node_id, ".", target_bit_id);
+      source_name <- paste0(source_node_id, ".", source_bit);
+      target_name <- paste0(target_node_id, ".", target_bit);
 
       g <- self$get_inner_graph();
 
