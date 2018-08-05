@@ -13,11 +13,19 @@ build_export_figures <- function(){
   }
 
   export_figure("algo_tt10_graph", AlgoTT10$new()$do_plot);
+
   export_figure("algo_tt0000_graph", AlgoTT0000$new()$do_plot);
   export_figure("algo_tt0001_graph", AlgoTT0001$new()$do_plot);
   export_figure("algo_tt0010_graph", AlgoTT0010$new()$do_plot);
   export_figure("algo_tt0011_graph", AlgoTT0011$new()$do_plot);
+
+  export_figure("algo_tt0100_graph", AlgoTT0100$new()$do_plot);
+  export_figure("algo_tt0101_graph", AlgoTT0101$new()$do_plot);
+  export_figure("algo_tt0110_graph", AlgoTT0110$new()$do_plot);
+  export_figure("algo_tt0111_graph", AlgoTT0111$new()$do_plot);
+
   export_figure("algo_tt1001_graph", AlgoTT1001$new()$do_plot);
+
   export_figure("algo_nand_graph", AlgoNAND$new()$do_plot);
   export_figure("algo_not_graph", AlgoNOT$new()$do_plot);
 
