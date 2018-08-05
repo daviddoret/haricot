@@ -8,7 +8,7 @@
 #' This function is mainly used for internal purposes but could be useful for advanced manipulations.
 #' This function is trivial but may prove useful in the future to enforce data quality validation rules.
 #'
-#' @usage print(do_compute_vertex_bit_id("i", 5));
+#' @examples print(do_compute_vertex_bit_id("i", 5));
 #' print(do_compute_vertex_bit_id("o", 1:4));
 #'
 #' @param type The bit type: "i" or "o" (character)

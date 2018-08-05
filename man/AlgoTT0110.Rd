@@ -7,9 +7,7 @@
 \title{AlgoXOR, AlgoTT0110 (R6 class)}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
-a <- AlgoTT0110$new();
-a$do_plot();
-a$do_execute("10");
+AlgoTT0110
 
 AlgoXOR
 }
@@ -43,4 +41,10 @@ This is also the well-known logical gate XOR.
 }
 }
 
+\examples{
+a <- AlgoTT0110$new();
+a$do_plot();
+a$do_execute("10");
+
+}
 \keyword{datasets}

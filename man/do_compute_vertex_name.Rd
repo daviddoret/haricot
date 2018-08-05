@@ -4,8 +4,7 @@
 \alias{do_compute_vertex_name}
 \title{do_compute_vertex_name}
 \usage{
-print(do_compute_vertex_name("algo1", "i3"));
-print(do_compute_vertex_name("algo2", paste0("i", 1:3)));
+do_compute_vertex_name(id, bit, ...)
 }
 \arguments{
 \item{id}{The node ID character)}
@@ -25,4 +24,9 @@ For algo: %NODE_ID% & ".algo", e.g. "node134.algo"
 For output bits: %NODE_ID% & "." & %BIT%, e.g. "node134.o7"
 This function is mainly used for internal purposes but could be useful for advanced manipulations.
 This function is trivial but may prove useful in the future to enforce data quality validation rules.
+}
+\examples{
+print(do_compute_vertex_name("algo1", "i3"));
+print(do_compute_vertex_name("algo2", paste0("i", 1:3)));
+
 }

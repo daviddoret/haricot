@@ -6,9 +6,7 @@
 \title{AlgoTT01 (R6 class)}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
-a <- AlgoTT01$new();
-a$do_plot();
-a$do_execute("1");
+AlgoTT01
 }
 \arguments{
 \item{node_id}{A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)}
@@ -28,4 +26,10 @@ The logical algorithm with truth table 01 implemented as a NAND-composite.
 {\figure{algo_tt01_graph.png}{Graph of the algorithm}}
 }
 
+\examples{
+a <- AlgoTT01$new();
+a$do_plot();
+a$do_execute("1");
+
+}
 \keyword{datasets}

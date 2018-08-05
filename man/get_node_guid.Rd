@@ -4,7 +4,7 @@
 \alias{get_node_guid}
 \title{Return a globally unique identifier for nodes.}
 \usage{
-get_node_guid();
+get_node_guid()
 }
 \value{
 A globally unique node identifier (character)
@@ -12,4 +12,8 @@ A globally unique node identifier (character)
 \description{
 To enhance readability, it is desirable to provide a specific \code{node_id} value for nodes.
 But when none are provided, default globally unique identifiers will be used instead.
+}
+\examples{
+get_node_guid();
+
 }

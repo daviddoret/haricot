@@ -3,7 +3,7 @@
 #' @description A modular binary number typed as a character is a string composed of "0"s and "1"s.
 #' The leftmost character (position = 1) being the least significant bit.
 #'
-#' @usage # R function style:
+#' @examples # R function style:
 #' convert_modbinum_any_to_modbinum_character(input);
 #'
 #' # R6 method style:

@@ -1,4 +1,5 @@
-library(R6);
+require(R6);
+require(uuid);
 
 #' AlgoTT
 #'
@@ -11,9 +12,7 @@ library(R6);
 #' Row index position = 2 ^ N --> Input = binum of value 2 ^ N - 1.
 #'
 #' @examples
-#' t1 <- AlgoTT$new(
-#'   input_dimension = 2,
-#'   output_dimension = 2);
+#' t1 <- AlgoTT$new(input_dimension = 2, output_dimension = 2);
 #' t1$set_output(input = "01", output = "11");
 #' t1$do_execute("01");
 #'

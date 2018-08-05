@@ -9,9 +9,7 @@
 \usage{
 AlgoOR
 
-a <- AlgoTT0111$new();
-a$do_plot();
-a$do_execute("10");
+AlgoTT0111
 }
 \arguments{
 \item{node_id}{A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)}
@@ -43,4 +41,10 @@ This is also the well-known logical gate OR.
 }
 }
 
+\examples{
+a <- AlgoTT0111$new();
+a$do_plot();
+a$do_execute("10");
+
+}
 \keyword{datasets}

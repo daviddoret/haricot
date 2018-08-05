@@ -6,9 +6,7 @@
 \title{AlgoNOT (R6 class)}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
-a <- AlgoNOT$new();
-a$do_plot();
-a$do_execute("1");
+AlgoNOT
 }
 \arguments{
 \item{node_id}{A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)}
@@ -38,4 +36,10 @@ In practice, since NOT has the truthtable {1,0}, this class inherits from Algo10
 }
 }
 
+\examples{
+a <- AlgoNOT$new();
+a$do_plot();
+a$do_execute("1");
+
+}
 \keyword{datasets}

@@ -8,7 +8,7 @@
 #' This function is mainly used for internal purposes but could be useful for advanced manipulations.
 #' This function is trivial but may prove useful in the future to enforce data quality validation rules.
 #'
-#' @usage print(do_compute_vertex_name("algo1", "i3"));
+#' @examples print(do_compute_vertex_name("algo1", "i3"));
 #' print(do_compute_vertex_name("algo2", paste0("i", 1:3)));
 #'
 #' @param id The node ID character)

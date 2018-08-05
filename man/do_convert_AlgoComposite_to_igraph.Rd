@@ -4,7 +4,7 @@
 \alias{do_convert_AlgoComposite_to_igraph}
 \title{Convert an object of type AlgoComposite to an igraph object.}
 \usage{
-g <- convert_AlgoComposite_to_igraph(node, ...);
+do_convert_AlgoComposite_to_igraph(node, ...)
 }
 \arguments{
 \item{node}{The node that we want to graph (AlgoComposite)}
@@ -22,4 +22,8 @@ The igraph network will be composed of:
 * Directed edges from the input bits to the algorithm node,
 * Directed edges from the algorithm node to the output bits,
 * Directed edges between sub-algorithms.
+}
+\examples{
+g <- convert_AlgoComposite_to_igraph(node, ...);
+
 }

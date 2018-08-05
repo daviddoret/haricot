@@ -4,11 +4,7 @@
 \alias{do_execute_AlgoNAND}
 \title{Execute the NAND algorithm on a given input.}
 \usage{
-# R function style:
-execute_AlgoNAND(algo, input);
-
-# R6 method style:
-algo$do_execute(input);
+do_execute_AlgoNAND(algo, input)
 }
 \arguments{
 \item{algo}{A NAND algorithm (R6 Class AlgoNAND)}
@@ -20,4 +16,12 @@ The corresponding output (same type than input)
 }
 \description{
 ...
+}
+\examples{
+# R function style:
+execute_AlgoNAND(algo, input);
+
+# R6 method style:
+algo$do_execute(input);
+
 }

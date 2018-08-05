@@ -2,7 +2,7 @@
 #'
 #' @description Modifies the unique ID of a composite algorithm node.
 #'
-#' @usage # R function style:
+#' @examples # R function style:
 #' a1 <- AlgoXNOR$new();
 #' print(a1$get_node_id());
 #' do_change_id_AlgoComposite(a1, "a_stupid_id");

@@ -9,9 +9,9 @@ require(igraph);
 #' @section Graph:
 #' {\figure{algo_nand_graph.png}{Graph of the algorithm}}
 #'
-#' @usage a <- AlgoNAND$new();
-#' a$do_plot();
-#' a$do_execute("01");
+#' @examples a1 <- AlgoNAND$new();
+#' a1$do_plot();
+#' a1$do_execute("01");
 #'
 #' @param node_id A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)
 #' @param label A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)

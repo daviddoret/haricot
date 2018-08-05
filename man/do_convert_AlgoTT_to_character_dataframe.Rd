@@ -4,12 +4,7 @@
 \alias{do_convert_AlgoTT_to_character_dataframe}
 \title{do_convert_AlgoTT_to_character_dataframe}
 \usage{
-Function style:
-a1 <- AlgoTT$new(input_dimension = 2, output_dimension = 3);
-do_convert_AlgoTT_to_character_dataframe(a1);
-
-R6 method style:
-a1$convert_to_character_dataframe();
+do_convert_AlgoTT_to_character_dataframe(algott, ...)
 }
 \arguments{
 \item{algott}{A truth table alogirthm (R6 Class AlgoTT)}
@@ -23,4 +18,13 @@ A nicely formatted ROxygen2 Tabular (character)
 Takes an object of type AlgoTT and returns a character dataframe representation.
 This format is both machine and human readable.
 Useful to populate truth tables in ROxygen2 tabular format with sinew for package documentation.
+}
+\examples{
+# Function style:
+a1 <- AlgoTT$new(input_dimension = 2, output_dimension = 3);
+do_convert_AlgoTT_to_character_dataframe(a1);
+
+# R6 method style:
+a1$convert_to_character_dataframe();
+
 }

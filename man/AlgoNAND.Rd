@@ -6,9 +6,7 @@
 \title{AlgoNAND (R6 class)}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
-a <- AlgoNAND$new();
-a$do_plot();
-a$do_execute("01");
+AlgoNAND
 }
 \arguments{
 \item{node_id}{A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)}
@@ -28,4 +26,10 @@ Any algorithm may be built from the atomic NAND algorithm.
 {\figure{algo_nand_graph.png}{Graph of the algorithm}}
 }
 
+\examples{
+a <- AlgoNAND$new();
+a$do_plot();
+a$do_execute("01");
+
+}
 \keyword{datasets}

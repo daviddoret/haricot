@@ -8,7 +8,7 @@ require(R6);
 #' @section Graph:
 #' {\figure{algo_tt1001_graph.png}{Graph of the algorithm}}
 #'
-#' @usage a <- AlgoTT1001$new();
+#' @examples a <- AlgoTT1001$new();
 #' a$do_plot();
 #' a$do_execute("10");
 #'

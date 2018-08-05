@@ -2,7 +2,7 @@
 #'
 #' @description Copies the internal logic of a composite algorithm on a different composite algorithm.
 #'
-#' @usage # R function style:
+#' @examples # R function style:
 #' a1 <- AlgoXNOR$new();
 #' a2 <- AlgoComposite$new(input_dimension = 2, output_dimension = 1);
 #' do_copy_logic_AlgoComposite_to_AlgoComposite(a1, a2);

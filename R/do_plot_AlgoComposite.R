@@ -4,8 +4,10 @@ require(RColorBrewer)
 #'
 #' @description Plot the igraph of a AlgoComposite with adequate style, etc.
 #'
-#' @usage do_plot_AlgoComposite(node, ...);
+#' @examples a1 <- AlgoXNOR$new();
+#' do_plot_AlgoComposite(a1);
 #'
+#' @param algo A composite algorithm (AlgoComposite).
 #' @param ... For future usage.
 #' @return A plotted network graph.
 #' @export

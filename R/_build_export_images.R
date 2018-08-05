@@ -4,9 +4,9 @@
 build_export_figures <- function(){
 
   export_figure <- function(filename, plot_function){
-    png(paste0("data/", filename, ".png")); #, 800, 800);
-    plot_function();
-    dev.off();
+    #png(paste0("data/", filename, ".png")); #, 800, 800);
+    #plot_function();
+    #dev.off();
     png(paste0("man/figures/", filename, ".png")); #, 800, 800);
     plot_function();
     dev.off();

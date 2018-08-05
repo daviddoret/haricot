@@ -5,7 +5,7 @@
 #' Of course, this function is highly inefficient
 #' and may only be applied to low input dimensional algorithms.
 #'
-#' @usage # R function style:
+#' @examples # R function style:
 #' a1 <- AlgoNOT$new();
 #' a2 <- do_convert_AlgoNode_to_AlgoTT(a1);
 #' print(a2);

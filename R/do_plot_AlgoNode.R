@@ -4,7 +4,8 @@ require(RColorBrewer)
 #'
 #' @description Plot the igraph of a AlgoNode with adequate style, etc.
 #'
-#' @usage do_plot_AlgoNode(node, ...);
+#' @examples a1 <- AlgoNAND$new();
+#' do_plot_AlgoNode(a1);
 #'
 #' @param ... For future usage.
 #' @return A plotted network graph.

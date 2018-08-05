@@ -5,7 +5,7 @@
 #' Of course, this function is highly inefficient
 #' and may only be applied to low input dimensional NAND trees.
 #'
-#' @usage # R function style:
+#' @examples # R function style:
 #' convert_nandtree_to_truthtable(nandtree);
 #'
 #' # R6 method style:

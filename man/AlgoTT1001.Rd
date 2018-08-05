@@ -7,9 +7,7 @@
 \title{AlgoXNOR, AlgoTT1001 (R6 class)}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
-a <- AlgoTT1001$new();
-a$do_plot();
-a$do_execute("10");
+AlgoTT1001
 
 AlgoXNOR
 }
@@ -32,4 +30,10 @@ This is also the well-known logical gate XNOR.
 {\figure{algo_tt1001_graph.png}{Graph of the algorithm}}
 }
 
+\examples{
+a <- AlgoTT1001$new();
+a$do_plot();
+a$do_execute("10");
+
+}
 \keyword{datasets}

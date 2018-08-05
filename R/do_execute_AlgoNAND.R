@@ -2,7 +2,7 @@
 #'
 #' @description ...
 #'
-#' @usage # R function style:
+#' @examples # R function style:
 #' execute_AlgoNAND(algo, input);
 #'
 #' # R6 method style:

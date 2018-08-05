@@ -4,17 +4,7 @@
 \alias{do_change_id_AlgoComposite}
 \title{do_change_id_AlgoComposite, AlgoComposite$do_change_id}
 \usage{
-# R function style:
-a1 <- AlgoXNOR$new();
-print(a1$get_node_id());
-do_change_id_AlgoComposite(a1, "a_stupid_id");
-print(a1$get_node_id());
-
-# R6 method style:
-a2 <- AlgoXNOR$new();
-print(a2$get_node_id());
-a2$do_change_id("another_stupid_id");
-print(a2$get_node_id());
+do_change_id_AlgoComposite(algo, id, ...)
 }
 \arguments{
 \item{algo}{A composite algorithm (R6 Class AlgoComposite)}
@@ -28,4 +18,18 @@ N/A
 }
 \description{
 Modifies the unique ID of a composite algorithm node.
+}
+\examples{
+# R function style:
+a1 <- AlgoXNOR$new();
+print(a1$get_node_id());
+do_change_id_AlgoComposite(a1, "a_stupid_id");
+print(a1$get_node_id());
+
+# R6 method style:
+a2 <- AlgoXNOR$new();
+print(a2$get_node_id());
+a2$do_change_id("another_stupid_id");
+print(a2$get_node_id());
+
 }

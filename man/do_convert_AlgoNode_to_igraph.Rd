@@ -4,7 +4,7 @@
 \alias{do_convert_AlgoNode_to_igraph}
 \title{Convert an object of type AlgoNode to an igraph object.}
 \usage{
-g <- convert_AlgoNode_to_igraph(node, ...);
+do_convert_AlgoNode_to_igraph(node, ...)
 }
 \arguments{
 \item{node}{The node that we want to graph (AlgoNode)}
@@ -21,4 +21,8 @@ The igraph network will be composed of:
 * One node per output bit,
 * Directed edges from the input bits to the algorithm node,
 * Directed edges from the algorithm node to the output bits.
+}
+\examples{
+g <- convert_AlgoNode_to_igraph(node, ...);
+
 }

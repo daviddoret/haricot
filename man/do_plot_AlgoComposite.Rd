@@ -4,9 +4,11 @@
 \alias{do_plot_AlgoComposite}
 \title{Plot the igraph of a AlgoComposite}
 \usage{
-do_plot_AlgoComposite(node, ...);
+do_plot_AlgoComposite(algo, ...)
 }
 \arguments{
+\item{algo}{A composite algorithm (AlgoComposite).}
+
 \item{...}{For future usage.}
 }
 \value{
@@ -14,4 +16,8 @@ A plotted network graph.
 }
 \description{
 Plot the igraph of a AlgoComposite with adequate style, etc.
+}
+\examples{
+do_plot_AlgoComposite(node, ...);
+
 }

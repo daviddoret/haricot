@@ -4,11 +4,7 @@
 \alias{convert_nandtree_to_truthtable}
 \title{Convert a NAND tree to a truth table.}
 \usage{
-# R function style:
-convert_nandtree_to_truthtable(nandtree);
-
-# R6 method style:
-nandtree$convert_to_truthtable();
+convert_nandtree_to_truthtable(nandtree)
 }
 \arguments{
 \item{nandtree}{A NandTree (R6 Class NandTree)}
@@ -21,4 +17,12 @@ This function builds a truth table from a NAND tree
 by executing its algorithm with all possible inputs.
 Of course, this function is highly inefficient
 and may only be applied to low input dimensional NAND trees.
+}
+\examples{
+# R function style:
+convert_nandtree_to_truthtable(nandtree);
+
+# R6 method style:
+nandtree$convert_to_truthtable();
+
 }

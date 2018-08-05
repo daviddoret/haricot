@@ -4,7 +4,7 @@
 \alias{do_plot_AlgoNode}
 \title{Plot the igraph of a AlgoNode}
 \usage{
-do_plot_AlgoNode(node, ...);
+do_plot_AlgoNode(node, ...)
 }
 \arguments{
 \item{...}{For future usage.}
@@ -14,4 +14,8 @@ A plotted network graph.
 }
 \description{
 Plot the igraph of a AlgoNode with adequate style, etc.
+}
+\examples{
+do_plot_AlgoNode(node, ...);
+
 }

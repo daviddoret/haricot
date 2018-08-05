@@ -5,6 +5,22 @@
 \alias{do_copy_logic_AlgoComposite_to_AlgoComposite}
 \title{do_copy_logic_AlgoComposite_to_AlgoComposite, AlgoComposite$do_copy_logic_to, AlgoComposite$do_copy_logic_from}
 \usage{
+do_copy_logic_AlgoComposite_to_AlgoComposite(source, target, ...)
+}
+\arguments{
+\item{source}{A composite algorithm (R6 Class AlgoComposite)}
+
+\item{target}{A composite algorithm (R6 Class AlgoComposite)}
+
+\item{...}{For future usage}
+}
+\value{
+N/A
+}
+\description{
+Copies the internal logic of a composite algorithm on a different composite algorithm.
+}
+\examples{
 # R function style:
 a1 <- AlgoXNOR$new();
 a2 <- AlgoComposite$new(input_dimension = 2, output_dimension = 1);
@@ -20,17 +36,5 @@ a3$do_plot();
 a4 <- AlgoComposite$new(input_dimension = 2, output_dimension = 1);
 a1$do_copy_logic_to(a4);
 a4$do_plot();
-}
-\arguments{
-\item{source}{A composite algorithm (R6 Class AlgoComposite)}
 
-\item{target}{A composite algorithm (R6 Class AlgoComposite)}
-
-\item{...}{For future usage}
-}
-\value{
-N/A
-}
-\description{
-Copies the internal logic of a composite algorithm on a different composite algorithm.
 }

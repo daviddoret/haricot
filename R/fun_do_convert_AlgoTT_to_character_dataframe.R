@@ -4,11 +4,11 @@
 #' This format is both machine and human readable.
 #' Useful to populate truth tables in ROxygen2 tabular format with sinew for package documentation.
 #'
-#' @usage Function style:
+#' @examples # Function style:
 #' a1 <- AlgoTT$new(input_dimension = 2, output_dimension = 3);
 #' do_convert_AlgoTT_to_character_dataframe(a1);
 #'
-#' R6 method style:
+#' # R6 method style:
 #' a1$convert_to_character_dataframe();
 #'
 #' @param algott A truth table alogirthm (R6 Class AlgoTT)

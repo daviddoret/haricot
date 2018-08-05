@@ -5,12 +5,7 @@
 \alias{do_convert_BinaryDomain_to_character_vector}
 \title{do_convert_BinaryDomain_to_character_vector}
 \usage{
-# R function style:
-b1 <- BinaryDomain$new(dimension = 3);
-do_convert_BinaryDomain_to_character_vector(b1);
-
-# R6 method style:
-b1$do_convert_to_character_vector();
+do_convert_BinaryDomain_to_character_vector(binary_domain, ...)
 }
 \arguments{
 \item{binary_domain}{A binary domain (R6 Class BinaryDomain)}
@@ -22,4 +17,13 @@ A vector where each item correspond to a binary number of the binary domain (cha
 }
 \description{
 Takes a binary domain a returns a vector of character representations.
+}
+\examples{
+# R function style:
+b1 <- BinaryDomain$new(dimension = 3);
+do_convert_BinaryDomain_to_character_vector(b1);
+
+# R6 method style:
+b1$do_convert_to_character_vector();
+
 }

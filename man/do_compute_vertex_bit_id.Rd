@@ -4,8 +4,7 @@
 \alias{do_compute_vertex_bit_id}
 \title{do_compute_vertex_bit_id}
 \usage{
-print(do_compute_vertex_bit_id("i", 5));
-print(do_compute_vertex_bit_id("o", 1:4));
+do_compute_vertex_bit_id(type, number, ...)
 }
 \arguments{
 \item{type}{The bit type: "i" or "o" (character)}
@@ -25,4 +24,9 @@ For algo vertices: "" (empty string)
 For output bit vertices: "o1", "o2", "o3", ...
 This function is mainly used for internal purposes but could be useful for advanced manipulations.
 This function is trivial but may prove useful in the future to enforce data quality validation rules.
+}
+\examples{
+print(do_compute_vertex_bit_id("i", 5));
+print(do_compute_vertex_bit_id("o", 1:4));
+
 }

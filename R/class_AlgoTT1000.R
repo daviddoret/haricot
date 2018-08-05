@@ -18,7 +18,7 @@ require(R6);
 #' 11 \tab 0
 #'}
 #'
-#' @usage a <- AlgoTT1000$new();
+#' @examples a <- AlgoTT1000$new();
 #' a$do_plot();
 #' a$do_execute("10");
 #'

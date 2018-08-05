@@ -4,14 +4,7 @@
 \alias{do_convert_AlgoNode_to_AlgoTT}
 \title{do_convert_AlgoNode_to_AlgoTT}
 \usage{
-# R function style:
-a1 <- AlgoNOT$new();
-a2 <- do_convert_AlgoNode_to_AlgoTT(a1);
-print(a2);
-
-# R6 method style:
-a3 <- a1$convert_to_AlgoTT();
-print(a3);
+do_convert_AlgoNode_to_AlgoTT(algo)
 }
 \arguments{
 \item{algo}{An arbitrary algorithm (R6 Class AlgoNode)}
@@ -24,4 +17,15 @@ This function builds a truth table from an arbitrary algorithm
 by executing it with all possible inputs.
 Of course, this function is highly inefficient
 and may only be applied to low input dimensional algorithms.
+}
+\examples{
+# R function style:
+a1 <- AlgoNOT$new();
+a2 <- do_convert_AlgoNode_to_AlgoTT(a1);
+print(a2);
+
+# R6 method style:
+a3 <- a1$convert_to_AlgoTT();
+print(a3);
+
 }

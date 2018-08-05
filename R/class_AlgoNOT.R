@@ -15,7 +15,7 @@ require(R6);
 #' 1 \tab 0
 #'}
 #'
-#' @usage a <- AlgoNOT$new();
+#' @examples a <- AlgoNOT$new();
 #' a$do_plot();
 #' a$do_execute("1");
 #'

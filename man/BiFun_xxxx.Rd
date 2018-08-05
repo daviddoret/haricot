@@ -11,26 +11,6 @@
 \usage{
 BiFun_NAND
 
-# Specialized BiFun_xxxx R6 classes:
-BiFun_00$new();
-BiFun_10$new();
-BiFun_0000$new();
-BiFun_1000$new();
-BiFun_0100$new();
-# etc.
-
-Generic BiFun R6 class:
-BiFun$new(truthtable = "00");
-BiFun$new(truthtable = "10");
-BiFun$new(truthtable = "0000");
-BiFun$new(truthtable = "1000");
-BiFun$new(truthtable = "0100");
-# etc.
-
-Well-known logical gates R6 class:
-BiFun_AND$new();
-BiFun_XOR$new();
-
 AlgoTTxxxx
 }
 \description{
@@ -58,5 +38,27 @@ Finally, well-known logical gates have their dedicated alias classes:
 \item \code{BiFun_XNOR},
 \item \code{BiFun_XOR}.
 }
+}
+\examples{
+# Specialized BiFun_xxxx R6 classes:
+BiFun_00$new();
+BiFun_10$new();
+BiFun_0000$new();
+BiFun_1000$new();
+BiFun_0100$new();
+# etc.
+
+# Generic BiFun R6 class:
+BiFun$new(truthtable = "00");
+BiFun$new(truthtable = "10");
+BiFun$new(truthtable = "0000");
+BiFun$new(truthtable = "1000");
+BiFun$new(truthtable = "0100");
+# etc.
+
+# Well-known logical gates R6 class:
+BiFun_AND$new();
+BiFun_XOR$new();
+
 }
 \keyword{datasets}

@@ -1,4 +1,7 @@
+require(R6);
+require(rlang);
 require(igraph);
+
 #' Convert an object of type AlgoNode to an igraph object.
 #'
 #' @description The igraph network will be composed of:
@@ -8,7 +11,7 @@ require(igraph);
 #' * Directed edges from the input bits to the algorithm node,
 #' * Directed edges from the algorithm node to the output bits.
 #'
-#' @usage g <- convert_AlgoNode_to_igraph(node, ...);
+#' @examples g <- convert_AlgoNode_to_igraph(node, ...);
 #'
 #' @param node The node that we want to graph (AlgoNode)
 #' @param ... For future usage.

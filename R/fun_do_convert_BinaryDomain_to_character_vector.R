@@ -2,7 +2,7 @@
 #'
 #' @description Takes a binary domain a returns a vector of character representations.
 #'
-#' @usage # R function style:
+#' @examples # R function style:
 #' b1 <- BinaryDomain$new(dimension = 3);
 #' do_convert_BinaryDomain_to_character_vector(b1);
 #'

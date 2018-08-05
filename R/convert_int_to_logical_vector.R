@@ -4,7 +4,7 @@
 #' In this context, we use a binary representation where the least significant bit is on the left (at vector index position 1).
 #' This function takes a native R integer value and converts it into such a logical vector.
 #'
-#' @usage # R function style:
+#' @examples # R function style:
 #' convert_int_to_logical_vector(i, size);
 #'
 #' @param i An integer (integer)

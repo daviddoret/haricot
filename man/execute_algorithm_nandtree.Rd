@@ -4,11 +4,7 @@
 \alias{execute_algorithm_nandtree}
 \title{Execute the algorithm of a NAND tree on a given input.}
 \usage{
-# R function style:
-execute_algorithm_nandtree(nandtree, input);
-
-# R6 method style:
-nandtree$execute_algorithm(input);
+execute_algorithm_nandtree(nandtree, input)
 }
 \arguments{
 \item{nandtree}{A NandTree (R6 Class NandTree)}
@@ -26,4 +22,12 @@ and returns y bits as output.
 This function applies / executes / runs
 that algorithm on a given input
 and returns the corresponding output.
+}
+\examples{
+# R function style:
+execute_algorithm_nandtree(nandtree, input);
+
+# R6 method style:
+nandtree$execute_algorithm(input);
+
 }

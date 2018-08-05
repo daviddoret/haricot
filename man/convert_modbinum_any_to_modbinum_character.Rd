@@ -4,11 +4,7 @@
 \alias{convert_modbinum_any_to_modbinum_character}
 \title{Convert a modular binary number of an arbitrary type to a modular binary number typed as character.}
 \usage{
-# R function style:
-convert_modbinum_any_to_modbinum_character(input);
-
-# R6 method style:
-modbinum$convert_to_character();
+convert_modbinum_any_to_modbinum_character(input)
 }
 \arguments{
 \item{input}{A modular binary number (logical vector, character vector, BiNum)}
@@ -19,4 +15,12 @@ A modular binary number (character)
 \description{
 A modular binary number typed as a character is a string composed of "0"s and "1"s.
 The leftmost character (position = 1) being the least significant bit.
+}
+\examples{
+# R function style:
+convert_modbinum_any_to_modbinum_character(input);
+
+# R6 method style:
+modbinum$convert_to_character();
+
 }

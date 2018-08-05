@@ -9,9 +9,7 @@
 \usage{
 AlgoAND
 
-a <- AlgoTT0001$new();
-a$do_plot();
-a$do_execute("10");
+AlgoTT0001
 }
 \arguments{
 \item{node_id}{A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)}
@@ -43,4 +41,10 @@ This is also the well-known logical gate AND.
 }
 }
 
+\examples{
+a <- AlgoTT0001$new();
+a$do_plot();
+a$do_execute("10");
+
+}
 \keyword{datasets}

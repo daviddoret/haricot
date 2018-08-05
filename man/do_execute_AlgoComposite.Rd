@@ -4,11 +4,7 @@
 \alias{do_execute_AlgoComposite}
 \title{Execute the algorithm of a AlgoComposite on a given input.}
 \usage{
-# R function style:
-execute_algorithm_AlgoComposite(algo, input);
-
-# R6 method style:
-algo$execute_algorithm(input);
+do_execute_AlgoComposite(algo, input)
 }
 \arguments{
 \item{algo}{A composite algorithm (R6 Class AlgoComposite)}
@@ -26,4 +22,12 @@ and returns y bits as output.
 This function applies / executes / runs
 that algorithm on a given input
 and returns the corresponding output.
+}
+\examples{
+# R function style:
+execute_algorithm_AlgoComposite(algo, input);
+
+# R6 method style:
+algo$execute_algorithm(input);
+
 }

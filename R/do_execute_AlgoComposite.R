@@ -8,7 +8,7 @@
 #' that algorithm on a given input
 #' and returns the corresponding output.
 #'
-#' @usage # R function style:
+#' @examples # R function style:
 #' execute_algorithm_AlgoComposite(algo, input);
 #'
 #' # R6 method style:
