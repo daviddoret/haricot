@@ -5,7 +5,7 @@ test_that('AlgoTT0010: exhaustive output test', {
 
   #browser();
 
-  a1 <- AlgoTT0$new();
+  a1 <- AlgoTT0010$new();
 
   #print(nt);
   #plot_nandtree(nt);

@@ -32,7 +32,7 @@ The logical algorithm with truth table 0011 implemented as a NAND-composite.
 
 \tabular{ll}{
 \strong{input} \tab \strong{output}\cr
-00 \tab 1\cr
+00 \tab 0\cr
 10 \tab 0\cr
 01 \tab 1\cr
 11 \tab 1

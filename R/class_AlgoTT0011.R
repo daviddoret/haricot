@@ -52,7 +52,7 @@ AlgoTT0011 <- R6Class(
       nand2 <- self$add_nand(self, "i1", self, "i2");
 
       # Apply NAND to the above two results.
-      nand3 <- self$add_nand(nand1, "o1", nand2, "i1");
+      nand3 <- self$add_nand(nand1, "o1", nand2, "o1");
 
       # Pipe the final output.
       self$set_inner_edge(nand3, "o1", self, "o1");
