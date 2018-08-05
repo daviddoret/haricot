@@ -3,6 +3,8 @@
 #install.packages("testthat");
 library(testthat);
 
+context("BinaryDomain R6 class")
+
 test_that('BinaryDomain length is correct', {
 
   #browser();

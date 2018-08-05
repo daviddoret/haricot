@@ -1,8 +1,9 @@
 require(R6);
 
-#' AlgoTT1001 (R6 class)
+#' AlgoXNOR, AlgoTT1001 (R6 class)
 #'
 #' @description The logical algorithm with truth table 1001 implemented as a NAND-composite.
+#' This is also the well-known logical gate XNOR.
 #'
 #' @section Graph:
 #' {\figure{algo_tt1001_graph.png}{Graph of the algorithm}}
@@ -15,6 +16,7 @@ require(R6);
 #' @param label A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)
 #' @param ... For future usage.
 #' @return An object instance of class AlgoTT10:AlgoComposite:AlgoNode.
+#' @name AlgoTT1001
 #' @export
 AlgoTT1001 <- R6Class(
   "AlgoTT1001",

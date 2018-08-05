@@ -1,7 +1,9 @@
 #install.packages("testthat");
 library(testthat);
 
-test_that('CompositeAlgo: faking NAND', {
+context("AlgoComposite R6 class");
+
+test_that('AlgoComposite: faking NAND', {
 
   #browser();
 
@@ -94,8 +96,6 @@ test_that('CompositeAlgo: basic composition', {
   a$set_inner_edge(nand1, "o1", a, "o1");
   a$set_inner_edge(nand2, "o1", a, "o2");
   a$set_inner_edge(nand3, "o1", a, "o3");
-
-  # a$do_plot();
 
 });
 

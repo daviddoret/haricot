@@ -1,6 +1,8 @@
 
 library(testthat);
 
+context("AlgoNOT R6 class");
+
 test_that('AlgoNOT: test 01', {
 
   #browser();

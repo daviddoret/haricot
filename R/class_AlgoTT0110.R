@@ -2,9 +2,10 @@ library(R6);
 
 require(R6);
 
-#' AlgoTT0110 (R6 class)
+#' AlgoXOR, AlgoTT0110 (R6 class)
 #'
 #' @description The logical algorithm with truth table 0110 implemented as a NAND-composite.
+#' This is also the well-known logical gate XOR.
 #'
 #' @section Graph:
 #' {\figure{algo_tt0110_graph.png}{Graph of the algorithm}}
@@ -26,6 +27,7 @@ require(R6);
 #' @param label A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)
 #' @param ... For future usage.
 #' @return An object instance of class AlgoTT10:AlgoComposite:AlgoNode.
+#' @name AlgoTT0110
 #' @export
 AlgoTT0110 <- R6Class(
   "AlgoTT0110",

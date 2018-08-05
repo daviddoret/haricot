@@ -3,6 +3,8 @@
 #install.packages("testthat");
 library(testthat);
 
+context("BinaryNumber R6 class")
+
 test_that('BinaryNumber_Modular initializes properly', {
 
   #browser();

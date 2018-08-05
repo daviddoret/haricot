@@ -1,6 +1,8 @@
 
 library(testthat);
 
+context("AlgoNAND R6 class");
+
 test_that('AlgoNAND: test 01', {
 
   #browser();

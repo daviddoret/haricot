@@ -1,6 +1,8 @@
 
 library(testthat);
 
+context("AlgoTT1101 R6 class");
+
 test_that('AlgoTT1101: exhaustive output test', {
 
   #browser();

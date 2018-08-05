@@ -1,14 +1,13 @@
 
 library(testthat);
 
+context("AlgoTT0101 R6 class");
+
 test_that('AlgoTT0101: exhaustive output test', {
 
   #browser();
 
   a1 <- AlgoTT0101$new();
-
-  #print(nt);
-  #plot_nandtree(nt);
 
   expect_equal(a1$do_execute("00"), "0");
   expect_equal(a1$do_execute("10"), "1");
