@@ -1,23 +1,23 @@
 require(R6);
 
-#' Algo10 (R6 class)
+#' AlgoTT10 (R6 class)
 #'
 #' @description The logical algorithm with truth table 01 implemented as a NAND-composite.
 #'
 #' @section Graph:
-#' {\figure{algo_10_graph.png}{Graph of the algorithm}}
+#' {\figure{algo_tt10_graph.png}{Graph of the algorithm}}
 #'
-#' @usage a <- Algo10$new();
+#' @usage a <- AlgoTT10$new();
 #' a$do_plot();
 #' a$do_execute("1");
 #'
 #' @param node_id A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)
 #' @param label A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)
 #' @param ... For future usage.
-#' @return An object instance of class Algo10:AlgoComposite:AlgoNode.
+#' @return An object instance of class AlgoTT10:AlgoComposite:AlgoNode.
 #' @export
-Algo10 <- R6Class(
-  "Algo10",
+AlgoTT10 <- R6Class(
+  "AlgoTT10",
   inherit = AlgoComposite,
   public = list(
     initialize = function(
@@ -26,7 +26,7 @@ Algo10 <- R6Class(
       ...) {
       input_dimension <- 1;
       output_dimension <- 1;
-      if(is.null(label)){ label <- "10"; }
+      if(is.null(label)){ label <- "TT10"; }
       super$initialize(
         input_dimension = input_dimension,
         output_dimension = output_dimension,

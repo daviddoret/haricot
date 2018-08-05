@@ -1,11 +1,11 @@
 
 library(testthat);
 
-test_that('Algo10: exhaustive output test', {
+test_that('AlgoTT10: exhaustive output test', {
 
   #browser();
 
-  a <- Algo10$new();
+  a <- AlgoTT10$new();
 
   #print(nt);
   #plot_nandtree(nt);

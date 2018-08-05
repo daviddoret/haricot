@@ -15,11 +15,11 @@ require(R6);
 #' @param node_id A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)
 #' @param label A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)
 #' @param ... For future usage.
-#' @return An object instance of class AlgoNOT:Algo10:AlgoComposite:AlgoNode.
+#' @return An object instance of class AlgoNOT:AlgoTT10:AlgoComposite:AlgoNode.
 #' @export
 AlgoNOT <- R6Class(
   "AlgoNOT",
-  inherit = Algo10,
+  inherit = AlgoTT10,
   public = list(
     initialize = function(
       node_id = NULL,

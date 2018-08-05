@@ -1,11 +1,11 @@
 
 library(testthat);
 
-test_that('Algo1001: exhaustive output test', {
+test_that('AlgoTT1001: exhaustive output test', {
 
   #browser();
 
-  a <- Algo1001$new();
+  a <- AlgoTT1001$new();
 
   #print(a);
   a$do_plot();

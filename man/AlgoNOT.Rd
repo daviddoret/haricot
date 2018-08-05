@@ -18,7 +18,7 @@ a$do_execute("1");
 \item{...}{For future usage.}
 }
 \value{
-An object instance of class AlgoNOT:Algo10:AlgoComposite:AlgoNode.
+An object instance of class AlgoNOT:AlgoTT10:AlgoComposite:AlgoNode.
 }
 \description{
 The NOT logical algorithm implemented as a NAND-composite.

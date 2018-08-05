@@ -3,17 +3,17 @@
 #install.packages("testthat");
 library(testthat);
 
-test_that('TruthTable_FlexOutput basic reactions', {
+test_that('AlgoTT basic reactions', {
 
   #browser();
 
-  t1 <- TruthTable_FlexOutput$new(input_dimension = 2, output_dimension = 2);
+  t1 <- AlgoTT$new(input_dimension = 2, output_dimension = 2);
   t1$set_output(input = "01", output = "11");
   expect_equal(object = t1$do_execute("01"), expected = "11");
   expect_equal(object = t1$do_execute("10"), expected = "00");
 });
 
-test_that("TruthTable_FlexOutput inversion yield correct results", {
+test_that("AlgoTT inversion yield correct results", {
 
   #browser();
 
@@ -22,7 +22,7 @@ test_that("TruthTable_FlexOutput inversion yield correct results", {
   input_dimension = sample(x = 1:8, size = 1);
   output_dimension = sample(x = 1:8, size = 1);
 
-  t1 <- TruthTable_FlexOutput$new(input_dimension, output_dimension);
+  t1 <- AlgoTT$new(input_dimension, output_dimension);
   t1$do_randomize_outputs();
   #print(t1);
 

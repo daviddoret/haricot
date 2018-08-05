@@ -17,7 +17,7 @@
 convert_nandtree_to_truthtable <- function(nandtree){
   input_dimension <- nandtree$get_input_dimension();
   output_dimension <- nandtree$get_output_dimension();
-  truthtable <- TruthTable_FlexOutput$new(
+  truthtable <- AlgoTT$new(
     input_dimension = input_dimension,
     output_dimension = output_dimension);
   input_binarynumber <- BinaryNumber_Modular$new(input = rep(FALSE, input_dimension));

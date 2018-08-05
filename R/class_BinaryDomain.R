@@ -19,6 +19,10 @@ BinaryDomain <- R6Class(
        binum$do_increment();
        index <- index + 1;
       }
+      rownames(self$logical_matrix) <- self$do_convert_to_character_vector();
+    },
+    do_convert_to_character_vector = function(...){
+      return(do_convert_BinaryDomain_to_character_vector(self, ...));
     },
     get_dimension = function() {
       return(self$dimension);

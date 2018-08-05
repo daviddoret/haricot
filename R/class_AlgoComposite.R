@@ -24,7 +24,7 @@ AlgoComposite <- R6Class(
       node_id = NULL,
       label = NULL,
       ...) {
-      # Call the supercall constructor
+      # Call the super class constructor
       super$initialize(
         input_dimension = input_dimension,
         output_dimension = output_dimension,
