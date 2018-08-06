@@ -23,7 +23,7 @@ do_convert_AlgoNode_to_AlgoTT <- function(algo){
   tt <- AlgoTT$new(
     input_dimension = input_dimension,
     output_dimension = output_dimension);
-  input_binarynumber <- BinaryNumber_Modular$new(input = rep(FALSE, input_dimension));
+  input_binarynumber <- MoBiNum$new(input = rep(FALSE, input_dimension));
 
   repeat{
     output_binarynumber = algo$do_execute(input_binarynumber);

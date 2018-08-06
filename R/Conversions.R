@@ -39,7 +39,7 @@ convert_character_to_logical_vector <- function(input_character){
 
 convert_logical_vector_to_character <- function(logical_vector){
   # Receives a logical vector and returns a string composed of "0" and "1".
-  numeric_vector <- as.numeric(logical_vector);
+  numeric_vector <- as.integer(logical_vector);
   character_vector <- as.character(numeric_vector);
   collapsed <- paste(character_vector, collapse = "");
   return(collapsed);
@@ -51,7 +51,7 @@ convert_any_to_logical_vector <- function(input){
     return(input);
   } else if(is(object = input, class2 = "character")){
     return(convert_character_to_logical_vector(input));
-  } else if(is(object = input, class2 = "BinaryNumber_Modular")) {
+  } else if(is(object = input, class2 = "MoBiNum")) {
     return(input$get_logical_vector());
   } else {
     # Ooops!

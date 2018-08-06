@@ -1,7 +1,7 @@
 library(R6);
 
-BinaryNumber_Modular <- R6Class(
-  "BinaryNumber_Modular",
+MoBiNum <- R6Class(
+  "MoBiNum",
   public = list(
     # Private Members
     logical_vector = NULL,
@@ -9,7 +9,7 @@ BinaryNumber_Modular <- R6Class(
       self$logical_vector <- convert_any_to_logical_vector(input);
     },
     convert_to_character = function(){
-      return(convert_logical_vector_to_character(self));
+      return(convert_logical_vector_to_character(self$logical_vector));
     },
     convert_to_logical_vector = function(){
       return(self$logical_vector);
@@ -65,4 +65,3 @@ BinaryNumber_Modular <- R6Class(
     }
   )
 )
-

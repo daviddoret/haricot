@@ -58,8 +58,8 @@ AlgoTT <- R6Class(
         return(output_logical_vector);
       } else if(is(input, "character")){
         return(convert_logical_vector_to_character(output_logical_vector));
-      } else if(is(input, "BinaryNUmber_Modular")){
-        return(BinaryNUmber_Modular$new(output_logical_vector));
+      } else if(is(input, "MoBiNum")){
+        return(MoBiNum$new(output_logical_vector));
       } else {
         # Oooops!
         stop(input);

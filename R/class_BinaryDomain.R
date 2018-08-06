@@ -12,7 +12,7 @@ BinaryDomain <- R6Class(
       # Store private members
       self$dimension <- dimension;
       self$logical_matrix <- matrix(nrow = 2 ^ dimension, ncol = dimension);
-      binum <- BinaryNumber_Modular$new(input = rep(FALSE, dimension));
+      binum <- MoBiNum$new(input = rep(FALSE, dimension));
       index <- 1;
       while(index <= 2 ^ dimension){
        self$logical_matrix[index,] <- binum$get_logical_vector();

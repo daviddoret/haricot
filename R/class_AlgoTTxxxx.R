@@ -7,7 +7,7 @@ AlgoTTxxxx <- R6Class(
   public = list(
     initialize = function(
       truthtable) {
-      truthtable_character <- convert_modbinum_any_to_modbinum_character(truthtable);
+      truthtable_character <- do_convert_any_to_MoBiDum_character(truthtable);
       input_dimension <- nchar(truthtable_character);
       super$initialize(
         input_dimension = input_dimension,
@@ -32,8 +32,8 @@ AlgoTTxxxx <- R6Class(
         "0111" = AlgoTT0100$new(),
         "1111" = AlgoTT1100$new()
       );
-      # Copy the internal logic of the specialized BiFun algorithm.
-      self$logical_datatable <- bifun$get_logical_datatable();
+      # Steal the internal logic of the AlgoTTxxxx algorithm.
+      self$do_copy_logic_from(a1);
     },
     do_randomize_outputs = function() {
       stop("Not supported");

@@ -1,3 +1,5 @@
+require(igraph);
+
 #' do_copy_logic_AlgoComposite_to_AlgoComposite, AlgoComposite$do_copy_logic_to, AlgoComposite$do_copy_logic_from
 #'
 #' @description Copies the internal logic of a composite algorithm on a different composite algorithm.
@@ -32,17 +34,19 @@ do_copy_logic_AlgoComposite_to_AlgoComposite <- function(source, target, ...){
     stop("source and target output dimensions are not identical");
   }
 
-  source_nodes <- source$get_inner_nodes();
-  source_graph <- source$get_inner_graph();
+  # Retrieve the internals of the source algo composite
+  target_nodes <- source$get_inner_nodes();
+  target_graph <- source$get_inner_graph();
 
-  # Substitute node_id in inner graph
-  stop("substitute edge$source_node_id");
-  E(source_graph)[E(source_graph)$source_node_id == source$get_node_id()]$source_node_id <- target$get_node_id()
-  stop("substitute edge$target_node_id");
-  stop("substitute edge$name");
+  # Substitute source and target nodes in graph edges
+  E(target_graph)[E(target_graph)$source_node_id == source$get_node_id()]$source_node_id <- target$get_node_id()
+  E(target_graph)[E(target_graph)$target_node_id == source$get_node_id()]$source_node_id <- target$get_node_id()
+
+  # My current assumption is that vertices and nodes do not need to be updated
+  # because the only vertex or node that has the old node_id is the parent.
 
   # Push the new logic in the target composite algo
-  target$set_inner_nodes(target_inner_nodes);
-  target$set_inner_graph(target_inner_graph);
+  target$set_inner_nodes(target_nodes);
+  target$set_inner_graph(target_graph);
 
 }
