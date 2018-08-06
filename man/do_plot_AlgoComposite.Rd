@@ -18,6 +18,7 @@ A plotted network graph.
 Plot the igraph of a AlgoComposite with adequate style, etc.
 }
 \examples{
-do_plot_AlgoComposite(node, ...);
+a1 <- AlgoXNOR$new();
+do_plot_AlgoComposite(a1);
 
 }

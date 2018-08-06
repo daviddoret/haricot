@@ -16,6 +16,7 @@ A plotted network graph.
 Plot the igraph of a AlgoNode with adequate style, etc.
 }
 \examples{
-do_plot_AlgoNode(node, ...);
+a1 <- AlgoNAND$new();
+do_plot_AlgoNode(a1);
 
 }
