@@ -13,16 +13,5 @@ Imports: R6,RColorBrewer,igraph,data.table,uuid
 Authors@R: 
     c(person(given = "David",
              family = "DORET",
-             email = "david.doret@me.com"),
-      person(given = "David",
-             family = "DORET",
              role = "aut",
-             email = "david.doret@me.com"),
-      person(given = "David",
-             family = "DORET",
-             role = "cph",
-             email = "david.doret@me.com"),
-      person(given = "David",
-             family = "DORET",
-             role = "cre",
              email = "david.doret@me.com"))
