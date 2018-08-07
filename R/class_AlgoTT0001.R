@@ -43,8 +43,8 @@ AlgoTT0001 <- R6Class(
       super$initialize(
         input_dimension = input_dimension,
         output_dimension = output_dimension,
-        node_id = node_id); #,
-      #label = label,
+        node_id = node_id,
+        label = label);
       #...);
 
       # Apply NAND to the two input bits.

@@ -11,8 +11,8 @@ AlgoAND <- R6Class(
       label = NULL,
       ...) {
       super$initialize(
-        node_id,
-        label,
+        node_id = node_id,
+        label = label,
         ...
       );
     },

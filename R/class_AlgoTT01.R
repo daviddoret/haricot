@@ -30,8 +30,8 @@ AlgoTT01 <- R6Class(
       super$initialize(
         input_dimension = input_dimension,
         output_dimension = output_dimension,
-        node_id = node_id); #,
-      #label = label,
+        node_id = node_id,
+        label = label);
       #...);
 
       self$set_inner_edge(source_node = self, source_bit = "i1", target_node = self, target_bit = "o1");
