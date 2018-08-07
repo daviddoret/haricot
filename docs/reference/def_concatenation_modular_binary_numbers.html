@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Return a globally unique identifier for nodes. — get_node_guid • haricot</title>
+<title>Definition: Concatenation (Modular Binary Numbers) — def_concatenation_modular_binary_numbers • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,9 @@
 
 
 
-<meta property="og:title" content="Return a globally unique identifier for nodes. — get_node_guid" />
+<meta property="og:title" content="Definition: Concatenation (Modular Binary Numbers) — def_concatenation_modular_binary_numbers" />
 
-<meta property="og:description" content="To enhance readability, it is desirable to provide a specific node_id value for nodes.
-But when none are provided, default globally unique identifiers will be used instead." />
+<meta property="og:description" content="Definition: Concatenation (Modular Binary Numbers)" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -93,37 +92,56 @@ But when none are provided, default globally unique identifiers will be used ins
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Return a globally unique identifier for nodes.</h1>
+    <h1>Definition: Concatenation (Modular Binary Numbers)</h1>
     
-    <div class="hidden name"><code>get_node_guid.Rd</code></div>
+    <div class="hidden name"><code>def_concatenation_modular_binary_numbers.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>To enhance readability, it is desirable to provide a specific <code>node_id</code> value for nodes.
-But when none are provided, default globally unique identifiers will be used instead.</p>
+    <p>Definition: Concatenation (Modular Binary Numbers)</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_node_guid</span>()</pre>
         
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="definition"><a class="anchor" href="#definition"></a>Definition</h2>
 
-    <p>A globally unique node identifier (character)</p>
+    
+    <p>In the context of this package, the concatenation operation applied on two modular binary numbers \(a\) and \(b\) means:</p><ol>
+<li><p>Create a new modular binary number \(c\) of dimension \(|a| + |b|\),</p></li>
+<li><p>Set the value of the \(|a|\) least significant (leftmost) bits of \(c\) to the value of the corresponding bits of \(a\),</p></li>
+<li><p>Set the value of the \(|b|\) remaining bits of \(c\) to the value of the corresponding bits of \(b\).</p></li>
+</ol>
+    
+    <h2 class="hasAnchor" id="notation"><a class="anchor" href="#notation"></a>Notation</h2>
+
+    
+    <p>The concatenation operator is noted:\(&amp;\).</p>
+    
+    <h2 class="hasAnchor" id="samples"><a class="anchor" href="#samples"></a>Samples</h2>
+
+    
+    <p>$$ 01 &amp; 1010 = 011010 $$
+$$ 000 &amp; 00 = 00000 $$</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other concatenations: <code><a href='do_concatenate_MoBiNum.html'>do_concatenate_MoBiNum</a></code></p></div>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_node_guid</span>();</div><div class='output co'>#&gt; [1] "4133feba-9a93-11e8-af46-d574b5abdae8"</div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#definition">Definition</a></li>
+
+      <li><a href="#notation">Notation</a></li>
+
+      <li><a href="#samples">Samples</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+          </ul>
 
   </div>
 </div>
