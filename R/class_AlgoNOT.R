@@ -34,8 +34,8 @@ AlgoNOT <- R6Class(
       ...) {
       if(is.null(label)){ label <- "NOT"; }
       super$initialize(
-        node_id = node_id); #,
-        #label = label,
+        node_id = node_id,
+        label = label);
         #...);
     }
   )
