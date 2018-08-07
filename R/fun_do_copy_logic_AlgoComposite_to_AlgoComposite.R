@@ -48,8 +48,6 @@ do_copy_logic_AlgoComposite_to_AlgoComposite <- function(source, target, ...){
   E(target_graph)[E(target_graph)$source_node_id == source$get_node_id()]$source_node_id <- target$get_node_id()
   E(target_graph)[E(target_graph)$target_node_id == source$get_node_id()]$source_node_id <- target$get_node_id()
 
-  stop("IT DOES NOT WORK!!!")
-
   # Push the new logic in the target composite algo
   target$set_inner_nodes(target_nodes);
   target$set_inner_graph(target_graph);

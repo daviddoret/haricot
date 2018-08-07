@@ -1,4 +1,4 @@
-#' do_convert_any_to_MoBiDum_character
+#' do_convert_any_to_MoBiNum_character
 #'
 #' Convert a modular binary number of an arbitrary type to a modular binary number typed as character.
 #'
@@ -6,7 +6,7 @@
 #' The leftmost character (position = 1) being the least significant bit.
 #'
 #' @examples # R function style:
-#' do_convert_any_to_MoBiDum_character(input);
+#' do_convert_any_to_MoBiNum_character(input);
 #'
 #' # R6 method style:
 #' modbinum$convert_to_character();
@@ -14,7 +14,7 @@
 #' @param input A modular binary number (logical vector, character vector, BiNum)
 #' @return A modular binary number (character)
 #' @export
-do_convert_any_to_MoBiDum_character <- function(input){
+do_convert_any_to_MoBiNum_character <- function(input){
   if(is(object = input, class2 = "character")){
     return(input);
   } else if(is(object = input, class2 = "logical")){

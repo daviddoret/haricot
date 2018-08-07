@@ -58,6 +58,12 @@ AlgoComposite <- R6Class(
           size = 10,
           type = "outputbit")
     },
+    do_copy_logic_to = function(target){
+      return(do_copy_logic_AlgoComposite_to_AlgoComposite(self, target));
+    },
+    do_copy_logic_from = function(source){
+      return(do_copy_logic_AlgoComposite_to_AlgoComposite(source, self));
+    },
     do_execute = function(input) {
       return(do_execute_AlgoComposite(algo = self, input = input));
     },
@@ -199,7 +205,7 @@ AlgoComposite <- R6Class(
       # Of course, at this point the new sub-graph will be disconnected.
     },
     set_inner_graph = function(graph){
-      private_inner_graph <- graph;
+      private$inner_graph <- graph;
     },
     set_inner_nodes = function(nodes){
       private$inner_nodes <- nodes;

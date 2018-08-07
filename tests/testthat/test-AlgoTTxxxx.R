@@ -13,10 +13,10 @@ test_that('AlgoTTxxxx: exhaustive output test', {
 
     a1 <- AlgoTTxxxx$new(n1);
 
-    expect_equal(a1$do_execute("00"), n1$get_bit(1));
-    expect_equal(a1$do_execute("10"), n1$get_bit(2));
-    expect_equal(a1$do_execute("01"), n1$get_bit(3));
-    expect_equal(a1$do_execute("11"), n1$get_bit(4));
+    expect_equal(a1$do_execute(c(FALSE,FALSE)), n1$get_bit(1), info = paste0(n1, ":00"));
+    expect_equal(a1$do_execute(c(TRUE,FALSE)), n1$get_bit(2), info = paste0(n1, ":10"));
+    expect_equal(a1$do_execute(c(FALSE,TRUE)), n1$get_bit(3), info = paste0(n1, ":01"));
+    expect_equal(a1$do_execute(c(TRUE,TRUE)), n1$get_bit(4), info = paste0(n1, ":11"));
 
     n1$do_increment();
     if(n1$get_equal_0()){
