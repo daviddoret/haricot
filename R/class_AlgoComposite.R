@@ -161,6 +161,11 @@ AlgoComposite <- R6Class(
       g <- add_edges(
         graph = g,
         edges = new_edges,
+        node_id = self$get_node_id(),
+        source_node_id = source_node_id,
+        source_bit = source_bit,
+        target_node_id = target_node_id,
+        target_bit = target_bit,
         arrow.size = .1,
         arrow.width = 2,
         color = color,
@@ -192,6 +197,12 @@ AlgoComposite <- R6Class(
         #byname = TRUE);
 
       # Of course, at this point the new sub-graph will be disconnected.
+    },
+    set_inner_graph = function(graph){
+      private_inner_graph <- graph;
+    },
+    set_inner_nodes = function(nodes){
+      private$inner_nodes <- nodes;
     },
     print = function(){
       cat(self$get_prettystring(), "\n");

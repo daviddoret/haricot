@@ -59,6 +59,10 @@ do_convert_AlgoNode_to_igraph <- function(node, ...){
           rep(node$get_input_dimension() + 1, node$get_input_dimension())
           )),
       node_id = node$get_node_id(),
+      source_node_id = node$get_node_id(),
+      # TODO: ADD source_bit
+      target_node_id = node$get_node_id(),
+      # TODO: ADD target_bit
       arrow.size = .1,
       arrow.width = 1,
       color = "#00994c",
@@ -70,6 +74,10 @@ do_convert_AlgoNode_to_igraph <- function(node, ...){
           node$get_input_dimension() + 1 + 1:node$get_output_dimension()
           )),
       node_id = node$get_node_id(),
+      source_node_id = node$get_node_id(),
+      # TODO: ADD source_bit
+      target_node_id = node$get_node_id(),
+      # TODO: ADD target_bit
       arrow.size = .1,
       arrow.width = 1,
       color = "#004c99",

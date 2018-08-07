@@ -38,12 +38,17 @@ do_copy_logic_AlgoComposite_to_AlgoComposite <- function(source, target, ...){
   target_nodes <- source$get_inner_nodes();
   target_graph <- source$get_inner_graph();
 
-  # Substitute source and target nodes in graph edges
+  # Substitute igraph vertices attributes
+  vertices_filter <- V(target_graph)$node_id == source$get_node_id();
+  V(target_graph)[vertices_filter]$node_id <- target$get_node_id();
+  V(target_graph)[vertices_filter]$name <- do_compute_vertex_name(target$get_node_id(), V(target_graph)[vertices_filter]$bit_id);
+
+  # Substitute igraph edge attributes
+  E(target_graph)[E(target_graph)$node_id == source$get_node_id()]$node_id <- target$get_node_id()
   E(target_graph)[E(target_graph)$source_node_id == source$get_node_id()]$source_node_id <- target$get_node_id()
   E(target_graph)[E(target_graph)$target_node_id == source$get_node_id()]$source_node_id <- target$get_node_id()
 
-  # My current assumption is that vertices and nodes do not need to be updated
-  # because the only vertex or node that has the old node_id is the parent.
+  stop("IT DOES NOT WORK!!!")
 
   # Push the new logic in the target composite algo
   target$set_inner_nodes(target_nodes);
