@@ -33,7 +33,7 @@ do_plot_AlgoNode <- function(node, ...){
   plot(
     g,
     vertex.color=vertice_fill_color  ,
-    edge.arrow.size=.25,
+    edge.arrow.size=.1,
     vertex.size=20,
     vertex.frame.color=vertice_border_color,
     vertex.label.color=vertice_label_color,

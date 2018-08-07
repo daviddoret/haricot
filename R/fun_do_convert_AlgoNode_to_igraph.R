@@ -65,6 +65,7 @@ do_convert_AlgoNode_to_igraph <- function(node, ...){
       # TODO: ADD target_bit
       arrow.size = .1,
       arrow.width = 1,
+      #weight = .9,
       color = "#00994c",
       lty = "solid",
       type = "input_algo") %>%
