@@ -41,8 +41,8 @@ AlgoNode <- R6Class(
     do_convert_to_igraph = function(...){
       return(do_convert_AlgoNode_to_igraph(node = self, ...));
     },
-    do_convert_to_AlgoTT = function(...){
-      return(do_convert_AlgoNode_to_AlgoTT(algo = self, ...));
+    do_convert_to_algo_ = function(...){
+      return(do_convert_AlgoNode_to_algo_(algo = self, ...));
     },
     do_execute = function(input) {
       stop("This method is abstract, please implement it in the subclass.");

@@ -7,8 +7,8 @@ test_that('do_design_composite_switch: test 01', {
 
   #browser();
 
-  algo_0 <- AlgoTT01$new();
-  algo_1 <- AlgoTT10$new();
+  algo_0 <- algo_01$new();
+  algo_1 <- algo_10$new();
 
   algo_switch <- do_design_composite_switch(algo_0, algo_1);
 

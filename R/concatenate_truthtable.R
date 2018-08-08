@@ -22,7 +22,7 @@ concatenate_truthtable <- function(truthtable_1, truthtable_2){
 
   logical_matrix_merged <- cbind(logical_matrix_1, logical_matrix_2);
 
-  truthtable_merged <- AlgoTT$new(
+  truthtable_merged <- algo_$new(
     input_dimension = truthtable_1$get_input_dimension(),
     output_dimension =
       truthtable_1$get_output_dimension() +

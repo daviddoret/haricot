@@ -16,7 +16,7 @@ AlgoNOT
 \item{...}{For future usage.}
 }
 \value{
-An object instance of class AlgoNOT:AlgoTT10:AlgoComposite:AlgoNode.
+An object instance of class AlgoNOT:algo_10:AlgoComposite:AlgoNode.
 }
 \description{
 The NOT logical algorithm implemented as a NAND-composite.

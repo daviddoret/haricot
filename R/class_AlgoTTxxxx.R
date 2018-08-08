@@ -1,7 +1,7 @@
 library(R6);
 
 #' @rdname BiFun_xxxx
-AlgoTTxxxx <- R6Class(
+algo_xxxx <- R6Class(
   "AlgoComposite",
   inherit = AlgoComposite,
   public = list(
@@ -17,24 +17,24 @@ AlgoTTxxxx <- R6Class(
       # Instanciates a specialized algorithm.
       a1 <- switch(
         truthtable_character,
-        "0000" = AlgoTT0000$new(),
-        "1000" = AlgoTT1000$new(),
-        "0100" = AlgoTT0100$new(),
-        "1100" = AlgoTT1100$new(),
-        "0010" = AlgoTT0010$new(),
-        "1010" = AlgoTT1010$new(),
-        "0110" = AlgoTT0110$new(),
-        "1110" = AlgoTT1110$new(),
-        "0001" = AlgoTT0001$new(),
-        "1001" = AlgoTT1001$new(),
-        "0101" = AlgoTT0101$new(),
-        "1101" = AlgoTT1101$new(),
-        "0011" = AlgoTT0011$new(),
-        "1011" = AlgoTT1011$new(),
-        "0111" = AlgoTT0111$new(),
-        "1111" = AlgoTT1111$new()
+        "0000" = algo_0000$new(),
+        "1000" = algo_1000$new(),
+        "0100" = algo_0100$new(),
+        "1100" = algo_1100$new(),
+        "0010" = algo_0010$new(),
+        "1010" = algo_1010$new(),
+        "0110" = algo_0110$new(),
+        "1110" = algo_1110$new(),
+        "0001" = algo_0001$new(),
+        "1001" = algo_1001$new(),
+        "0101" = algo_0101$new(),
+        "1101" = algo_1101$new(),
+        "0011" = algo_0011$new(),
+        "1011" = algo_1011$new(),
+        "0111" = algo_0111$new(),
+        "1111" = algo_1111$new()
       );
-      # Steal the internal logic of the AlgoTTxxxx algorithm.
+      # Steal the internal logic of the algo_xxxx algorithm.
       self$do_copy_logic_from(a1);
     },
     do_randomize_outputs = function() {

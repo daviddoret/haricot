@@ -1,13 +1,13 @@
 
 library(testthat);
 
-context("AlgoTT0010 R6 class");
+context("algo_0010 R6 class");
 
-test_that('AlgoTT0010: exhaustive output test', {
+test_that('algo_0010: exhaustive output test', {
 
   #browser();
 
-  a1 <- AlgoTT0010$new();
+  a1 <- algo_0010$new();
 
   expect_equal(a1$do_execute("00"), "0");
   expect_equal(a1$do_execute("10"), "0");

@@ -15,11 +15,11 @@ test_that(
     output_dimension_1 = sample(x = c(1:6), size = 1, replace = TRUE);
     output_dimension_2 = sample(x = c(1:6), size = 1, replace = TRUE);
 
-    tt1 <- AlgoTT$new(input_dimension = input_dimension, output_dimension = output_dimension_1);
+    tt1 <- algo_$new(input_dimension = input_dimension, output_dimension = output_dimension_1);
     tt1$do_randomize_outputs();
     # print(tt1);
 
-    tt2 <- AlgoTT$new(input_dimension = input_dimension, output_dimension = output_dimension_2);
+    tt2 <- algo_$new(input_dimension = input_dimension, output_dimension = output_dimension_2);
     tt2$do_randomize_outputs();
     # print(tt2);
 

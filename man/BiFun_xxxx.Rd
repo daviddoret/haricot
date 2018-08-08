@@ -5,13 +5,13 @@
 \name{BiFun_NAND}
 \alias{BiFun_NAND}
 \alias{BiFun_xxxx}
-\alias{AlgoTTxxxx}
+\alias{algo_xxxx}
 \title{Binary Function XXXX}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 BiFun_NAND
 
-AlgoTTxxxx
+algo_xxxx
 }
 \description{
 The most basic algorithm is NAND, that is the atomic building block of all higher-level algorithms.

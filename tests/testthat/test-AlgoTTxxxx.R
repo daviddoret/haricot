@@ -1,9 +1,9 @@
 
 library(testthat);
 
-context("AlgoTTxxxx R6 class");
+context("algo_xxxx R6 class");
 
-test_that('AlgoTTxxxx: exhaustive output test', {
+test_that('algo_xxxx: exhaustive output test', {
 
   #browser();
 
@@ -11,7 +11,7 @@ test_that('AlgoTTxxxx: exhaustive output test', {
 
   repeat{
 
-    a1 <- AlgoTTxxxx$new(n1);
+    a1 <- algo_xxxx$new(n1);
 
     expect_equal(a1$do_execute(c(FALSE,FALSE)), n1$get_bit(1), info = paste0(n1, ":00"));
     expect_equal(a1$do_execute(c(TRUE,FALSE)), n1$get_bit(2), info = paste0(n1, ":10"));

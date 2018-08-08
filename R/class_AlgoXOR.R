@@ -1,10 +1,10 @@
 library(R6);
 
-#' @rdname AlgoTT0110
+#' @rdname algo_0110
 #' @export
 AlgoXOR <- R6Class(
   "AlgoXOR",
-  inherit = AlgoTT0110,
+  inherit = algo_0110,
   public = list(
     initialize = function(
       node_id = NULL,

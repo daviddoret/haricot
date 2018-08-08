@@ -12,9 +12,9 @@
 #'
 #' @examples # Switch two simple algos:
 #' require(haricot);
-#' algo_0 <- AlgoTT01$new();
+#' algo_0 <- algo_01$new();
 #' algo_0$do_plot();
-#' algo_1 <- AlgoTT10$new();
+#' algo_1 <- algo_10$new();
 #' algo_1$do_plot();
 #' algo_switch <- do_design_composite_switch(algo_0, algo_1);
 #' algo_switch$do_execute("00");
@@ -57,7 +57,7 @@ do_design_composite_switch <- function(
   for(position in 1 : output_dimension){
 
     # If extra_bit == 0, keep algo_0 output bit. Otherwise, set it to 0.
-    sub_switch_0 <- AlgoTT0010$new();
+    sub_switch_0 <- algo_0010$new();
     algo_switch$set_inner_node(sub_switch_0);
     algo_switch$set_inner_edge(algo_0, paste0("o", position), sub_switch_0, "i1");
     algo_switch$set_inner_edge(algo_switch, extra_bit, sub_switch_0, "i2");

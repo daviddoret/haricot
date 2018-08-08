@@ -1,13 +1,13 @@
 
 library(testthat);
 
-context("AlgoTT11 R6 class");
+context("algo_11 R6 class");
 
-test_that('AlgoTT11: exhaustive output test', {
+test_that('algo_11: exhaustive output test', {
 
   #browser();
 
-  a1 <- AlgoTT11$new();
+  a1 <- algo_11$new();
 
   #print(nt);
   #plot_nandtree(nt);
