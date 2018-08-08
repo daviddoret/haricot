@@ -45,7 +45,7 @@ AlgoTT <- R6Class(
 
       # Name rows
       # Build a vector of character binary representations
-      binary_domain <- BinaryDomain$new(dimension = input_dimension);
+      binary_domain <- bdom$new(dimension = input_dimension);
       rownames(private$logical_matrix) <- binary_domain$do_convert_to_character_vector();
     },
     do_execute = function(input) {
@@ -58,8 +58,8 @@ AlgoTT <- R6Class(
         return(output_logical_vector);
       } else if(is(input, "character")){
         return(convert_logical_vector_to_character(output_logical_vector));
-      } else if(is(input, "MoBiNum")){
-        return(MoBiNum$new(output_logical_vector));
+      } else if(is(input, "bnum")){
+        return(bnum$new(output_logical_vector));
       } else {
         # Oooops!
         stop(input);
@@ -125,7 +125,7 @@ AlgoTT <- R6Class(
       output_character_vector <- apply(output_integer_matrix, 1, paste, collapse = "");
       output_character_vector
 
-      domain <- BinaryDomain$new(self$get_input_dimension());
+      domain <- bdom$new(self$get_input_dimension());
 
       input_integer_vector <- as.numeric(domain$get_logical_matrix());
       input_integer_matrix <- matrix(input_integer_vector, nrow = self$get_input_size());

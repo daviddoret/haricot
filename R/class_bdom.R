@@ -1,9 +1,26 @@
-library(R6);
-
-BinaryDomain <- R6Class(
-  # BINUMOSET = Binary Number (Exhaustive) Ordered Set.
-  # The binary n ordered set is defined as the ordered set of all binary values of dimension n.
-  "BinaryDomain",
+require(R6);
+#' bdom (R6 class)
+#'
+#' @description \code{bdom} is an R6 implementation of the modular binary domain concept.
+#'
+#' @section References:
+#' \itemize{
+#' \item{Modular binary domain (\link{def_modular_binary_domain})}
+#' }
+#'
+#' @examples bd1 <- bdom$new(1);
+#' print(bd1);
+#' bd2 <- bdom$new(2);
+#' print(bd2);
+#' bd3 <- bdom$new(3);
+#' print(bd3);
+#'
+#' @param dimension The dimension of the modular binary domain. (integer)
+#' @param ... For future usage.
+#' @return An object instance of R6 class \code{bdom}.
+#' @export
+bdom <- R6Class(
+  "Modular Binary Domain",
   public = list(
     # Private Members
     dimension = NULL,
@@ -12,7 +29,7 @@ BinaryDomain <- R6Class(
       # Store private members
       self$dimension <- dimension;
       self$logical_matrix <- matrix(nrow = 2 ^ dimension, ncol = dimension);
-      binum <- MoBiNum$new(input = rep(FALSE, dimension));
+      binum <- bnum$new(input = rep(FALSE, dimension));
       index <- 1;
       while(index <= 2 ^ dimension){
        self$logical_matrix[index,] <- binum$get_logical_vector();
@@ -46,4 +63,3 @@ BinaryDomain <- R6Class(
     }
   )
 )
-

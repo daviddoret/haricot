@@ -19,7 +19,7 @@ do_convert_any_to_MoBiNum_character <- function(input){
     return(input);
   } else if(is(object = input, class2 = "logical")){
     return(convert_logical_vector_to_character(input));
-  } else if(is(object = input, class2 = "MoBiNum")) {
+  } else if(is(object = input, class2 = "bnum")) {
     return(input$convert_to_character());
   } else {
     stop("Class not supported");

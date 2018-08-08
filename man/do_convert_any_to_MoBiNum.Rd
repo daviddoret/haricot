@@ -7,17 +7,17 @@
 do_convert_any_to_MoBiNum(input)
 }
 \arguments{
-\item{input}{A modular binary number (logical vector, character vector, MoBiNum)}
+\item{input}{A modular binary number (logical vector, character vector, bnum)}
 }
 \value{
-A modular binary number (MoBiNum)
+A modular binary number (bnum)
 }
 \description{
-Convert a modular binary number represented in an arbitrary type to a modular binary number typed as MoBiNum.
+Convert a modular binary number represented in an arbitrary type to a modular binary number typed as bnum.
 }
 \examples{
 do_convert_any_to_MoBiNum("1101");
 do_convert_any_to_MoBiNum(c(TRUE,TRUE,FALSE,TRUE));
-do_convert_any_to_MoBiNum(MoBiNum$new("1101"));
+do_convert_any_to_MoBiNum(bnum$new("1101"));
 
 }

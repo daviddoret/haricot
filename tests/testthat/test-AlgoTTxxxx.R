@@ -7,7 +7,7 @@ test_that('AlgoTTxxxx: exhaustive output test', {
 
   #browser();
 
-  n1 <- MoBiNum$new("0000");
+  n1 <- bnum$new("0000");
 
   repeat{
 

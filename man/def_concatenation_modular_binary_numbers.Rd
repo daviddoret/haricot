@@ -28,6 +28,6 @@ The concatenation operator is noted:\eqn{&}.
 }
 
 \seealso{
-Other concatenations: \code{\link{do_concatenate_MoBiNum}}
+Other concatenations: \code{\link{concat_bnum}}
 }
 \concept{concatenations}

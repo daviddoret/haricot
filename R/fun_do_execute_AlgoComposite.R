@@ -164,8 +164,8 @@ do_execute_AlgoComposite = function(algo, input) {
     return(output_logical_vector);
   } else if(is(input, "character")){
     return(convert_logical_vector_to_character(output_logical_vector));
-  } else if(is(input, "MoBiNum")){
-    return(MoBiNum$new(output_logical_vector));
+  } else if(is(input, "bnum")){
+    return(bnum$new(output_logical_vector));
   } else {
     # Oooops!
     stop(input);

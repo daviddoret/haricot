@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>do_convert_BinaryDomain_to_character_vector — do_convert_BinaryDomain_to_character_vector • haricot</title>
+<title>bdom (R6 class) — bdom • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="do_convert_BinaryDomain_to_character_vector — do_convert_BinaryDomain_to_character_vector" />
+<meta property="og:title" content="bdom (R6 class) — bdom" />
 
-<meta property="og:description" content="Takes a binary domain a returns a vector of character representations." />
+<meta property="og:description" content="bdom is an R6 implementation of the modular binary domain concept." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -92,45 +92,64 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>do_convert_BinaryDomain_to_character_vector</h1>
+    <h1>bdom (R6 class)</h1>
     
-    <div class="hidden name"><code>do_convert_BinaryDomain_to_character_vector.Rd</code></div>
+    <div class="hidden name"><code>bdom.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Takes a binary domain a returns a vector of character representations.</p>
+    <p><code>bdom</code> is an R6 implementation of the modular binary domain concept.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>do_convert_BinaryDomain_to_character_vector</span>(<span class='no'>binary_domain</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='no'>bdom</span></pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>binary_domain</th>
-      <td><p>A binary domain (R6 Class bdom)</p></td>
+      <th>dimension</th>
+      <td><p>The dimension of the modular binary domain. (integer)</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>For future usage</p></td>
+      <td><p>For future usage.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>An object of class <code>R6ClassGenerator</code> of length 24.</p>
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A vector where each item correspond to a binary number of the binary domain (character vector)</p>
+    <p>An object instance of R6 class <code>bdom</code>.</p>
+    
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    
+    <ul>
+<li><p>Modular binary domain (<a href='def_modular_binary_domain.html'>def_modular_binary_domain</a>)</p></li>
+</ul>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># R function style:</span>
-<span class='no'>b1</span> <span class='kw'>&lt;-</span> <span class='no'>bdom</span>$<span class='fu'>new</span>(<span class='kw'>dimension</span> <span class='kw'>=</span> <span class='fl'>3</span>);
-<span class='fu'>do_convert_BinaryDomain_to_character_vector</span>(<span class='no'>b1</span>);</div><div class='output co'>#&gt;   000   100   010   110   001   101   011   111 
-#&gt; "000" "100" "010" "110" "001" "101" "011" "111" </div><div class='input'>
-<span class='co'># R6 method style:</span>
-<span class='no'>b1</span>$<span class='fu'>do_convert_to_character_vector</span>();</div><div class='output co'>#&gt;   000   100   010   110   001   101   011   111 
-#&gt; "000" "100" "010" "110" "001" "101" "011" "111" </div><div class='input'>
+    <pre class="examples"><div class='input'><span class='no'>bd1</span> <span class='kw'>&lt;-</span> <span class='no'>bdom</span>$<span class='fu'>new</span>(<span class='fl'>1</span>);
+<span class='fu'>print</span>(<span class='no'>bd1</span>);</div><div class='output co'>#&gt; 0
+#&gt; 1</div><div class='input'><span class='no'>bd2</span> <span class='kw'>&lt;-</span> <span class='no'>bdom</span>$<span class='fu'>new</span>(<span class='fl'>2</span>);
+<span class='fu'>print</span>(<span class='no'>bd2</span>);</div><div class='output co'>#&gt; 00
+#&gt; 10
+#&gt; 01
+#&gt; 11</div><div class='input'><span class='no'>bd3</span> <span class='kw'>&lt;-</span> <span class='no'>bdom</span>$<span class='fu'>new</span>(<span class='fl'>3</span>);
+<span class='fu'>print</span>(<span class='no'>bd3</span>);</div><div class='output co'>#&gt; 000
+#&gt; 100
+#&gt; 010
+#&gt; 110
+#&gt; 001
+#&gt; 101
+#&gt; 011
+#&gt; 111</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -138,7 +157,11 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#format">Format</a></li>
+
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#references">References</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

@@ -8,7 +8,7 @@
 do_convert_BinaryDomain_to_character_vector(binary_domain, ...)
 }
 \arguments{
-\item{binary_domain}{A binary domain (R6 Class BinaryDomain)}
+\item{binary_domain}{A binary domain (R6 Class bdom)}
 
 \item{...}{For future usage}
 }
@@ -20,7 +20,7 @@ Takes a binary domain a returns a vector of character representations.
 }
 \examples{
 # R function style:
-b1 <- BinaryDomain$new(dimension = 3);
+b1 <- bdom$new(dimension = 3);
 do_convert_BinaryDomain_to_character_vector(b1);
 
 # R6 method style:

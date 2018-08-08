@@ -32,7 +32,7 @@
 
 <meta property="og:title" content="do_convert_any_to_MoBiNum — do_convert_any_to_MoBiNum" />
 
-<meta property="og:description" content="Convert a modular binary number represented in an arbitrary type to a modular binary number typed as MoBiNum." />
+<meta property="og:description" content="Convert a modular binary number represented in an arbitrary type to a modular binary number typed as bnum." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,7 +99,7 @@
 
     <div class="ref-description">
     
-    <p>Convert a modular binary number represented in an arbitrary type to a modular binary number typed as MoBiNum.</p>
+    <p>Convert a modular binary number represented in an arbitrary type to a modular binary number typed as bnum.</p>
     
     </div>
 
@@ -110,17 +110,17 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>input</th>
-      <td><p>A modular binary number (logical vector, character vector, MoBiNum)</p></td>
+      <td><p>A modular binary number (logical vector, character vector, bnum)</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A modular binary number (MoBiNum)</p>
+    <p>A modular binary number (bnum)</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>do_convert_any_to_MoBiNum</span>(<span class='st'>"1101"</span>);</div><div class='output co'>#&gt; <span class='error'>Error in do_convert_character_to_MoBiNum(input): could not find function "do_convert_character_to_MoBiNum"</span></div><div class='input'><span class='fu'>do_convert_any_to_MoBiNum</span>(<span class='fu'>c</span>(<span class='fl'>TRUE</span>,<span class='fl'>TRUE</span>,<span class='fl'>FALSE</span>,<span class='fl'>TRUE</span>));</div><div class='output co'>#&gt; <span class='error'>Error in do_convert_logical_to_MoBiNum(input): could not find function "do_convert_logical_to_MoBiNum"</span></div><div class='input'><span class='fu'>do_convert_any_to_MoBiNum</span>(<span class='no'>MoBiNum</span>$<span class='fu'>new</span>(<span class='st'>"1101"</span>));</div><div class='output co'>#&gt; <span class='error'>Error in do_convert_any_to_MoBiNum(MoBiNum$new("1101")): attempt to apply non-function</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>do_convert_any_to_MoBiNum</span>(<span class='st'>"1101"</span>);</div><div class='output co'>#&gt; <span class='error'>Error in do_convert_character_to_MoBiNum(input): could not find function "do_convert_character_to_MoBiNum"</span></div><div class='input'><span class='fu'>do_convert_any_to_MoBiNum</span>(<span class='fu'>c</span>(<span class='fl'>TRUE</span>,<span class='fl'>TRUE</span>,<span class='fl'>FALSE</span>,<span class='fl'>TRUE</span>));</div><div class='output co'>#&gt; <span class='error'>Error in do_convert_logical_to_MoBiNum(input): could not find function "do_convert_logical_to_MoBiNum"</span></div><div class='input'><span class='fu'>do_convert_any_to_MoBiNum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1101"</span>));</div><div class='output co'>#&gt; <span class='error'>Error in do_convert_any_to_MoBiNum(bnum$new("1101")): attempt to apply non-function</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

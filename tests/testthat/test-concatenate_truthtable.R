@@ -26,7 +26,7 @@ test_that(
     ttm <- concatenate_truthtable(tt1, tt2);
     # print(ttm);
 
-    bn <- MoBiNum$new(input = rep(FALSE, input_dimension));
+    bn <- bnum$new(input = rep(FALSE, input_dimension));
 
     repeat{
       i <- bn$convert_to_logical_vector();

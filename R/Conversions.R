@@ -51,7 +51,7 @@ convert_any_to_logical_vector <- function(input){
     return(input);
   } else if(is(object = input, class2 = "character")){
     return(convert_character_to_logical_vector(input));
-  } else if(is(object = input, class2 = "MoBiNum")) {
+  } else if(is(object = input, class2 = "bnum")) {
     return(input$get_logical_vector());
   } else {
     # Ooops!

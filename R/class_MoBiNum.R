@@ -1,7 +1,7 @@
 library(R6);
 
-MoBiNum <- R6Class(
-  "MoBiNum",
+bnum <- R6Class(
+  "bnum",
   public = list(
     # Private Members
     logical_vector = NULL,
