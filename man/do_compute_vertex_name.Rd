@@ -17,7 +17,7 @@ do_compute_vertex_name(id, bit, ...)
 N/A
 }
 \description{
-Computes the unique name of an igraph vertex used in AlgoComposite internals.
+Computes the unique name of an igraph vertex used in algo_composite internals.
 The naming scheme goes like this:
 For input bits: %NODE_ID% & "." & %BIT%, e.g. "node134.i4"
 For algo: %NODE_ID% & ".algo", e.g. "node134.algo"

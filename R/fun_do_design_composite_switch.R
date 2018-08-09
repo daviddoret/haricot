@@ -23,8 +23,8 @@
 #' algo_switch$do_execute("11");
 #' algo_switch$do_plot();
 #'
-#' @param algo_0 A component algorithm to be switched to when e == 0 (AlgoNode)
-#' @param algo_1 A component algorithm to be switched to when e == 1 (AlgoNode)
+#' @param algo_0 A component algorithm to be switched to when e == 0 (algo_base)
+#' @param algo_1 A component algorithm to be switched to when e == 1 (algo_base)
 #' @param ... For future usage
 #' @return A component algorithm whose inner logic switches algo_0 and algo_1 based on e
 #' @export
@@ -40,7 +40,7 @@ do_design_composite_switch <- function(
   output_dimension <- algo_0$get_output_dimension();
   extra_bit <- paste0("i", input_dimension);
 
-  algo_switch <- AlgoComposite$new(input_dimension, output_dimension);
+  algo_switch <- algo_composite$new(input_dimension, output_dimension);
 
   algo_switch$set_inner_node(algo_0);
   algo_switch$set_inner_node(algo_1);
@@ -63,13 +63,13 @@ do_design_composite_switch <- function(
     algo_switch$set_inner_edge(algo_switch, extra_bit, sub_switch_0, "i2");
 
     # If extra_bit == 1, keep algo_1 output bit. Otherwise, set it to 0.
-    sub_switch_1 <- AlgoAND$new();
+    sub_switch_1 <- algo_and$new();
     algo_switch$set_inner_node(sub_switch_1);
     algo_switch$set_inner_edge(algo_1, paste0("o", position), sub_switch_1, "i1");
     algo_switch$set_inner_edge(algo_switch, extra_bit, sub_switch_1, "i2");
 
     # OR the two switches
-    sub_or_1 <- AlgoOR$new();
+    sub_or_1 <- algo_or$new();
     algo_switch$set_inner_node(sub_or_1);
     algo_switch$set_inner_edge(sub_switch_0, "o1", sub_or_1, "i1");
     algo_switch$set_inner_edge(sub_switch_1, "o1", sub_or_1, "i2");

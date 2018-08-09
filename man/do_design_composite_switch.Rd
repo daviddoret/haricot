@@ -7,9 +7,9 @@
 do_design_composite_switch(algo_0, algo_1, ...)
 }
 \arguments{
-\item{algo_0}{A component algorithm to be switched to when e == 0 (AlgoNode)}
+\item{algo_0}{A component algorithm to be switched to when e == 0 (algo_base)}
 
-\item{algo_1}{A component algorithm to be switched to when e == 1 (AlgoNode)}
+\item{algo_1}{A component algorithm to be switched to when e == 1 (algo_base)}
 
 \item{...}{For future usage}
 }

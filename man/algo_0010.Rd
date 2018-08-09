@@ -16,7 +16,7 @@ algo_0010
 \item{...}{For future usage.}
 }
 \value{
-An object instance of class algo_10:AlgoComposite:AlgoNode.
+An object instance of class algo_10:algo_composite:algo_base.
 }
 \description{
 The logical algorithm with truth table 0010 implemented as a NAND-composite.

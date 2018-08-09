@@ -34,8 +34,13 @@ build_export_figures <- function(){
   export_figure("algo_tt1110_graph", algo_1110$new()$do_plot);
   export_figure("algo_tt1111_graph", algo_1111$new()$do_plot);
 
-  export_figure("algo_nand_graph", AlgoNAND$new()$do_plot);
+  export_figure("algo_and_graph", AlgoNOT$new()$do_plot);
+  export_figure("algo_nand_graph", algo_nand$new()$do_plot);
+  export_figure("algo_nor_graph", AlgoNOT$new()$do_plot);
   export_figure("algo_not_graph", AlgoNOT$new()$do_plot);
+  export_figure("algo_or_graph", AlgoNOT$new()$do_plot);
+  export_figure("algo_xnor_graph", AlgoNOT$new()$do_plot);
+
 
   }
 

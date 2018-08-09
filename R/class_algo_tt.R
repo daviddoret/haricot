@@ -19,7 +19,7 @@ require(uuid);
 #' @export
 algo_tt <- R6Class(
   "algo_tt",
-  inherit = AlgoNode,
+  inherit = algo_base,
   private = list(
     logical_matrix = NULL),
   public = list(

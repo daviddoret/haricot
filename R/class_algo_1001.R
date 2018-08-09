@@ -1,6 +1,6 @@
 require(R6);
 
-#' AlgoXNOR, algo_1001 (R6 class)
+#' algo_xnor, algo_1001 (R6 class)
 #'
 #' @description The logical algorithm with truth table 1001 implemented as a NAND-composite.
 #' This is also the well-known logical gate XNOR.
@@ -15,12 +15,12 @@ require(R6);
 #' @param node_id A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)
 #' @param label A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)
 #' @param ... For future usage.
-#' @return An object instance of class algo_10:AlgoComposite:AlgoNode.
+#' @return An object instance of class algo_10:algo_composite:algo_base.
 #' @name algo_1001
 #' @export
 algo_1001 <- R6Class(
   "algo_1001",
-  inherit = AlgoComposite,
+  inherit = algo_composite,
   public = list(
     initialize = function(
       node_id = NULL,
