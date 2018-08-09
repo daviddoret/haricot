@@ -12,7 +12,7 @@ algo_0001
 algo_and
 }
 \arguments{
-\item{node_id}{A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)}
+\item{algo_id}{A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)}
 
 \item{label}{A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)}
 
@@ -43,7 +43,7 @@ This is also the well-known logical gate AND.
 
 \examples{
 a <- algo_0001$new();
-a$do_plot();
+a$plot();
 a$do_execute("10");
 
 }

@@ -10,10 +10,10 @@ require(igraph);
 #' {\figure{algo_nand_graph.png}{Graph of the algorithm}}
 #'
 #' @examples a1 <- algo_nand$new();
-#' a1$do_plot();
+#' a1$plot();
 #' a1$do_execute("01");
 #'
-#' @param node_id A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)
+#' @param algo_id A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)
 #' @param label A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)
 #' @param ... For future usage.
 #' @return An object instance of class algo_nand:algo_base.
@@ -25,7 +25,7 @@ algo_nand <- R6Class(
   ),
   public = list(
     initialize = function(
-      node_id = NULL,
+      algo_id = NULL,
       label = NULL,
       ...) {
       input_dimension <- 2;
@@ -34,15 +34,15 @@ algo_nand <- R6Class(
       super$initialize(
         input_dimension = input_dimension,
         output_dimension = output_dimension,
-        node_id = node_id,
+        algo_id = algo_id,
         label = label,
         ...);
     },
     do_execute = function(input, ...) {
       return(do_execute_algo_nand(algo = self, input, ...));
     },
-    do_plot = function() {
-      do_plot_algo_base(self);
+    plot = function() {
+      plot_algo_base(self);
     },
     do_randomize_outputs = function() {
       stop("This method is abstract, please implement it in the subclass.");
@@ -60,8 +60,8 @@ algo_nand <- R6Class(
     get_label = function(){
       return(private$label);
     },
-    get_node_id = function(){
-      return(private$node_id);
+    get_algo_id = function(){
+      return(private$algo_id);
     },
     get_output_dimension = function() {
       return(private$output_dimension);

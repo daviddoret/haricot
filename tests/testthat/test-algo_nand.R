@@ -17,6 +17,6 @@ test_that('algo_nand: test 01', {
   expect_equal(a$do_execute("01"), "1");
   expect_equal(a$do_execute("11"), "0");
 
-  a$do_plot()
+  a$plot()
 
 });

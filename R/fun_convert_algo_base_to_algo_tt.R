@@ -1,4 +1,4 @@
-#' do_convert_algo_base_to_algo_
+#' convert_algo_base_to_algo_
 #'
 #' @description This function builds a truth table from an arbitrary algorithm
 #' by executing it with all possible inputs.
@@ -7,7 +7,7 @@
 #'
 #' @examples # R function style:
 #' a1 <- AlgoNOT$new();
-#' a2 <- do_convert_algo_base_to_algo_(a1);
+#' a2 <- convert_algo_base_to_algo_(a1);
 #' print(a2);
 #'
 #' # R6 method style:
@@ -17,7 +17,7 @@
 #' @param algo An arbitrary algorithm (R6 Class algo_base)
 #' @return The equivalent truth-table-based algorithm (R6 Class algo_)
 #' @export
-do_convert_algo_base_to_algo_ <- function(algo){
+convert_algo_base_to_algo_ <- function(algo){
   input_dimension <- algo$get_input_dimension();
   output_dimension <- algo$get_output_dimension();
   tt <- algo_tt$new(

@@ -7,7 +7,7 @@ algo_xxxx <- R6Class(
   public = list(
     initialize = function(
       truthtable) {
-      truthtable_character <- do_convert_any_to_bnum_character(truthtable);
+      truthtable_character <- convert_any_to_bnum_character(truthtable);
       if(nchar(truthtable_character) != 4){
         stop("Truthtable size is not equal to 4, hence input dimension is not equal to 2");
       }

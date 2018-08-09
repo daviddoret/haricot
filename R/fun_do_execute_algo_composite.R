@@ -47,16 +47,16 @@ do_execute_algo_composite = function(algo, input) {
     vertex <- V(g)[V(g)$name == vertex_name];
     label <- vertex$label;
     # print(paste0("label: ", label));
-    node_id <- vertex$node_id;
-    # print(paste0("node_id: ", node_id));
+    algo_id <- vertex$algo_id;
+    # print(paste0("algo_id: ", algo_id));
     vertex_type <- vertex$type;
     # print(paste0("vertex_type: ", vertex_type));
     node <- NULL;
-    if(node_id == algo$get_node_id()){
+    if(algo_id == algo$get_algo_id()){
       # The node we are working on is the parent node.
       node <- algo;
     } else {
-      node <- algo$get_inner_node(node_id);
+      node <- algo$get_inner_node(algo_id);
     }
     node_input_dimension <- node$get_input_dimension();
     # print(paste0("node_input_dimension: ", node_input_dimension));
@@ -131,12 +131,12 @@ do_execute_algo_composite = function(algo, input) {
 
   for(bit_position in 1:algo$get_input_dimension()){
     bit_id <- paste0("i", bit_position);
-    node_id <- algo$get_node_id();
-    vertex_name <- paste0(node_id, ".", bit_id);
+    algo_id <- algo$get_algo_id();
+    vertex_name <- paste0(algo_id, ".", bit_id);
     pushed_value <- input_logical_vector[bit_position];
     # cat("\n\n\nSTAGE 1: EXECUTE INPUTBIT",
     #  "bit_id: ", bit_id,
-    #  "node_id", node_id,
+    #  "algo_id", algo_id,
     #  "vertex_name", vertex_name,
     #  "pushed_value", pushed_value,
     #  "bit_position", bit_position,
@@ -152,7 +152,7 @@ do_execute_algo_composite = function(algo, input) {
   for(position in 1:algo$get_output_dimension()){
     bit_id <- paste0("o", position);
     # print(paste0("\n\n\n\nSTAGE 2: RETRIEVE FROM BitOutput: bit_id: ", bit_id));
-    vertex_name <- paste0(algo$get_node_id(), ".", bit_id);
+    vertex_name <- paste0(algo$get_algo_id(), ".", bit_id);
     bit_exec_value <- vertices_execution_value[[vertex_name]];
     # print(paste0("bit_exec_value: ", bit_exec_value));
     output_logical_vector[position] <- bit_exec_value;

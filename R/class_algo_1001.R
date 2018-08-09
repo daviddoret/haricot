@@ -9,10 +9,10 @@ require(R6);
 #' {\figure{algo_1001_graph.png}{Graph of the algorithm}}
 #'
 #' @examples a <- algo_1001$new();
-#' a$do_plot();
+#' a$plot();
 #' a$do_execute("10");
 #'
-#' @param node_id A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)
+#' @param algo_id A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)
 #' @param label A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)
 #' @param ... For future usage.
 #' @return An object instance of class algo_10:algo_composite:algo_base.
@@ -23,7 +23,7 @@ algo_1001 <- R6Class(
   inherit = algo_composite,
   public = list(
     initialize = function(
-      node_id = NULL,
+      algo_id = NULL,
       label = NULL,
       ...) {
       input_dimension <- 2;
@@ -32,7 +32,7 @@ algo_1001 <- R6Class(
       super$initialize(
         input_dimension = input_dimension,
         output_dimension = output_dimension,
-        node_id = node_id); #,
+        algo_id = algo_id); #,
       #label = label,
       #...);
 

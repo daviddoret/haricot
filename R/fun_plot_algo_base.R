@@ -5,14 +5,14 @@ require(RColorBrewer)
 #' @description Plot the igraph of a algo_base with adequate style, etc.
 #'
 #' @examples a1 <- algo_nand$new();
-#' do_plot_algo_base(a1);
+#' plot_algo_base(a1);
 #'
 #' @param ... For future usage.
 #' @return A plotted network graph.
 #' @export
-do_plot_algo_base <- function(node, ...){
+plot_algo_base <- function(node, ...){
 
-  g <- do_convert_algo_base_to_igraph(node = node, ...);
+  g <- convert_algo_base_to_igraph(node = node, ...);
 
   # Make a palette of 3 colors
   vertice_fill_palette = brewer.pal(3, "Set1");

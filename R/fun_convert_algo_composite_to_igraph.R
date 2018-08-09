@@ -18,7 +18,7 @@ require(igraph);
 #' @param ... For future usage.
 #' @return A directed network graph representation of the node (igraph).
 #' @export
-do_convert_algo_composite_to_igraph <- function(node, ...){
+convert_algo_composite_to_igraph <- function(node, ...){
 
   # algo_composite manage its internal state with an igraph...
   g <- node$get_inner_graph();

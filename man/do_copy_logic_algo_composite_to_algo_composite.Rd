@@ -25,16 +25,16 @@ Copies the internal logic of a composite algorithm on a different composite algo
 a1 <- algo_xnor$new();
 a2 <- algo_composite$new(input_dimension = 2, output_dimension = 1);
 do_copy_logic_algo_composite_to_algo_composite(a1, a2);
-a2$do_plot();
+a2$plot();
 
 # R6 method style with copy from:
 a3 <- algo_composite$new(input_dimension = 2, output_dimension = 1);
 a3$do_copy_logic_from(a1);
-a3$do_plot();
+a3$plot();
 
 # R6 method style with copy to:
 a4 <- algo_composite$new(input_dimension = 2, output_dimension = 1);
 a1$do_copy_logic_to(a4);
-a4$do_plot();
+a4$plot();
 
 }

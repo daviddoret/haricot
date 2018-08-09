@@ -1,4 +1,4 @@
-#' do_convert_algo_tt_to_character_dataframe
+#' convert_algo_tt_to_character_dataframe
 #'
 #' @description Takes an object of type algo_ and returns a character dataframe representation.
 #' This format is both machine and human readable.
@@ -6,7 +6,7 @@
 #'
 #' @examples # Function style:
 #' a1 <- algo_tt$new(input_dimension = 2, output_dimension = 3);
-#' do_convert_algo_tt_to_character_dataframe(a1);
+#' convert_algo_tt_to_character_dataframe(a1);
 #'
 #' # R6 method style:
 #' a1$convert_to_character_dataframe();
@@ -15,7 +15,7 @@
 #' @param ... For future usage
 #' @return A nicely formatted ROxygen2 Tabular (character)
 #' @export
-do_convert_algo_tt_to_character_dataframe = function(
+convert_algo_tt_to_character_dataframe = function(
   algo_tt,
   ...) {
   m1 <- algo_tt$get_logical_matrix();

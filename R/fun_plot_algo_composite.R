@@ -5,15 +5,15 @@ require(RColorBrewer)
 #' @description Plot the igraph of a algo_composite with adequate style, etc.
 #'
 #' @examples a1 <- algo_xnor$new();
-#' do_plot_algo_composite(a1);
+#' plot_algo_composite(a1);
 #'
 #' @param algo A composite algorithm (algo_composite).
 #' @param ... For future usage.
 #' @return A plotted network graph.
 #' @export
-do_plot_algo_composite <- function(algo, ...){
+plot_algo_composite <- function(algo, ...){
 
-  g <- do_convert_algo_composite_to_igraph(node = algo, ...);
+  g <- convert_algo_composite_to_igraph(node = algo, ...);
 
   # Make a palette of 3 colors
   #vertice_fill_palette = brewer.pal(3, "Set1");
@@ -33,9 +33,9 @@ do_plot_algo_composite <- function(algo, ...){
   l <- layout_with_fr(g)
 
   mark_groups <- list();
-  for(node_id in unique(V(g)$node_id)){
-    numeric_vector <- which(V(g)$node_id == node_id);
-    mark_groups[[node_id]] <- numeric_vector;
+  for(algo_id in unique(V(g)$algo_id)){
+    numeric_vector <- which(V(g)$algo_id == algo_id);
+    mark_groups[[algo_id]] <- numeric_vector;
   }
 
   # Make the plot

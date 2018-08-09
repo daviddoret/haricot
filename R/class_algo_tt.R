@@ -26,14 +26,14 @@ algo_tt <- R6Class(
     initialize = function(
       input_dimension,
       output_dimension,
-      node_id = NULL,
+      algo_id = NULL,
       label = NULL,
       ...) {
       # Call the super class constructor
       super$initialize(
         input_dimension = input_dimension,
         output_dimension = output_dimension,
-        node_id = node_id,
+        algo_id = algo_id,
         label = label,
         ...);
 
@@ -46,7 +46,7 @@ algo_tt <- R6Class(
       # Name rows
       # Build a vector of character binary representations
       binary_domain <- bdom$new(dimension = input_dimension);
-      rownames(private$logical_matrix) <- binary_domain$do_convert_to_character_vector();
+      rownames(private$logical_matrix) <- binary_domain$convert_to_character_vector();
     },
     do_execute = function(input) {
       # Applies the TruthTable algorithm and returns its output.
@@ -65,8 +65,8 @@ algo_tt <- R6Class(
         stop(input);
       }
     },
-    do_convert_to_character_dataframe = function(...){
-      return(do_convert_algo_tt_to_character_dataframe(self, ...));
+    convert_to_character_dataframe = function(...){
+      return(convert_algo_tt_to_character_dataframe(self, ...));
     },
     do_randomize_outputs = function() {
       # Randomizes the outputs of the TruthTable.

@@ -22,14 +22,14 @@ Modifies the unique ID of a composite algorithm node.
 \examples{
 # R function style:
 a1 <- algo_xnor$new();
-print(a1$get_node_id());
+print(a1$get_algo_id());
 do_change_id_algo_composite(a1, "a_stupid_id");
-print(a1$get_node_id());
+print(a1$get_algo_id());
 
 # R6 method style:
 a2 <- algo_xnor$new();
-print(a2$get_node_id());
+print(a2$get_algo_id());
 a2$do_change_id("another_stupid_id");
-print(a2$get_node_id());
+print(a2$get_algo_id());
 
 }

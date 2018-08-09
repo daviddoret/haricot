@@ -7,11 +7,11 @@ algo_or <- R6Class(
   inherit = algo_0111,
   public = list(
     initialize = function(
-      node_id = NULL,
+      algo_id = NULL,
       label = NULL,
       ...) {
       super$initialize(
-        node_id,
+        algo_id,
         label,
         ...
       );

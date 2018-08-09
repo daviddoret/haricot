@@ -9,7 +9,7 @@
 AlgoNOT
 }
 \arguments{
-\item{node_id}{A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)}
+\item{algo_id}{A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)}
 
 \item{label}{A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)}
 
@@ -38,7 +38,7 @@ In practice, since NOT has the truthtable {1,0}, this class inherits from Algo10
 
 \examples{
 a <- AlgoNOT$new();
-a$do_plot();
+a$plot();
 a$do_execute("1");
 
 }

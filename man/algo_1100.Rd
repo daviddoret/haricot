@@ -9,7 +9,7 @@
 algo_1100
 }
 \arguments{
-\item{node_id}{A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)}
+\item{algo_id}{A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)}
 
 \item{label}{A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)}
 
@@ -39,7 +39,7 @@ The logical algorithm with truth table 1100 implemented as a NAND-composite.
 
 \examples{
 a <- algo_1100$new();
-a$do_plot();
+a$plot();
 a$do_execute("10");
 
 }

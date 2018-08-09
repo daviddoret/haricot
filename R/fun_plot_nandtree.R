@@ -10,9 +10,9 @@ plot_nandtree <- function(nandtree){
   nand_filter <- nandtree$get_logical_datatable()$type == "n";
   output_filter <- nandtree$get_logical_datatable()$type == "o";
 
-  subnodes <- c(nandtree$get_logical_datatable()$subnode_id);
+  subnodes <- c(nandtree$get_logical_datatable()$subalgo_id);
   vertices <- data.frame(
-    name = nandtree$get_logical_datatable()$subnode_id,
+    name = nandtree$get_logical_datatable()$subalgo_id,
     type = nandtree$get_logical_datatable()$type);
   param1 <- nandtree$get_logical_datatable()$param1_id;
   param2 <- nandtree$get_logical_datatable()$param2_id;

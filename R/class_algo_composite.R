@@ -21,27 +21,27 @@ algo_composite <- R6Class(
     initialize = function(
       input_dimension,
       output_dimension,
-      node_id = NULL,
+      algo_id = NULL,
       label = NULL,
       ...) {
       # Call the super class constructor
       super$initialize(
         input_dimension = input_dimension,
         output_dimension = output_dimension,
-        node_id = node_id,
+        algo_id = algo_id,
         label = label,
         ...);
       private$inner_nodes <- list();
 
-      # WARNING: NEARLY REDUNDANT CODE WITH do_convert_algo_base_to_igraph
+      # WARNING: NEARLY REDUNDANT CODE WITH convert_algo_base_to_igraph
       private$inner_graph <- make_empty_graph(directed = TRUE) %>%
         add_vertices(
           nv = self$get_input_dimension(),
           bit_id = paste0("i", 1:self$get_input_dimension()),
           color = "#ccffe5",
           label = paste0("i", 1:self$get_input_dimension()),
-          name = paste0(self$get_node_id(), ".", paste0("i", 1:self$get_input_dimension())),
-          node_id = self$get_node_id(),
+          name = paste0(self$get_algo_id(), ".", paste0("i", 1:self$get_input_dimension())),
+          algo_id = self$get_algo_id(),
           push_execution_value = list(), # A vector of pushed execution values.
           shape = "circle",
           size = 10,
@@ -51,8 +51,8 @@ algo_composite <- R6Class(
           bit_id = paste0("o", 1:self$get_output_dimension()),
           color = "#cce5ff",
           label = paste0("o", 1:self$get_output_dimension()),
-          name = paste0(self$get_node_id(),".",paste0("o", 1:self$get_output_dimension())),
-          node_id = self$get_node_id(),
+          name = paste0(self$get_algo_id(),".",paste0("o", 1:self$get_output_dimension())),
+          algo_id = self$get_algo_id(),
           push_execution_value = list(), # A vector of pushed execution values.
           shape = "circle",
           size = 10,
@@ -67,8 +67,8 @@ algo_composite <- R6Class(
     do_execute = function(input) {
       return(do_execute_algo_composite(algo = self, input = input));
     },
-    do_plot = function() {
-      do_plot_algo_composite(self);
+    plot = function() {
+      plot_algo_composite(self);
     },
     do_randomize_outputs = function() {
       stop("ooops");
@@ -79,10 +79,10 @@ algo_composite <- R6Class(
     get_inner_node_count = function(){
       return(length(private$inner_nodes));
     },
-    get_inner_node = function(inner_node_id){
-      return(private$inner_nodes[[inner_node_id]]);
+    get_inner_node = function(inner_algo_id){
+      return(private$inner_nodes[[inner_algo_id]]);
     },
-    get_inner_node_predecessors = function(inner_node_id){
+    get_inner_node_predecessors = function(inner_algo_id){
       # Return a vector of node ids
       # corresponding to the direct predecessors of the target node.
       stop("ooops");
@@ -133,11 +133,11 @@ algo_composite <- R6Class(
         # on the input and output bits of the current node.
         target_node <- self;
       }
-      source_node_id <- source_node$get_node_id();
-      target_node_id <- target_node$get_node_id();
+      source_algo_id <- source_node$get_algo_id();
+      target_algo_id <- target_node$get_algo_id();
 
-      source_name <- paste0(source_node_id, ".", source_bit);
-      target_name <- paste0(target_node_id, ".", target_bit);
+      source_name <- paste0(source_algo_id, ".", source_bit);
+      target_name <- paste0(target_algo_id, ".", target_bit);
 
       g <- self$get_inner_graph();
 
@@ -167,10 +167,10 @@ algo_composite <- R6Class(
       g <- add_edges(
         graph = g,
         edges = new_edges,
-        node_id = self$get_node_id(),
-        source_node_id = source_node_id,
+        algo_id = self$get_algo_id(),
+        source_algo_id = source_algo_id,
         source_bit = source_bit,
-        target_node_id = target_node_id,
+        target_algo_id = target_algo_id,
         target_bit = target_bit,
         arrow.size = .1,
         arrow.width = 2,
@@ -187,13 +187,13 @@ algo_composite <- R6Class(
       # TODO: If the node exists already, clean the igraph properly.
 
       # Retrieve the node unique ID
-      node_id <- node$get_node_id();
+      algo_id <- node$get_algo_id();
 
       # Store the sub-algorithm node in the private list.
-      private$inner_nodes[[node_id]] <- node;
+      private$inner_nodes[[algo_id]] <- node;
 
       # Retrieve the graph of the new node.
-      node_graph <- node$do_convert_to_igraph();
+      node_graph <- node$convert_to_igraph();
 
       # Merge the current graph with the new one.
       private$inner_graph <- private$inner_graph %du% node_graph;

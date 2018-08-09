@@ -2,9 +2,9 @@
 #'
 #' @description Computes the unique name of an igraph vertex used in algo_composite internals.
 #' The naming scheme goes like this:
-#' For input bits: %NODE_ID% & "." & %BIT%, e.g. "node134.i4"
-#' For algo: %NODE_ID% & ".algo", e.g. "node134.algo"
-#' For output bits: %NODE_ID% & "." & %BIT%, e.g. "node134.o7"
+#' For input bits: %algo_id% & "." & %BIT%, e.g. "node134.i4"
+#' For algo: %algo_id% & ".algo", e.g. "node134.algo"
+#' For output bits: %algo_id% & "." & %BIT%, e.g. "node134.o7"
 #' This function is mainly used for internal purposes but could be useful for advanced manipulations.
 #' This function is trivial but may prove useful in the future to enforce data quality validation rules.
 #'

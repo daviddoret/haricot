@@ -31,14 +31,14 @@ In summary, a composite switch is a practical construction that combines two alg
 # Switch two simple algos:
 require(haricot);
 algo_0 <- algo_01$new();
-algo_0$do_plot();
+algo_0$plot();
 algo_1 <- algo_10$new();
-algo_1$do_plot();
+algo_1$plot();
 algo_switch <- do_design_composite_switch(algo_0, algo_1);
 algo_switch$do_execute("00");
 algo_switch$do_execute("10");
 algo_switch$do_execute("01");
 algo_switch$do_execute("11");
-algo_switch$do_plot();
+algo_switch$plot();
 
 }

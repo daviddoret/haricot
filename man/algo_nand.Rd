@@ -9,7 +9,7 @@
 algo_nand
 }
 \arguments{
-\item{node_id}{A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)}
+\item{algo_id}{A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)}
 
 \item{label}{A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)}
 
@@ -28,7 +28,7 @@ Any algorithm may be built from the atomic NAND algorithm.
 
 \examples{
 a1 <- algo_nand$new();
-a1$do_plot();
+a1$plot();
 a1$do_execute("01");
 
 }

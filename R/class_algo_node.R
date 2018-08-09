@@ -19,7 +19,7 @@ algo_base <- R6Class(
   private = list(
     input_dimension = NULL,
     output_dimension = NULL,
-    node_id = NULL,
+    algo_id = NULL,
     label = NULL
   ),
   public = list(
@@ -27,27 +27,27 @@ algo_base <- R6Class(
     initialize = function(
       input_dimension,
       output_dimension,
-      node_id = NULL,
+      algo_id = NULL,
       label = NULL,
       ...) {
       # Store private members
       private$input_dimension <- input_dimension;
       private$output_dimension <- output_dimension;
-      if(is.null(node_id)){ node_id <- get_node_guid(); }
-      private$node_id <- node_id;
+      if(is.null(algo_id)){ algo_id <- get_node_guid(); }
+      private$algo_id <- algo_id;
       if(is.null(label)){ label <- "algo"; }
       private$label <- label;
     },
-    do_convert_to_igraph = function(...){
-      return(do_convert_algo_base_to_igraph(node = self, ...));
+    convert_to_igraph = function(...){
+      return(convert_algo_base_to_igraph(node = self, ...));
     },
-    do_convert_to_algo_ = function(...){
-      return(do_convert_algo_base_to_algo_(algo = self, ...));
+    convert_to_algo_ = function(...){
+      return(convert_algo_base_to_algo_(algo = self, ...));
     },
     do_execute = function(input) {
       stop("This method is abstract, please implement it in the subclass.");
     },
-    do_plot = function() {
+    plot = function() {
       plot_algo_base(self);
     },
     do_randomize_outputs = function() {
@@ -66,8 +66,8 @@ algo_base <- R6Class(
     get_label = function(){
       return(private$label);
     },
-    get_node_id = function(){
-      return(private$node_id);
+    get_algo_id = function(){
+      return(private$algo_id);
     },
     get_output_dimension = function() {
       return(private$output_dimension);

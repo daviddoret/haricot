@@ -17,7 +17,7 @@ require(igraph);
 #' @param ... For future usage.
 #' @return A directed network graph representation of the node (igraph).
 #' @export
-do_convert_algo_base_to_igraph <- function(node, ...){
+convert_algo_base_to_igraph <- function(node, ...){
 
   g <- make_empty_graph(directed = TRUE) %>%
     add_vertices(
@@ -25,8 +25,8 @@ do_convert_algo_base_to_igraph <- function(node, ...){
       bit_id = paste0("i", 1:node$get_input_dimension()),
       color = "#ccffe5",
       label = paste0("i", 1:node$get_input_dimension()),
-      name = paste0(node$get_node_id(), ".", paste0("i", 1:node$get_input_dimension())),
-      node_id = node$get_node_id(),
+      name = paste0(node$get_algo_id(), ".", paste0("i", 1:node$get_input_dimension())),
+      algo_id = node$get_algo_id(),
       push_execution_value = list(), # A vector of pushed execution values.
       shape = "circle",
       size = 10,
@@ -36,8 +36,8 @@ do_convert_algo_base_to_igraph <- function(node, ...){
       bit_id = NA,
       color = "#eeeeee",
       label = node$get_label(),
-      name = paste0(node$get_node_id(), ".", "algo"),
-      node_id = node$get_node_id(),
+      name = paste0(node$get_algo_id(), ".", "algo"),
+      algo_id = node$get_algo_id(),
       push_execution_value = list(), # A vector of pushed execution values.
       shape = "circle",
       size = 20,
@@ -47,8 +47,8 @@ do_convert_algo_base_to_igraph <- function(node, ...){
       bit_id = paste0("o", 1:node$get_output_dimension()),
       color = "#cce5ff",
       label = paste0("o", 1:node$get_output_dimension()),
-      name = paste0(node$get_node_id(),".",paste0("o", 1:node$get_output_dimension())),
-      node_id = node$get_node_id(),
+      name = paste0(node$get_algo_id(),".",paste0("o", 1:node$get_output_dimension())),
+      algo_id = node$get_algo_id(),
       push_execution_value = list(), # A vector of pushed execution values.
       shape = "circle",
       size = 10,
@@ -58,10 +58,10 @@ do_convert_algo_base_to_igraph <- function(node, ...){
           1:node$get_input_dimension(),
           rep(node$get_input_dimension() + 1, node$get_input_dimension())
           )),
-      node_id = node$get_node_id(),
-      source_node_id = node$get_node_id(),
+      algo_id = node$get_algo_id(),
+      source_algo_id = node$get_algo_id(),
       # TODO: ADD source_bit
-      target_node_id = node$get_node_id(),
+      target_algo_id = node$get_algo_id(),
       # TODO: ADD target_bit
       arrow.size = .1,
       arrow.width = 1,
@@ -74,10 +74,10 @@ do_convert_algo_base_to_igraph <- function(node, ...){
           rep(node$get_input_dimension() + 1, node$get_output_dimension()),
           node$get_input_dimension() + 1 + 1:node$get_output_dimension()
           )),
-      node_id = node$get_node_id(),
-      source_node_id = node$get_node_id(),
+      algo_id = node$get_algo_id(),
+      source_algo_id = node$get_algo_id(),
       # TODO: ADD source_bit
-      target_node_id = node$get_node_id(),
+      target_algo_id = node$get_algo_id(),
       # TODO: ADD target_bit
       arrow.size = .1,
       arrow.width = 1,

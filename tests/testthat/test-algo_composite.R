@@ -25,7 +25,7 @@ test_that('algo_composite: faking NAND', {
   super_a$set_inner_edge(super_a, "i2", nand1, "i2");
   super_a$set_inner_edge(nand1, "o1", super_a, "o1");
 
-  # a$do_plot();
+  # a$plot();
 
   expect_equal(super_a$do_execute("00"), "1");
   expect_equal(super_a$do_execute("10"), "1");
@@ -56,7 +56,7 @@ test_that('CompositeAlgo: faking NOT', {
   super_a$set_inner_edge(super_a, "i1", nand1, "i2");
   super_a$set_inner_edge(nand1, "o1", super_a, "o1");
 
-  # a$do_plot();
+  # a$plot();
 
   expect_equal(super_a$do_execute("0"), "1");
   expect_equal(super_a$do_execute("1"), "0");
@@ -125,7 +125,7 @@ test_that('CompositeAlgo: super composite', {
 
   super_a$set_inner_edge(or1, "o1", super_a, "o1");
 
-  super_a$do_plot();
+  super_a$plot();
 
   expect_equal(super_a$do_execute("00"), "1");
   expect_equal(super_a$do_execute("10"), "1");

@@ -26,17 +26,17 @@ execute_algorithm_nandtree = function(nandtree, input) {
   # Prepare a vector of answers.
   # This will help us compute every subnode only once.
   subnode_answers <- rep(NA, nandtree$get_subnode_count());
-  names(subnode_answers) <- nandtree$logical_datatable[,"subnode_id"];
+  names(subnode_answers) <- nandtree$logical_datatable[,"subalgo_id"];
 
   # Assign the correct answers to the input subnodes.
   for(input_subnode_number in 1:nandtree$get_input_dimension()){
-    subnode_id <- paste0("i", input_subnode_number);
-    subnode_answers[subnode_id] <- input_logical_vector[input_subnode_number];
+    subalgo_id <- paste0("i", input_subnode_number);
+    subnode_answers[subalgo_id] <- input_logical_vector[input_subnode_number];
   }
 
-  do_solve_subnode <- function(subnode_id){
+  do_solve_subnode <- function(subalgo_id){
     # Check if this is a proper subnode.
-    if(subnode_id == "NA"){
+    if(subalgo_id == "NA"){
       warning("Attempt to solve NA");
       answer <- "NA";
     } else if(1 == 2) {
@@ -44,12 +44,12 @@ execute_algorithm_nandtree = function(nandtree, input) {
       answer <- "NA";
     } else {
       # Check if we already have a final value for this subnode.
-      answer <- subnode_answers[subnode_id];
+      answer <- subnode_answers[subalgo_id];
       if(!is.na(answer)){
         # This is a "cache hit".
-        # message("Cache hit", subnode_id);
+        # message("Cache hit", subalgo_id);
       } else {
-        subnode <- nandtree$get_subnode_by_subnode_id(subnode_id);
+        subnode <- nandtree$get_subnode_by_subalgo_id(subalgo_id);
         if(subnode$type == "i"){
           # It should have been a "cache hit",
           # the input value should have answered this subnode.
@@ -76,7 +76,7 @@ execute_algorithm_nandtree = function(nandtree, input) {
         }
       }
     }
-    # message("Node answer", subnode_id, answer);
+    # message("Node answer", subalgo_id, answer);
     return(answer);
   }
 
@@ -85,8 +85,8 @@ execute_algorithm_nandtree = function(nandtree, input) {
 
   # Loop on all output subnodes.
   for(output_subnode_number in 1:nandtree$get_output_dimension()){
-    subnode_id <- paste0("o", output_subnode_number);
-    output_subnode_output <- do_solve_subnode(subnode_id);
+    subalgo_id <- paste0("o", output_subnode_number);
+    output_subnode_output <- do_solve_subnode(subalgo_id);
     if(output_subnode_output == "NA"){
       # To avoid issues when rbinding tables,
       # we improperly used the string "NA".

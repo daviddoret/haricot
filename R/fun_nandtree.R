@@ -23,13 +23,13 @@ NandTree <- R6Class(
       self$last_nand_subnode_number <- 0;
       # Initializes the input subnodes
       for(input_subnode_number in 1 : input_dimension){
-        subnode_id <- paste0("i", input_subnode_number);
-        self$set_input_subnode(subnode_id);
+        subalgo_id <- paste0("i", input_subnode_number);
+        self$set_input_subnode(subalgo_id);
       }
       # Initializes the output subnodes
       for(output_subnode_number in 1 : output_dimension){
-        subnode_id <- paste0("o", output_subnode_number);
-        self$set_output_subnode(subnode_id);
+        subalgo_id <- paste0("o", output_subnode_number);
+        self$set_output_subnode(subalgo_id);
       }
     },
     convert_to_truthtable = function(){
@@ -38,7 +38,7 @@ NandTree <- R6Class(
     do_execute = function(input) {
       return(execute_algorithm_nandtree(self, input));
     },
-    do_plot = function() {
+    plot = function() {
       plot_nandtree(self);
     },
     do_randomize_outputs = function() {
@@ -47,10 +47,10 @@ NandTree <- R6Class(
       # TODO: Implement
       stop("Not implemented");
     },
-    get_filter_by_subnode_id = function(subnode_id) {
+    get_filter_by_subalgo_id = function(subalgo_id) {
       # Return a logical vector for filter purposes,
-      # to retrieve the row where subnode_id = subnode_id.
-      return(self$logical_datatable[, "subnode_id"] == subnode_id);
+      # to retrieve the row where subalgo_id = subalgo_id.
+      return(self$logical_datatable[, "subalgo_id"] == subalgo_id);
     },
     get_inverse = function() {
 
@@ -72,12 +72,12 @@ NandTree <- R6Class(
     get_logical_datatable = function(){
       return(self$logical_datatable);
     },
-    get_new_nand_subnode_id = function(){
+    get_new_nand_subalgo_id = function(){
       self$last_nand_subnode_number <- self$last_nand_subnode_number + 1;
       return(paste0("n", self$last_nand_subnode_number));
     },
-    get_subnode_by_subnode_id = function(subnode_id) {
-      filter <- self$get_filter_by_subnode_id(subnode_id);
+    get_subnode_by_subalgo_id = function(subalgo_id) {
+      filter <- self$get_filter_by_subalgo_id(subalgo_id);
       return(self$logical_datatable[filter,]);
     },
     get_subnode_count = function() {
@@ -88,9 +88,9 @@ NandTree <- R6Class(
     get_prettystring = function(){
       return(paste(self$logical_datatable[,"prettystring"], collapse = "\n"));
     },
-    set_any_subnode = function(type = "n", subnode_id = NULL, param1_id = "NA", param2_id = "NA"){
-      if(type == "n" && is.null(subnode_id)){
-        subnode_id <- self$get_new_nand_subnode_id();
+    set_any_subnode = function(type = "n", subalgo_id = NULL, param1_id = "NA", param2_id = "NA"){
+      if(type == "n" && is.null(subalgo_id)){
+        subalgo_id <- self$get_new_nand_subalgo_id();
       }
       param1_id <- switch(
         type,
@@ -104,21 +104,21 @@ NandTree <- R6Class(
         "o" = "NA");
       prettystring <- switch(
         type,
-        "i" = subnode_id,
-        "n" = paste0(subnode_id,"=nand(",param1_id,",",param2_id,")"),
-        "o" = paste0(subnode_id,"=",param1_id));
+        "i" = subalgo_id,
+        "n" = paste0(subalgo_id,"=nand(",param1_id,",",param2_id,")"),
+        "o" = paste0(subalgo_id,"=",param1_id));
       row <- data.table(
         type = type,
-        subnode_id = subnode_id,
+        subalgo_id = subalgo_id,
         param1_id = param1_id,
         param2_id = param2_id,
         prettystring = prettystring,
-        key = "subnode_id");
+        key = "subalgo_id");
       if(is.null(self$logical_datatable)){
         # Initializes the data table if this is the first subnode.
         self$logical_datatable <- row;
       } else {
-        filter <- self$get_filter_by_subnode_id(subnode_id);
+        filter <- self$get_filter_by_subalgo_id(subalgo_id);
         if(any(filter)){
           # This subnode exists already. We only need to update it.
           filtered_rows <- self$logical_datatable[!filter,];
@@ -128,19 +128,19 @@ NandTree <- R6Class(
           self$logical_datatable <- rbind(self$logical_datatable, row);
         }
       }
-      return(subnode_id);
+      return(subalgo_id);
     },
-    set_input_subnode = function(subnode_id){
-      subnode_id <- self$set_any_subnode(type = "i", subnode_id);
-      return(subnode_id);
+    set_input_subnode = function(subalgo_id){
+      subalgo_id <- self$set_any_subnode(type = "i", subalgo_id);
+      return(subalgo_id);
     },
-    set_nand_subnode = function(subnode_id = NULL, param1_id = "NA", param2_id = "NA"){
-      subnode_id <- self$set_any_subnode(type = "n", subnode_id = subnode_id, param1_id = param1_id, param2_id = param2_id);
-      return(subnode_id);
+    set_nand_subnode = function(subalgo_id = NULL, param1_id = "NA", param2_id = "NA"){
+      subalgo_id <- self$set_any_subnode(type = "n", subalgo_id = subalgo_id, param1_id = param1_id, param2_id = param2_id);
+      return(subalgo_id);
     },
-    set_output_subnode = function(subnode_id, param1_id = "NA"){
-      subnode_id <- self$set_any_subnode(type = "o", subnode_id = subnode_id, param1_id = param1_id);
-      return(subnode_id);
+    set_output_subnode = function(subalgo_id, param1_id = "NA"){
+      subalgo_id <- self$set_any_subnode(type = "o", subalgo_id = subalgo_id, param1_id = param1_id);
+      return(subalgo_id);
     }
   )
 )
