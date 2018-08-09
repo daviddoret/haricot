@@ -109,8 +109,8 @@ test_that('CompositeAlgo: super composite', {
     input_dimension = input_dimension,
     output_dimension = output_dimension);
 
-  not1 <- AlgoNOT$new();
-  not2 <- AlgoNOT$new();
+  not1 <- algo_not$new();
+  not2 <- algo_not$new();
   or1 <- algo_or$new();
 
   super_a$set_inner_node(node = not1);

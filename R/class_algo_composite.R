@@ -58,11 +58,11 @@ algo_composite <- R6Class(
           size = 10,
           type = "outputbit")
     },
-    do_copy_logic_to = function(target){
-      return(do_copy_logic_algo_composite_to_algo_composite(self, target));
+    copy_logic_to = function(target){
+      return(copy_logic_algo_composite_to_algo_composite(self, target));
     },
-    do_copy_logic_from = function(source){
-      return(do_copy_logic_algo_composite_to_algo_composite(source, self));
+    copy_logic_from = function(source){
+      return(copy_logic_algo_composite_to_algo_composite(source, self));
     },
     exec = function(input) {
       return(exec_algo_composite(algo = self, input = input));

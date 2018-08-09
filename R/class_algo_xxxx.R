@@ -1,6 +1,5 @@
 library(R6);
 
-#' @rdname BiFun_xxxx
 algo_xxxx <- R6Class(
   "algo_composite",
   inherit = algo_composite,
@@ -35,7 +34,7 @@ algo_xxxx <- R6Class(
         "1111" = algo_1111$new()
       );
       # Steal the internal logic of the algo_xxxx algorithm.
-      self$do_copy_logic_from(a1);
+      self$copy_logic_from(a1);
     },
     do_randomize_outputs = function() {
       stop("Not supported");

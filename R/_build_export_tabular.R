@@ -4,8 +4,8 @@ require(sinew);
 
 build_export_tabular <- function(){
 
-  print("AlgoNOT");
-  cat(tabular(AlgoNOT$new()$convert_to_algo_()$convert_to_character_dataframe(), heading=true));
+  print("algo_not");
+  cat(tabular(algo_not$new()$convert_to_algo_()$convert_to_character_dataframe(), heading=true));
 
   print("algo_0000");
   cat(tabular(algo_0000$new()$convert_to_algo_()$convert_to_character_dataframe(), heading=true));

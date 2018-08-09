@@ -7,7 +7,7 @@
 baptize_algo_bit(type, number, ...)
 }
 \arguments{
-\item{type}{The bit type: "i" or "o" (character)}
+\item{type}{The bit type: "i" for input or "o" for output (character)}
 
 \item{number}{The bit number (integer)}
 
@@ -17,13 +17,14 @@ baptize_algo_bit(type, number, ...)
 The bit name
 }
 \description{
-Computes the "bit" attribute of igraph graphs in CompositeNode.
+Assign a proper name for a bit in an algo.
 The naming scheme goes like this:
-For input bit vertices: "i1", "i2", "i3", ...
-For algo vertices: "" (empty string)
-For output bit vertices: "o1", "o2", "o3", ...
-This function is mainly used for internal purposes but could be useful for advanced manipulations.
-This function is trivial but may prove useful in the future to enforce data quality validation rules.
+\itemize{
+\item{For input bits: \code{"i1", "i2", "i3", ...}}
+\item{For output bits: \code{"o1", "o2", "o3", ...}}
+\item{For non-bits (e.g. the "bit" attribute of an algo vertex in an igraph): \code{"x"} (empty string)}
+}
+Any programmatic manipulation of bits should avoid to implement bit names directly and rather rely on this function to guarantee upward compatibility with future evolutions of the naming scheme.
 }
 \examples{
 print(baptize_algo_bit("i", 5));

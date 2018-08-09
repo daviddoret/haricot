@@ -1,4 +1,4 @@
-#' do_design_composite_switch
+#' design_algo_switch
 #'
 #' @description Definition: A composite switch, in this context, is a composite algorithm c1 composed of 2 component algorithms: c2 and c3.
 #' c1, c2 and c3 have identical output dimensions.
@@ -16,7 +16,7 @@
 #' algo_0$plot();
 #' algo_1 <- algo_10$new();
 #' algo_1$plot();
-#' algo_switch <- do_design_composite_switch(algo_0, algo_1);
+#' algo_switch <- design_algo_switch(algo_0, algo_1);
 #' algo_switch$exec("00");
 #' algo_switch$exec("10");
 #' algo_switch$exec("01");
@@ -28,7 +28,7 @@
 #' @param ... For future usage
 #' @return A component algorithm whose inner logic switches algo_0 and algo_1 based on e
 #' @export
-do_design_composite_switch <- function(
+design_algo_switch <- function(
   algo_0,
   algo_1,
   ...){

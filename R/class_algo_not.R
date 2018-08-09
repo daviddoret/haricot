@@ -1,6 +1,6 @@
 require(R6);
 
-#' AlgoNOT (R6 class)
+#' algo_not (R6 class)
 #'
 #' @description The NOT logical algorithm implemented as a NAND-composite.
 #' In practice, since NOT has the truthtable {1,0}, this class inherits from Algo10.
@@ -15,17 +15,17 @@ require(R6);
 #' 1 \tab 0
 #'}
 #'
-#' @examples a <- AlgoNOT$new();
+#' @examples a <- algo_not$new();
 #' a$plot();
 #' a$exec("1");
 #'
 #' @param algo_id A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)
 #' @param label A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)
 #' @param ... For future usage.
-#' @return An object instance of class AlgoNOT:algo_10:algo_composite:algo_base.
+#' @return An object instance of class algo_not:algo_10:algo_composite:algo_base.
 #' @export
-AlgoNOT <- R6Class(
-  "AlgoNOT",
+algo_not <- R6Class(
+  "algo_not",
   inherit = algo_10,
   public = list(
     initialize = function(

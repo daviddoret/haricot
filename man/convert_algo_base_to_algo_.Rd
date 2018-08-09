@@ -20,7 +20,7 @@ and may only be applied to low input dimensional algorithms.
 }
 \examples{
 # R function style:
-a1 <- AlgoNOT$new();
+a1 <- algo_not$new();
 a2 <- convert_algo_base_to_algo_(a1);
 print(a2);
 
