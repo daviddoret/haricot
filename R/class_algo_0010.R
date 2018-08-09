@@ -7,7 +7,7 @@ require(R6);
 #' @description The logical algorithm with truth table 0010 implemented as a NAND-composite.
 #'
 #' @section Graph:
-#' {\figure{algo_tt0010_graph.png}{Graph of the algorithm}}
+#' {\figure{algo_0010_graph.png}{Graph of the algorithm}}
 #'
 #' @section Truth table:
 #' \tabular{ll}{

@@ -23,7 +23,7 @@ The logical algorithm with truth table 0100 implemented as a NAND-composite.
 }
 \section{Graph}{
 
-{\figure{algo_tt0100_graph.png}{Graph of the algorithm}}
+{\figure{algo_0100_graph.png}{Graph of the algorithm}}
 }
 
 \section{Truth table}{

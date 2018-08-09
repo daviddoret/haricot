@@ -27,7 +27,7 @@ This is also the well-known logical gate XNOR.
 }
 \section{Graph}{
 
-{\figure{algo_tt1001_graph.png}{Graph of the algorithm}}
+{\figure{algo_1001_graph.png}{Graph of the algorithm}}
 }
 
 \examples{

@@ -5,7 +5,7 @@ require(R6);
 #' @description The logical algorithm with truth table 01 implemented as a NAND-composite.
 #'
 #' @section Graph:
-#' {\figure{algo_tt01_graph.png}{Graph of the algorithm}}
+#' {\figure{algo_01_graph.png}{Graph of the algorithm}}
 #'
 #' @examples a <- algo_01$new();
 #' a$do_plot();

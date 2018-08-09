@@ -27,7 +27,7 @@ This is also the well-known logical gate OR.
 }
 \section{Graph}{
 
-{\figure{algo_tt0111_graph.png}{Graph of the algorithm}}
+{\figure{algo_0111_graph.png}{Graph of the algorithm}}
 }
 
 \section{Truth table}{

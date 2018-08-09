@@ -20,7 +20,7 @@
 do_convert_algo_base_to_algo_ <- function(algo){
   input_dimension <- algo$get_input_dimension();
   output_dimension <- algo$get_output_dimension();
-  tt <- algo_$new(
+  tt <- algo_tt$new(
     input_dimension = input_dimension,
     output_dimension = output_dimension);
   input_binarynumber <- bnum$new(input = rep(FALSE, input_dimension));
