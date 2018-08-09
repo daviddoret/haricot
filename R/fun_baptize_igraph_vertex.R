@@ -1,4 +1,4 @@
-#' do_compute_vertex_name
+#' baptize_igraph_vertex
 #'
 #' @description Computes the unique name of an igraph vertex used in algo_composite internals.
 #' The naming scheme goes like this:
@@ -8,15 +8,15 @@
 #' This function is mainly used for internal purposes but could be useful for advanced manipulations.
 #' This function is trivial but may prove useful in the future to enforce data quality validation rules.
 #'
-#' @examples print(do_compute_vertex_name("algo1", "i3"));
-#' print(do_compute_vertex_name("algo2", paste0("i", 1:3)));
+#' @examples print(baptize_igraph_vertex("algo1", "i3"));
+#' print(baptize_igraph_vertex("algo2", paste0("i", 1:3)));
 #'
 #' @param id The node ID character)
 #' @param bit The bit (character)
 #' @param ... For future usage
 #' @return N/A
 #' @export
-do_compute_vertex_name <- function(
+baptize_igraph_vertex <- function(
   id,
   bit,
   ...){

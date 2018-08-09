@@ -1,4 +1,4 @@
-#' do_compute_vertex_bit
+#' baptize_algo_bit
 #'
 #' @description Computes the "bit" attribute of igraph graphs in CompositeNode.
 #' The naming scheme goes like this:
@@ -8,15 +8,15 @@
 #' This function is mainly used for internal purposes but could be useful for advanced manipulations.
 #' This function is trivial but may prove useful in the future to enforce data quality validation rules.
 #'
-#' @examples print(do_compute_vertex_bit("i", 5));
-#' print(do_compute_vertex_bit("o", 1:4));
+#' @examples print(baptize_algo_bit("i", 5));
+#' print(baptize_algo_bit("o", 1:4));
 #'
 #' @param type The bit type: "i" or "o" (character)
 #' @param number The bit number (integer)
 #' @param ... For future usage
 #' @return The bit name
 #' @export
-do_compute_vertex_bit <- function(
+baptize_algo_bit <- function(
   type,
   number,
   ...){
