@@ -20,7 +20,7 @@ require(R6);
 #'
 #' @examples a <- algo_0000$new();
 #' a$plot();
-#' a$do_execute("10");
+#' a$exec("10");
 #'
 #' @param algo_id A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)
 #' @param label A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)

@@ -44,7 +44,7 @@ This is also the well-known logical gate AND.
 \examples{
 a <- algo_0001$new();
 a$plot();
-a$do_execute("10");
+a$exec("10");
 
 }
 \keyword{datasets}

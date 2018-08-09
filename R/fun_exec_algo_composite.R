@@ -18,7 +18,7 @@
 #' @param input The input bits (logical vector | character vector of "0"s and "1"s | R6 Class BinaryNumber)
 #' @return The corresponding output (same type than input)
 #' @export
-do_execute_algo_composite = function(algo, input) {
+exec_algo_composite = function(algo, input) {
   # Applies the TruthTable algorithm and returns its output.
   # Returns a type that is consistent with the type of the input.
   input_logical_vector <- convert_any_to_logical_vector(input);
@@ -65,9 +65,9 @@ do_execute_algo_composite = function(algo, input) {
     if(vertex_type == "inputbit"){
       # print(paste0("type == inputbit"));
 
-      bit_id <- vertex$bit_id;
-      # print(paste0("bit_id: ", bit_id));
-      position <- as.integer(substr(bit_id, 2, nchar(bit_id)));
+      bit <- vertex$bit;
+      # print(paste0("bit: ", bit));
+      position <- as.integer(substr(bit, 2, nchar(bit)));
       # print(paste0("position: ", position));
 
       vertices_execution_value[[vertex_name]] <<- pushed_value;
@@ -95,15 +95,15 @@ do_execute_algo_composite = function(algo, input) {
         # If yes, execute the algo.
         algo_input <- vertices_execution_value[[vertex_name]];
         # print(paste0("algo_input", algo_input));
-        algo_output <- node$do_execute(vertices_execution_value[[vertex_name]]);
+        algo_output <- node$exec(vertices_execution_value[[vertex_name]]);
         # print(paste0("algo_output: ", algo_output));
         # Push the algo result to the OutputBit vertices.
         next_vertices <- neighbors(graph = g, v = vertex, mode = "out");
         for(next_vertex_name in next_vertices$name){
           next_vertex <- next_vertices[next_vertices$name == next_vertex_name];
           # print(paste0("next_vertex_name", next_vertex_name));
-          next_vertex_bit_id <- next_vertex$bit_id;
-          next_vertex_bit_position <- as.integer(substr(next_vertex_bit_id, 2, nchar(next_vertex_bit_id)));
+          next_vertex_bit <- next_vertex$bit;
+          next_vertex_bit_position <- as.integer(substr(next_vertex_bit, 2, nchar(next_vertex_bit)));
           next_pushed_value <- algo_output[next_vertex_bit_position];
           push_execution(
             vertex_name = next_vertex_name,
@@ -130,12 +130,12 @@ do_execute_algo_composite = function(algo, input) {
   }
 
   for(bit_position in 1:algo$get_input_dimension()){
-    bit_id <- paste0("i", bit_position);
+    bit <- paste0("i", bit_position);
     algo_id <- algo$get_algo_id();
-    vertex_name <- paste0(algo_id, ".", bit_id);
+    vertex_name <- paste0(algo_id, ".", bit);
     pushed_value <- input_logical_vector[bit_position];
     # cat("\n\n\nSTAGE 1: EXECUTE INPUTBIT",
-    #  "bit_id: ", bit_id,
+    #  "bit: ", bit,
     #  "algo_id", algo_id,
     #  "vertex_name", vertex_name,
     #  "pushed_value", pushed_value,
@@ -150,9 +150,9 @@ do_execute_algo_composite = function(algo, input) {
   # Retrieve the result of the algo from the parent OutputBits.
   output_logical_vector <- rep(NA, algo$get_output_dimension());
   for(position in 1:algo$get_output_dimension()){
-    bit_id <- paste0("o", position);
-    # print(paste0("\n\n\n\nSTAGE 2: RETRIEVE FROM BitOutput: bit_id: ", bit_id));
-    vertex_name <- paste0(algo$get_algo_id(), ".", bit_id);
+    bit <- paste0("o", position);
+    # print(paste0("\n\n\n\nSTAGE 2: RETRIEVE FROM BitOutput: bit: ", bit));
+    vertex_name <- paste0(algo$get_algo_id(), ".", bit);
     bit_exec_value <- vertices_execution_value[[vertex_name]];
     # print(paste0("bit_exec_value: ", bit_exec_value));
     output_logical_vector[position] <- bit_exec_value;

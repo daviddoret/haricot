@@ -40,7 +40,7 @@ The logical algorithm with truth table 1101 implemented as a NAND-composite.
 \examples{
 a <- algo_1101$new();
 a$plot();
-a$do_execute("10");
+a$exec("10");
 
 }
 \keyword{datasets}

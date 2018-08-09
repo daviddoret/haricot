@@ -9,7 +9,7 @@ test_that('AlgoNOT: test 01', {
 
   a <- AlgoNOT$new();
 
-  expect_equal(a$do_execute("0"), "1");
-  expect_equal(a$do_execute("1"), "0");
+  expect_equal(a$exec("0"), "1");
+  expect_equal(a$exec("1"), "0");
 
 });

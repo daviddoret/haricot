@@ -22,7 +22,7 @@ convert_algo_base_to_igraph <- function(node, ...){
   g <- make_empty_graph(directed = TRUE) %>%
     add_vertices(
       nv = node$get_input_dimension(),
-      bit_id = paste0("i", 1:node$get_input_dimension()),
+      bit = paste0("i", 1:node$get_input_dimension()),
       color = "#ccffe5",
       label = paste0("i", 1:node$get_input_dimension()),
       name = paste0(node$get_algo_id(), ".", paste0("i", 1:node$get_input_dimension())),
@@ -33,7 +33,7 @@ convert_algo_base_to_igraph <- function(node, ...){
       type = "inputbit") %>%
     add_vertices(
       nv = 1,
-      bit_id = NA,
+      bit = NA,
       color = "#eeeeee",
       label = node$get_label(),
       name = paste0(node$get_algo_id(), ".", "algo"),
@@ -44,7 +44,7 @@ convert_algo_base_to_igraph <- function(node, ...){
       type = "algo") %>%
     add_vertices(
       nv = node$get_output_dimension(),
-      bit_id = paste0("o", 1:node$get_output_dimension()),
+      bit = paste0("o", 1:node$get_output_dimension()),
       color = "#cce5ff",
       label = paste0("o", 1:node$get_output_dimension()),
       name = paste0(node$get_algo_id(),".",paste0("o", 1:node$get_output_dimension())),

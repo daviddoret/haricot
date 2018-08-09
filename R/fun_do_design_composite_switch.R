@@ -17,10 +17,10 @@
 #' algo_1 <- algo_10$new();
 #' algo_1$plot();
 #' algo_switch <- do_design_composite_switch(algo_0, algo_1);
-#' algo_switch$do_execute("00");
-#' algo_switch$do_execute("10");
-#' algo_switch$do_execute("01");
-#' algo_switch$do_execute("11");
+#' algo_switch$exec("00");
+#' algo_switch$exec("10");
+#' algo_switch$exec("01");
+#' algo_switch$exec("11");
 #' algo_switch$plot();
 #'
 #' @param algo_0 A component algorithm to be switched to when e == 0 (algo_base)

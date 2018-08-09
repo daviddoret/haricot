@@ -44,7 +44,7 @@ algo_base <- R6Class(
     convert_to_algo_ = function(...){
       return(convert_algo_base_to_algo_(algo = self, ...));
     },
-    do_execute = function(input) {
+    exec = function(input) {
       stop("This method is abstract, please implement it in the subclass.");
     },
     plot = function() {

@@ -27,10 +27,10 @@ test_that('algo_composite: faking NAND', {
 
   # a$plot();
 
-  expect_equal(super_a$do_execute("00"), "1");
-  expect_equal(super_a$do_execute("10"), "1");
-  expect_equal(super_a$do_execute("01"), "1");
-  expect_equal(super_a$do_execute("11"), "0");
+  expect_equal(super_a$exec("00"), "1");
+  expect_equal(super_a$exec("10"), "1");
+  expect_equal(super_a$exec("01"), "1");
+  expect_equal(super_a$exec("11"), "0");
 
 });
 
@@ -58,8 +58,8 @@ test_that('CompositeAlgo: faking NOT', {
 
   # a$plot();
 
-  expect_equal(super_a$do_execute("0"), "1");
-  expect_equal(super_a$do_execute("1"), "0");
+  expect_equal(super_a$exec("0"), "1");
+  expect_equal(super_a$exec("1"), "0");
 
 });
 
@@ -127,10 +127,10 @@ test_that('CompositeAlgo: super composite', {
 
   super_a$plot();
 
-  expect_equal(super_a$do_execute("00"), "1");
-  expect_equal(super_a$do_execute("10"), "1");
-  expect_equal(super_a$do_execute("01"), "1");
-  expect_equal(super_a$do_execute("11"), "0");
+  expect_equal(super_a$exec("00"), "1");
+  expect_equal(super_a$exec("10"), "1");
+  expect_equal(super_a$exec("01"), "1");
+  expect_equal(super_a$exec("11"), "0");
 
 });
 

@@ -11,7 +11,7 @@ require(igraph);
 #'
 #' @examples a1 <- algo_nand$new();
 #' a1$plot();
-#' a1$do_execute("01");
+#' a1$exec("01");
 #'
 #' @param algo_id A technical unique identifier for the algorithmic node. If missing, a GUID will be created. (character)
 #' @param label A meaningful label for the algorithmic node. Keep it short to let it display properly on graph plots. Default: "NAND". (character)
@@ -38,8 +38,8 @@ algo_nand <- R6Class(
         label = label,
         ...);
     },
-    do_execute = function(input, ...) {
-      return(do_execute_algo_nand(algo = self, input, ...));
+    exec = function(input, ...) {
+      return(exec_algo_nand(algo = self, input, ...));
     },
     plot = function() {
       plot_algo_base(self);

@@ -26,7 +26,7 @@ convert_algo_base_to_algo_ <- function(algo){
   input_binarynumber <- bnum$new(input = rep(FALSE, input_dimension));
 
   repeat{
-    output_binarynumber = algo$do_execute(input_binarynumber);
+    output_binarynumber = algo$exec(input_binarynumber);
     tt$set_output(input = input_binarynumber, output_binarynumber);
 
     input_binarynumber$do_increment();

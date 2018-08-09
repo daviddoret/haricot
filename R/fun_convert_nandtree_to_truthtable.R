@@ -23,7 +23,7 @@ convert_nandtree_to_truthtable <- function(nandtree){
   input_binarynumber <- bnum$new(input = rep(FALSE, input_dimension));
   repeat{
     print(input_binarynumber);
-    output_binarynumber = nandtree$do_execute(input_binarynumber);
+    output_binarynumber = nandtree$exec(input_binarynumber);
     print(output_binarynumber);
     truthtable$set_output(input = input_binarynumber, output_binarynumber);
 

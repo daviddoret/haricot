@@ -12,7 +12,7 @@ test_that('algo_11: exhaustive output test', {
   #print(nt);
   #plot_nandtree(nt);
 
-  expect_equal(a1$do_execute("0"), "1");
-  expect_equal(a1$do_execute("1"), "1");
+  expect_equal(a1$exec("0"), "1");
+  expect_equal(a1$exec("1"), "1");
 
 });

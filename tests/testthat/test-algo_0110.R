@@ -9,9 +9,9 @@ test_that('algo_0110: exhaustive output test', {
 
   a1 <- algo_0110$new();
 
-  expect_equal(a1$do_execute("00"), "0");
-  expect_equal(a1$do_execute("10"), "1");
-  expect_equal(a1$do_execute("01"), "1");
-  expect_equal(a1$do_execute("11"), "0");
+  expect_equal(a1$exec("00"), "0");
+  expect_equal(a1$exec("10"), "1");
+  expect_equal(a1$exec("01"), "1");
+  expect_equal(a1$exec("11"), "0");
 
 });

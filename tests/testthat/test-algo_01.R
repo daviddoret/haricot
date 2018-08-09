@@ -9,7 +9,7 @@ test_that('algo_01: exhaustive output test', {
 
   a1 <- algo_01$new();
 
-  expect_equal(a1$do_execute("0"), "0");
-  expect_equal(a1$do_execute("1"), "1");
+  expect_equal(a1$exec("0"), "0");
+  expect_equal(a1$exec("1"), "1");
 
 });

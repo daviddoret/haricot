@@ -29,7 +29,7 @@ Any algorithm may be built from the atomic NAND algorithm.
 \examples{
 a1 <- algo_nand$new();
 a1$plot();
-a1$do_execute("01");
+a1$exec("01");
 
 }
 \keyword{datasets}

@@ -14,7 +14,7 @@ require(uuid);
 #' @examples
 #' t1 <- algo_tt$new(input_dimension = 2, output_dimension = 2);
 #' t1$set_output(input = "01", output = "11");
-#' t1$do_execute("01");
+#' t1$exec("01");
 #'
 #' @export
 algo_tt <- R6Class(
@@ -48,7 +48,7 @@ algo_tt <- R6Class(
       binary_domain <- bdom$new(dimension = input_dimension);
       rownames(private$logical_matrix) <- binary_domain$convert_to_character_vector();
     },
-    do_execute = function(input) {
+    exec = function(input) {
       # Applies the TruthTable algorithm and returns its output.
       # Returns a type that is consistent with the type of the input.
       input_logical_vector <- convert_any_to_logical_vector(input);

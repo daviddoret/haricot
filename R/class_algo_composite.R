@@ -37,7 +37,7 @@ algo_composite <- R6Class(
       private$inner_graph <- make_empty_graph(directed = TRUE) %>%
         add_vertices(
           nv = self$get_input_dimension(),
-          bit_id = paste0("i", 1:self$get_input_dimension()),
+          bit = paste0("i", 1:self$get_input_dimension()),
           color = "#ccffe5",
           label = paste0("i", 1:self$get_input_dimension()),
           name = paste0(self$get_algo_id(), ".", paste0("i", 1:self$get_input_dimension())),
@@ -48,7 +48,7 @@ algo_composite <- R6Class(
           type = "inputbit") %>%
         add_vertices(
           nv = self$get_output_dimension(),
-          bit_id = paste0("o", 1:self$get_output_dimension()),
+          bit = paste0("o", 1:self$get_output_dimension()),
           color = "#cce5ff",
           label = paste0("o", 1:self$get_output_dimension()),
           name = paste0(self$get_algo_id(),".",paste0("o", 1:self$get_output_dimension())),
@@ -64,8 +64,8 @@ algo_composite <- R6Class(
     do_copy_logic_from = function(source){
       return(do_copy_logic_algo_composite_to_algo_composite(source, self));
     },
-    do_execute = function(input) {
-      return(do_execute_algo_composite(algo = self, input = input));
+    exec = function(input) {
+      return(exec_algo_composite(algo = self, input = input));
     },
     plot = function() {
       plot_algo_composite(self);

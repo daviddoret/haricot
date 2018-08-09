@@ -41,7 +41,7 @@ do_copy_logic_algo_composite_to_algo_composite <- function(source, target, ...){
   # Substitute igraph vertices attributes
   vertices_filter <- V(target_graph)$algo_id == source$get_algo_id();
   V(target_graph)[vertices_filter]$algo_id <- target$get_algo_id();
-  V(target_graph)[vertices_filter]$name <- do_compute_vertex_name(target$get_algo_id(), V(target_graph)[vertices_filter]$bit_id);
+  V(target_graph)[vertices_filter]$name <- do_compute_vertex_name(target$get_algo_id(), V(target_graph)[vertices_filter]$bit);
 
   # Substitute igraph edge attributes
   E(target_graph)[E(target_graph)$algo_id == source$get_algo_id()]$algo_id <- target$get_algo_id()

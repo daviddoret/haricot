@@ -38,7 +38,7 @@ The logical algorithm with truth table 01 implemented as a NAND-composite.
 \examples{
 a <- algo_11$new();
 a$plot();
-a$do_execute("1");
+a$exec("1");
 
 }
 \keyword{datasets}

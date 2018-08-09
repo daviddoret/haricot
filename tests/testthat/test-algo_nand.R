@@ -12,10 +12,10 @@ test_that('algo_nand: test 01', {
   #print(a);
   #plot_nandtree(a);
 
-  expect_equal(a$do_execute("00"), "1");
-  expect_equal(a$do_execute("10"), "1");
-  expect_equal(a$do_execute("01"), "1");
-  expect_equal(a$do_execute("11"), "0");
+  expect_equal(a$exec("00"), "1");
+  expect_equal(a$exec("10"), "1");
+  expect_equal(a$exec("01"), "1");
+  expect_equal(a$exec("11"), "0");
 
   a$plot()
 
