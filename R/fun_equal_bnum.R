@@ -1,14 +1,15 @@
 #' equal_bnum
 #'
-#' @description Tells us if two bnum objects have identical values.
+#' @description Tells us if two bnum objects are equal.
 #'
-#' @examples equal_bnum(bnum("1101"), bnum("110"));
-#' equal_bnum(bnum("1101"), bnum("1100"));
-#' equal_bnum(bnum("1101"), bnum("1101"));
+#' @examples equal_bnum(bnum$new("1101"), bnum$new("110"));
+#' equal_bnum(bnum$new("1101"), bnum$new("1100"));
+#' equal_bnum(bnum$new("1101"), bnum$new("1101"));
 #'
 #' @param n1 A modular binary number (logical vector, character vector, bnum)
 #' @param n2 A modular binary number (logical vector, character vector, bnum)
-#' @return TRUE if n1 and n2 have identical values, FALSE otherwise (logical vector of length 1)
+#' @return Returns TRUE if n1 and n2 are equal, FALSE otherwise (logical vector of length 1)
+#' @rdname man_bnum_equality
 #' @export
 equal_bnum <- function(n1, n2){
   n1_binum <- convert_any_to_bnum(n1);

@@ -1,0 +1,10 @@
+#' @section Theory:
+#'
+#' \subsection{Equality of Modular Binary Numbers}{
+#' In the context of this package, two modular binary numbers are equal if and only if they have identical dimensions and all their corresponding bits are equal. \cr
+#' Formally: \cr
+#' \deqn{\forall i \in \mathbb{N}^+ , (a,b) \in \mathbb{B}_{i} : a=b \iff |a| = |b|, \forall j \in [1,...,i] , a_{i} = b_{i}}
+#' }
+#'
+#' @name man_bnum_equality
+NULL;
