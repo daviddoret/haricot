@@ -76,6 +76,8 @@ algo_tt <- R6Class(
       random_logical_matrix <- matrix(data = random_logical_vector, nrow = 2 ^ self$get_input_dimension(), ncol = self$get_output_dimension(), byrow = TRUE);
       # Replace the logical matrix with the random one.
       private$logical_matrix <- random_logical_matrix;
+      # Chaining
+      return(self);
     },
     get_inverse = function() {
 

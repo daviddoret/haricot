@@ -5,8 +5,16 @@ bnum <- R6Class(
   public = list(
     # Private Members
     logical_vector = NULL,
-    initialize = function(input, dimension = 1) {
-      self$logical_vector <- convert_any_to_logical_vector(input);
+    initialize = function(
+      input = NULL,
+      dim = NULL) {
+      if(is.null(input) & !is.null(dim)){
+        self$logical_vector <- rep(FALSE, dim);
+      } else if(!is.null(input) & is.null(dim)){
+        self$logical_vector <- convert_any_to_logical_vector(input);
+      } else {
+        stop("bnum constructor not yet supported, sorry");
+      }
     },
     convert_to_character = function(){
       return(convert_logical_vector_to_character(self$logical_vector));
@@ -52,16 +60,20 @@ bnum <- R6Class(
       # If the incrementation failed here,
       # we end up with all 0s.
       # This is intentional as we are using modulo arithmetic.
+
+      # Chaining.
+      return(self);
     },
     print = function(){
       print(self$get_prettystring());
     },
     randomize = function() {
       # Randomizes the value of the bnum.
-      # Build a random vector with
       random_logical_vector <- sample(x = c(FALSE, TRUE), size = self$get_dimension(), replace = TRUE);
       # Replace the inner logical vector with the random one.
       self$logical_vector <- random_logical_vector;
+      # Enables chaining
+      return(self);
     },
     set_bit = function(bit_position, input){
       logical <- convert_any_to_logical_vector(input);
