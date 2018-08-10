@@ -2,7 +2,7 @@ library(R6);
 
 require(R6);
 
-#' algo_nand, algo_0001 (R6 class)
+#' algo_and, algo_0001 (R6 class)
 #'
 #' @description The logical algorithm with truth table 0001 implemented as a NAND-composite.
 #' This is also the well-known logical gate AND.

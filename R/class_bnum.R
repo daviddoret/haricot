@@ -14,6 +14,9 @@ bnum <- R6Class(
     convert_to_logical_vector = function(){
       return(self$logical_vector);
     },
+    copy = function(){
+      return(bnum$new(self$logical_vector));
+    },
     get_bit = function(bit_position){
       return(self$logical_vector[bit_position]);
     },
@@ -52,6 +55,13 @@ bnum <- R6Class(
     },
     print = function(){
       print(self$get_prettystring());
+    },
+    randomize = function() {
+      # Randomizes the value of the bnum.
+      # Build a random vector with
+      random_logical_vector <- sample(x = c(FALSE, TRUE), size = self$get_dimension(), replace = TRUE);
+      # Replace the inner logical vector with the random one.
+      self$logical_vector <- random_logical_vector;
     },
     set_bit = function(bit_position, input){
       logical <- convert_any_to_logical_vector(input);

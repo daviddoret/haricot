@@ -43,3 +43,10 @@ test_that("bnum$get_equal_0()", {
 
   });
 
+test_that("bnum$randomize()", {
+
+  b <- bnum$new(input = "11111");
+  b$do_increment();
+  expect_equal(b$get_equal_0(), TRUE);
+
+});

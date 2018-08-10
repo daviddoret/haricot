@@ -1,5 +1,3 @@
-library(R6);
-
 require(R6);
 
 #' algo_or, algo_0111 (R6 class)
@@ -43,8 +41,8 @@ algo_0111 <- R6Class(
       super$initialize(
         input_dimension = input_dimension,
         output_dimension = output_dimension,
-        algo_id = algo_id); #,
-      #label = label,
+        algo_id = algo_id,
+        label = label);
       #...);
 
       # Invert the first input bit.

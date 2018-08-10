@@ -57,13 +57,13 @@ design_algo_switch <- function(
   for(position in 1 : output_dimension){
 
     # If extra_bit == 0, keep algo_0 output bit. Otherwise, set it to 0.
-    sub_switch_0 <- algo_0010$new();
+    sub_switch_0 <- algo_0100$new();
     algo_switch$set_inner_node(sub_switch_0);
     algo_switch$set_inner_edge(algo_0, paste0("o", position), sub_switch_0, "i1");
     algo_switch$set_inner_edge(algo_switch, extra_bit, sub_switch_0, "i2");
 
     # If extra_bit == 1, keep algo_1 output bit. Otherwise, set it to 0.
-    sub_switch_1 <- algo_and$new();
+    sub_switch_1 <- algo_0001$new();
     algo_switch$set_inner_node(sub_switch_1);
     algo_switch$set_inner_edge(algo_1, paste0("o", position), sub_switch_1, "i1");
     algo_switch$set_inner_edge(algo_switch, extra_bit, sub_switch_1, "i2");

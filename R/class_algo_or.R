@@ -10,6 +10,7 @@ algo_or <- R6Class(
       algo_id = NULL,
       label = NULL,
       ...) {
+      if(is.null(label)){ label <- "OR"; };
       super$initialize(
         algo_id,
         label,

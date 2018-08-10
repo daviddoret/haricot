@@ -4,7 +4,7 @@
 \name{algo_0001}
 \alias{algo_0001}
 \alias{algo_and}
-\title{algo_nand, algo_0001 (R6 class)}
+\title{algo_and, algo_0001 (R6 class)}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 algo_0001
