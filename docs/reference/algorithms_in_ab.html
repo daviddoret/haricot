@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>equal_bnum — equal_bnum • haricot</title>
+<title>Algorithms in \(\mathbb{A}^{\mathbb{B}}\) — algorithms_in_ab • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,13 @@
 
 
 
-<meta property="og:title" content="equal_bnum — equal_bnum" />
+<meta property="og:title" content="Algorithms in \(\mathbb{A}^{\mathbb{B}}\) — algorithms_in_ab" />
 
-<meta property="og:description" content="Tells us if two bnum objects are equal." />
+<meta property="og:description" content="An algorithm \(a\) in \(\mathbb{A}^{\mathbb{B}}\), is defined as a structure composed of:
+An ordered set of \(i\) input bits \(i_{1}, i_{2}, ..., i_{i}\)
+An ordered set of \(j\) output bits \(o_{1}, o_{2}, ..., o_{j}\)
+A mechanism that maps all input bit values to output bit values
+" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -92,62 +96,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>equal_bnum</h1>
+    <h1>Algorithms in \(\mathbb{A}^{\mathbb{B}}\)</h1>
     
-    <div class="hidden name"><code>man_bnum_equality.Rd</code></div>
+    <div class="hidden name"><code>algorithms_in_ab.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Tells us if two bnum objects are equal.</p>
+    <p>An algorithm \(a\) in \(\mathbb{A}^{\mathbb{B}}\), is defined as a structure composed of:</p><ul>
+<li><p>An ordered set of \(i\) input bits \(i_{1}, i_{2}, ..., i_{i}\)</p></li>
+<li><p>An ordered set of \(j\) output bits \(o_{1}, o_{2}, ..., o_{j}\)</p></li>
+<li><p>A mechanism that maps all input bit values to output bit values</p></li>
+</ul>
     
     </div>
 
-    <pre class="usage"><span class='fu'>equal_bnum</span>(<span class='no'>n1</span>, <span class='no'>n2</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>n1</th>
-      <td><p>A modular binary number (logical vector, character vector, bnum)</p></td>
-    </tr>
-    <tr>
-      <th>n2</th>
-      <td><p>A modular binary number (logical vector, character vector, bnum)</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+        
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Returns TRUE if n1 and n2 are equal, FALSE otherwise (logical vector of length 1)</p>
-    
-    <h2 class="hasAnchor" id="theory"><a class="anchor" href="#theory"></a>Theory</h2>
-
-    
-    <h3>Equality of Modular Binary Numbers</h3>
-    In the context of this package, two modular binary numbers are equal if and only if they have identical dimensions and all their corresponding bits are equal. <br />
-Formally: <br />
-$$\forall i \in \mathbb{N}^+ , (a,b) \in \mathbb{B}_{i} : a=b \iff |a| = |b|, \forall j \in [1,...,i] , a_{i} = b_{i}$$
-<p>A consequence of this definition of equality is that 2 modular binary numbers may be mapped to the same natural number and not be considered equal.<br />
-For instance: <br /></p>
+    <div class='dont-index'><p><code><a href='algo_base.html'>algo_base</a></code></p></div>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>equal_bnum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1101"</span>), <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"110"</span>));</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>equal_bnum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1101"</span>), <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1100"</span>));</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>equal_bnum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1101"</span>), <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1101"</span>));</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>equal_bnum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"000"</span>), <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"0000"</span>));</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>equal_bnum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"000"</span>), <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"000"</span>));</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#theory">Theory</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#see-also">See also</a></li>
+          </ul>
 
   </div>
 </div>

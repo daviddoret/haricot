@@ -4,7 +4,7 @@
 \alias{def_modular_binary_number}
 \title{Modular binary number}
 \description{
-In the context of this package, a modular binary number of dimension \eqn{d} and noted \eqn{n_{d}} is defined as an ordered set of \eqn{d} bits.
+In the context of this package, a modular binary number of dimension \eqn{i} and noted \eqn{n_{d}} is defined as an ordered set of \eqn{d} bits.
 }
 \section{Notation}{
 

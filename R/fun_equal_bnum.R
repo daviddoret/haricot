@@ -5,6 +5,8 @@
 #' @examples equal_bnum(bnum$new("1101"), bnum$new("110"));
 #' equal_bnum(bnum$new("1101"), bnum$new("1100"));
 #' equal_bnum(bnum$new("1101"), bnum$new("1101"));
+#' equal_bnum(bnum$new("000"), bnum$new("0000"));
+#' equal_bnum(bnum$new("000"), bnum$new("000"));
 #'
 #' @param n1 A modular binary number (logical vector, character vector, bnum)
 #' @param n2 A modular binary number (logical vector, character vector, bnum)

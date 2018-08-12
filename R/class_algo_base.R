@@ -1,18 +1,16 @@
 require(R6);
-#install.packages("rlang");
 require(rlang);
 require(igraph);
 
 #' algo_base (R6 class)
 #'
-#' algo_base is an abstract class that should be inherited from.
-#' It defines the interfaces required for objects that must be compatible as a node in a CompositeTree.
-#' Its basic definition is that it comprises:
-#' - identification, labeling and other decorative information,
-#' - a number of input bits,
-#' - a number of output bits,
-#' - a method to run its algorithm for a given input and return its output,
-#' - utility methods of general usage.
+#' algo_base is the base abstract class that implements the concept of algorithm in \eqn{\mathbb{A}^{\mathbb{B}}}.
+#' Instances of classes that implement algo_base may act as a component in an algorithm composite.
+#' In addition to the formal components expected from the definition of an algorithm in \eqn{\mathbb{A}^{\mathbb{B}}}, the class provides complementary services such as unique IDs, labels, etc.
+#'
+#' @seealso \code{\link{algorithms_in_ab}}
+#' @seealso \code{\link{notation}}
+#'
 #' @export
 algo_base <- R6Class(
   "algo_base",

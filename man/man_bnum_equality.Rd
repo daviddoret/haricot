@@ -26,11 +26,15 @@ In the context of this package, two modular binary numbers are equal if and only
 Formally: \cr
 \deqn{\forall i \in \mathbb{N}^+ , (a,b) \in \mathbb{B}_{i} : a=b \iff |a| = |b|, \forall j \in [1,...,i] , a_{i} = b_{i}}
 }
+A consequence of this definition of equality is that 2 modular binary numbers may be mapped to the same natural number and not be considered equal.\cr
+For instance: \cr
 }
 
 \examples{
 equal_bnum(bnum$new("1101"), bnum$new("110"));
 equal_bnum(bnum$new("1101"), bnum$new("1100"));
 equal_bnum(bnum$new("1101"), bnum$new("1101"));
+equal_bnum(bnum$new("000"), bnum$new("0000"));
+equal_bnum(bnum$new("000"), bnum$new("000"));
 
 }

@@ -1,16 +1,16 @@
 
 library(testthat);
 
-context("design_algo_switch");
+context("switch_algo");
 
-test_that('design_algo_switch: test 01', {
+test_that('switch_algo: test 01', {
 
   #browser();
 
   algo_0 <- algo_10$new();
   algo_1 <- algo_01$new();
 
-  algo_switch <- design_algo_switch(algo_0, algo_1);
+  algo_switch <- switch_algo(algo_0, algo_1);
 
   expect_equal(algo_switch$exec("00"), "1");
   expect_equal(algo_switch$exec("10"), "0");
@@ -21,7 +21,7 @@ test_that('design_algo_switch: test 01', {
 
   });
 
-test_that('design_algo_switch: random sampling', {
+test_that('switch_algo: random sampling', {
 
   #browser();
 
@@ -49,7 +49,7 @@ test_that('design_algo_switch: random sampling', {
   }
 
   # Setup the switch
-  algo_switch <- design_algo_switch(a0, a1);
+  algo_switch <- switch_algo(a0, a1);
 
   raw <- as.logical(c(random_input$get_logical_vector(), random_decision));
   switch_input <- bnum$new(input = raw);
