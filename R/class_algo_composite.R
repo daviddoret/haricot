@@ -3,6 +3,7 @@ require(R6);
 require(data.table);
 require(rlang);
 require(igraph);
+require(rlist);
 
 #' algo_composite (R6 class)
 #'
@@ -94,7 +95,8 @@ algo_composite <- R6Class(
       stop("ooops");
     },
     get_prettystring = function(){
-      stop("ooops");
+      # TODO: Enrich this with a nice representation of the algo inner logic.
+      return(super$get_label());
     },
     # Shortcut method to quickly add atomic NANDs.
     add_nand = function(
@@ -181,6 +183,9 @@ algo_composite <- R6Class(
 
       private$inner_graph <- g;
 
+    },
+    remove_component = function(component, ...){
+      remove_component(self, component, ...);
     },
     set_inner_node = function(node){
 

@@ -7,6 +7,8 @@ test_that('algo_not: test 01', {
 
   #browser();
 
+  stop("AJOUTER UN TEST SPECIFICQUE ICI");
+
   a <- algo_not$new();
 
   expect_equal(a$exec("0"), "1");

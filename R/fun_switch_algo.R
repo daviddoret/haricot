@@ -25,6 +25,9 @@ switch_algo <- function(
   algo_1,
   ...){
 
+  if(!is(algo_0, "algo_base")) { stop("algo_0 does not implement algo_base"); };
+  if(!is(algo_1, "algo_base")) { stop("algo_1 does not implement algo_base"); };
+
   if(algo_0$get_input_dimension() != algo_1$get_input_dimension()) { stop("Input dimensions are not identical"); };
   if(algo_0$get_output_dimension() != algo_1$get_output_dimension()) { stop("Output dimensions are not identical"); };
 

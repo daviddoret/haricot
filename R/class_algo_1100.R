@@ -41,8 +41,8 @@ algo_1100 <- R6Class(
       super$initialize(
         input_dimension = input_dimension,
         output_dimension = output_dimension,
-        algo_id = algo_id); #,
-      #label = label,
+        algo_id = algo_id,
+        label = label);
       #...);
 
       # Inverse input bit 2.

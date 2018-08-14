@@ -4,7 +4,7 @@
 \alias{baptize_algo_bit}
 \title{baptize_algo_bit}
 \usage{
-baptize_algo_bit(type, number, ...)
+baptize_algo_bit(type, number = NULL, ...)
 }
 \arguments{
 \item{type}{The bit type: "i" for input or "o" for output (character)}

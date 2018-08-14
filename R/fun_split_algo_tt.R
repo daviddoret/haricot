@@ -12,7 +12,7 @@ split_algo_tt <- function(
   algo,
   ...){
 
-  # TODO: Check correct class of input.
+  if(!is(algo, "algo_tt")) { stop("algo does not implement algo_tt"); };
 
   # Retrieve the dimensions of the original algo.
   dim_i_original <- algo$get_input_dimension();

@@ -46,7 +46,7 @@ copy_logic_algo_composite_to_algo_composite <- function(source, target, ...){
   # Substitute igraph edge attributes
   E(target_graph)[E(target_graph)$algo_id == source$get_algo_id()]$algo_id <- target$get_algo_id()
   E(target_graph)[E(target_graph)$source_algo_id == source$get_algo_id()]$source_algo_id <- target$get_algo_id()
-  E(target_graph)[E(target_graph)$target_algo_id == source$get_algo_id()]$source_algo_id <- target$get_algo_id()
+  E(target_graph)[E(target_graph)$target_algo_id == source$get_algo_id()]$target_algo_id <- target$get_algo_id()
 
   # Push the new logic in the target composite algo
   target$set_inner_nodes(target_nodes);

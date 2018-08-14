@@ -22,7 +22,7 @@ convert_algo_base_to_igraph <- function(node, ...){
   g <- make_empty_graph(directed = TRUE) %>%
     add_vertices(
       nv = node$get_input_dimension(),
-      bit = paste0("i", 1:node$get_input_dimension()),
+      bit = baptize_algo_bit("i", 1:node$get_input_dimension()),
       color = "#ccffe5",
       label = paste0("i", 1:node$get_input_dimension()),
       name = paste0(node$get_algo_id(), ".", paste0("i", 1:node$get_input_dimension())),
@@ -33,7 +33,7 @@ convert_algo_base_to_igraph <- function(node, ...){
       type = "inputbit") %>%
     add_vertices(
       nv = 1,
-      bit = NA,
+      bit = baptize_algo_bit("x"),
       color = "#eeeeee",
       label = node$get_label(),
       name = paste0(node$get_algo_id(), ".", "algo"),
@@ -44,7 +44,7 @@ convert_algo_base_to_igraph <- function(node, ...){
       type = "algo") %>%
     add_vertices(
       nv = node$get_output_dimension(),
-      bit = paste0("o", 1:node$get_output_dimension()),
+      bit = baptize_algo_bit("o", 1:node$get_output_dimension()),
       color = "#cce5ff",
       label = paste0("o", 1:node$get_output_dimension()),
       name = paste0(node$get_algo_id(),".",paste0("o", 1:node$get_output_dimension())),
@@ -60,9 +60,9 @@ convert_algo_base_to_igraph <- function(node, ...){
           )),
       algo_id = node$get_algo_id(),
       source_algo_id = node$get_algo_id(),
-      # TODO: ADD source_bit
+      source_bit = baptize_algo_bit("i", 1:node$get_input_dimension()),
       target_algo_id = node$get_algo_id(),
-      # TODO: ADD target_bit
+      target_bit = baptize_algo_bit("x"),
       arrow.size = .1,
       arrow.width = 1,
       #weight = .9,
@@ -76,9 +76,9 @@ convert_algo_base_to_igraph <- function(node, ...){
           )),
       algo_id = node$get_algo_id(),
       source_algo_id = node$get_algo_id(),
-      # TODO: ADD source_bit
+      source_bit = baptize_algo_bit("x"),
       target_algo_id = node$get_algo_id(),
-      # TODO: ADD target_bit
+      target_bit = baptize_algo_bit("o", 1: node$get_output_dimension()),
       arrow.size = .1,
       arrow.width = 1,
       color = "#004c99",
