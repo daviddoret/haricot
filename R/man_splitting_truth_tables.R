@@ -1,7 +1,7 @@
-#' @title Theory: Unswitching truth tables
+#' @title Theory: Splitting truth tables
 #'
 #' In the context of this package...
 #'
-#' @name unswitching_truth_tables
+#' @name splitting_truth_tables
 #' @family transformations
 NULL;
