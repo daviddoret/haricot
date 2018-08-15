@@ -22,9 +22,9 @@ baptize_algo_bit <- function(
   number = NULL,
   ...){
 
-  if(is_missing(type) | is.null(type)){ stop("missing type"); };
+  if(missing(type) | is.null(type)){ stop("missing type"); };
   if(type != "i" & type != "x" & type != "o"){ stop("invalid type"); };
-  if(type != "x" & (is_missing(number) | is.null(number))){ stop("missing number"); };
+  if(type != "x" & (missing(number) | is.null(number))){ stop("missing number"); };
   if(type == "x") { number <- ""; };
   return(paste0(type, number));
 

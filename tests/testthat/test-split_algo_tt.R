@@ -7,13 +7,20 @@ test_that('split_algo_tt: test 01', {
 
   #browser();
 
+  # Pick a random input dimension
   dim_i <- sample(x = 2:6, size = 1, replace = TRUE);
+
+  # Pick a random output dimension
   dim_o <- sample(x = 2:6, size = 1, replace = TRUE);
-  algo <- algo_tt$new(input_dimension = dim_i, output_dimension = dim_o);
-  algo$do_randomize_outputs();
 
+  # Create a truth table algorithm of desired dimensions
+  truthtable_algo <- algo_tt$new(input_dimension = dim_i, output_dimension = dim_o);
 
-  algo_comp <- split_algo_tt(algo);
+  # Randomize the truth table outputs, we end up with a random deterministic algorithm
+  truthtable_algo $do_randomize_outputs();
+
+  # Split the random truth table algorithm and retrieve the resulting composite algorithm
+  splitted_algo <- split_algo_tt(truthtable_algo);
 
   #algo$plot();
   #algo_comp$plot();
@@ -21,7 +28,8 @@ test_that('split_algo_tt: test 01', {
   n <- bnum$new(dim = dim_i);
   repeat{
 
-    expect_equal(algo$exec(n), algo_comp$exec(n));
+    expect_equal(truthtable_algo
+               $exec(n), splitted_algo$exec(n));
 
     n$do_increment();
     if(n$get_equal_0()){

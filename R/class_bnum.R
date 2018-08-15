@@ -64,6 +64,9 @@ bnum <- R6Class(
       # Chaining.
       return(self);
     },
+    format = function(){
+      return(self$get_prettystring());
+    },
     print = function(){
       print(self$get_prettystring());
     },
@@ -87,3 +90,4 @@ bnum <- R6Class(
     }
   )
 )
+

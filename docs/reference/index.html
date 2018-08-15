@@ -410,22 +410,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="man_splitting_truth_tables.html">man_splitting_truth_tables</a></code> </p>
-        </td>
-        <td><p>Theory: Splitting truth tables
-
-In the context of this package...</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="man_switching_algorithms.html">man_switching_algorithms</a></code> </p>
-        </td>
-        <td><p>Theory: Switching Algorithms
-
-In the context of this package, ...</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="notation.html">notation</a></code> </p>
         </td>
         <td><p>Notation</p></td>
@@ -441,6 +425,54 @@ In the context of this package, ...</p></td>
           <p><code><a href="plot_algo_composite.html">plot_algo_composite()</a></code> </p>
         </td>
         <td><p>Plot the igraph of a algo_composite</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="remove_component.html">remove_component()</a></code> </p>
+        </td>
+        <td><p>remove_component</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="splitting_truth_tables.html">splitting_truth_tables</a></code> </p>
+        </td>
+        <td><p>Theory: Splitting truth tables
+
+In the context of this package...</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="split_algo_tt.html">split_algo_tt()</a></code> </p>
+        </td>
+        <td><p>split_algo_tt</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="swap.html">swap()</a></code> </p>
+        </td>
+        <td><p>swap</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="switching_algorithms.html">switching_algorithms</a></code> </p>
+        </td>
+        <td><p>Switching Algorithms
+
+In the context of this package, switching algorithms is a procedure that consists in
+taking two algorithms \(a_{1}\) and \(a_{2}\) of identical input and output dimensions,
+and designing a new composite algorithm that incorporates the logic of both algorithms
+with a complementary discriminant bit.
+
+REWRITE:
+, is a composite algorithm c1 composed of 2 component algorithms: c2 and c3.
+c1, c2 and c3 have identical output dimensions.
+c2 and c3 have identical input dimensions.
+c1 has input dimension of c2's or c3's input dimension + 1, the "extra bit" e.
+The composite switch algorithm functions in the following manner:
+1). it receives the normal c2 or c3 input + the extra bit e.
+2). if e == 0, it runs c2 and returns its output.
+3). if e == 1, it runs c3 and returns its output.
+In summary, a composite switch is a practical construction that combines two algorithms and switch their execution with an extra bit.</p></td>
       </tr><tr>
         
         <td>

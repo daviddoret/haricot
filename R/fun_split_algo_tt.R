@@ -1,12 +1,31 @@
 #' split_algo_tt
 #'
-#' Decompose a truth table algorithm into two sub-truth table algorithm with a switch.
+#' Decompose a truth table algorithm into two sub-truth table algorithm with an arbitrage bit (positioned last) to switch between the two.
 #'
-#' @examples ...
+#' @examples
+#' # Pick a random input dimension
+#' dim_i <- sample(x = 2:6, size = 1, replace = TRUE);
+#' # Pick a random output dimension
+#' dim_o <- sample(x = 2:6, size = 1, replace = TRUE);
+#' # Create a truth table algorithm of desired dimensions
+#' truthtable_algo <- algo_tt$new(input_dimension = dim_i, output_dimension = dim_o);
+#' # Randomize the truth table outputs, we end up with a random deterministic algorithm
+#' truthtable_algo$do_randomize_outputs();
+#' # Split the random truth table algorithm and retrieve the resulting composite algorithm
+#' splitted_algo <- split_algo_tt(truthtable_algo);
+#' for(test_counter in 1:3){
+#'    # Pick a random input value
+#'    n <- bnum$new(dim = dim_i)$randomize();
+#'    print(paste0("Input: ", n$format(), ", output of truth table algo: ", truthtable_algo$exec(n)$format(), ", output of splitted algo: ", splitted_algo$exec(n)$format()));
+#' }
+#' # Plot the original algo
+#' truthtable_algo$plot();
+#' # Plot the splitted algo
+#' splitted_algo$plot();
 #'
-#' @param algo ... (algo_tt)
+#' @param algo The truth table algorithm to be splitted (algo_tt)
 #' @param ... For future usage
-#' @return A composite algorithm that has an identitcal truth table to the input algorithm (algo_composite)
+#' @return A composite algorithm that has an identitcal truth table to original truth table algorithm but where the truth table has been split in two and an arbitrage bit is used (algo_composite)
 #' @export
 split_algo_tt <- function(
   algo,
