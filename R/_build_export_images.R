@@ -12,7 +12,13 @@ build_export_figures <- function(){
     dev.off();
   }
 
+  export_figure("algo_0_graph", algo_0$new()$plot);
+  export_figure("algo_1_graph", algo_1$new()$plot);
+
+  export_figure("algo_00_graph", algo_00$new()$plot);
   export_figure("algo_10_graph", algo_10$new()$plot);
+  export_figure("algo_01_graph", algo_01$new()$plot);
+  export_figure("algo_11_graph", algo_11$new()$plot);
 
   export_figure("algo_0000_graph", algo_0000$new()$plot);
   export_figure("algo_0001_graph", algo_0001$new()$plot);

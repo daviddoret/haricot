@@ -2,7 +2,7 @@
 % Please edit documentation in R/fun_convert_algo_base_to_igraph.R
 \name{convert_algo_base_to_igraph}
 \alias{convert_algo_base_to_igraph}
-\title{Convert an object of type algo_base to an igraph object.}
+\title{Convert an object of class algo_base to an object of class igraph.}
 \usage{
 convert_algo_base_to_igraph(node, ...)
 }

@@ -10,4 +10,7 @@ Theory: Splitting truth tables
 
 In the context of this package...
 }
+\seealso{
+Other transformations: \code{\link{split}}
+}
 \concept{transformations}

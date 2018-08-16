@@ -50,3 +50,11 @@ test_that("bnum$randomize()", {
   expect_equal(b$get_equal_0(), TRUE);
 
 });
+
+test_that("bnum null (0 dimension)", {
+
+  b1 <- bnum$new(dim = 0);
+  b2 <- bnum$new(dim = 0);
+  expect_equal(b1, b2);
+  # TODO: Enrich here with extensive tests (increment, compare, etc.);
+});

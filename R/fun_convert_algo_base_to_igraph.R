@@ -2,7 +2,7 @@ require(R6);
 require(rlang);
 require(igraph);
 
-#' Convert an object of type algo_base to an igraph object.
+#' Convert an object of class algo_base to an object of class igraph.
 #'
 #' @description The igraph network will be composed of:
 #' * One node per input bit,
@@ -19,8 +19,22 @@ require(igraph);
 #' @export
 convert_algo_base_to_igraph <- function(node, ...){
 
-  g <- make_empty_graph(directed = TRUE) %>%
-    add_vertices(
+  g <- make_empty_graph(directed = TRUE);
+  g <- add_vertices(
+    graph = g,
+    nv = 1,
+    bit = baptize_algo_bit("x"),
+    color = "#eeeeee",
+    label = node$get_label(),
+    name = paste0(node$get_algo_id(), ".", "algo"),
+    algo_id = node$get_algo_id(),
+    push_execution_value = list(), # A vector of pushed execution values.
+    shape = "circle",
+    size = 20,
+    type = "algo");
+  if(node$get_input_dimension() > 0){
+    g <- add_vertices(
+      graph = g,
       nv = node$get_input_dimension(),
       bit = baptize_algo_bit("i", 1:node$get_input_dimension()),
       color = "#ccffe5",
@@ -31,33 +45,11 @@ convert_algo_base_to_igraph <- function(node, ...){
       shape = "circle",
       size = 10,
       type = "inputbit") %>%
-    add_vertices(
-      nv = 1,
-      bit = baptize_algo_bit("x"),
-      color = "#eeeeee",
-      label = node$get_label(),
-      name = paste0(node$get_algo_id(), ".", "algo"),
-      algo_id = node$get_algo_id(),
-      push_execution_value = list(), # A vector of pushed execution values.
-      shape = "circle",
-      size = 20,
-      type = "algo") %>%
-    add_vertices(
-      nv = node$get_output_dimension(),
-      bit = baptize_algo_bit("o", 1:node$get_output_dimension()),
-      color = "#cce5ff",
-      label = paste0("o", 1:node$get_output_dimension()),
-      name = paste0(node$get_algo_id(),".",paste0("o", 1:node$get_output_dimension())),
-      algo_id = node$get_algo_id(),
-      push_execution_value = list(), # A vector of pushed execution values.
-      shape = "circle",
-      size = 10,
-      type = "outputbit") %>%
     add_edges(
       c(rbind(
-          1:node$get_input_dimension(),
-          rep(node$get_input_dimension() + 1, node$get_input_dimension())
-          )),
+        1:node$get_input_dimension(),
+        rep(node$get_input_dimension() + 1, node$get_input_dimension())
+      )),
       algo_id = node$get_algo_id(),
       source_algo_id = node$get_algo_id(),
       source_bit = baptize_algo_bit("i", 1:node$get_input_dimension()),
@@ -68,22 +60,37 @@ convert_algo_base_to_igraph <- function(node, ...){
       #weight = .9,
       color = "#00994c",
       lty = "solid",
-      type = "input_algo") %>%
-    add_edges(
-      c(rbind(
+      type = "input_algo");
+  };
+  if(node$get_output_dimension() > 0){
+    g <- add_vertices(
+        graph = g,
+        nv = node$get_output_dimension(),
+        bit = baptize_algo_bit("o", 1:node$get_output_dimension()),
+        color = "#cce5ff",
+        label = paste0("o", 1:node$get_output_dimension()),
+        name = paste0(node$get_algo_id(),".",paste0("o", 1:node$get_output_dimension())),
+        algo_id = node$get_algo_id(),
+        push_execution_value = list(), # A vector of pushed execution values.
+        shape = "circle",
+        size = 10,
+        type = "outputbit") %>%
+      add_edges(
+        c(rbind(
           rep(node$get_input_dimension() + 1, node$get_output_dimension()),
           node$get_input_dimension() + 1 + 1:node$get_output_dimension()
-          )),
-      algo_id = node$get_algo_id(),
-      source_algo_id = node$get_algo_id(),
-      source_bit = baptize_algo_bit("x"),
-      target_algo_id = node$get_algo_id(),
-      target_bit = baptize_algo_bit("o", 1: node$get_output_dimension()),
-      arrow.size = .1,
-      arrow.width = 1,
-      color = "#004c99",
-      lty = "solid",
-      type = "algo_output");
+        )),
+        algo_id = node$get_algo_id(),
+        source_algo_id = node$get_algo_id(),
+        source_bit = baptize_algo_bit("x"),
+        target_algo_id = node$get_algo_id(),
+        target_bit = baptize_algo_bit("o", 1: node$get_output_dimension()),
+        arrow.size = .1,
+        arrow.width = 1,
+        color = "#004c99",
+        lty = "solid",
+        type = "algo_output");
+  };
   return(g);
 
 }
