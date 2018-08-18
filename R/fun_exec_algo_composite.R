@@ -9,19 +9,26 @@
 #' and returns the corresponding output.
 #'
 #' @examples # R function style:
-#' execute_algorithm_algo_composite(algo, input);
+#' exec_algo_composite(algo, input);
 #'
 #' # R6 method style:
-#' algo$execute_algorithm(input);
+#' algo$exec_algo_composite(input);
 #'
 #' @param algo A composite algorithm (R6 Class algo_composite)
 #' @param input The input bits (logical vector | character vector of "0"s and "1"s | R6 Class BinaryNumber)
 #' @return The corresponding output (same type than input)
 #' @export
-exec_algo_composite = function(algo, input) {
+exec_algo_composite = function(algo, input, ...) {
+
+  log(fun = "exec_algo_composite", algo = algo, input = input, ...);
+
   # Applies the TruthTable algorithm and returns its output.
   # Returns a type that is consistent with the type of the input.
   input_logical_vector <- convert_any_to_logical_vector(input);
+
+  if(length(input_logical_vector) != algo$get_input_dimension()){
+    stop("algo input dimension <> input dimension");
+  }
 
   # Get a copy of the igraph to store execution values.
   g <- algo$get_inner_graph();
@@ -35,7 +42,10 @@ exec_algo_composite = function(algo, input) {
   push_execution <- function(
     vertex_name,
     pushed_value,
-    pusher_position){
+    pusher_position,
+    ...){
+
+    log("push_execution", vertex_name, pushed_value, pusher_position, ...);
 
     #cat(
     #  "\n\nPUSH EXEC ",

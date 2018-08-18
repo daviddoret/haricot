@@ -44,11 +44,12 @@ convert_algo_base_to_igraph <- function(node, ...){
       push_execution_value = list(), # A vector of pushed execution values.
       shape = "circle",
       size = 10,
-      type = "inputbit") %>%
-    add_edges(
+      type = "inputbit");
+    g <- add_edges(
+      graph = g,
       c(rbind(
-        1:node$get_input_dimension(),
-        rep(node$get_input_dimension() + 1, node$get_input_dimension())
+        1,
+        1 + (1:node$get_input_dimension())
       )),
       algo_id = node$get_algo_id(),
       source_algo_id = node$get_algo_id(),
@@ -74,11 +75,12 @@ convert_algo_base_to_igraph <- function(node, ...){
         push_execution_value = list(), # A vector of pushed execution values.
         shape = "circle",
         size = 10,
-        type = "outputbit") %>%
-      add_edges(
+        type = "outputbit");
+    g <- add_edges(
+        graph = g,
         c(rbind(
-          rep(node$get_input_dimension() + 1, node$get_output_dimension()),
-          node$get_input_dimension() + 1 + 1:node$get_output_dimension()
+          1,
+          1 + node$get_input_dimension() + (1:node$get_output_dimension())
         )),
         algo_id = node$get_algo_id(),
         source_algo_id = node$get_algo_id(),

@@ -4,7 +4,7 @@
 \alias{exec_algo_nand}
 \title{Execute the NAND algorithm on a given input.}
 \usage{
-exec_algo_nand(algo, input)
+exec_algo_nand(algo, input, ...)
 }
 \arguments{
 \item{algo}{A NAND algorithm (R6 Class algo_nand)}

@@ -65,8 +65,9 @@ algo_composite <- R6Class(
     copy_logic_from = function(source){
       return(copy_logic_algo_composite_to_algo_composite(source, self));
     },
-    exec = function(input) {
-      return(exec_algo_composite(algo = self, input = input));
+    exec = function(input, ...) {
+      log(obj = self, method = "exec", input = input, ...);
+      return(exec_algo_composite(algo = self, input = input, ...));
     },
     plot = function() {
       plot_algo_composite(self);
@@ -122,7 +123,8 @@ algo_composite <- R6Class(
       source_node,
       source_bit,
       target_node,
-      target_bit){
+      target_bit,
+      ...){
       if(is_missing(source_node)){
         # If the inner_node is not specified,
         # we assume the intention is to work directly

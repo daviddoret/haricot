@@ -39,6 +39,7 @@ algo_nand <- R6Class(
         ...);
     },
     exec = function(input, ...) {
+      log(object = self, method = "exec", input = input, ...);
       return(exec_algo_nand(algo = self, input, ...));
     },
     plot = function() {

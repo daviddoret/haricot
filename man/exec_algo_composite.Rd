@@ -4,7 +4,7 @@
 \alias{exec_algo_composite}
 \title{Execute the algorithm of a algo_composite on a given input.}
 \usage{
-exec_algo_composite(algo, input)
+exec_algo_composite(algo, input, ...)
 }
 \arguments{
 \item{algo}{A composite algorithm (R6 Class algo_composite)}
@@ -25,9 +25,9 @@ and returns the corresponding output.
 }
 \examples{
 # R function style:
-execute_algorithm_algo_composite(algo, input);
+exec_algo_composite(algo, input);
 
 # R6 method style:
-algo$execute_algorithm(input);
+algo$exec_algo_composite(input);
 
 }
