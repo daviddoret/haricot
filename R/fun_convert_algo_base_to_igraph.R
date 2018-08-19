@@ -48,8 +48,8 @@ convert_algo_base_to_igraph <- function(node, ...){
     g <- add_edges(
       graph = g,
       c(rbind(
-        1,
-        1 + (1:node$get_input_dimension())
+        1 + (1:node$get_input_dimension()),
+        1
       )),
       algo_id = node$get_algo_id(),
       source_algo_id = node$get_algo_id(),

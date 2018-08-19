@@ -37,22 +37,22 @@ algo_00 <- R6Class(
         input_dimension = input_dimension,
         output_dimension = output_dimension,
         algo_id = algo_id,
-        label = label);
-      #...);
+        label = label,
+        ...);
 
       # Design the algorithm.
 
       # Inverse input bit 1
-      nand1 <- self$add_nand(self, "i1", self, "i1");
+      nand1 <- self$add_nand(self, "i1", self, "i1", ...);
 
       # NAND input bit 1 with its inverse, automatically yielding TRUE
-      nand2 <- self$add_nand(self, "i1", nand1, "o1");
+      nand2 <- self$add_nand(self, "i1", nand1, "o1", ...);
 
       # inverse the NAND
-      nand3 <- self$add_nand(nand2, "o1", nand2, "o1");
+      nand3 <- self$add_nand(nand2, "o1", nand2, "o1", ...);
 
       # Pipe the result.
-      self$set_inner_edge(nand3, "o1", self, "o1");
+      self$set_inner_edge(nand3, "o1", self, "o1", ...);
     }
   )
 )
