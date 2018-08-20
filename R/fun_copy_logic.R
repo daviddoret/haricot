@@ -1,13 +1,13 @@
 require(igraph);
 
-#' copy_logic_algo_composite_to_algo_composite, algo_composite$copy_logic_to, algo_composite$copy_logic_from
+#' copy_logic, algo_composite$copy_logic_to, algo_composite$copy_logic_from
 #'
 #' @description Copies the internal logic of a composite algorithm on a different composite algorithm.
 #'
 #' @examples # R function style:
 #' a1 <- algo_xnor$new();
 #' a2 <- algo_composite$new(input_dimension = 2, output_dimension = 1);
-#' copy_logic_algo_composite_to_algo_composite(a1, a2);
+#' copy_logic(a1, a2);
 #' a2$plot();
 #'
 #' # R6 method style with copy from:
@@ -25,7 +25,7 @@ require(igraph);
 #' @param ... For future usage
 #' @return N/A
 #' @export
-copy_logic_algo_composite_to_algo_composite <- function(source, target, ...){
+copy_logic <- function(source, target, ...){
 
   if(source$get_input_dimension() != target$get_input_dimension()){
     stop("source and target input dimensions are not identical");
@@ -33,6 +33,14 @@ copy_logic_algo_composite_to_algo_composite <- function(source, target, ...){
   if(source$get_output_dimension() != target$get_output_dimension()){
     stop("source and target output dimensions are not identical");
   }
+
+  if(!is(source, "algo_composite")){
+    stop("source is not of class algo_composite");
+  };
+
+  if(!is(target, "algo_composite")){
+    stop("target is not of class algo_composite");
+  };
 
   # Retrieve the internals of the source algo composite
   target_nodes <- source$get_inner_nodes();

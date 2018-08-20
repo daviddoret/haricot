@@ -11,3 +11,22 @@ test_that('algo_0: exhaustive output test', {
   expect_equal(a$exec(""), "0");
 
 });
+
+
+test_that('algo_0: test in composition', {
+
+  #browser();
+
+  composite <- algo_composite$new(0,1);
+
+  a0 <- algo_0$new();
+
+  composite$set_inner_node(node = a0);
+  composite$set_inner_edge(a0, "o1", composite, "o1");
+
+  #composite$plot();
+
+  expect_equal(composite$exec(""), "0");
+
+});
+

@@ -38,10 +38,10 @@ algo_composite <- R6Class(
       private$inner_graph <- make_empty_graph(directed = TRUE) %>%
         add_vertices(
           nv = self$get_input_dimension(),
-          bit = paste0("i", 1:self$get_input_dimension()),
+          bit = paste0(INPUT_PREFIX, 1:self$get_input_dimension()),
           color = "#ccffe5",
-          label = paste0("i", 1:self$get_input_dimension()),
-          name = paste0(self$get_algo_id(), ".", paste0("i", 1:self$get_input_dimension())),
+          label = paste0(INPUT_PREFIX, 1:self$get_input_dimension()),
+          name = paste0(self$get_algo_id(), NAMESPACE_SEPARATOR, paste0(INPUT_PREFIX, 1:self$get_input_dimension())),
           algo_id = self$get_algo_id(),
           push_execution_value = list(), # A vector of pushed execution values.
           shape = "circle",
@@ -49,10 +49,10 @@ algo_composite <- R6Class(
           type = "inputbit") %>%
         add_vertices(
           nv = self$get_output_dimension(),
-          bit = paste0("o", 1:self$get_output_dimension()),
+          bit = paste0(OUTPUT_PREFIX, 1:self$get_output_dimension()),
           color = "#cce5ff",
-          label = paste0("o", 1:self$get_output_dimension()),
-          name = paste0(self$get_algo_id(),".",paste0("o", 1:self$get_output_dimension())),
+          label = paste0(OUTPUT_PREFIX, 1:self$get_output_dimension()),
+          name = paste0(self$get_algo_id(),NAMESPACE_SEPARATOR,paste0(OUTPUT_PREFIX, 1:self$get_output_dimension())),
           algo_id = self$get_algo_id(),
           push_execution_value = list(), # A vector of pushed execution values.
           shape = "circle",
@@ -60,10 +60,10 @@ algo_composite <- R6Class(
           type = "outputbit")
     },
     copy_logic_to = function(target){
-      return(copy_logic_algo_composite_to_algo_composite(self, target));
+      return(copy_logic(self, target));
     },
     copy_logic_from = function(source){
-      return(copy_logic_algo_composite_to_algo_composite(source, self));
+      return(copy_logic(source, self));
     },
     exec = function(input, ...) {
       log(obj = self, method = "exec", input = input, ...);

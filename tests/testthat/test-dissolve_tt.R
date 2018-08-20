@@ -17,7 +17,7 @@ test_that('dissolve_tt: test 01', {
   truthtable_algo <- algo_tt$new(input_dimension = dim_i, output_dimension = dim_o);
 
   # Randomize the truth table outputs, we end up with a random deterministic algorithm
-  truthtable_algo $do_randomize_outputs();
+  truthtable_algo$do_randomize_outputs();
 
   # Split the random truth table algorithm and retrieve the resulting composite algorithm
   dissolved_algo <- dissolve_tt(truthtable_algo);

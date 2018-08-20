@@ -11,19 +11,19 @@
 #  family = "DORET",
 #  email = "david.doret@me.com",
 #  role = "aut",
-#  comment = NULL, file = ".", normalize = FALSE)
+#  comment = NULL, file = NAMESPACE_SEPARATOR, normalize = FALSE)
 #desc::desc_add_author(
 #  given = "David",
 #  family = "DORET",
 #  email = "david.doret@me.com",
 #  role = "cph",
-#  comment = NULL, file = ".", normalize = FALSE)
+#  comment = NULL, file = NAMESPACE_SEPARATOR, normalize = FALSE)
 #desc::desc_add_author(
 #  given = "David",
 #  family = "DORET",
 #  email = "david.doret@me.com",
 #  role = "cre",
-#  comment = NULL, file = ".", normalize = FALSE)
+#  comment = NULL, file = NAMESPACE_SEPARATOR, normalize = FALSE)
 
 
 # HTML DOCUMENTATION

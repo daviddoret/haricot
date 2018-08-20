@@ -139,30 +139,63 @@ exec_algo_composite = function(algo, input, ...) {
     }
   }
 
-  for(bit_position in 1:algo$get_input_dimension()){
-    bit <- paste0("i", bit_position);
-    algo_id <- algo$get_algo_id();
-    vertex_name <- paste0(algo_id, ".", bit);
-    pushed_value <- input_logical_vector[bit_position];
-    # cat("\n\n\nSTAGE 1: EXECUTE INPUTBIT",
-    #  "bit: ", bit,
-    #  "algo_id", algo_id,
-    #  "vertex_name", vertex_name,
-    #  "pushed_value", pushed_value,
-    #  "bit_position", bit_position,
-    #  sep = "\n");
-    push_execution(
-      vertex_name = vertex_name,
-      pushed_value = pushed_value,
-      pusher_position = bit_position);
-  }
+  # Push the algorithm execution from the atomic constants.
+  # The rationale here is that atomic constants have an input dimension of 0,
+  # hence their "execution" must be specifically pushed.
+  # I decide to accomplish this first and to tackle input bits seconds,
+  # but this is completely arbitrary.
+  algo_list <- algo$get_inner_nodes();
+  if(length(algo_list) > 0){
+    for(algo_index in 1:length(algo_list)){
+      a <- algo_list[[algo_index]];
+      # I explicitely test the class algo_0 or algo_1,
+      # because a composite algorithm may also be a
+      # logical constant with input dimension = 0.
+      if(a$is_constant() &
+         (is(a, "algo_0") |
+          is(a, "algo_1"))) {
+        # This is a constant.
+        algo_id <- a$get_algo_id();
+        # Prepare the name of the next vertex were to push the value.
+        # For atomic constants, we know this is "o1" so we hard-code it.
+        # But this is a bit ugly, isn't it?
+        vertex_name <- baptize_igraph_vertex(algo_id, NOBIT_PREFIX);
+        pushed_value <- a$exec();
+        push_execution(
+          vertex_name = vertex_name,
+          pushed_value = pushed_value,
+          pusher_position = 1);
+      };
+    };
+  };
+
+  # Push the algorithm execution from the input bits.
+  if(algo$get_input_dimension() > 0){
+    for(bit_position in 1:algo$get_input_dimension()){
+      bit <- paste0(INPUT_PREFIX, bit_position);
+      algo_id <- algo$get_algo_id();
+      vertex_name <- baptize_igraph_vertex(algo_id, bit);
+      pushed_value <- input_logical_vector[bit_position];
+      # cat("\n\n\nSTAGE 1: EXECUTE INPUTBIT",
+      #  "bit: ", bit,
+      #  "algo_id", algo_id,
+      #  "vertex_name", vertex_name,
+      #  "pushed_value", pushed_value,
+      #  "bit_position", bit_position,
+      #  sep = "\n");
+      push_execution(
+        vertex_name = vertex_name,
+        pushed_value = pushed_value,
+        pusher_position = bit_position);
+    };
+  };
 
   # Retrieve the result of the algo from the parent OutputBits.
   output_logical_vector <- rep(NA, algo$get_output_dimension());
   for(position in 1:algo$get_output_dimension()){
-    bit <- paste0("o", position);
+    bit <- paste0(OUTPUT_PREFIX, position);
     # print(paste0("\n\n\n\nSTAGE 2: RETRIEVE FROM BitOutput: bit: ", bit));
-    vertex_name <- paste0(algo$get_algo_id(), ".", bit);
+    vertex_name <- paste0(algo$get_algo_id(), NAMESPACE_SEPARATOR, bit);
     bit_exec_value <- vertices_execution_value[[vertex_name]];
     # print(paste0("bit_exec_value: ", bit_exec_value));
     output_logical_vector[position] <- bit_exec_value;

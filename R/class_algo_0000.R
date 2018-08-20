@@ -41,24 +41,44 @@ algo_0000 <- R6Class(
       super$initialize(
         input_dimension = input_dimension,
         output_dimension = output_dimension,
-        algo_id = algo_id); #,
-      #label = label,
-      #...);
+        algo_id = algo_id,
+        label = label,
+        ...);
 
       # Invert the first input bit.
-      nand1 <- self$add_nand(source_1_node = self, source_1_bit = "i1", source_2_node = self, source_2_bit = "i1");
+      nand1 <- self$add_nand(
+        source_1_node = self,
+        source_1_bit = "i1",
+        source_2_node = self,
+        source_2_bit = "i1",
+        ...);
 
       # NAND the first input bit with its inverse.
       # The output is unconditionnaly TRUE.
-      nand2 <- self$add_nand(source_1_node = self, source_1_bit = "i1", source_2_node = nand1, source_2_bit = "o1");
+      nand2 <- self$add_nand(
+        source_1_node = self,
+        source_1_bit = "i1",
+        source_2_node = nand1,
+        source_2_bit = "o1",
+        ...);
 
       # Invert output to get an unconditional FALSE.
-      nand3 <- self$add_nand(source_1_node = nand2, source_1_bit = "o1", source_2_node = nand2, source_2_bit = "o1");
+      nand3 <- self$add_nand(
+        source_1_node = nand2,
+        source_1_bit = "o1",
+        source_2_node = nand2,
+        source_2_bit = "o1",
+        ...);
 
       # Pipe the final output.
-      self$set_inner_edge(source_node = nand3, source_bit = "o1", target_node = self, target_bit = "o1");
+      self$set_inner_edge(
+        source_node = nand3,
+        source_bit = "o1",
+        target_node = self,
+        target_bit = "o1",
+        ...);
     },
-    do_randomize_outputs = function() {
+    do_randomize_outputs = function(...) {
       stop("Not supported");
     }
   )

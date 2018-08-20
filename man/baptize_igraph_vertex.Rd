@@ -19,14 +19,14 @@ N/A
 \description{
 Computes the unique name of an igraph vertex used in algo_composite internals.
 The naming scheme goes like this:
-For input bits: %algo_id% & "." & %BIT%, e.g. "node134.i4"
+For input bits: %algo_id% & NAMESPACE_SEPARATOR & %BIT%, e.g. "node134.i4"
 For algo: %algo_id% & ".algo", e.g. "node134.algo"
-For output bits: %algo_id% & "." & %BIT%, e.g. "node134.o7"
+For output bits: %algo_id% & NAMESPACE_SEPARATOR & %BIT%, e.g. "node134.o7"
 This function is mainly used for internal purposes but could be useful for advanced manipulations.
 This function is trivial but may prove useful in the future to enforce data quality validation rules.
 }
 \examples{
 print(baptize_igraph_vertex("algo1", "i3"));
-print(baptize_igraph_vertex("algo2", paste0("i", 1:3)));
+print(baptize_igraph_vertex("algo2", paste0(INPUT_PREFIX, 1:3)));
 
 }

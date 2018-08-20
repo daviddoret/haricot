@@ -33,7 +33,7 @@ switch_algo <- function(
 
   input_dimension <- algo_0$get_input_dimension() + 1;
   output_dimension <- algo_0$get_output_dimension();
-  extra_bit <- paste0("i", input_dimension);
+  extra_bit <- paste0(INPUT_PREFIX, input_dimension);
 
   algo_switch <- algo_composite$new(input_dimension, output_dimension);
 
@@ -44,8 +44,8 @@ switch_algo <- function(
   for(position in 1 : (input_dimension - 1)){
     # Pipes switch input bits to component bits.
     # Like this, both component algorithms will be unconditionally executed.
-    algo_switch$set_inner_edge(algo_switch, paste0("i", position), algo_0, paste0("i", position));
-    algo_switch$set_inner_edge(algo_switch, paste0("i", position), algo_1, paste0("i", position));
+    algo_switch$set_inner_edge(algo_switch, paste0(INPUT_PREFIX, position), algo_0, paste0(INPUT_PREFIX, position));
+    algo_switch$set_inner_edge(algo_switch, paste0(INPUT_PREFIX, position), algo_1, paste0(INPUT_PREFIX, position));
   }
 
   # Loop on the component algo bits
@@ -54,13 +54,13 @@ switch_algo <- function(
     # If extra_bit == 0, keep algo_0 output bit. Otherwise, set it to 0.
     sub_switch_0 <- algo_0100$new();
     algo_switch$set_inner_node(sub_switch_0);
-    algo_switch$set_inner_edge(algo_0, paste0("o", position), sub_switch_0, "i1");
+    algo_switch$set_inner_edge(algo_0, paste0(OUTPUT_PREFIX, position), sub_switch_0, "i1");
     algo_switch$set_inner_edge(algo_switch, extra_bit, sub_switch_0, "i2");
 
     # If extra_bit == 1, keep algo_1 output bit. Otherwise, set it to 0.
     sub_switch_1 <- algo_0001$new();
     algo_switch$set_inner_node(sub_switch_1);
-    algo_switch$set_inner_edge(algo_1, paste0("o", position), sub_switch_1, "i1");
+    algo_switch$set_inner_edge(algo_1, paste0(OUTPUT_PREFIX, position), sub_switch_1, "i1");
     algo_switch$set_inner_edge(algo_switch, extra_bit, sub_switch_1, "i2");
 
     # OR the two switches
@@ -70,7 +70,7 @@ switch_algo <- function(
     algo_switch$set_inner_edge(sub_switch_1, "o1", sub_or_1, "i2");
 
     # Pipe the OR to the final output bit
-    algo_switch$set_inner_edge(sub_or_1, "o1", algo_switch, paste0("o", position));
+    algo_switch$set_inner_edge(sub_or_1, "o1", algo_switch, paste0(OUTPUT_PREFIX, position));
 
   }
 

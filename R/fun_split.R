@@ -40,6 +40,7 @@ split <- function(
   ...){
 
   if(!is(algo, "algo_tt")) { stop("algo does not implement algo_tt"); };
+  if(!algo$get_input_dimension() > 1){ stop("algo must have an input dimension strictly greater than 1."); };
 
   # Retrieve the dimensions of the original algo.
   dim_i_original <- algo$get_input_dimension();

@@ -38,13 +38,13 @@ algo_0 <- R6Class(
         label = label,
         ...);
     },
-    do_randomize_outputs = function() {
+    do_randomize_outputs = function(...) {
       stop("Not supported");
     },
-    exec = function(input = NA){
-      exec_algo_0(self, input);
+    exec = function(input = NA, ...){
+      exec_algo_0(self, input, ...);
     },
-    get_prettystring = function(){
+    get_prettystring = function(...){
       return("0");
     }
   )

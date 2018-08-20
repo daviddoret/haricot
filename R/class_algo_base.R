@@ -75,6 +75,16 @@ algo_base <- R6Class(
     },
     print = function(){
       cat(self$get_prettystring(), "\n");
+    },
+    is_constant = function(){
+      if(self$get_input_dimension() == 0){
+        # By definition, an algorithm
+        # that does not have any input
+        # is a constant.
+        return(TRUE);
+      } else {
+        return(FALSE);
+      }
     }
   )
 )

@@ -44,6 +44,19 @@ test_that('remove_component: test 01', {
 
   composite$plot();
 
-  warning("MAKE THIS A PROPER TEST OF REMOVE, NOT JUST MANUAL VISUAL CHECKING")
+  add_me <- algo_0110$new(label = "add_me");
+  composite$set_inner_node(node = add_me);
+  composite$set_inner_edge(pipe1, "o1", add_me, "i1");
+  composite$set_inner_edge(pipe2, "o1", add_me, "i2");
+
+  # Re-pipe
+  composite$set_inner_edge(add_me, "o1", pipe3, "i1");
+
+  composite$plot();
+
+  expect_equal(composite$exec("00"), "0");
+  expect_equal(composite$exec("10"), "1");
+  expect_equal(composite$exec("01"), "1");
+  expect_equal(composite$exec("11"), "0");
 
 });
