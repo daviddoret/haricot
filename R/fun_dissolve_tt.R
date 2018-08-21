@@ -10,14 +10,29 @@
 #' @export
 dissolve_tt <- function(algo, ...){
 
-  if(!is(algo, "algo_tt")){ stop("algo does not implement algo_tt");};
+  if(is(algo, "algo_tt")){
+    if(algo$get_input_dimension() == 0){
+      algo <- convert_tt_constant_to_composite(algo);
+    } else {
+      algo <- split(algo);
+    }
+  };
 
-  # Split it in two.
-  dissoled_algo <- split(algo, ...);
+  if(is(algo, "algo_composite")){
+    if(length(algo$get_inner_nodes()) > 0){
+      for(algo_index in 1 : length(algo$get_inner_nodes())){
+        sub_algo <- algo$get_inner_nodes()[algo_index];
+        if(is(sub_algo$get_is_atomic())){
+          # This is atomic, let it like that.
+        } else
+          # Dissolve it recursively.
+          sub_dissolved <- dissolve_tt(sub_algo);
+          # And substitute it with the old one.
+          algo$substitute(sub_algo, sub_dissolved);
+      }
+    }
+  }
 
-  # Recursively call the transform on the resulting composite.
-  # This will recursively call the transform on its sub truth tables.
-  dissoled_algo <- dissolve_tt(splitted, ...);
-  return(recurse);
+  return(algo);
 
 }

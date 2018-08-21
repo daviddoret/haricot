@@ -16,7 +16,7 @@
 #' 3). if e == 1, it runs c3 and returns its output.
 #' In summary, a composite switch is a practical construction that combines two algorithms and switch their execution with an extra bit.
 #'
-#' @seealso \code{\link{switch_algo}}
+#' @seealso \code{\link{commutate}}
 #' @seealso \code{\link{unswitching_algorithms}}
 #'
 #' @name switching_algorithms

@@ -39,7 +39,7 @@ The composite switch algorithm functions in the following manner:
 In summary, a composite switch is a practical construction that combines two algorithms and switch their execution with an extra bit.
 }
 \seealso{
-\code{\link{switch_algo}}
+\code{\link{commutate}}
 
 \code{\link{unswitching_algorithms}}
 }

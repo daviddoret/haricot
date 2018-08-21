@@ -36,6 +36,7 @@ algo_1 <- R6Class(
         output_dimension = output_dimension,
         algo_id = algo_id,
         label = label,
+        is_atomic = TRUE,
         ...);
     },
     do_randomize_outputs = function() {

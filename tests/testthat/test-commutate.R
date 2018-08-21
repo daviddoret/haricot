@@ -1,27 +1,27 @@
 
 library(testthat);
 
-context("switch_algo");
+context("commutate");
 
-test_that('switch_algo: test 01', {
+test_that('commutate: test 01', {
 
   #browser();
 
   algo_0 <- algo_10$new();
   algo_1 <- algo_01$new();
 
-  algo_switch <- switch_algo(algo_0, algo_1);
+  commutated <- commutate(algo_0, algo_1);
 
-  expect_equal(algo_switch$exec("00"), "1");
-  expect_equal(algo_switch$exec("10"), "0");
-  expect_equal(algo_switch$exec("01"), "0");
-  expect_equal(algo_switch$exec("11"), "1");
+  expect_equal(commutated$exec("00"), "1");
+  expect_equal(commutated$exec("10"), "0");
+  expect_equal(commutated$exec("01"), "0");
+  expect_equal(commutated$exec("11"), "1");
 
-  algo_switch$plot();
+  commutated$plot();
 
   });
 
-test_that('switch_algo: random sampling', {
+test_that('commutate: random sampling', {
 
   #browser();
 
@@ -49,12 +49,12 @@ test_that('switch_algo: random sampling', {
   }
 
   # Setup the switch
-  algo_switch <- switch_algo(a0, a1);
+  commutated <- commutate(a0, a1);
 
   raw <- as.logical(c(random_input$get_logical_vector(), random_decision));
   switch_input <- bnum$new(input = raw);
 
-  switch_solution <- algo_switch$exec(switch_input);
+  switch_solution <- commutated$exec(switch_input);
 
   expect_true(equal_bnum(solution, switch_solution));
 

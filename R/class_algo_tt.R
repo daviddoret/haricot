@@ -11,10 +11,15 @@ require(uuid);
 #' ...
 #' Row index position = 2 ^ N --> Input = binum of value 2 ^ N - 1.
 #'
-#' @examples
+#' @examples # A basic example.
 #' t1 <- algo_tt$new(input_dimension = 2, output_dimension = 2);
 #' t1$set_output(input = "01", output = "11");
 #' t1$exec("01");
+#'
+#' # Design a constant (ie input dimension = 0) algorithm of output dimension 3.
+#' t2 <- algo_tt$new(input_dimension = 0, output_dimension = 3);
+#' t2$set_output(input = "", output = "101");
+#' t2$exec("");
 #'
 #' @export
 algo_tt <- R6Class(

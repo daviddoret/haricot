@@ -18,7 +18,8 @@ algo_base <- R6Class(
     input_dimension = NULL,
     output_dimension = NULL,
     algo_id = NULL,
-    label = NULL
+    label = NULL,
+    is_atomic = NULL
   ),
   public = list(
     # Private Members
@@ -27,6 +28,7 @@ algo_base <- R6Class(
       output_dimension,
       algo_id = NULL,
       label = NULL,
+      is_atomic = NULL,
       ...) {
       # Store private members
       private$input_dimension <- input_dimension;
@@ -35,6 +37,8 @@ algo_base <- R6Class(
       private$algo_id <- algo_id;
       if(is.null(label)){ label <- "algo"; }
       private$label <- label;
+      if(is.null(is_atomic)){ is_atomic <- FALSE; }
+      private$is_atomic <- is_atomic;
     },
     convert_to_igraph = function(...){
       return(convert_algo_base_to_igraph(node = self, ...));
@@ -57,6 +61,9 @@ algo_base <- R6Class(
     get_input_size = function() {
       # Returns the number of different input values.
       return(2 ^ self$get_input_dimension());
+    },
+    get_is_atomic = function() {
+      return(private$is_atomic);
     },
     get_inverse = function() {
       stop("This method is abstract, please implement it in the subclass.");

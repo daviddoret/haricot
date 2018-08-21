@@ -40,7 +40,7 @@ split <- function(
   ...){
 
   if(!is(algo, "algo_tt")) { stop("algo does not implement algo_tt"); };
-  if(!algo$get_input_dimension() > 1){ stop("algo must have an input dimension strictly greater than 1."); };
+  if(!algo$get_input_dimension() > 0){ stop("algo must have an input dimension strictly greater than 0."); };
 
   # Retrieve the dimensions of the original algo.
   dim_i_original <- algo$get_input_dimension();
@@ -67,6 +67,7 @@ split <- function(
   algo_1$set_logical_matrix(tt_1);
 
   # Design the parent switch.
-  algo_comp <- switch_algo(algo_0, algo_1);
+  commutated <- commutate(algo_0, algo_1);
 
+  return(commutated);
 }

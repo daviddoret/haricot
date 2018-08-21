@@ -8,10 +8,10 @@ test_that('split: test 01', {
   #browser();
 
   # Pick a random input dimension
-  dim_i <- sample(x = 2:6, size = 1, replace = TRUE);
+  dim_i <- sample(x = 1:6, size = 1, replace = TRUE);
 
   # Pick a random output dimension
-  dim_o <- sample(x = 2:6, size = 1, replace = TRUE);
+  dim_o <- sample(x = 1:6, size = 1, replace = TRUE);
 
   # Create a truth table algorithm of desired dimensions
   truthtable_algo <- algo_tt$new(input_dimension = dim_i, output_dimension = dim_o);
@@ -28,8 +28,7 @@ test_that('split: test 01', {
   n <- bnum$new(dim = dim_i);
   repeat{
 
-    expect_equal(truthtable_algo
-               $exec(n), splitted_algo$exec(n));
+    expect_equal(truthtable_algo$exec(n), splitted_algo$exec(n));
 
     n$do_increment();
     if(n$get_equal_0()){
