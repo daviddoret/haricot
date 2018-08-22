@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>baptize_algo_bit — baptize_algo_bit • haricot</title>
+<title>substitute — substitute • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,14 +30,10 @@
 
 
 
-<meta property="og:title" content="baptize_algo_bit — baptize_algo_bit" />
+<meta property="og:title" content="substitute — substitute" />
 
-<meta property="og:description" content="Assign a proper name for a bit in an algo.
-The naming scheme goes like this:
-For input bits: &quot;i1&quot;, &quot;i2&quot;, &quot;i3&quot;, ...
-For output bits: &quot;o1&quot;, &quot;o2&quot;, &quot;o3&quot;, ...
-For non-bits (e.g. the &quot;bit&quot; attribute of an algo vertex in an igraph): NOBIT_PREFIX (empty string)
-Any programmatic manipulation of bits should avoid to implement bit names directly and rather rely on this function to guarantee upward compatibility with future evolutions of the naming scheme." />
+<meta property="og:description" content="Substitute a component algorithm with another in a composite algorithm. 
+The two component algorithms must be of equivalent dimensions." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -97,34 +93,34 @@ Any programmatic manipulation of bits should avoid to implement bit names direct
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>baptize_algo_bit</h1>
+    <h1>substitute</h1>
     
-    <div class="hidden name"><code>baptize_algo_bit.Rd</code></div>
+    <div class="hidden name"><code>substitute.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Assign a proper name for a bit in an algo.
-The naming scheme goes like this:</p><ul>
-<li><p>For input bits: <code>"i1", "i2", "i3", ...</code></p></li>
-<li><p>For output bits: <code>"o1", "o2", "o3", ...</code></p></li>
-<li><p>For non-bits (e.g. the "bit" attribute of an algo vertex in an igraph): <code>NOBIT_PREFIX</code> (empty string)</p></li>
-</ul><p>Any programmatic manipulation of bits should avoid to implement bit names directly and rather rely on this function to guarantee upward compatibility with future evolutions of the naming scheme.</p>
+    <p>Substitute a component algorithm with another in a composite algorithm. <br />
+The two component algorithms must be of equivalent dimensions.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>baptize_algo_bit</span>(<span class='no'>type</span>, <span class='kw'>number</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>substitute</span>(<span class='no'>compi</span>, <span class='no'>orig</span>, <span class='no'>subst</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>type</th>
-      <td><p>The bit type: INPUT_PREFIX for input or OUTPUT_PREFIX for output (character)</p></td>
+      <th>compi</th>
+      <td><p>The composite algorithm inside which we want to perform the substitution (R6 Class algo_composite)</p></td>
     </tr>
     <tr>
-      <th>number</th>
-      <td><p>The bit number (integer)</p></td>
+      <th>orig</th>
+      <td><p>The original component algorithm that we want to extract from the composite (R6 Class algo_base)</p></td>
+    </tr>
+    <tr>
+      <th>subst</th>
+      <td><p>The new component algorithm that we want to inject in the composite (R6 Class algo_base)</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -134,11 +130,12 @@ The naming scheme goes like this:</p><ul>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The bit name</p>
+    <p>N/A</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>print</span>(<span class='fu'>baptize_algo_bit</span>(<span class='no'>INPUT_PREFIX</span>, <span class='fl'>5</span>));</div><div class='output co'>#&gt; [1] "i5"</div><div class='input'><span class='fu'>print</span>(<span class='fu'>baptize_algo_bit</span>(<span class='no'>OUTPUT_PREFIX</span>, <span class='fl'>1</span>:<span class='fl'>4</span>));</div><div class='output co'>#&gt; [1] "o1" "o2" "o3" "o4"</div><div class='input'>
+    <pre class="examples"><div class='input'># ...
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

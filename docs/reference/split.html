@@ -143,18 +143,18 @@
 <span class='co'># Create a truth table algorithm of desired dimensions</span>
 <span class='no'>truthtable_algo</span> <span class='kw'>&lt;-</span> <span class='no'>algo_tt</span>$<span class='fu'>new</span>(<span class='kw'>input_dimension</span> <span class='kw'>=</span> <span class='no'>dim_i</span>, <span class='kw'>output_dimension</span> <span class='kw'>=</span> <span class='no'>dim_o</span>);
 <span class='co'># Randomize the truth table outputs, we end up with a random deterministic algorithm</span>
-<span class='no'>truthtable_algo</span>$<span class='fu'>do_randomize_outputs</span>();</div><div class='output co'>#&gt; 00 &gt; 0110
-#&gt; 10 &gt; 1111
-#&gt; 01 &gt; 1011
-#&gt; 11 &gt; 1110 </div><div class='input'><span class='co'># Split the random truth table algorithm and retrieve the resulting composite algorithm</span>
+<span class='no'>truthtable_algo</span>$<span class='fu'>do_randomize_outputs</span>();</div><div class='output co'>#&gt; 00 &gt; 00111
+#&gt; 10 &gt; 10111
+#&gt; 01 &gt; 01001
+#&gt; 11 &gt; 00010 </div><div class='input'><span class='co'># Split the random truth table algorithm and retrieve the resulting composite algorithm</span>
 <span class='no'>splitted_algo</span> <span class='kw'>&lt;-</span> <span class='fu'>split</span>(<span class='no'>truthtable_algo</span>);
 <span class='kw'>for</span>(<span class='no'>test_counter</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>3</span>){
    <span class='co'># Pick a random input value</span>
    <span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='kw'>dim</span> <span class='kw'>=</span> <span class='no'>dim_i</span>)$<span class='fu'>randomize</span>();
    <span class='fu'>print</span>(<span class='fu'>paste0</span>(<span class='st'>"Input: "</span>, <span class='no'>n</span>$<span class='fu'>format</span>(), <span class='st'>", output of truth table algo: "</span>, <span class='no'>truthtable_algo</span>$<span class='fu'>exec</span>(<span class='no'>n</span>)$<span class='fu'>format</span>(), <span class='st'>", output of splitted algo: "</span>, <span class='no'>splitted_algo</span>$<span class='fu'>exec</span>(<span class='no'>n</span>)$<span class='fu'>format</span>()));
-}</div><div class='output co'>#&gt; [1] "Input: 11, output of truth table algo: 1110, output of splitted algo: 1110"
-#&gt; [1] "Input: 01, output of truth table algo: 1011, output of splitted algo: 1011"
-#&gt; [1] "Input: 11, output of truth table algo: 1110, output of splitted algo: 1110"</div><div class='input'><span class='co'># Plot the original algo</span>
+}</div><div class='output co'>#&gt; [1] "Input: 10, output of truth table algo: 10111, output of splitted algo: 10111"
+#&gt; [1] "Input: 00, output of truth table algo: 00111, output of splitted algo: 00111"
+#&gt; [1] "Input: 00, output of truth table algo: 00111, output of splitted algo: 00111"</div><div class='input'><span class='co'># Plot the original algo</span>
 <span class='no'>truthtable_algo</span>$<span class='fu'>plot</span>();</div><div class='img'><img src='split-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># Plot the splitted algo</span>
 <span class='no'>splitted_algo</span>$<span class='fu'>plot</span>();</div><div class='img'><img src='split-2.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>

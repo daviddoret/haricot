@@ -108,9 +108,9 @@ algo_composite <- R6Class(
       target_node = NULL,
       target_bit = NULL,
       ...){
-      if(is.null(source_1_node)){source_1_node <- self;}
-      if(is.null(source_2_node)){source_2_node <- self;}
-      if(is.null(target_node)){target_node <- self;}
+      if(is_missing(source_1_node) | is.null(source_1_node)){source_1_node <- self;}
+      if(is_missing(source_2_node) | is.null(source_2_node)){source_2_node <- self;}
+      if(is_missing(target_node) | is.null(target_node)){target_node <- self;}
       nand1 <- algo_nand$new(...);
       self$set_inner_node(nand1, ...);
       self$set_inner_edge(source_1_node,source_1_bit,nand1,"i1", ...);
@@ -121,9 +121,9 @@ algo_composite <- R6Class(
       return(nand1);
     },
     set_inner_edge = function(
-      source_node,
+      source_node = NULL,
       source_bit,
-      target_node,
+      target_node = NULL,
       target_bit,
       ...){
       set_graph_edge(

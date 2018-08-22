@@ -107,9 +107,9 @@ This function is trivial but may prove useful in the future to enforce data qual
     
     <p>Computes the unique name of an igraph vertex used in algo_composite internals.
 The naming scheme goes like this:
-For input bits: <!-- %algo_id% &amp; "." &amp; %BIT%, e.g. "node134.i4" -->
+For input bits: <!-- %algo_id% &amp; NAMESPACE_SEPARATOR &amp; %BIT%, e.g. "node134.i4" -->
 For algo: <!-- %algo_id% &amp; ".algo", e.g. "node134.algo" -->
-For output bits: <!-- %algo_id% &amp; "." &amp; %BIT%, e.g. "node134.o7" -->
+For output bits: <!-- %algo_id% &amp; NAMESPACE_SEPARATOR &amp; %BIT%, e.g. "node134.o7" -->
 This function is mainly used for internal purposes but could be useful for advanced manipulations.
 This function is trivial but may prove useful in the future to enforce data quality validation rules.</p>
     
@@ -140,7 +140,7 @@ This function is trivial but may prove useful in the future to enforce data qual
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>print</span>(<span class='fu'>baptize_igraph_vertex</span>(<span class='st'>"algo1"</span>, <span class='st'>"i3"</span>));</div><div class='output co'>#&gt; [1] "algo1.i3"</div><div class='input'><span class='fu'>print</span>(<span class='fu'>baptize_igraph_vertex</span>(<span class='st'>"algo2"</span>, <span class='fu'>paste0</span>(<span class='st'>"i"</span>, <span class='fl'>1</span>:<span class='fl'>3</span>)));</div><div class='output co'>#&gt; [1] "algo2.i1" "algo2.i2" "algo2.i3"</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>print</span>(<span class='fu'>baptize_igraph_vertex</span>(<span class='st'>"algo1"</span>, <span class='st'>"i3"</span>));</div><div class='output co'>#&gt; [1] "algo1.i3"</div><div class='input'><span class='fu'>print</span>(<span class='fu'>baptize_igraph_vertex</span>(<span class='st'>"algo2"</span>, <span class='fu'>paste0</span>(<span class='no'>INPUT_PREFIX</span>, <span class='fl'>1</span>:<span class='fl'>3</span>)));</div><div class='output co'>#&gt; [1] "algo2.i1" "algo2.i2" "algo2.i3"</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>baptize_algo_bit — baptize_algo_bit • haricot</title>
+<title>commutate — commutate • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,14 +30,9 @@
 
 
 
-<meta property="og:title" content="baptize_algo_bit — baptize_algo_bit" />
+<meta property="og:title" content="commutate — commutate" />
 
-<meta property="og:description" content="Assign a proper name for a bit in an algo.
-The naming scheme goes like this:
-For input bits: &quot;i1&quot;, &quot;i2&quot;, &quot;i3&quot;, ...
-For output bits: &quot;o1&quot;, &quot;o2&quot;, &quot;o3&quot;, ...
-For non-bits (e.g. the &quot;bit&quot; attribute of an algo vertex in an igraph): NOBIT_PREFIX (empty string)
-Any programmatic manipulation of bits should avoid to implement bit names directly and rather rely on this function to guarantee upward compatibility with future evolutions of the naming scheme." />
+<meta property="og:description" content="..." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -97,34 +92,29 @@ Any programmatic manipulation of bits should avoid to implement bit names direct
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>baptize_algo_bit</h1>
+    <h1>commutate</h1>
     
-    <div class="hidden name"><code>baptize_algo_bit.Rd</code></div>
+    <div class="hidden name"><code>commutate.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Assign a proper name for a bit in an algo.
-The naming scheme goes like this:</p><ul>
-<li><p>For input bits: <code>"i1", "i2", "i3", ...</code></p></li>
-<li><p>For output bits: <code>"o1", "o2", "o3", ...</code></p></li>
-<li><p>For non-bits (e.g. the "bit" attribute of an algo vertex in an igraph): <code>NOBIT_PREFIX</code> (empty string)</p></li>
-</ul><p>Any programmatic manipulation of bits should avoid to implement bit names directly and rather rely on this function to guarantee upward compatibility with future evolutions of the naming scheme.</p>
+    <p>...</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>baptize_algo_bit</span>(<span class='no'>type</span>, <span class='kw'>number</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>commutate</span>(<span class='no'>algo_0</span>, <span class='no'>algo_1</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>type</th>
-      <td><p>The bit type: INPUT_PREFIX for input or OUTPUT_PREFIX for output (character)</p></td>
+      <th>algo_0</th>
+      <td><p>A component algorithm to be commutated to when e == 0 (algo_base)</p></td>
     </tr>
     <tr>
-      <th>number</th>
-      <td><p>The bit number (integer)</p></td>
+      <th>algo_1</th>
+      <td><p>A component algorithm to be commutated to when e == 1 (algo_base)</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -134,11 +124,16 @@ The naming scheme goes like this:</p><ul>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The bit name</p>
+    <p>A component algorithm whose inner logic commutates algo_0 and algo_1 based on e</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>print</span>(<span class='fu'>baptize_algo_bit</span>(<span class='no'>INPUT_PREFIX</span>, <span class='fl'>5</span>));</div><div class='output co'>#&gt; [1] "i5"</div><div class='input'><span class='fu'>print</span>(<span class='fu'>baptize_algo_bit</span>(<span class='no'>OUTPUT_PREFIX</span>, <span class='fl'>1</span>:<span class='fl'>4</span>));</div><div class='output co'>#&gt; [1] "o1" "o2" "o3" "o4"</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'># Switch two simple algos:</span>
+<span class='fu'>require</span>(<span class='no'>haricot</span>);
+<span class='no'>algo_0</span> <span class='kw'>&lt;-</span> <span class='no'>algo_01</span>$<span class='fu'>new</span>();
+<span class='no'>algo_0</span>$<span class='fu'>plot</span>();</div><div class='img'><img src='commutate-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>algo_1</span> <span class='kw'>&lt;-</span> <span class='no'>algo_10</span>$<span class='fu'>new</span>();
+<span class='no'>algo_1</span>$<span class='fu'>plot</span>();</div><div class='img'><img src='commutate-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>commutated</span> <span class='kw'>&lt;-</span> <span class='fu'>commutate</span>(<span class='no'>algo_0</span>, <span class='no'>algo_1</span>);
+<span class='no'>commutated</span>$<span class='fu'>exec</span>(<span class='st'>"00"</span>);</div><div class='output co'>#&gt; [1] "0"</div><div class='input'><span class='no'>commutated</span>$<span class='fu'>exec</span>(<span class='st'>"10"</span>);</div><div class='output co'>#&gt; [1] "1"</div><div class='input'><span class='no'>commutated</span>$<span class='fu'>exec</span>(<span class='st'>"01"</span>);</div><div class='output co'>#&gt; [1] "1"</div><div class='input'><span class='no'>commutated</span>$<span class='fu'>exec</span>(<span class='st'>"11"</span>);</div><div class='output co'>#&gt; [1] "0"</div><div class='input'><span class='no'>commutated</span>$<span class='fu'>plot</span>();</div><div class='img'><img src='commutate-3.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
