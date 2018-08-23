@@ -21,7 +21,7 @@ atomize <- function(algo, ...){
   };
 
   if(is(algo, "algo_composite")){
-    components <- algo$get_inner_nodes();
+    components <- algo$get_components();
     if(length(components) > 0){
       for(component_index in 1 : length(components)){
         component <- components[[component_index]];

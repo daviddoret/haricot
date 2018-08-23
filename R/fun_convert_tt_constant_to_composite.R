@@ -29,7 +29,7 @@ convert_tt_constant_to_composite <- function(algo){
     if(output_bit_value){
       # Create a constant sub algorithm of correct value.
       sub_algo <- algo_1$new();
-      composite$set_inner_node(sub_algo);
+      composite$set_component(sub_algo);
       # Pipe the constant to the corresponding output bit.
       composite$set_inner_edge(
         sub_algo,
@@ -39,7 +39,7 @@ convert_tt_constant_to_composite <- function(algo){
     } else {
       # Create a constant sub algorithm of correct value.
       sub_algo <- algo_0$new();
-      composite$set_inner_node(sub_algo);
+      composite$set_component(sub_algo);
       # Pipe the constant to the corresponding output bit.
       composite$set_inner_edge(
         sub_algo,

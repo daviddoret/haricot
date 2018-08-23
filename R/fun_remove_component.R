@@ -31,8 +31,8 @@ remove_component <- function(
 
   composite$set_inner_graph(graph);
 
-  components <- list.remove(composite$get_inner_nodes(), id);
-  composite$set_inner_nodes(components);
+  components <- list.remove(composite$get_components(), id);
+  composite$set_components(components);
 
   return(composite);
 

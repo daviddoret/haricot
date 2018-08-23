@@ -23,7 +23,7 @@ swap <- function(
   if(old$get_dim_o() != new$get_dim_o()) { stop("The output dimensions of the old and new algorithms are not identical"); };
 
   # Add the new algo component to the composite.
-  composite$set_inner_node(new);
+  composite$set_component(new);
 
   # Retrieve the internals of the source algo composite
   graph <- composite$get_inner_graph();
@@ -40,7 +40,7 @@ swap <- function(
     edge <- edge_list[i];
     # Reset that edge for the new algo.
     source_algo_id <- edge$source_algo_id;
-    source_algo <- composite$get_inner_node(source_algo_id);
+    source_algo <- composite$get_component(source_algo_id);
     source_bit <- edge$source_bit;
     target_bit <- edge$target_bit;
     composite$set_inner_edge(
@@ -59,7 +59,7 @@ swap <- function(
     # Reset that edge for the new algo.
     source_bit <- edge$source_bit;
     target_algo_id <- edge$target_algo_id;
-    target_algo <- composite$get_inner_node(target_algo_id);
+    target_algo <- composite$get_component(target_algo_id);
     target_bit <- edge$target_bit;
     composite$set_inner_edge(
       source_node = new,

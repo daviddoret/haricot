@@ -31,9 +31,9 @@ set_component = function(
   log(fun = "set_component", composite = composite_label, node = component_label, ...);
 
   # Store the sub-algorithm node in the private list.
-  component_list <- composite$get_inner_nodes();
+  component_list <- composite$get_components();
   component_list[[algo_id]] <- node;
-  composite$set_inner_nodes(component_list);
+  composite$set_components(component_list);
 
   # Merge the current graph with the new one.
   component_graph <- node$convert_to_igraph();

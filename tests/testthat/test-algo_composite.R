@@ -19,7 +19,7 @@ test_that('algo_composite: faking NAND', {
 
   nand1 <- algo_nand$new();
 
-  super_a$set_inner_node(node = nand1);
+  super_a$set_component(node = nand1);
 
   super_a$set_inner_edge(super_a, "i1", nand1, "i1");
   super_a$set_inner_edge(super_a, "i2", nand1, "i2");
@@ -50,7 +50,7 @@ test_that('CompositeAlgo: faking NOT', {
 
   nand1 <- algo_nand$new();
 
-  super_a$set_inner_node(node = nand1);
+  super_a$set_component(node = nand1);
 
   super_a$set_inner_edge(super_a, "i1", nand1, "i1");
   super_a$set_inner_edge(super_a, "i1", nand1, "i2");
@@ -82,9 +82,9 @@ test_that('CompositeAlgo: basic composition', {
   nand2 <- algo_nand$new();
   nand3 <- algo_nand$new();
 
-  super_a$set_inner_node(node = nand1);
-  super_a$set_inner_node(node = nand2);
-  super_a$set_inner_node(node = nand3);
+  super_a$set_component(node = nand1);
+  super_a$set_component(node = nand2);
+  super_a$set_component(node = nand3);
 
   super_a$set_inner_edge(super_a, "i1", nand1, "i1");
   super_a$set_inner_edge(super_a, "i2", nand1, "i2");
@@ -113,13 +113,13 @@ test_that('CompositeAlgo: super composite', {
   not2 <- algo_not$new();
   or1 <- algo_or$new();
 
-  super_a$set_inner_node(node = not1);
+  super_a$set_component(node = not1);
   super_a$set_inner_edge(super_a, "i1", not1, "i1");
 
-  super_a$set_inner_node(node = not2);
+  super_a$set_component(node = not2);
   super_a$set_inner_edge(super_a, "i2", not2, "i1");
 
-  super_a$set_inner_node(node = or1);
+  super_a$set_component(node = or1);
   super_a$set_inner_edge(not1, "o1", or1, "i1");
   super_a$set_inner_edge(not2, "o1", or1, "i2");
 

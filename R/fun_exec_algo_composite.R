@@ -66,7 +66,7 @@ exec_algo_composite = function(algo, input, ...) {
       # The node we are working on is the parent node.
       node <- algo;
     } else {
-      node <- algo$get_inner_node(algo_id);
+      node <- algo$get_component(algo_id);
     }
     node_dim_i <- node$get_dim_i();
     # print(paste0("node_dim_i: ", node_dim_i));
@@ -144,7 +144,7 @@ exec_algo_composite = function(algo, input, ...) {
   # hence their "execution" must be specifically pushed.
   # I decide to accomplish this first and to tackle input bits seconds,
   # but this is completely arbitrary.
-  algo_list <- algo$get_inner_nodes();
+  algo_list <- algo$get_components();
   if(length(algo_list) > 0){
     for(algo_index in 1:length(algo_list)){
       a <- algo_list[[algo_index]];

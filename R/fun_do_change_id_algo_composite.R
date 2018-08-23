@@ -35,7 +35,7 @@ do_change_id_algo_composite <- function(algo, id, ...){
   stop("substitute edge$name");
 
   # Push the new logic in the target composite algo
-  target$set_inner_nodes(target_inner_nodes);
+  target$set_components(target_components);
   target$set_inner_graph(target_inner_graph);
 
 }

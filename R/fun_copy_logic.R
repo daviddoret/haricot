@@ -43,7 +43,7 @@ copy_logic <- function(source, target, ...){
   };
 
   # Retrieve the internals of the source algo composite
-  target_nodes <- source$get_inner_nodes();
+  target_nodes <- source$get_components();
   target_graph <- source$get_inner_graph();
 
   # Substitute igraph vertices attributes
@@ -57,7 +57,7 @@ copy_logic <- function(source, target, ...){
   E(target_graph)[E(target_graph)$target_algo_id == source$get_algo_id()]$target_algo_id <- target$get_algo_id()
 
   # Push the new logic in the target composite algo
-  target$set_inner_nodes(target_nodes);
+  target$set_components(target_nodes);
   target$set_inner_graph(target_graph);
 
 }

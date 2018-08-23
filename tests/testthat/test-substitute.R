@@ -17,7 +17,7 @@ test_that('substite: substitute a nand', {
 
   orig <- algo_nand$new(label = "orig");
 
-  compi$set_inner_node(node = orig);
+  compi$set_component(node = orig);
 
   compi$set_inner_edge(compi, "i1", orig, "i1");
   compi$set_inner_edge(compi, "i2", orig, "i2");
@@ -56,13 +56,13 @@ test_that('substite: substitute a nand with multiple components', {
     label = "compi");
 
   orig <- algo_nand$new(label = "orig");
-  compi$set_inner_node(node = orig);
+  compi$set_component(node = orig);
   compi$set_inner_edge(compi, "i1", orig, "i1");
   compi$set_inner_edge(compi, "i2", orig, "i2");
   compi$set_inner_edge(orig, "o1", compi, "o1");
 
   other <- algo_nand$new(label = "other");
-  compi$set_inner_node(node = other);
+  compi$set_component(node = other);
   compi$set_inner_edge(compi, "i1", other, "i1");
   compi$set_inner_edge(compi, "i2", other, "i2");
   compi$set_inner_edge(other, "o1", compi, "o2");
@@ -101,14 +101,14 @@ test_that('substite: substitute a truthtable with multiple components', {
 
   orig <- algo_tt$new(2, 1, label = "orig");
   orig$do_randomize_outputs();
-  compi$set_inner_node(node = orig);
+  compi$set_component(node = orig);
   compi$set_inner_edge(compi, "i1", orig, "i1");
   compi$set_inner_edge(compi, "i2", orig, "i2");
   compi$set_inner_edge(orig, "o1", compi, "o1");
 
   other <- algo_tt$new(2, 1, label = "other");
   other$do_randomize_outputs();
-  compi$set_inner_node(node = other);
+  compi$set_component(node = other);
   compi$set_inner_edge(compi, "i1", other, "i1");
   compi$set_inner_edge(compi, "i2", other, "i2");
   compi$set_inner_edge(other, "o1", compi, "o2");

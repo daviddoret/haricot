@@ -25,13 +25,13 @@ set_graph_edge = function(
   }
 
   if(is_missing(source_node)){
-    # If the inner_node is not specified,
+    # If the component is not specified,
     # we assume the intention is to work directly
     # on the input and output bits of the current node.
     source_node <- composite;
   }
   if(is_missing(target_node)){
-    # If the inner_node is not specified,
+    # If the component is not specified,
     # we assume the intention is to work directly
     # on the input and output bits of the current node.
     target_node <- composite;

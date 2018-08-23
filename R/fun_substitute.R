@@ -38,10 +38,10 @@ substitute <- function(compi, orig, subst, ...){
   # are effectively components of the composite.
 
   # Add the substite component to the composite.
-  compi$set_inner_node(subst, ...);
+  compi$set_component(subst, ...);
 
   # Retrieve the internals of the composite
-  components <- compi$get_inner_nodes();
+  components <- compi$get_components();
   dag <- compi$get_inner_graph();
 
   # Rewire the inbound edges with the substitute.
@@ -55,7 +55,7 @@ substitute <- function(compi, orig, subst, ...){
     if(source_algo_id == compi$get_algo_id()){
       source_algo <- compi;
     } else {
-      source_algo <- compi$get_inner_node(source_algo_id);
+      source_algo <- compi$get_component(source_algo_id);
     ;}
     source_bit <- E(dag)[edge_position]$source_bit;
     target_bit <- E(dag)[edge_position]$target_bit;
@@ -79,7 +79,7 @@ substitute <- function(compi, orig, subst, ...){
     if(target_algo_id == compi$get_algo_id()){
       target_algo <- compi;
     } else {
-      target_algo <- compi$get_inner_node(target_algo_id);
+      target_algo <- compi$get_component(target_algo_id);
       ;}
     target_bit <- E(dag)[edge_position]$target_bit;
 

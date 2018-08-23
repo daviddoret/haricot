@@ -14,7 +14,7 @@ algo_composite <- R6Class(
   "algo_composite",
   inherit = algo_base,
   private = list(
-    inner_nodes = NULL,
+    components = NULL,
     inner_graph = NULL
   ),
   public = list(
@@ -32,7 +32,7 @@ algo_composite <- R6Class(
         algo_id = algo_id,
         label = label,
         ...);
-      private$inner_nodes <- list();
+      private$components <- list();
 
       # WARNING: NEARLY REDUNDANT CODE WITH convert_algo_base_to_igraph
       private$inner_graph <- make_empty_graph(directed = TRUE) %>%
@@ -78,19 +78,19 @@ algo_composite <- R6Class(
     get_inner_graph = function(){
       return(private$inner_graph);
     },
-    get_inner_node_count = function(){
-      return(length(private$inner_nodes));
+    get_component_count = function(){
+      return(length(private$components));
     },
-    get_inner_node = function(inner_algo_id){
-      return(private$inner_nodes[[inner_algo_id]]);
+    get_component = function(inner_algo_id){
+      return(private$components[[inner_algo_id]]);
     },
-    get_inner_node_predecessors = function(inner_algo_id){
+    get_component_predecessors = function(inner_algo_id){
       # Return a vector of node ids
       # corresponding to the direct predecessors of the target node.
       stop("ooops");
     },
-    get_inner_nodes = function(){
-      return(private$inner_nodes);
+    get_components = function(){
+      return(private$components);
     },
     get_inverse = function() {
       stop("ooops");
@@ -112,7 +112,7 @@ algo_composite <- R6Class(
       if(is_missing(source_2_node) | is.null(source_2_node)){source_2_node <- self;}
       if(is_missing(target_node) | is.null(target_node)){target_node <- self;}
       nand1 <- algo_nand$new(...);
-      self$set_inner_node(nand1, ...);
+      self$set_component(nand1, ...);
       self$set_inner_edge(source_1_node,source_1_bit,nand1,"i1", ...);
       self$set_inner_edge(source_2_node,source_2_bit,nand1,"i2", ...);
       if(!is.null(target_bit)){
@@ -137,14 +137,14 @@ algo_composite <- R6Class(
     remove_component = function(component, ...){
       remove_component(self, component, ...);
     },
-    set_inner_node = function(node, ...){
+    set_component = function(node, ...){
       set_component(self, node, ...);
     },
     set_inner_graph = function(graph, ...){
       private$inner_graph <- graph;
     },
-    set_inner_nodes = function(nodes, ...){
-      private$inner_nodes <- nodes;
+    set_components = function(nodes, ...){
+      private$components <- nodes;
     },
     print = function(...){
       cat(self$get_prettystring(), "\n");
