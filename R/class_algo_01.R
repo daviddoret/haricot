@@ -24,12 +24,12 @@ algo_01 <- R6Class(
       algo_id = NULL,
       label = NULL,
       ...) {
-      input_dimension <- 1;
-      output_dimension <- 1;
+      dim_i <- 1;
+      dim_o <- 1;
       if(is.null(label)){ label <- "TT01"; }
       super$initialize(
-        input_dimension = input_dimension,
-        output_dimension = output_dimension,
+        dim_i = dim_i,
+        dim_o = dim_o,
         algo_id = algo_id,
         label = label);
       #...);

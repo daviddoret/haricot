@@ -20,15 +20,15 @@ algo_composite <- R6Class(
   public = list(
     # Constructor
     initialize = function(
-      input_dimension,
-      output_dimension,
+      dim_i,
+      dim_o,
       algo_id = NULL,
       label = NULL,
       ...) {
       # Call the super class constructor
       super$initialize(
-        input_dimension = input_dimension,
-        output_dimension = output_dimension,
+        dim_i = dim_i,
+        dim_o = dim_o,
         algo_id = algo_id,
         label = label,
         ...);
@@ -37,22 +37,22 @@ algo_composite <- R6Class(
       # WARNING: NEARLY REDUNDANT CODE WITH convert_algo_base_to_igraph
       private$inner_graph <- make_empty_graph(directed = TRUE) %>%
         add_vertices(
-          nv = self$get_input_dimension(),
-          bit = paste0(INPUT_PREFIX, 1:self$get_input_dimension()),
+          nv = self$get_dim_i(),
+          bit = paste0(INPUT_PREFIX, 1:self$get_dim_i()),
           color = "#ccffe5",
-          label = paste0(INPUT_PREFIX, 1:self$get_input_dimension()),
-          name = paste0(self$get_algo_id(), NAMESPACE_SEPARATOR, paste0(INPUT_PREFIX, 1:self$get_input_dimension())),
+          label = paste0(INPUT_PREFIX, 1:self$get_dim_i()),
+          name = paste0(self$get_algo_id(), NAMESPACE_SEPARATOR, paste0(INPUT_PREFIX, 1:self$get_dim_i())),
           algo_id = self$get_algo_id(),
           push_execution_value = list(), # A vector of pushed execution values.
           shape = "circle",
           size = 10,
           type = "inputbit") %>%
         add_vertices(
-          nv = self$get_output_dimension(),
-          bit = paste0(OUTPUT_PREFIX, 1:self$get_output_dimension()),
+          nv = self$get_dim_o(),
+          bit = paste0(OUTPUT_PREFIX, 1:self$get_dim_o()),
           color = "#cce5ff",
-          label = paste0(OUTPUT_PREFIX, 1:self$get_output_dimension()),
-          name = paste0(self$get_algo_id(),NAMESPACE_SEPARATOR,paste0(OUTPUT_PREFIX, 1:self$get_output_dimension())),
+          label = paste0(OUTPUT_PREFIX, 1:self$get_dim_o()),
+          name = paste0(self$get_algo_id(),NAMESPACE_SEPARATOR,paste0(OUTPUT_PREFIX, 1:self$get_dim_o())),
           algo_id = self$get_algo_id(),
           push_execution_value = list(), # A vector of pushed execution values.
           shape = "circle",
@@ -69,8 +69,8 @@ algo_composite <- R6Class(
       log(obj = self, method = "exec", input = input, ...);
       return(exec_algo_composite(algo = self, input = input, ...));
     },
-    plot = function() {
-      plot_algo_composite(self);
+    plot = function(interactive = FALSE, ...) {
+      plot_algo_composite(self, interactive, ...);
     },
     do_randomize_outputs = function() {
       stop("ooops");
@@ -148,6 +148,9 @@ algo_composite <- R6Class(
     },
     print = function(...){
       cat(self$get_prettystring(), "\n");
+    },
+    substitute = function(original, substitute, ...){
+      substitute(self, original, substitute, ...);
     }
   )
 )

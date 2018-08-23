@@ -6,17 +6,17 @@ require(igraph);
 #'
 #' @examples # R function style:
 #' a1 <- algo_xnor$new();
-#' a2 <- algo_composite$new(input_dimension = 2, output_dimension = 1);
+#' a2 <- algo_composite$new(dim_i = 2, dim_o = 1);
 #' copy_logic(a1, a2);
 #' a2$plot();
 #'
 #' # R6 method style with copy from:
-#' a3 <- algo_composite$new(input_dimension = 2, output_dimension = 1);
+#' a3 <- algo_composite$new(dim_i = 2, dim_o = 1);
 #' a3$copy_logic_from(a1);
 #' a3$plot();
 #'
 #' # R6 method style with copy to:
-#' a4 <- algo_composite$new(input_dimension = 2, output_dimension = 1);
+#' a4 <- algo_composite$new(dim_i = 2, dim_o = 1);
 #' a1$copy_logic_to(a4);
 #' a4$plot();
 #'
@@ -27,10 +27,10 @@ require(igraph);
 #' @export
 copy_logic <- function(source, target, ...){
 
-  if(source$get_input_dimension() != target$get_input_dimension()){
+  if(source$get_dim_i() != target$get_dim_i()){
     stop("source and target input dimensions are not identical");
   }
-  if(source$get_output_dimension() != target$get_output_dimension()){
+  if(source$get_dim_o() != target$get_dim_o()){
     stop("source and target output dimensions are not identical");
   }
 

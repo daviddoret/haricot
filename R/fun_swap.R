@@ -19,8 +19,8 @@ swap <- function(
   if(!is(composite, "algo_composite")) { stop("The composite parameter does not implement class algo_composite"); };
   if(!is(old, "algo_base")) { stop("The old parameter does not implement class algo_base"); };
   if(!is(new, "algo_base")) { stop("The new parameter does not implement class algo_base"); };
-  if(old$get_input_dimension() != new$get_input_dimension()) { stop("The input dimensions of the old and new algorithms are not identical"); };
-  if(old$get_output_dimension() != new$get_output_dimension()) { stop("The output dimensions of the old and new algorithms are not identical"); };
+  if(old$get_dim_i() != new$get_dim_i()) { stop("The input dimensions of the old and new algorithms are not identical"); };
+  if(old$get_dim_o() != new$get_dim_o()) { stop("The output dimensions of the old and new algorithms are not identical"); };
 
   # Add the new algo component to the composite.
   composite$set_inner_node(new);

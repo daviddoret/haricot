@@ -26,7 +26,7 @@ exec_algo_composite = function(algo, input, ...) {
   # Returns a type that is consistent with the type of the input.
   input_logical_vector <- convert_any_to_logical_vector(input);
 
-  if(length(input_logical_vector) != algo$get_input_dimension()){
+  if(length(input_logical_vector) != algo$get_dim_i()){
     stop("algo input dimension <> input dimension");
   }
 
@@ -37,7 +37,7 @@ exec_algo_composite = function(algo, input, ...) {
   vertices_execution_value <- list();
 
   # Prepare the algorithm output.
-  output_logical_vector <- rep(NA, algo$get_output_dimension());
+  output_logical_vector <- rep(NA, algo$get_dim_o());
 
   push_execution <- function(
     vertex_name,
@@ -68,8 +68,8 @@ exec_algo_composite = function(algo, input, ...) {
     } else {
       node <- algo$get_inner_node(algo_id);
     }
-    node_input_dimension <- node$get_input_dimension();
-    # print(paste0("node_input_dimension: ", node_input_dimension));
+    node_dim_i <- node$get_dim_i();
+    # print(paste0("node_dim_i: ", node_dim_i));
 
     # InputBit.
     if(vertex_type == "inputbit"){
@@ -93,7 +93,7 @@ exec_algo_composite = function(algo, input, ...) {
     } else if(vertex_type == "algo"){
       # print(paste0("type == algo"));
       if(is.null(vertices_execution_value[[vertex_name]])){
-        init_vector <- c(rep(NA, node_input_dimension));
+        init_vector <- c(rep(NA, node_dim_i));
         # print(paste0("init_vector: ", init_vector));
         vertices_execution_value[[vertex_name]] <<- init_vector;
       }
@@ -170,8 +170,8 @@ exec_algo_composite = function(algo, input, ...) {
   };
 
   # Push the algorithm execution from the input bits.
-  if(algo$get_input_dimension() > 0){
-    for(bit_position in 1:algo$get_input_dimension()){
+  if(algo$get_dim_i() > 0){
+    for(bit_position in 1:algo$get_dim_i()){
       bit <- paste0(INPUT_PREFIX, bit_position);
       algo_id <- algo$get_algo_id();
       vertex_name <- baptize_igraph_vertex(algo_id, bit);
@@ -191,8 +191,8 @@ exec_algo_composite = function(algo, input, ...) {
   };
 
   # Retrieve the result of the algo from the parent OutputBits.
-  output_logical_vector <- rep(NA, algo$get_output_dimension());
-  for(position in 1:algo$get_output_dimension()){
+  output_logical_vector <- rep(NA, algo$get_dim_o());
+  for(position in 1:algo$get_dim_o()){
     bit <- paste0(OUTPUT_PREFIX, position);
     # print(paste0("\n\n\n\nSTAGE 2: RETRIEVE FROM BitOutput: bit: ", bit));
     vertex_name <- paste0(algo$get_algo_id(), NAMESPACE_SEPARATOR, bit);

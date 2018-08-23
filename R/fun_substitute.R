@@ -15,10 +15,10 @@ require(igraph);
 #' @export
 substitute <- function(compi, orig, subst, ...){
 
-  if(orig$get_input_dimension() != subst$get_input_dimension()){
+  if(orig$get_dim_i() != subst$get_dim_i()){
     stop("original and substitute input dimensions are not identical");
   }
-  if(orig$get_output_dimension() != subst$get_output_dimension()){
+  if(orig$get_dim_o() != subst$get_dim_o()){
     stop("original and substitute output dimensions are not identical");
   }
 

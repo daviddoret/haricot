@@ -15,12 +15,12 @@
 #' @return The resulting truth table (R6 Class Truthtable)
 #' @export
 convert_nandtree_to_truthtable <- function(nandtree){
-  input_dimension <- nandtree$get_input_dimension();
-  output_dimension <- nandtree$get_output_dimension();
+  dim_i <- nandtree$get_dim_i();
+  dim_o <- nandtree$get_dim_o();
   truthtable <- algo_tt$new(
-    input_dimension = input_dimension,
-    output_dimension = output_dimension);
-  input_binarynumber <- bnum$new(input = rep(FALSE, input_dimension));
+    dim_i = dim_i,
+    dim_o = dim_o);
+  input_binarynumber <- bnum$new(input = rep(FALSE, dim_i));
   repeat{
     print(input_binarynumber);
     output_binarynumber = nandtree$exec(input_binarynumber);

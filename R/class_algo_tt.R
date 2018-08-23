@@ -12,12 +12,12 @@ require(uuid);
 #' Row index position = 2 ^ N --> Input = binum of value 2 ^ N - 1.
 #'
 #' @examples # A basic example.
-#' t1 <- algo_tt$new(input_dimension = 2, output_dimension = 2);
+#' t1 <- algo_tt$new(dim_i = 2, dim_o = 2);
 #' t1$set_output(input = "01", output = "11");
 #' t1$exec("01");
 #'
 #' # Design a constant (ie input dimension = 0) algorithm of output dimension 3.
-#' t2 <- algo_tt$new(input_dimension = 0, output_dimension = 3);
+#' t2 <- algo_tt$new(dim_i = 0, dim_o = 3);
 #' t2$set_output(input = "", output = "101");
 #' t2$exec("");
 #'
@@ -29,28 +29,28 @@ algo_tt <- R6Class(
     logical_matrix = NULL),
   public = list(
     initialize = function(
-      input_dimension,
-      output_dimension,
+      dim_i,
+      dim_o,
       algo_id = NULL,
       label = NULL,
       ...) {
       # Call the super class constructor
       super$initialize(
-        input_dimension = input_dimension,
-        output_dimension = output_dimension,
+        dim_i = dim_i,
+        dim_o = dim_o,
         algo_id = algo_id,
         label = label,
         ...);
 
       init_value <- FALSE;
       # First prepare a vector.
-      v <- rep(init_value, 2 ^ input_dimension * output_dimension);
+      v <- rep(init_value, 2 ^ dim_i * dim_o);
       # Transform the vector in a matrix.
-      private$logical_matrix <- matrix(data = v, nrow = 2 ^ input_dimension, ncol = output_dimension, byrow = TRUE);
+      private$logical_matrix <- matrix(data = v, nrow = 2 ^ dim_i, ncol = dim_o, byrow = TRUE);
 
       # Name rows
       # Build a vector of character binary representations
-      binary_domain <- bdom$new(dimension = input_dimension);
+      binary_domain <- bdom$new(dimension = dim_i);
       rownames(private$logical_matrix) <- binary_domain$convert_to_character_vector();
     },
     exec = function(input) {
@@ -76,9 +76,9 @@ algo_tt <- R6Class(
     do_randomize_outputs = function() {
       # Randomizes the outputs of the TruthTable.
       # Build a random vector with enough items to fill in the truthtable
-      random_logical_vector <- sample(x = c(FALSE, TRUE), size = 2 ^ self$get_input_dimension() * self$get_output_dimension(), replace = TRUE);
+      random_logical_vector <- sample(x = c(FALSE, TRUE), size = 2 ^ self$get_dim_i() * self$get_dim_o(), replace = TRUE);
       # Convert the vector into a matrix
-      random_logical_matrix <- matrix(data = random_logical_vector, nrow = 2 ^ self$get_input_dimension(), ncol = self$get_output_dimension(), byrow = TRUE);
+      random_logical_matrix <- matrix(data = random_logical_vector, nrow = 2 ^ self$get_dim_i(), ncol = self$get_dim_o(), byrow = TRUE);
       # Replace the logical matrix with the random one.
       private$logical_matrix <- random_logical_matrix;
       # Chaining
@@ -88,11 +88,11 @@ algo_tt <- R6Class(
 
       # Find the dimensional input size of the original function.
       # This will become the output size of the inverse function.
-      inverse_output_dimension <- self$get_input_dimension();
+      inverse_dim_o <- self$get_dim_i();
 
       # Find the dimensional output size of the original function.
       # This will become the input size of the inverse function.
-      inverse_input_dimension <- self$get_output_dimension();
+      inverse_dim_i <- self$get_dim_o();
 
       # Name rows in the truthtable.
       # Like this we may reorder them and still match them to their original inputs.
@@ -106,14 +106,14 @@ algo_tt <- R6Class(
       # Initializes an empty truthtable.
       # We use all zeros as the default.
       inverse_truthtable <- algo_tt$new(
-        input_dimension = inverse_input_dimension,
-        output_dimension = inverse_output_dimension);
+        dim_i = inverse_dim_i,
+        dim_o = inverse_dim_o);
 
       for(unique_position in 1:nrow(logical_matrix_unique)){
         input_position <- as.integer(rownames(logical_matrix_unique)[unique_position]);
         output_logical_vector <- logical_matrix_unique[unique_position,];
         # Apply this to the new truthtable
-        inverse_output_logical_vector <- convert_position_to_logical_vector(input_position, size = inverse_output_dimension);
+        inverse_output_logical_vector <- convert_position_to_logical_vector(input_position, size = inverse_dim_o);
         inverse_input_logical_vector <- output_logical_vector;
         inverse_truthtable$set_output(inverse_input_logical_vector, inverse_output_logical_vector);
       }
@@ -132,7 +132,7 @@ algo_tt <- R6Class(
       output_character_vector <- apply(output_integer_matrix, 1, paste, collapse = "");
       output_character_vector
 
-      domain <- bdom$new(self$get_input_dimension());
+      domain <- bdom$new(self$get_dim_i());
 
       input_integer_vector <- as.numeric(domain$get_logical_matrix());
       input_integer_matrix <- matrix(input_integer_vector, nrow = self$get_input_size());

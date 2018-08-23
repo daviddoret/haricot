@@ -11,7 +11,7 @@ require(RColorBrewer)
 #' @param ... For future usage.
 #' @return A plotted network graph.
 #' @export
-plot_algo_composite <- function(algo, ...){
+plot_algo_composite <- function(algo, interactive = FALSE, ...){
 
   g <- convert_algo_composite_to_igraph(node = algo, ...);
 
@@ -38,6 +38,7 @@ plot_algo_composite <- function(algo, ...){
     mark_groups[[algo_id]] <- numeric_vector;
   }
 
+  if(!interactive){
   # Make the plot
   plot(
     g,
@@ -53,6 +54,9 @@ plot_algo_composite <- function(algo, ...){
     mark.border="#555555",
     mark.col="#ffffff"
     )
+  } else {
+    tkplot(g);
+  };
 
   # Add a legend
   #legend(

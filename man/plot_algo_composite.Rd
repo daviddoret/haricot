@@ -4,7 +4,7 @@
 \alias{plot_algo_composite}
 \title{Plot the igraph of a algo_composite}
 \usage{
-plot_algo_composite(algo, ...)
+plot_algo_composite(algo, interactive = FALSE, ...)
 }
 \arguments{
 \item{algo}{A composite algorithm (algo_composite).}

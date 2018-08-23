@@ -5,7 +5,7 @@
 #' Useful to populate truth tables in ROxygen2 tabular format with sinew for package documentation.
 #'
 #' @examples # Function style:
-#' a1 <- algo_tt$new(input_dimension = 2, output_dimension = 3);
+#' a1 <- algo_tt$new(dim_i = 2, dim_o = 3);
 #' convert_algo_tt_to_character_dataframe(a1);
 #'
 #' # R6 method style:

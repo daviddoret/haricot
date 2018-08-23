@@ -18,12 +18,12 @@
 #' @return The equivalent truth-table-based algorithm (R6 Class algo_)
 #' @export
 convert_algo_base_to_algo_ <- function(algo){
-  input_dimension <- algo$get_input_dimension();
-  output_dimension <- algo$get_output_dimension();
+  dim_i <- algo$get_dim_i();
+  dim_o <- algo$get_dim_o();
   tt <- algo_tt$new(
-    input_dimension = input_dimension,
-    output_dimension = output_dimension);
-  input_binarynumber <- bnum$new(input = rep(FALSE, input_dimension));
+    dim_i = dim_i,
+    dim_o = dim_o);
+  input_binarynumber <- bnum$new(input = rep(FALSE, dim_i));
 
   repeat{
     output_binarynumber = algo$exec(input_binarynumber);

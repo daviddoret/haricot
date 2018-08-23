@@ -28,12 +28,12 @@ algo_nand <- R6Class(
       algo_id = NULL,
       label = NULL,
       ...) {
-      input_dimension <- 2;
-      output_dimension <- 1;
+      dim_i <- 2;
+      dim_o <- 1;
       if(is.null(label)){ label <- "NAND"; }
       super$initialize(
-        input_dimension = input_dimension,
-        output_dimension = output_dimension,
+        dim_i = dim_i,
+        dim_o = dim_o,
         algo_id = algo_id,
         label = label,
         is_atomic = TRUE,
@@ -49,12 +49,12 @@ algo_nand <- R6Class(
     do_randomize_outputs = function() {
       stop("This method is abstract, please implement it in the subclass.");
     },
-    get_input_dimension = function() {
-      return(private$input_dimension);
+    get_dim_i = function() {
+      return(private$dim_i);
     },
     get_input_size = function() {
       # Returns the number of different input values.
-      return(2 ^ self$get_input_dimension());
+      return(2 ^ self$get_dim_i());
     },
     get_inverse = function() {
       stop("This method is abstract, please implement it in the subclass.");
@@ -65,8 +65,8 @@ algo_nand <- R6Class(
     get_algo_id = function(){
       return(private$algo_id);
     },
-    get_output_dimension = function() {
-      return(private$output_dimension);
+    get_dim_o = function() {
+      return(private$dim_o);
     },
     get_prettystring = function(){
       return("nand");

@@ -20,7 +20,7 @@ exec_algo_nand = function(algo, input, ...) {
 
   input_logical_vector <- convert_any_to_logical_vector(input);
 
-  if(length(input_logical_vector) != algo$get_input_dimension()){
+  if(length(input_logical_vector) != algo$get_dim_i()){
     stop("algo input dimension <> input dimension");
   }
 

@@ -31,7 +31,7 @@ dim_i <- sample(x = 2:6, size = 1, replace = TRUE);
 # Pick a random output dimension
 dim_o <- sample(x = 2:6, size = 1, replace = TRUE);
 # Create a truth table algorithm of desired dimensions
-truthtable_algo <- algo_tt$new(input_dimension = dim_i, output_dimension = dim_o);
+truthtable_algo <- algo_tt$new(dim_i = dim_i, dim_o = dim_o);
 # Randomize the truth table outputs, we end up with a random deterministic algorithm
 truthtable_algo$do_randomize_outputs();
 # Split the random truth table algorithm and retrieve the resulting composite algorithm

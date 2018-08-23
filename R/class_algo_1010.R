@@ -35,12 +35,12 @@ algo_1010 <- R6Class(
       algo_id = NULL,
       label = NULL,
       ...) {
-      input_dimension <- 2;
-      output_dimension <- 1;
+      dim_i <- 2;
+      dim_o <- 1;
       if(is.null(label)){ label <- "TT1010"; }
       super$initialize(
-        input_dimension = input_dimension,
-        output_dimension = output_dimension,
+        dim_i = dim_i,
+        dim_o = dim_o,
         algo_id = algo_id); #,
       #label = label,
       #...);

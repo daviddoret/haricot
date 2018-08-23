@@ -28,22 +28,22 @@ commutate <- function(
   if(!is(algo_0, "algo_base")) { stop("algo_0 does not implement algo_base"); };
   if(!is(algo_1, "algo_base")) { stop("algo_1 does not implement algo_base"); };
 
-  if(algo_0$get_input_dimension() != algo_1$get_input_dimension()) { stop("Input dimensions are not identical"); };
-  if(algo_0$get_output_dimension() != algo_1$get_output_dimension()) { stop("Output dimensions are not identical"); };
+  if(algo_0$get_dim_i() != algo_1$get_dim_i()) { stop("Input dimensions are not identical"); };
+  if(algo_0$get_dim_o() != algo_1$get_dim_o()) { stop("Output dimensions are not identical"); };
 
-  input_dimension <- algo_0$get_input_dimension() + 1;
-  output_dimension <- algo_0$get_output_dimension();
-  extra_bit <- paste0(INPUT_PREFIX, input_dimension);
+  dim_i <- algo_0$get_dim_i() + 1;
+  dim_o <- algo_0$get_dim_o();
+  extra_bit <- paste0(INPUT_PREFIX, dim_i);
 
-  commutated <- algo_composite$new(input_dimension, output_dimension);
+  commutated <- algo_composite$new(dim_i, dim_o);
 
   commutated$set_inner_node(algo_0);
   commutated$set_inner_node(algo_1);
 
   # Loop on the component algo bits
-  if((input_dimension - 1)){
+  if((dim_i - 1)){
     # But only if the sub algorithms are not constants with input dim 0.
-    for(position in 1 : (input_dimension - 1)){
+    for(position in 1 : (dim_i - 1)){
       # Pipes switch input bits to component bits.
       # Like this, both component algorithms will be unconditionally executed.
       commutated$set_inner_edge(commutated, paste0(INPUT_PREFIX, position), algo_0, paste0(INPUT_PREFIX, position));
@@ -52,7 +52,7 @@ commutate <- function(
   }
 
   # Loop on the component algo bits
-  for(position in 1 : output_dimension){
+  for(position in 1 : dim_o){
 
     # If extra_bit == 0, keep algo_0 output bit. Otherwise, set it to 0.
     circuit_0 <- algo_0100$new(label = "circuit_0");

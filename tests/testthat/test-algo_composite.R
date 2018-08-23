@@ -7,15 +7,15 @@ test_that('algo_composite: faking NAND', {
 
   #browser();
 
-  input_dimension <- 2;
-  output_dimension <- 1;
+  dim_i <- 2;
+  dim_o <- 1;
 
   super_a <- algo_composite$new(
-    input_dimension = input_dimension,
-    output_dimension = output_dimension);
+    dim_i = dim_i,
+    dim_o = dim_o);
 
-  expect_equal(super_a$get_input_dimension(), input_dimension);
-  expect_equal(super_a$get_output_dimension(), output_dimension);
+  expect_equal(super_a$get_dim_i(), dim_i);
+  expect_equal(super_a$get_dim_o(), dim_o);
 
   nand1 <- algo_nand$new();
 
@@ -38,15 +38,15 @@ test_that('CompositeAlgo: faking NOT', {
 
   #browser();
 
-  input_dimension <- 1;
-  output_dimension <- 1;
+  dim_i <- 1;
+  dim_o <- 1;
 
   super_a <- algo_composite$new(
-    input_dimension = input_dimension,
-    output_dimension = output_dimension);
+    dim_i = dim_i,
+    dim_o = dim_o);
 
-  expect_equal(super_a$get_input_dimension(), input_dimension);
-  expect_equal(super_a$get_output_dimension(), output_dimension);
+  expect_equal(super_a$get_dim_i(), dim_i);
+  expect_equal(super_a$get_dim_o(), dim_o);
 
   nand1 <- algo_nand$new();
 
@@ -68,15 +68,15 @@ test_that('CompositeAlgo: basic composition', {
 
   #browser();
 
-  input_dimension <- 4;
-  output_dimension <- 3;
+  dim_i <- 4;
+  dim_o <- 3;
 
   super_a <- algo_composite$new(
-    input_dimension = input_dimension,
-    output_dimension = output_dimension);
+    dim_i = dim_i,
+    dim_o = dim_o);
 
-  expect_equal(super_a$get_input_dimension(), input_dimension);
-  expect_equal(super_a$get_output_dimension(), output_dimension);
+  expect_equal(super_a$get_dim_i(), dim_i);
+  expect_equal(super_a$get_dim_o(), dim_o);
 
   nand1 <- algo_nand$new();
   nand2 <- algo_nand$new();
@@ -102,12 +102,12 @@ test_that('CompositeAlgo: super composite', {
 
   #browser();
 
-  input_dimension <- 2;
-  output_dimension <- 1;
+  dim_i <- 2;
+  dim_o <- 1;
 
   super_a <- algo_composite$new(
-    input_dimension = input_dimension,
-    output_dimension = output_dimension);
+    dim_i = dim_i,
+    dim_o = dim_o);
 
   not1 <- algo_not$new();
   not2 <- algo_not$new();

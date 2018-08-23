@@ -10,7 +10,7 @@ require(RColorBrewer)
 #' @param ... For future usage.
 #' @return A plotted network graph.
 #' @export
-plot_algo_base <- function(node, ...){
+plot_algo_base <- function(node, interactive = FALSE, ...){
 
   g <- convert_algo_base_to_igraph(node = node, ...);
 
@@ -29,6 +29,7 @@ plot_algo_base <- function(node, ...){
   vertice_border_color = vertice_border_palette[V(g)$type];
   vertice_label_color <- vertice_border_color;
 
+  if(!interactive){
   # Make the plot
   plot(
     g,
@@ -46,7 +47,10 @@ plot_algo_base <- function(node, ...){
     #  subnodes[output_filter]) #, # draws polygon around subnodes
     #mark.border=vertice_label_color,
     #mark.col=,
-    )
+    );
+  } else {
+    tkplot(g);
+  };
 
   # Add a legend
   #legend(

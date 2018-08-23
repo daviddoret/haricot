@@ -8,7 +8,7 @@ test_that('algo_not: test 01', {
   #browser();
 
   source <- algo_0011$new();
-  target <- algo_composite$new(input_dimension = 2, output_dimension = 1);
+  target <- algo_composite$new(dim_i = 2, dim_o = 1);
 
   copy_logic(source, target);
 

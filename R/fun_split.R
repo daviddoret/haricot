@@ -14,7 +14,7 @@
 #' # Pick a random output dimension
 #' dim_o <- sample(x = 2:6, size = 1, replace = TRUE);
 #' # Create a truth table algorithm of desired dimensions
-#' truthtable_algo <- algo_tt$new(input_dimension = dim_i, output_dimension = dim_o);
+#' truthtable_algo <- algo_tt$new(dim_i = dim_i, dim_o = dim_o);
 #' # Randomize the truth table outputs, we end up with a random deterministic algorithm
 #' truthtable_algo$do_randomize_outputs();
 #' # Split the random truth table algorithm and retrieve the resulting composite algorithm
@@ -40,11 +40,11 @@ split <- function(
   ...){
 
   if(!is(algo, "algo_tt")) { stop("algo does not implement algo_tt"); };
-  if(!algo$get_input_dimension() > 0){ stop("algo must have an input dimension strictly greater than 0."); };
+  if(!algo$get_dim_i() > 0){ stop("algo must have an input dimension strictly greater than 0."); };
 
   # Retrieve the dimensions of the original algo.
-  dim_i_original <- algo$get_input_dimension();
-  dim_o_original <- algo$get_output_dimension();
+  dim_i_original <- algo$get_dim_i();
+  dim_o_original <- algo$get_dim_o();
 
   dim_i_sub <- dim_i_original - 1;
   dim_o_sub <- dim_o_original;
@@ -61,9 +61,9 @@ split <- function(
   tt_1 <- tt_raw[split_1_first_position : nrow(tt_raw),];
 
   # Prepares the new sub algorithms.
-  algo_0 <- algo_tt$new(input_dimension = dim_i_sub, output_dimension = dim_o_sub);
+  algo_0 <- algo_tt$new(dim_i = dim_i_sub, dim_o = dim_o_sub);
   algo_0$set_logical_matrix(tt_0);
-  algo_1 <- algo_tt$new(input_dimension = dim_i_sub, output_dimension = dim_o_sub);
+  algo_1 <- algo_tt$new(dim_i = dim_i_sub, dim_o = dim_o_sub);
   algo_1$set_logical_matrix(tt_1);
 
   # Design the parent switch.

@@ -11,22 +11,22 @@ test_that(
 
   for(i in 1:4){
 
-    input_dimension = sample(x = c(1:6), size = 1, replace = TRUE);
-    output_dimension_1 = sample(x = c(1:6), size = 1, replace = TRUE);
-    output_dimension_2 = sample(x = c(1:6), size = 1, replace = TRUE);
+    dim_i = sample(x = c(1:6), size = 1, replace = TRUE);
+    dim_o_1 = sample(x = c(1:6), size = 1, replace = TRUE);
+    dim_o_2 = sample(x = c(1:6), size = 1, replace = TRUE);
 
-    tt1 <- algo_tt$new(input_dimension = input_dimension, output_dimension = output_dimension_1);
+    tt1 <- algo_tt$new(dim_i = dim_i, dim_o = dim_o_1);
     tt1$do_randomize_outputs();
     # print(tt1);
 
-    tt2 <- algo_tt$new(input_dimension = input_dimension, output_dimension = output_dimension_2);
+    tt2 <- algo_tt$new(dim_i = dim_i, dim_o = dim_o_2);
     tt2$do_randomize_outputs();
     # print(tt2);
 
     ttm <- concatenate_truthtable(tt1, tt2);
     # print(ttm);
 
-    bn <- bnum$new(input = rep(FALSE, input_dimension));
+    bn <- bnum$new(input = rep(FALSE, dim_i));
 
     repeat{
       i <- bn$convert_to_logical_vector();

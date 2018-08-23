@@ -11,8 +11,8 @@ algo_xxxx <- R6Class(
         stop("Truthtable size is not equal to 4, hence input dimension is not equal to 2");
       }
       super$initialize(
-        input_dimension = 2,
-        output_dimension = 1);
+        dim_i = 2,
+        dim_o = 1);
       # Instanciates a specialized algorithm.
       a1 <- switch(
         truthtable_character,

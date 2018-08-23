@@ -1,17 +1,17 @@
 
 library(testthat);
 
-context("split");
+context("atomize");
 
-test_that('split: test 01', {
+test_that('atomize: test 01', {
 
   #browser();
 
   # Pick a random input dimension
-  dim_i <- sample(x = 1:6, size = 1, replace = TRUE);
+  dim_i <- sample(x = 2:1, size = 1, replace = TRUE);
 
   # Pick a random output dimension
-  dim_o <- sample(x = 1:6, size = 1, replace = TRUE);
+  dim_o <- sample(x = 2:1, size = 1, replace = TRUE);
 
   # Create a truth table algorithm of desired dimensions
   truthtable_algo <- algo_tt$new(dim_i = dim_i, dim_o = dim_o);
@@ -20,20 +20,17 @@ test_that('split: test 01', {
   truthtable_algo$do_randomize_outputs();
 
   # Split the random truth table algorithm and retrieve the resulting composite algorithm
-  splitted_algo <- split(truthtable_algo);
+  atomized_algo <- atomize(truthtable_algo);
 
-  #algo$plot();
-  #algo_comp$plot();
+  atomized_algo$plot(interactive = TRUE);
 
   n <- bnum$new(dim = dim_i);
   repeat{
-
-    expect_equal(truthtable_algo$exec(n), splitted_algo$exec(n));
-
+    expect_equal(truthtable_algo$exec(n), atomized_algo$exec(n));
     n$do_increment();
     if(n$get_equal_0()){
       break;
     }
-  }
+  };
 
   });

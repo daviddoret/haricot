@@ -32,14 +32,14 @@ convert_algo_base_to_igraph <- function(node, ...){
     shape = "circle",
     size = 20,
     type = "algo");
-  if(node$get_input_dimension() > 0){
+  if(node$get_dim_i() > 0){
     g <- add_vertices(
       graph = g,
-      nv = node$get_input_dimension(),
-      bit = baptize_algo_bit(INPUT_PREFIX, 1:node$get_input_dimension()),
+      nv = node$get_dim_i(),
+      bit = baptize_algo_bit(INPUT_PREFIX, 1:node$get_dim_i()),
       color = "#ccffe5",
-      label = paste0(INPUT_PREFIX, 1:node$get_input_dimension()),
-      name = paste0(node$get_algo_id(), NAMESPACE_SEPARATOR, paste0(INPUT_PREFIX, 1:node$get_input_dimension())),
+      label = paste0(INPUT_PREFIX, 1:node$get_dim_i()),
+      name = paste0(node$get_algo_id(), NAMESPACE_SEPARATOR, paste0(INPUT_PREFIX, 1:node$get_dim_i())),
       algo_id = node$get_algo_id(),
       push_execution_value = list(), # A vector of pushed execution values.
       shape = "circle",
@@ -48,12 +48,12 @@ convert_algo_base_to_igraph <- function(node, ...){
     g <- add_edges(
       graph = g,
       c(rbind(
-        1 + (1:node$get_input_dimension()),
+        1 + (1:node$get_dim_i()),
         1
       )),
       algo_id = node$get_algo_id(),
       source_algo_id = node$get_algo_id(),
-      source_bit = baptize_algo_bit(INPUT_PREFIX, 1:node$get_input_dimension()),
+      source_bit = baptize_algo_bit(INPUT_PREFIX, 1:node$get_dim_i()),
       target_algo_id = node$get_algo_id(),
       target_bit = baptize_algo_bit(NOBIT_PREFIX),
       arrow.size = .1,
@@ -63,14 +63,14 @@ convert_algo_base_to_igraph <- function(node, ...){
       lty = "solid",
       type = "input_algo");
   };
-  if(node$get_output_dimension() > 0){
+  if(node$get_dim_o() > 0){
     g <- add_vertices(
         graph = g,
-        nv = node$get_output_dimension(),
-        bit = baptize_algo_bit(OUTPUT_PREFIX, 1:node$get_output_dimension()),
+        nv = node$get_dim_o(),
+        bit = baptize_algo_bit(OUTPUT_PREFIX, 1:node$get_dim_o()),
         color = "#cce5ff",
-        label = paste0(OUTPUT_PREFIX, 1:node$get_output_dimension()),
-        name = paste0(node$get_algo_id(),NAMESPACE_SEPARATOR,paste0(OUTPUT_PREFIX, 1:node$get_output_dimension())),
+        label = paste0(OUTPUT_PREFIX, 1:node$get_dim_o()),
+        name = paste0(node$get_algo_id(),NAMESPACE_SEPARATOR,paste0(OUTPUT_PREFIX, 1:node$get_dim_o())),
         algo_id = node$get_algo_id(),
         push_execution_value = list(), # A vector of pushed execution values.
         shape = "circle",
@@ -80,13 +80,13 @@ convert_algo_base_to_igraph <- function(node, ...){
         graph = g,
         c(rbind(
           1,
-          1 + node$get_input_dimension() + (1:node$get_output_dimension())
+          1 + node$get_dim_i() + (1:node$get_dim_o())
         )),
         algo_id = node$get_algo_id(),
         source_algo_id = node$get_algo_id(),
         source_bit = baptize_algo_bit(NOBIT_PREFIX),
         target_algo_id = node$get_algo_id(),
-        target_bit = baptize_algo_bit(OUTPUT_PREFIX, 1: node$get_output_dimension()),
+        target_bit = baptize_algo_bit(OUTPUT_PREFIX, 1: node$get_dim_o()),
         arrow.size = .1,
         arrow.width = 1,
         color = "#004c99",

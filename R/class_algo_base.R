@@ -15,8 +15,8 @@ require(igraph);
 algo_base <- R6Class(
   "algo_base",
   private = list(
-    input_dimension = NULL,
-    output_dimension = NULL,
+    dim_i = NULL,
+    dim_o = NULL,
     algo_id = NULL,
     label = NULL,
     is_atomic = NULL
@@ -24,15 +24,15 @@ algo_base <- R6Class(
   public = list(
     # Private Members
     initialize = function(
-      input_dimension,
-      output_dimension,
+      dim_i,
+      dim_o,
       algo_id = NULL,
       label = NULL,
       is_atomic = NULL,
       ...) {
       # Store private members
-      private$input_dimension <- input_dimension;
-      private$output_dimension <- output_dimension;
+      private$dim_i <- dim_i;
+      private$dim_o <- dim_o;
       if(is.null(algo_id)){ algo_id <- get_node_guid(); }
       private$algo_id <- algo_id;
       if(is.null(label)){ label <- "algo"; }
@@ -49,18 +49,18 @@ algo_base <- R6Class(
     exec = function(input) {
       stop("This method is abstract, please implement it in the subclass.");
     },
-    plot = function() {
-      plot_algo_base(self);
+    plot = function(interactive = FALSE, ...) {
+      plot_algo_base(self, interactive, ...);
     },
     do_randomize_outputs = function() {
       stop("This method is abstract, please implement it in the subclass.");
     },
-    get_input_dimension = function() {
-      return(private$input_dimension);
+    get_dim_i = function() {
+      return(private$dim_i);
     },
     get_input_size = function() {
       # Returns the number of different input values.
-      return(2 ^ self$get_input_dimension());
+      return(2 ^ self$get_dim_i());
     },
     get_is_atomic = function() {
       return(private$is_atomic);
@@ -74,8 +74,8 @@ algo_base <- R6Class(
     get_algo_id = function(){
       return(private$algo_id);
     },
-    get_output_dimension = function() {
-      return(private$output_dimension);
+    get_dim_o = function() {
+      return(private$dim_o);
     },
     get_prettystring = function(){
       stop("This method is abstract, please implement it in the subclass.");
@@ -84,7 +84,7 @@ algo_base <- R6Class(
       cat(self$get_prettystring(), "\n");
     },
     is_constant = function(){
-      if(self$get_input_dimension() == 0){
+      if(self$get_dim_i() == 0){
         # By definition, an algorithm
         # that does not have any input
         # is a constant.

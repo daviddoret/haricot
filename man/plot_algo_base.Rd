@@ -4,7 +4,7 @@
 \alias{plot_algo_base}
 \title{Plot the igraph of a algo_base}
 \usage{
-plot_algo_base(node, ...)
+plot_algo_base(node, interactive = FALSE, ...)
 }
 \arguments{
 \item{...}{For future usage.}

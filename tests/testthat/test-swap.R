@@ -7,12 +7,12 @@ test_that('swap: test 01', {
 
   #browser();
 
-  input_dimension <- 2;
-  output_dimension <- 1;
+  dim_i <- 2;
+  dim_o <- 1;
 
   composite <- algo_composite$new(
-    input_dimension = input_dimension,
-    output_dimension = output_dimension);
+    dim_i = dim_i,
+    dim_o = dim_o);
 
   pipe1 <- algo_01$new();
   composite$set_inner_node(node = pipe1);

@@ -15,18 +15,18 @@ concatenate_truthtable <- function(truthtable_1, truthtable_2){
   logical_matrix_1 <- truthtable_1$get_logical_matrix();
   logical_matrix_2 <- truthtable_2$get_logical_matrix();
 
-  if(truthtable_1$get_input_dimension() !=
-     truthtable_2$get_input_dimension()){
+  if(truthtable_1$get_dim_i() !=
+     truthtable_2$get_dim_i()){
     stop("Input dimensions are not equal", truthtable_1, truthtable_2);
   }
 
   logical_matrix_merged <- cbind(logical_matrix_1, logical_matrix_2);
 
   truthtable_merged <- algo_tt$new(
-    input_dimension = truthtable_1$get_input_dimension(),
-    output_dimension =
-      truthtable_1$get_output_dimension() +
-      truthtable_2$get_output_dimension());
+    dim_i = truthtable_1$get_dim_i(),
+    dim_o =
+      truthtable_1$get_dim_o() +
+      truthtable_2$get_dim_o());
 
   truthtable_merged$set_logical_matrix(logical_matrix_merged);
 

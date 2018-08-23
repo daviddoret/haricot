@@ -15,10 +15,10 @@
 convert_tt_constant_to_composite <- function(algo){
 
   if(!is(algo, "algo_tt")){ stop("algo is not of algo_tt class"); };
-  if(!algo$get_input_dimension() == 0) { stop("algo is not of input dimension 0"); };
+  if(!algo$get_dim_i() == 0) { stop("algo is not of input dimension 0"); };
 
   dim_i <- 0;
-  dim_o <- algo$get_output_dimension();
+  dim_o <- algo$get_dim_o();
 
   composite <- algo_composite$new(dim_i, dim_o);
 
