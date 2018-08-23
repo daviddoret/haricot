@@ -21,9 +21,9 @@ test_that('algo_composite: faking NAND', {
 
   super_a$set_component(node = nand1);
 
-  super_a$set_inner_edge(super_a, "i1", nand1, "i1");
-  super_a$set_inner_edge(super_a, "i2", nand1, "i2");
-  super_a$set_inner_edge(nand1, "o1", super_a, "o1");
+  super_a$set_dag_edge(super_a, "i1", nand1, "i1");
+  super_a$set_dag_edge(super_a, "i2", nand1, "i2");
+  super_a$set_dag_edge(nand1, "o1", super_a, "o1");
 
   # a$plot();
 
@@ -52,9 +52,9 @@ test_that('CompositeAlgo: faking NOT', {
 
   super_a$set_component(node = nand1);
 
-  super_a$set_inner_edge(super_a, "i1", nand1, "i1");
-  super_a$set_inner_edge(super_a, "i1", nand1, "i2");
-  super_a$set_inner_edge(nand1, "o1", super_a, "o1");
+  super_a$set_dag_edge(super_a, "i1", nand1, "i1");
+  super_a$set_dag_edge(super_a, "i1", nand1, "i2");
+  super_a$set_dag_edge(nand1, "o1", super_a, "o1");
 
   # a$plot();
 
@@ -86,15 +86,15 @@ test_that('CompositeAlgo: basic composition', {
   super_a$set_component(node = nand2);
   super_a$set_component(node = nand3);
 
-  super_a$set_inner_edge(super_a, "i1", nand1, "i1");
-  super_a$set_inner_edge(super_a, "i2", nand1, "i2");
-  super_a$set_inner_edge(super_a, "i3", nand2, "i1");
-  super_a$set_inner_edge(super_a, "i4", nand2, "i2");
-  super_a$set_inner_edge(nand1, "o1", nand3, "i1");
-  super_a$set_inner_edge(nand2, "o1", nand3, "i2");
-  super_a$set_inner_edge(nand1, "o1", super_a, "o1");
-  super_a$set_inner_edge(nand2, "o1", super_a, "o2");
-  super_a$set_inner_edge(nand3, "o1", super_a, "o3");
+  super_a$set_dag_edge(super_a, "i1", nand1, "i1");
+  super_a$set_dag_edge(super_a, "i2", nand1, "i2");
+  super_a$set_dag_edge(super_a, "i3", nand2, "i1");
+  super_a$set_dag_edge(super_a, "i4", nand2, "i2");
+  super_a$set_dag_edge(nand1, "o1", nand3, "i1");
+  super_a$set_dag_edge(nand2, "o1", nand3, "i2");
+  super_a$set_dag_edge(nand1, "o1", super_a, "o1");
+  super_a$set_dag_edge(nand2, "o1", super_a, "o2");
+  super_a$set_dag_edge(nand3, "o1", super_a, "o3");
 
 });
 
@@ -114,16 +114,16 @@ test_that('CompositeAlgo: super composite', {
   or1 <- algo_or$new();
 
   super_a$set_component(node = not1);
-  super_a$set_inner_edge(super_a, "i1", not1, "i1");
+  super_a$set_dag_edge(super_a, "i1", not1, "i1");
 
   super_a$set_component(node = not2);
-  super_a$set_inner_edge(super_a, "i2", not2, "i1");
+  super_a$set_dag_edge(super_a, "i2", not2, "i1");
 
   super_a$set_component(node = or1);
-  super_a$set_inner_edge(not1, "o1", or1, "i1");
-  super_a$set_inner_edge(not2, "o1", or1, "i2");
+  super_a$set_dag_edge(not1, "o1", or1, "i1");
+  super_a$set_dag_edge(not2, "o1", or1, "i2");
 
-  super_a$set_inner_edge(or1, "o1", super_a, "o1");
+  super_a$set_dag_edge(or1, "o1", super_a, "o1");
 
   super_a$plot();
 

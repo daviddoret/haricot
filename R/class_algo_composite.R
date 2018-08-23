@@ -113,14 +113,14 @@ algo_composite <- R6Class(
       if(is_missing(target_node) | is.null(target_node)){target_node <- self;}
       nand1 <- algo_nand$new(...);
       self$set_component(nand1, ...);
-      self$set_inner_edge(source_1_node,source_1_bit,nand1,"i1", ...);
-      self$set_inner_edge(source_2_node,source_2_bit,nand1,"i2", ...);
+      self$set_dag_edge(source_1_node,source_1_bit,nand1,"i1", ...);
+      self$set_dag_edge(source_2_node,source_2_bit,nand1,"i2", ...);
       if(!is.null(target_bit)){
-        self$set_inner_edge(nand1,"o1",target_node,target_bit, ...);
+        self$set_dag_edge(nand1,"o1",target_node,target_bit, ...);
       }
       return(nand1);
     },
-    set_inner_edge = function(
+    set_dag_edge = function(
       source_node = NULL,
       source_bit,
       target_node = NULL,

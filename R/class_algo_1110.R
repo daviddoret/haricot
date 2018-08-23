@@ -49,7 +49,7 @@ algo_1110 <- R6Class(
       nand1 <- self$add_nand(self, "i1", self, "i2");
 
       # Pipe the final output.
-      self$set_inner_edge(nand1, "o1", self, "o1");
+      self$set_dag_edge(nand1, "o1", self, "o1");
     },
     do_randomize_outputs = function() {
       stop("Not supported");

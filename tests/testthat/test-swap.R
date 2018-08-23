@@ -16,22 +16,22 @@ test_that('swap: test 01', {
 
   pipe1 <- algo_01$new();
   composite$set_component(node = pipe1);
-  composite$set_inner_edge(composite, "i1", pipe1, "i1");
+  composite$set_dag_edge(composite, "i1", pipe1, "i1");
 
   pipe2 <- algo_01$new();
   composite$set_component(node = pipe2);
-  composite$set_inner_edge(composite, "i2", pipe2, "i1");
+  composite$set_dag_edge(composite, "i2", pipe2, "i1");
 
   old <- algo_0110$new(label = "old");
   composite$set_component(node = old);
-  composite$set_inner_edge(pipe1, "o1", old, "i1");
-  composite$set_inner_edge(pipe2, "o1", old, "i2");
+  composite$set_dag_edge(pipe1, "o1", old, "i1");
+  composite$set_dag_edge(pipe2, "o1", old, "i2");
 
   pipe3 <- algo_01$new();
   composite$set_component(node = pipe3);
-  composite$set_inner_edge(old, "o1", pipe3, "i1");
+  composite$set_dag_edge(old, "o1", pipe3, "i1");
 
-  composite$set_inner_edge(pipe3, "o1", composite, "o1");
+  composite$set_dag_edge(pipe3, "o1", composite, "o1");
 
   composite$plot();
 

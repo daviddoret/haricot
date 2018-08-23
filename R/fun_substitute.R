@@ -64,7 +64,7 @@ substitute <- function(compi, orig, subst, ...){
     target_algo <- subst;
 
     # Enforce the new configuration.
-    compi$set_inner_edge(source_algo, source_bit, target_algo, target_bit, ...);
+    compi$set_dag_edge(source_algo, source_bit, target_algo, target_bit, ...);
   }
 
   # Rewire the outbound edges with the substitute.
@@ -87,7 +87,7 @@ substitute <- function(compi, orig, subst, ...){
     source_algo <- subst;
 
     # Enforce the new configuration.
-    compi$set_inner_edge(source_algo, source_bit, target_algo, target_bit, ...);
+    compi$set_dag_edge(source_algo, source_bit, target_algo, target_bit, ...);
   }
 
   # Remove the original component.

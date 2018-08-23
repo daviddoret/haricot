@@ -49,7 +49,7 @@ algo_11 <- R6Class(
       nand2 <- self$add_nand(self, "i1", nand1, "o1");
 
       # Pipe the result.
-      self$set_inner_edge(nand2, "o1", self, "o1");
+      self$set_dag_edge(nand2, "o1", self, "o1");
     }
   )
 )

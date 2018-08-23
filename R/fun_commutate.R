@@ -46,8 +46,8 @@ commutate <- function(
     for(position in 1 : (dim_i - 1)){
       # Pipes switch input bits to component bits.
       # Like this, both component algorithms will be unconditionally executed.
-      commutated$set_inner_edge(commutated, paste0(INPUT_PREFIX, position), algo_0, paste0(INPUT_PREFIX, position));
-      commutated$set_inner_edge(commutated, paste0(INPUT_PREFIX, position), algo_1, paste0(INPUT_PREFIX, position));
+      commutated$set_dag_edge(commutated, paste0(INPUT_PREFIX, position), algo_0, paste0(INPUT_PREFIX, position));
+      commutated$set_dag_edge(commutated, paste0(INPUT_PREFIX, position), algo_1, paste0(INPUT_PREFIX, position));
     }
   }
 
@@ -57,23 +57,23 @@ commutate <- function(
     # If extra_bit == 0, keep algo_0 output bit. Otherwise, set it to 0.
     circuit_0 <- algo_0100$new(label = "circuit_0");
     commutated$set_component(circuit_0);
-    commutated$set_inner_edge(algo_0, paste0(OUTPUT_PREFIX, position), circuit_0, "i1");
-    commutated$set_inner_edge(commutated, extra_bit, circuit_0, "i2");
+    commutated$set_dag_edge(algo_0, paste0(OUTPUT_PREFIX, position), circuit_0, "i1");
+    commutated$set_dag_edge(commutated, extra_bit, circuit_0, "i2");
 
     # If extra_bit == 1, keep algo_1 output bit. Otherwise, set it to 0.
     circuit_1 <- algo_0001$new(label = "circuit_1");
     commutated$set_component(circuit_1);
-    commutated$set_inner_edge(algo_1, paste0(OUTPUT_PREFIX, position), circuit_1, "i1");
-    commutated$set_inner_edge(commutated, extra_bit, circuit_1, "i2");
+    commutated$set_dag_edge(algo_1, paste0(OUTPUT_PREFIX, position), circuit_1, "i1");
+    commutated$set_dag_edge(commutated, extra_bit, circuit_1, "i2");
 
     # OR the two switches
     commutator <- algo_or$new(label = "commutator");
     commutated$set_component(commutator);
-    commutated$set_inner_edge(circuit_0, "o1", commutator, "i1");
-    commutated$set_inner_edge(circuit_1, "o1", commutator, "i2");
+    commutated$set_dag_edge(circuit_0, "o1", commutator, "i1");
+    commutated$set_dag_edge(circuit_1, "o1", commutator, "i2");
 
     # Pipe the OR to the final output bit
-    commutated$set_inner_edge(commutator, "o1", commutated, paste0(OUTPUT_PREFIX, position));
+    commutated$set_dag_edge(commutator, "o1", commutated, paste0(OUTPUT_PREFIX, position));
 
   }
 

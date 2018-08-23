@@ -34,7 +34,7 @@ algo_01 <- R6Class(
         label = label);
       #...);
 
-      self$set_inner_edge(source_node = self, source_bit = "i1", target_node = self, target_bit = "o1");
+      self$set_dag_edge(source_node = self, source_bit = "i1", target_node = self, target_bit = "o1");
     },
     do_randomize_outputs = function() {
       stop("Not supported");

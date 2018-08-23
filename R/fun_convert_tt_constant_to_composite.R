@@ -31,7 +31,7 @@ convert_tt_constant_to_composite <- function(algo){
       sub_algo <- algo_1$new();
       composite$set_component(sub_algo);
       # Pipe the constant to the corresponding output bit.
-      composite$set_inner_edge(
+      composite$set_dag_edge(
         sub_algo,
         baptize_algo_bit(OUTPUT_PREFIX, 1),
         composite,
@@ -41,7 +41,7 @@ convert_tt_constant_to_composite <- function(algo){
       sub_algo <- algo_0$new();
       composite$set_component(sub_algo);
       # Pipe the constant to the corresponding output bit.
-      composite$set_inner_edge(
+      composite$set_dag_edge(
         sub_algo,
         baptize_algo_bit(OUTPUT_PREFIX, 1),
         composite,

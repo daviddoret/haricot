@@ -43,7 +43,7 @@ swap <- function(
     source_algo <- composite$get_component(source_algo_id);
     source_bit <- edge$source_bit;
     target_bit <- edge$target_bit;
-    composite$set_inner_edge(
+    composite$set_dag_edge(
       source_node = source_algo,
       source_bit = source_bit,
       target_node = new,
@@ -61,7 +61,7 @@ swap <- function(
     target_algo_id <- edge$target_algo_id;
     target_algo <- composite$get_component(target_algo_id);
     target_bit <- edge$target_bit;
-    composite$set_inner_edge(
+    composite$set_dag_edge(
       source_node = new,
       source_bit = source_bit,
       target_node = target_algo,

@@ -53,22 +53,8 @@ algo_tt <- R6Class(
       binary_domain <- bdom$new(dimension = dim_i);
       rownames(private$logical_matrix) <- binary_domain$convert_to_character_vector();
     },
-    exec = function(input) {
-      # Applies the TruthTable algorithm and returns its output.
-      # Returns a type that is consistent with the type of the input.
-      input_logical_vector <- convert_any_to_logical_vector(input);
-      input_position <- convert_logical_vector_to_position(input_logical_vector);
-      output_logical_vector <- self$get_logical_matrix()[input_position,];
-      if(is(input, "logical")){
-        return(output_logical_vector);
-      } else if(is(input, "character")){
-        return(convert_logical_vector_to_character(output_logical_vector));
-      } else if(is(input, "bnum")){
-        return(bnum$new(output_logical_vector));
-      } else {
-        # Oooops!
-        stop(input);
-      }
+    exec = function(input, ...) {
+      exec_algo_tt(self, input, ...);
     },
     convert_to_character_dataframe = function(...){
       return(convert_algo_tt_to_character_dataframe(self, ...));

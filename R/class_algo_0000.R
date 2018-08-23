@@ -71,7 +71,7 @@ algo_0000 <- R6Class(
         ...);
 
       # Pipe the final output.
-      self$set_inner_edge(
+      self$set_dag_edge(
         source_node = nand3,
         source_bit = "o1",
         target_node = self,

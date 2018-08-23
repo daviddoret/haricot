@@ -20,25 +20,25 @@ atomize <- function(algo, ...){
     }
   };
 
-  if(is(algo, "algo_composite")){
-    components <- algo$get_components();
-    if(length(components) > 0){
-      for(component_index in 1 : length(components)){
-        component <- components[[component_index]];
-        if(component$get_is_atomic()){
-          # This is atomic, let it like that.
-        } else if(is(component, "algo_tt")){
-          # atomize it recursively.
-          atomized_component <- atomize(component);
-          # And substitute it with the old one,
-          # it the atomized component is different.
-          if(atomized_component$get_algo_id() != component$get_algo_id()){
-            algo$substitute(component, atomized_component, ...);
-          }
-        }
-      }
-    }
-  }
+  #if(is(algo, "algo_composite")){
+  #  components <- algo$get_components();
+  #  if(length(components) > 0){
+  #    for(component_index in 1 : length(components)){
+  #      component <- components[[component_index]];
+  #      if(component$get_is_atomic()){
+  #        # This is atomic, let it like that.
+  #      } else if(is(component, "algo_tt")){
+  #        # atomize it recursively.
+  #        atomized_component <- atomize(component);
+  #        # And substitute it with the old one,
+  #        # it the atomized component is different.
+  #        if(atomized_component$get_algo_id() != component$get_algo_id()){
+  #          algo$substitute(component, atomized_component, ...);
+  #        }
+  #      }
+  #    }
+  #  }
+  #}
 
   return(algo);
 

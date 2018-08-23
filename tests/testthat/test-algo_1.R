@@ -21,7 +21,7 @@ test_that('algo_1: test in composition', {
   a1 <- algo_1$new();
 
   composite$set_component(node = a1);
-  composite$set_inner_edge(a1, "o1", composite, "o1");
+  composite$set_dag_edge(a1, "o1", composite, "o1");
 
   #composite$plot();
 
