@@ -15,7 +15,7 @@ algo_composite <- R6Class(
   inherit = algo_base,
   private = list(
     components = NULL,
-    inner_graph = NULL
+    dag = NULL
   ),
   public = list(
     # Constructor
@@ -35,7 +35,7 @@ algo_composite <- R6Class(
       private$components <- list();
 
       # WARNING: NEARLY REDUNDANT CODE WITH convert_algo_base_to_igraph
-      private$inner_graph <- make_empty_graph(directed = TRUE) %>%
+      private$dag <- make_empty_graph(directed = TRUE) %>%
         add_vertices(
           nv = self$get_dim_i(),
           bit = paste0(INPUT_PREFIX, 1:self$get_dim_i()),
@@ -75,8 +75,8 @@ algo_composite <- R6Class(
     do_randomize_outputs = function() {
       stop("ooops");
     },
-    get_inner_graph = function(){
-      return(private$inner_graph);
+    get_dag = function(){
+      return(private$dag);
     },
     get_component_count = function(){
       return(length(private$components));
@@ -140,8 +140,8 @@ algo_composite <- R6Class(
     set_component = function(node, ...){
       set_component(self, node, ...);
     },
-    set_inner_graph = function(graph, ...){
-      private$inner_graph <- graph;
+    set_dag = function(graph, ...){
+      private$dag <- graph;
     },
     set_components = function(nodes, ...){
       private$components <- nodes;

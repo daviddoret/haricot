@@ -31,7 +31,7 @@ exec_algo_composite = function(algo, input, ...) {
   }
 
   # Get a copy of the igraph to store execution values.
-  g <- algo$get_inner_graph();
+  g <- algo$get_dag();
 
   # Prepare the vertex values
   vertices_execution_value <- list();

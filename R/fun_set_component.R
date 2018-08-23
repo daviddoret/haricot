@@ -37,9 +37,9 @@ set_component = function(
 
   # Merge the current graph with the new one.
   component_graph <- node$convert_to_igraph();
-  composite_graph <- composite$get_inner_graph();
+  composite_graph <- composite$get_dag();
   merged_graph <- composite_graph %du% component_graph
-  composite$set_inner_graph(merged_graph);
+  composite$set_dag(merged_graph);
 
   # Of course, at this point the new sub-graph will be disconnected.
 

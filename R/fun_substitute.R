@@ -42,7 +42,7 @@ substitute <- function(compi, orig, subst, ...){
 
   # Retrieve the internals of the composite
   components <- compi$get_components();
-  dag <- compi$get_inner_graph();
+  dag <- compi$get_dag();
 
   # Rewire the inbound edges with the substitute.
   inbound_edges <- E(dag)[

@@ -18,7 +18,7 @@ remove_component <- function(
   if(!is(component, "algo_base")) { stop("The component parameter does not implement class algo_base"); };
 
   id <- component$get_algo_id();
-  graph <- composite$get_inner_graph();
+  graph <- composite$get_dag();
 
   # Remove the igraph vertices linked to this algorithm component
   vertices_filter <- V(graph)$algo_id == id;
@@ -29,7 +29,7 @@ remove_component <- function(
   # automatically deletes the related edges.
   # But this point was not clearly stated in the doc.
 
-  composite$set_inner_graph(graph);
+  composite$set_dag(graph);
 
   components <- list.remove(composite$get_components(), id);
   composite$set_components(components);

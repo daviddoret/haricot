@@ -44,7 +44,7 @@ set_graph_edge = function(
 
   log(fun = "set_graph_edge", composite = composite$get_label(), source_name = source_name, target_name = target_name, ...);
 
-  g <- composite$get_inner_graph();
+  g <- composite$get_dag();
 
   # Determine the type of edge from node classes.
   source_vertex <- V(g)[V(g)$name == source_name];
@@ -84,7 +84,7 @@ set_graph_edge = function(
     type = type);
   # TODO: Add attributes for style, etc.
 
-  composite$set_inner_graph(g, ...);
+  composite$set_dag(g, ...);
 
   return(composite);
 }

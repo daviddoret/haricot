@@ -26,7 +26,7 @@ swap <- function(
   composite$set_component(new);
 
   # Retrieve the internals of the source algo composite
-  graph <- composite$get_inner_graph();
+  graph <- composite$get_dag();
 
   composite_id <- composite$get_algo_id();
   old_id <- old$get_algo_id();

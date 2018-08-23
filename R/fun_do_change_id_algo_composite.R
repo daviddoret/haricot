@@ -23,7 +23,7 @@ do_change_id_algo_composite <- function(algo, id, ...){
 
   # TODO: Check class of algo and id
 
-  g1 <- algo$get_inner_graph();
+  g1 <- algo$get_dag();
   legacy_id <- algo$get_algo_id();
 
   # Substitute algo_id in inner graph
@@ -36,6 +36,6 @@ do_change_id_algo_composite <- function(algo, id, ...){
 
   # Push the new logic in the target composite algo
   target$set_components(target_components);
-  target$set_inner_graph(target_inner_graph);
+  target$set_dag(target_dag);
 
 }

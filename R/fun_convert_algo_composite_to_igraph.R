@@ -21,7 +21,7 @@ require(igraph);
 convert_algo_composite_to_igraph <- function(node, ...){
 
   # algo_composite manage its internal state with an igraph...
-  g <- node$get_inner_graph();
+  g <- node$get_dag();
   return(g);
 
 }
