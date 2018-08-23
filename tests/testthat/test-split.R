@@ -7,11 +7,13 @@ test_that('split: test 01', {
 
   #browser();
 
+  for(i in 1:6){
+
   # Pick a random input dimension
-  dim_i <- sample(x = 1:6, size = 1, replace = TRUE);
+  dim_i <- sample(x = 1:4, size = 1, replace = TRUE);
 
   # Pick a random output dimension
-  dim_o <- sample(x = 1:6, size = 1, replace = TRUE);
+  dim_o <- sample(x = 1:4, size = 1, replace = TRUE);
 
   # Create a truth table algorithm of desired dimensions
   truthtable_algo <- algo_tt$new(dim_i = dim_i, dim_o = dim_o);
@@ -35,5 +37,7 @@ test_that('split: test 01', {
       break;
     }
   }
+
+    }
 
   });
