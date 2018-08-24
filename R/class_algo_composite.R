@@ -65,8 +65,8 @@ algo_composite <- R6Class(
     copy_logic_from = function(source){
       return(copy_logic(source, self));
     },
-    exec = function(input, ...) {
-      log(obj = self, method = "exec", input = input, ...);
+    exec = function(input = NULL, ...) {
+      #log(obj = self, method = "exec", input = input, ...);
       return(exec_algo_composite(algo = self, input = input, ...));
     },
     plot = function(interactive = FALSE, ...) {

@@ -16,22 +16,29 @@ require(futile.logger);
 exec_algo_tt = function(algo, input = NULL, ...) {
 
   # Data validation.
-  if(!is(algo, "algo_tt")){ flog.error("exec_algo_tt: algo is not of algo_tt class"); };
+  if(!is(algo, "algo_tt")){
+    flog.error("exec_algo_tt: algo is not of algo_tt class");
+    };
   if(is.null(input)){
     # Input is not mandatory, because the algorithm may be a constant with input dimension 0.
+    # But we need to know the requested return type.
     # Strong assumption: in this situation, we default to the bnum type.
-    flog.warn("exec_algo_tt: missing|NULL|NA input received --> default set to bnum(dim=0)");
-    input <- bnum$new(dim = 0, ...);
-  };
+    flog.warn("exec_algo_tt: missing|NULL|NA input received --> default set to bnum$new(dim=0)");
+    input <- logical(0);
+    };
   input_logical_vector <- convert_any_to_logical_vector(input);
   if(length(input_logical_vector) != algo$get_dim_i()){
-    stop("algo input dimension <> input dimension");
-  };
+    flog.error("algo input dimension <> input dimension");
+    };
 
-  flog.debug("exec_algo_tt: algo: %s (%s), input: %s", algo$get_label(), algo$get_algo_id(), input);
-
-  # Find the index position in the matrix
-  input_position <- convert_logical_vector_to_position(input_logical_vector);
+  input_position <- NULL;
+  if(algo$get_dim_i() == 0){
+    # This is a constant, the logical matrix contains only 1 row.
+    input_position <- 1;
+  } else {
+    # Find the index position in the matrix
+    input_position <- convert_logical_vector_to_position(input_logical_vector);
+  }
   # Return the corresponding row
   output_logical_vector <- algo$get_logical_matrix()[input_position,];
 

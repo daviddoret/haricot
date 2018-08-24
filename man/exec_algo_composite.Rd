@@ -4,7 +4,7 @@
 \alias{exec_algo_composite}
 \title{Execute the algorithm of a algo_composite on a given input.}
 \usage{
-exec_algo_composite(algo, input, ...)
+exec_algo_composite(algo, input = NULL, ...)
 }
 \arguments{
 \item{algo}{A composite algorithm (R6 Class algo_composite)}

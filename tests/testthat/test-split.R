@@ -33,15 +33,11 @@ test_that('split: test 01', {
 
   n <- bnum$new(dim = dim_i);
   repeat{
-
     expect_equal(truthtable_algo$exec(n), splitted_algo$exec(n));
-
     n$do_increment();
     if(n$get_equal_0()){
       break;
+      }
     }
   }
-
-    }
-
   });

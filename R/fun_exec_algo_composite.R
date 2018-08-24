@@ -19,7 +19,7 @@ require(futile.logger);
 #' @param input The input bits (logical vector | character vector of "0"s and "1"s | R6 Class BinaryNumber)
 #' @return The corresponding output (same type than input)
 #' @export
-exec_algo_composite = function(algo, input, ...) {
+exec_algo_composite = function(algo, input = NULL, ...) {
 
   # Data validation.
   if(!is(algo, "algo_tt")){ flog.error("exec_algo_tt: algo is not of algo_tt class"); };
@@ -38,7 +38,7 @@ exec_algo_composite = function(algo, input, ...) {
     flog.error("exec_algo_composite: algo dim_i <> input dim_i");
   }
 
-  flog.debug("exec_algo_composite(algo = %s (%s), input = %s)", algo$get_label(), algo$get_algo_id(), input);
+  #flog.debug("exec_algo_composite(algo = %s (%s), input = %s)", algo$get_label(), algo$get_algo_id(), input);
 
   # Get a copy of the igraph to store execution values.
   g <- algo$get_dag();
@@ -55,10 +55,10 @@ exec_algo_composite = function(algo, input, ...) {
     pusher_position,
     ...){
 
-    flog.debug("push_execution(vertex_name = %s, pushed_value = %s, pusher_position % s, ...)",
-               vertex_name,
-               pushed_value,
-               pusher_position);
+    #flog.debug("push_execution(vertex_name = %s, pushed_value = %s, pusher_position % s, ...)",
+    #           vertex_name,
+    #           pushed_value,
+    #           pusher_position);
 
     vertex <- V(g)[V(g)$name == vertex_name];
     label <- vertex$label;
@@ -157,16 +157,14 @@ exec_algo_composite = function(algo, input, ...) {
       # I explicitely test the class algo_0 or algo_1,
       # because a composite algorithm may also be a
       # logical constant with input dimension = 0.
-      if(a$is_constant() &
-         (is(a, "algo_0") |
-          is(a, "algo_1"))) {
+      if(a$is_constant()) {
         # This is a constant.
         algo_id <- a$get_algo_id();
         # Prepare the name of the next vertex were to push the value.
         # For atomic constants, we know this is "o1" so we hard-code it.
         # But this is a bit ugly, isn't it?
         vertex_name <- baptize_igraph_vertex(algo_id, NOBIT_PREFIX);
-        pushed_value <- a$exec();
+        pushed_value <- a$exec(logical(0));
         push_execution(
           vertex_name = vertex_name,
           pushed_value = pushed_value,
@@ -182,13 +180,6 @@ exec_algo_composite = function(algo, input, ...) {
       algo_id <- algo$get_algo_id();
       vertex_name <- baptize_igraph_vertex(algo_id, bit);
       pushed_value <- input_logical_vector[bit_position];
-      # cat("\n\n\nSTAGE 1: EXECUTE INPUTBIT",
-      #  "bit: ", bit,
-      #  "algo_id", algo_id,
-      #  "vertex_name", vertex_name,
-      #  "pushed_value", pushed_value,
-      #  "bit_position", bit_position,
-      #  sep = "\n");
       push_execution(
         vertex_name = vertex_name,
         pushed_value = pushed_value,

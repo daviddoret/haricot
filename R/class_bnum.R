@@ -1,4 +1,5 @@
-library(R6);
+require(R6);
+require(futile.logger);
 
 bnum <- R6Class(
   "bnum",
@@ -7,13 +8,14 @@ bnum <- R6Class(
     logical_vector = NULL,
     initialize = function(
       input = NULL,
-      dim = NULL) {
+      dim = NULL,
+      ...) {
       if(is.null(input) & !is.null(dim)){
         self$logical_vector <- rep(FALSE, dim);
       } else if(!is.null(input) & is.null(dim)){
         self$logical_vector <- convert_any_to_logical_vector(input);
       } else {
-        stop("bnum constructor not yet supported, sorry");
+        flog.error("bnum constructor not yet supported, sorry");
       }
     },
     convert_to_character = function(){
