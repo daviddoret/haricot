@@ -53,7 +53,7 @@ algo_tt <- R6Class(
       binary_domain <- bdom$new(dimension = dim_i);
       rownames(private$logical_matrix) <- binary_domain$convert_to_character_vector();
     },
-    exec = function(input, ...) {
+    exec = function(input = NULL, ...) {
       exec_algo_tt(self, input, ...);
     },
     convert_to_character_dataframe = function(...){

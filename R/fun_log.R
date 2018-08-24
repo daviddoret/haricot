@@ -1,14 +1,22 @@
+##### LEGACY. MIGRATE EVERYTHING TO FUTILE.LOGGER #####
+
 #' log
 #'
 #' @description ...
 #'
 #' @examples ...
 #'
+#' @param error_level LOG_TRACE, LOG_INFO, LOG_WARN, LOG_ERROR, LOG_FATAL
 #' @param ... TBD
 #' @return Nothing
 #' @export
 log <- function(
+  error_level = NULL,
   ...){
+
+  if(is.null(error_level)){
+    error_level <- LOG_INFO;
+  };
 
   args <- list(...);
   verbosity <- args[["verbosity"]];

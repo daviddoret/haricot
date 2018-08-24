@@ -4,9 +4,11 @@
 \alias{log}
 \title{log}
 \usage{
-log(...)
+log(error_level = NULL, ...)
 }
 \arguments{
+\item{error_level}{LOG_TRACE, LOG_INFO, LOG_WARN, LOG_ERROR, LOG_FATAL}
+
 \item{...}{TBD}
 }
 \value{

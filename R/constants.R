@@ -6,6 +6,33 @@ if(any(objects() == "ALGO_PREFIX")){
 ALGO_PREFIX <- "a";
 #lockBinding("ALGO_PREFIX", globalenv());
 
+##### LEGACY. MIGRATE EVERYTHING TO FUTILE.LOGGER #####
+
+if(any(objects() == "LOG_ERROR")){
+  rm(LOG_ERROR);
+};
+LOG_ERROR <- futile.logger::ERROR;
+
+if(any(objects() == "LOG_FATAL")){
+  rm(LOG_FATAL);
+};
+LOG_FATAL <- futile.logger::FATAL;
+
+if(any(objects() == "LOG_INFO")){
+  rm(LOG_INFO);
+};
+LOG_INFO <- futile.logger::INFO;
+
+if(any(objects() == "LOG_TRACE")){
+  rm(LOG_TRACE);
+};
+LOG_TRACE <- futile.logger::TRACE;
+
+if(any(objects() == "LOG_WARN")){
+  rm(LOG_WARN);
+};
+LOG_WARN <- futile.logger::WARN;
+
 if(any(objects() == "INPUT_PREFIX")){
   rm(INPUT_PREFIX);
 };

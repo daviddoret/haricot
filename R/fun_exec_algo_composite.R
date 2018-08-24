@@ -1,3 +1,4 @@
+require(futile.logger);
 #' Execute the algorithm of a algo_composite on a given input.
 #'
 #' @description A algo_composite, by definition in this context, is an algorithm
@@ -20,15 +21,24 @@
 #' @export
 exec_algo_composite = function(algo, input, ...) {
 
-  log(fun = "exec_algo_composite", algo = algo, input = input, ...);
+  # Data validation.
+  if(!is(algo, "algo_tt")){ flog.error("exec_algo_tt: algo is not of algo_tt class"); };
+  if(is.null(input)){
+    # Input is not mandatory, because the algorithm may be a constant with input dimension 0.
+    # Strong assumption: in this situation, we default to the bnum type.
+    flog.warn("exec_algo_tt: missing|NULL|NA input received --> default set to bnum(dim=0)");
+    input <- bnum$new(dim = 0, ...);
+  };
 
   # Applies the TruthTable algorithm and returns its output.
   # Returns a type that is consistent with the type of the input.
   input_logical_vector <- convert_any_to_logical_vector(input);
 
   if(length(input_logical_vector) != algo$get_dim_i()){
-    stop("algo input dimension <> input dimension");
+    flog.error("exec_algo_composite: algo dim_i <> input dim_i");
   }
+
+  flog.debug("exec_algo_composite(algo = %s (%s), input = %s)", algo$get_label(), algo$get_algo_id(), input);
 
   # Get a copy of the igraph to store execution values.
   g <- algo$get_dag();
@@ -45,14 +55,10 @@ exec_algo_composite = function(algo, input, ...) {
     pusher_position,
     ...){
 
-    log("push_execution", vertex_name, pushed_value, pusher_position, ...);
-
-    #cat(
-    #  "\n\nPUSH EXEC ",
-    #  "vertex_name: ", vertex_name,
-    #  "push_exec_value: ", pushed_value,
-    #  "pusher_position: ", pusher_position,
-    #  sep = "\n");
+    flog.debug("push_execution(vertex_name = %s, pushed_value = %s, pusher_position % s, ...)",
+               vertex_name,
+               pushed_value,
+               pusher_position);
 
     vertex <- V(g)[V(g)$name == vertex_name];
     label <- vertex$label;

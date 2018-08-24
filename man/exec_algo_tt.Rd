@@ -4,7 +4,7 @@
 \alias{exec_algo_tt}
 \title{Execute a truth table algorithm on a given input.}
 \usage{
-exec_algo_tt(algo, input, ...)
+exec_algo_tt(algo, input = NULL, ...)
 }
 \arguments{
 \item{algo}{A truth table algorithm (R6 Class algo_tt)}
