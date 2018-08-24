@@ -40,7 +40,14 @@ exec_algo_tt = function(algo, input = NULL, ...) {
     input_position <- convert_logical_vector_to_position(input_logical_vector);
   }
   # Return the corresponding row
-  output_logical_vector <- algo$get_logical_matrix()[input_position,];
+  # The as.vector conversion is necessary
+  # when the matrix is for example of size 1x1,
+  # because without it, it seems that R returns a slightly
+  # different subtype that prints: "FALSE", instead of "[1] FALSE".
+  # I don't fully understand the subtle difference here,
+  # but I do observe that without the conversion,
+  # the outcome is a miserable failure.
+  output_logical_vector <- as.vector(algo$get_logical_matrix()[input_position,]);
 
   if(is(input, "logical")){
     return(output_logical_vector);
