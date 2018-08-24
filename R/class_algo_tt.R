@@ -108,10 +108,17 @@ algo_tt <- R6Class(
       return(inverse_truthtable);
 
     },
-    get_logical_matrix = function(){
-      return(private$logical_matrix);
+    get_logical_matrix = function(...){
+      # The as.vector conversion is necessary
+      # when the matrix is for example of size 1x1,
+      # because without it, it seems that R returns a slightly
+      # different subtype that prints: "FALSE", instead of "[1] FALSE".
+      # I don't fully understand the subtle difference here,
+      # but I do observe that without the conversion,
+      # the outcome is a miserable failure.
+      return(as.matrix(private$logical_matrix));
     },
-    get_prettystring = function(){
+    get_prettystring = function(...){
 
       output_integer_vector <- as.numeric(self$get_logical_matrix());
       output_integer_matrix <- matrix(output_integer_vector, nrow = self$get_input_size());

@@ -22,7 +22,9 @@ require(futile.logger);
 exec_algo_composite = function(algo, input = NULL, ...) {
 
   # Data validation.
-  if(!is(algo, "algo_tt")){ flog.error("exec_algo_tt: algo is not of algo_tt class"); };
+  if(!is(algo, "algo_composite")){
+    flog.error("exec_algo_composite: algo is not of algo_composite class");
+    };
   if(is.null(input)){
     # Input is not mandatory, because the algorithm may be a constant with input dimension 0.
     # Strong assumption: in this situation, we default to the bnum type.
@@ -191,10 +193,11 @@ exec_algo_composite = function(algo, input = NULL, ...) {
   output_logical_vector <- rep(NA, algo$get_dim_o());
   for(position in 1:algo$get_dim_o()){
     bit <- paste0(OUTPUT_PREFIX, position);
-    # print(paste0("\n\n\n\nSTAGE 2: RETRIEVE FROM BitOutput: bit: ", bit));
     vertex_name <- paste0(algo$get_algo_id(), NAMESPACE_SEPARATOR, bit);
     bit_exec_value <- vertices_execution_value[[vertex_name]];
-    # print(paste0("bit_exec_value: ", bit_exec_value));
+    if(is.na(bit_exec_value)){
+      flog.error("missing output bit value after algo execution, the algo is flawed, please review its logical structure.");
+    };
     output_logical_vector[position] <- bit_exec_value;
   }
   # print(output_logical_vector);

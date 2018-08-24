@@ -47,6 +47,9 @@ exec_algo_tt = function(algo, input = NULL, ...) {
   # I don't fully understand the subtle difference here,
   # but I do observe that without the conversion,
   # the outcome is a miserable failure.
+  flog.debug("algo dim_i: %s", algo$get_dim_i());
+  flog.debug("algo dim_o: %s", algo$get_dim_o());
+  flog.debug("input_position: %s", input_position);
   output_logical_vector <- as.vector(algo$get_logical_matrix()[input_position,]);
 
   if(is(input, "logical")){
