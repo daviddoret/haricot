@@ -42,8 +42,8 @@ algo_1 <- R6Class(
     do_randomize_outputs = function() {
       stop("Not supported");
     },
-    exec = function(input = NA){
-      exec_algo_1(self, input);
+    exec = function(input = NULL, ...){
+      exec_algo_1(self, input, ...);
     },
     get_prettystring = function(){
       return("1");

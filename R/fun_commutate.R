@@ -41,7 +41,7 @@ commutate <- function(
   commutated$set_component(algo_1);
 
   # Loop on the component algo bits
-  if((dim_i - 1)){
+  if((dim_i > 1)){
     # But only if the sub algorithms are not constants with input dim 0.
     for(position in 1 : (dim_i - 1)){
       # Pipes switch input bits to component bits.

@@ -4,7 +4,7 @@
 \alias{exec_algo_1}
 \title{Execute the 1 constant algorithm on no or a null input.}
 \usage{
-exec_algo_1(algo, input = NA)
+exec_algo_1(algo, input = NULL, ...)
 }
 \arguments{
 \item{algo}{A 1 constant algorithm (R6 Class algo_1)}

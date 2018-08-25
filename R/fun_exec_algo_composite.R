@@ -165,7 +165,7 @@ exec_algo_composite = function(algo, input = NULL, ...) {
         # Prepare the name of the next vertex were to push the value.
         # For atomic constants, we know this is "o1" so we hard-code it.
         # But this is a bit ugly, isn't it?
-        vertex_name <- baptize_igraph_vertex(algo_id, NOBIT_PREFIX);
+        vertex_name <- baptize_igraph_vertex(algo_id, "o1");
         pushed_value <- a$exec(logical(0));
         push_execution(
           vertex_name = vertex_name,

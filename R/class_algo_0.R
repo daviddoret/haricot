@@ -42,7 +42,7 @@ algo_0 <- R6Class(
     do_randomize_outputs = function(...) {
       stop("Not supported");
     },
-    exec = function(input = NA, ...){
+    exec = function(input = NULL, ...){
       exec_algo_0(self, input, ...);
     },
     get_prettystring = function(...){

@@ -57,8 +57,11 @@ split <- function(
   split_1_first_position <- split_0_last_position + 1;
 
   # Split horizontally the tt in two equal parts.
-  tt_0 <- tt_raw[1 : split_0_last_position,];
-  tt_1 <- tt_raw[split_1_first_position : nrow(tt_raw),];
+  # The as.matrix call is necessary to avoid implicit
+  # conversion of 1x1 and small sized truth tables
+  # to non-matrix types.
+  tt_0 <- as.matrix(tt_raw[1 : split_0_last_position,]);
+  tt_1 <- as.matrix(tt_raw[split_1_first_position : nrow(tt_raw),]);
 
   # Prepares the new sub algorithms.
   algo_0 <- algo_tt$new(dim_i = dim_i_sub, dim_o = dim_o_sub);

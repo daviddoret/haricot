@@ -29,6 +29,7 @@ exec_algo_tt = function(algo, input = NULL, ...) {
   input_logical_vector <- convert_any_to_logical_vector(input);
   if(length(input_logical_vector) != algo$get_dim_i()){
     flog.error("algo input dimension <> input dimension");
+    stop();
     };
 
   input_position <- NULL;
@@ -47,9 +48,11 @@ exec_algo_tt = function(algo, input = NULL, ...) {
   # I don't fully understand the subtle difference here,
   # but I do observe that without the conversion,
   # the outcome is a miserable failure.
-  flog.debug("algo dim_i: %s", algo$get_dim_i());
-  flog.debug("algo dim_o: %s", algo$get_dim_o());
-  flog.debug("input_position: %s", input_position);
+  flog.debug("exec_algo_tt: label=%s, dim_i=%s, dim_o=%s, input_position=%s",
+             algo$get_label(),
+             algo$get_dim_i(),
+             algo$get_dim_o(),
+             input_position);
   output_logical_vector <- as.vector(algo$get_logical_matrix()[input_position,]);
 
   if(is(input, "logical")){

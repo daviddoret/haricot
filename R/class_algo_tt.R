@@ -144,7 +144,10 @@ algo_tt <- R6Class(
       cat(self$get_prettystring(), "\n");
     },
     set_logical_matrix = function(logical_matrix){
-      private$logical_matrix <- logical_matrix;
+      # The as.matrix call is necessary to avoid implicit
+      # conversion of 1x1 and small sized truth tables
+      # to non-matrix types.
+      private$logical_matrix <- as.matrix(logical_matrix);
     },
     set_output = function(input, output){
       input_logical_vector <- convert_any_to_logical_vector(input);
