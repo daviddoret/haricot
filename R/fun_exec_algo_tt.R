@@ -33,7 +33,7 @@ exec_algo_tt = function(algo, input = NULL, ...) {
     };
 
   input_position <- NULL;
-  if(algo$get_dim_i() == 0){
+  if(algo$is_constant()){
     # This is a constant, the logical matrix contains only 1 row.
     input_position <- 1;
   } else {
@@ -48,7 +48,7 @@ exec_algo_tt = function(algo, input = NULL, ...) {
   # I don't fully understand the subtle difference here,
   # but I do observe that without the conversion,
   # the outcome is a miserable failure.
-  flog.debug("exec_algo_tt: label=%s, dim_i=%s, dim_o=%s, input_position=%s",
+  flog.debug("exec_algo_tt: lbl=%s, i=%s, o=%s, pos=%s",
              algo$get_label(),
              algo$get_dim_i(),
              algo$get_dim_o(),

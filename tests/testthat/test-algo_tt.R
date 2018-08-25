@@ -1,11 +1,9 @@
-
-library(testthat);
+require(futile.logger);
+require(testthat);
 
 context("algo_tt");
 
 test_that('algo_tt: all zeroes tt return all zeroes.', {
-
-  #browser();
 
   for(i in 1:6){
 

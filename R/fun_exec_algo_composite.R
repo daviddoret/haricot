@@ -57,10 +57,10 @@ exec_algo_composite = function(algo, input = NULL, ...) {
     pusher_position,
     ...){
 
-    #flog.debug("push_execution(vertex_name = %s, pushed_value = %s, pusher_position % s, ...)",
-    #           vertex_name,
-    #           pushed_value,
-    #           pusher_position);
+    flog.debug("push vrtx=%s, val=%s, pos=%s",
+               vertex_name,
+               pushed_value,
+               pusher_position);
 
     vertex <- V(g)[V(g)$name == vertex_name];
     label <- vertex$label;
@@ -101,20 +101,39 @@ exec_algo_composite = function(algo, input = NULL, ...) {
     } else if(vertex_type == "algo"){
       # print(paste0("type == algo"));
       if(is.null(vertices_execution_value[[vertex_name]])){
-        init_vector <- c(rep(NA, node_dim_i));
-        # print(paste0("init_vector: ", init_vector));
-        vertices_execution_value[[vertex_name]] <<- init_vector;
-      }
-      vertices_execution_value[[vertex_name]][pusher_position] <<- pushed_value;
+        if(node_dim_i == 0){
+          # This is a constant algo.
+          # It will not receive any input bit.
+          # I initialize it with an empty logical vector
+          # to keep consistency in the data types.
+          vertices_execution_value[[vertex_name]] <<- logical(0);
+        } else {
+          # This is a non-constant algo,
+          # we must initialize the repository for its input bits.
+          init_vector <- c(rep(NA, node_dim_i));
+          vertices_execution_value[[vertex_name]] <<- init_vector;
+        };
+      };
 
-      # Check if all InputBits have their value.
-      if(!any(is.na(vertices_execution_value[[vertex_name]]))){
-        # print("ALGO COMPLETED");
+      if(pusher_position == 0){
+        # There is no pusher_position because
+        # the push was initiated from a constant.
+        # In this situation, the pushed value is a logical(empty) vector.
+        vertices_execution_value[[vertex_name]] <<- pushed_value;
+      } else {
+        vertices_execution_value[[vertex_name]][pusher_position] <<- pushed_value;
+      }
+
+      # Check if the algo is ready for execution.
+      # There are two possible conditions for that:
+      # - all InputBits have their value,
+      # - this is a constant algo.
+      if(node$is_constant() |
+        !any(is.na(vertices_execution_value[[vertex_name]]))){
         # If yes, execute the algo.
         algo_input <- vertices_execution_value[[vertex_name]];
-        # print(paste0("algo_input", algo_input));
         algo_output <- node$exec(vertices_execution_value[[vertex_name]]);
-        # print(paste0("algo_output: ", algo_output));
+        flog.debug("algo exec %s --> %s", algo_input, algo_output);
         # Push the algo result to the OutputBit vertices.
         next_vertices <- neighbors(graph = g, v = vertex, mode = "out");
         for(next_vertex_name in next_vertices$name){
@@ -147,35 +166,52 @@ exec_algo_composite = function(algo, input = NULL, ...) {
     }
   }
 
-  # Push the algorithm execution from the atomic constants.
-  # The rationale here is that atomic constants have an input dimension of 0,
-  # hence their "execution" must be specifically pushed.
+  # Push the algorithm execution from the constants.
+  # The rationale here is that constants have an input dimension of 0,
+  # hence their "execution" can be pushed without input bits.
   # I decide to accomplish this first and to tackle input bits seconds,
   # but this is completely arbitrary.
+  flog.debug("Push from constants");
   algo_list <- algo$get_components();
   if(length(algo_list) > 0){
     for(algo_index in 1:length(algo_list)){
       a <- algo_list[[algo_index]];
+      flog.debug("Checking %s", a$get_label());
       # I explicitely test the class algo_0 or algo_1,
       # because a composite algorithm may also be a
       # logical constant with input dimension = 0.
       if(a$is_constant()) {
         # This is a constant.
         algo_id <- a$get_algo_id();
-        # Prepare the name of the next vertex were to push the value.
-        # For atomic constants, we know this is "o1" so we hard-code it.
-        # But this is a bit ugly, isn't it?
-        vertex_name <- baptize_igraph_vertex(algo_id, "o1");
-        pushed_value <- a$exec(logical(0));
+        flog.debug("This is a constant (id=%s)", algo_id);
+        vertex_name <- baptize_igraph_vertex(
+          algo_id,
+          NOBIT_PREFIX);
         push_execution(
           vertex_name = vertex_name,
-          pushed_value = pushed_value,
-          pusher_position = 1);
+          pushed_value = logical(0),
+          pusher_position = 0);
+
+        ## Retrieve the constant value.
+        # It may contain several bits.
+        #pushed_values <- a$exec(logical(0));
+        #flog.debug("pushed_values=", pushed_values);
+        #for(pushed_output_bit in 1 : length(pushed_values)){
+        #  pushed_value <- pushed_values[pushed_output_bit];
+        #  vertex_name <- baptize_igraph_vertex(
+        #    algo_id,
+        #    baptize_algo_bit(OUTPUT_PREFIX, pushed_output_bit));
+        #  push_execution(
+        #    vertex_name = vertex_name,
+        #    pushed_value = pushed_value,
+        #    pusher_position = 1);
+        #};
       };
     };
   };
 
   # Push the algorithm execution from the input bits.
+  flog.debug("Push from input bits");
   if(algo$get_dim_i() > 0){
     for(bit_position in 1:algo$get_dim_i()){
       bit <- paste0(INPUT_PREFIX, bit_position);
@@ -190,6 +226,7 @@ exec_algo_composite = function(algo, input = NULL, ...) {
   };
 
   # Retrieve the result of the algo from the parent OutputBits.
+  flog.debug("Retrieve result from output bits");
   output_logical_vector <- rep(NA, algo$get_dim_o());
   for(position in 1:algo$get_dim_o()){
     bit <- paste0(OUTPUT_PREFIX, position);
@@ -197,6 +234,7 @@ exec_algo_composite = function(algo, input = NULL, ...) {
     bit_exec_value <- vertices_execution_value[[vertex_name]];
     if(is.na(bit_exec_value)){
       flog.error("missing output bit value after algo execution, the algo is flawed, please review its logical structure.");
+      stop();
     };
     output_logical_vector[position] <- bit_exec_value;
   }

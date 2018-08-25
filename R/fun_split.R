@@ -56,12 +56,19 @@ split <- function(
   split_0_last_position <- nrow(tt_raw) / 2;
   split_1_first_position <- split_0_last_position + 1;
 
-  # Split horizontally the tt in two equal parts.
-  # The as.matrix call is necessary to avoid implicit
-  # conversion of 1x1 and small sized truth tables
-  # to non-matrix types.
-  tt_0 <- as.matrix(tt_raw[1 : split_0_last_position,]);
-  tt_1 <- as.matrix(tt_raw[split_1_first_position : nrow(tt_raw),]);
+  # The explicit matrix conversion below is necessary
+  # because when the matrix is for example of size 1-by-1, 1-by-x or x-by-1,
+  # it seems that R has a curious tendency to "simplify" the type to vector.
+  # And as far as truth tables are concerned,
+  # we need a strictly typed matrix.
+  tt_0 <- matrix(
+    tt_raw[1 : split_0_last_position,],
+    ncol = dim_o_sub,
+    nrow = 2 ^ dim_i_sub);
+  tt_1 <- matrix(
+    tt_raw[split_1_first_position : nrow(tt_raw),],
+    ncol = dim_o_sub,
+    nrow = 2 ^ dim_i_sub);
 
   # Prepares the new sub algorithms.
   algo_0 <- algo_tt$new(dim_i = dim_i_sub, dim_o = dim_o_sub);

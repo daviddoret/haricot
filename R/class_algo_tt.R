@@ -42,16 +42,8 @@ algo_tt <- R6Class(
         label = label,
         ...);
 
-      init_value <- FALSE;
-      # First prepare a vector.
-      v <- rep(init_value, 2 ^ dim_i * dim_o);
-      # Transform the vector in a matrix.
-      private$logical_matrix <- matrix(data = v, nrow = 2 ^ dim_i, ncol = dim_o, byrow = TRUE);
-
-      # Name rows
-      # Build a vector of character binary representations
-      binary_domain <- bdom$new(dimension = dim_i);
-      rownames(private$logical_matrix) <- binary_domain$convert_to_character_vector();
+      # Initialize the matrix with 0s.
+      self$set_to_0(...);
     },
     exec = function(input = NULL, ...) {
       return(exec_algo_tt(self, input, ...));
@@ -109,14 +101,15 @@ algo_tt <- R6Class(
 
     },
     get_logical_matrix = function(...){
-      # The as.vector conversion is necessary
-      # when the matrix is for example of size 1x1,
-      # because without it, it seems that R returns a slightly
-      # different subtype that prints: "FALSE", instead of "[1] FALSE".
-      # I don't fully understand the subtle difference here,
-      # but I do observe that without the conversion,
-      # the outcome is a miserable failure.
-      return(as.matrix(private$logical_matrix));
+      # The explicit matrix conversion below is necessary
+      # because when the matrix is for example of size 1-by-1, 1-by-x or x-by-1,
+      # it seems that R has a curious tendency to "simplify" the type to vector.
+      # And as far as truth tables are concerned,
+      # we need a strictly typed matrix.
+      return(matrix(
+        private$logical_matrix,
+        ncol=self$get_dim_o(),
+        nrow=2 ^ self$get_dim_i()));
     },
     get_prettystring = function(...){
 
@@ -144,16 +137,50 @@ algo_tt <- R6Class(
       cat(self$get_prettystring(), "\n");
     },
     set_logical_matrix = function(logical_matrix){
-      # The as.matrix call is necessary to avoid implicit
-      # conversion of 1x1 and small sized truth tables
-      # to non-matrix types.
-      private$logical_matrix <- as.matrix(logical_matrix);
+      if(ncol(logical_matrix) != self$get_dim_o()){
+        flog.error("set_logical_matrix: wrong nrow");
+        stop();
+      };
+      if(nrow(logical_matrix) != 2 ^ self$get_dim_i()){
+        flog.error("set_logical_matrix: wrong ncol");
+        stop();
+      };
+      # The explicit matrix conversion below is necessary
+      # because when the matrix is for example of size 1-by-1, 1-by-x or x-by-1,
+      # it seems that R has a curious tendency to "simplify" the type to vector.
+      # And as far as truth tables are concerned,
+      # we need a strictly typed matrix.
+      private$logical_matrix <- matrix(
+        logical_matrix,
+        ncol = self$get_dim_o(),
+        nrow = 2 ^ self$get_dim_i());
+
+      # Name rows
+      # Build a vector of character binary representations
+      binary_domain <- bdom$new(dimension = self$get_dim_i());
+      rownames(private$logical_matrix) <- binary_domain$convert_to_character_vector();
     },
     set_output = function(input, output){
       input_logical_vector <- convert_any_to_logical_vector(input);
       output_logical_vector <- convert_any_to_logical_vector(output);
       input_position <- convert_logical_vector_to_position(input_logical_vector);
       private$logical_matrix[input_position,] <- output_logical_vector;
+    },
+    set_to_0 = function(...){
+      self$set_logical_matrix(
+        matrix(
+          data = FALSE,
+          ncol = self$get_dim_o(),
+          nrow = 2 ^ self$get_dim_i()),
+        ...);
+    },
+    set_to_1 = function(...){
+      self$set_logical_matrix(
+        matrix(
+          data = TRUE,
+          ncol = self$get_dim_o(),
+          nrow = 2 ^ self$get_dim_i()),
+        ...);
     }
   )
 )

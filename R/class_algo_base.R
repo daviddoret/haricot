@@ -69,7 +69,7 @@ algo_base <- R6Class(
       stop("This method is abstract, please implement it in the subclass.");
     },
     get_label = function(){
-      return(private$label);
+      return(paste0(private$label, " (", private$algo_id, ")"));
     },
     get_algo_id = function(){
       return(private$algo_id);

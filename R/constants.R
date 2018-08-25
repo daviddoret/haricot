@@ -57,3 +57,13 @@ if(any(objects() == "OUTPUT_PREFIX")){
 OUTPUT_PREFIX <- "o";
 #lockBinding("OUTPUT_PREFIX", globalenv());
 
+
+if(any(objects() == "VECTOR_DIRECTION_HORIZONTAL")){
+  rm(VECTOR_DIRECTION_HORIZONTAL);
+};
+VECTOR_DIRECTION_HORIZONTAL <- 1;
+
+if(any(objects() == "VECTOR_DIRECTION_VERTICAL")){
+  rm(VECTOR_DIRECTION_VERTICAL);
+};
+VECTOR_DIRECTION_VERTICAL <- 2;

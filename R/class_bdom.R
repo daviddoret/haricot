@@ -25,7 +25,7 @@ bdom <- R6Class(
     # Private Members
     dimension = NULL,
     logical_matrix = NULL,
-    initialize = function(dimension = 1) {
+    initialize = function(dimension = 1, ...) {
       # Store private members
       self$dimension <- dimension;
       self$logical_matrix <- matrix(nrow = 2 ^ dimension, ncol = dimension);

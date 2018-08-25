@@ -14,7 +14,7 @@ test_that('split: test 01', {
   flog.debug("test dim_i: %s, dim_o: %s", dim_i, dim_o);
 
   # Create a truth table algorithm of desired dimensions
-  truthtable_algo <- algo_tt$new(dim_i = dim_i, dim_o = dim_o);
+  truthtable_algo <- algo_tt$new(dim_i, dim_o);
 
   # Randomize the truth table outputs, we end up with a random deterministic algorithm
   truthtable_algo$do_randomize_outputs();
@@ -24,7 +24,7 @@ test_that('split: test 01', {
   splitted_algo <- split(truthtable_algo);
 
   #algo$plot();
-  #splitted_algo$plot();
+  splitted_algo$plot();
 
   n <- bnum$new(dim = dim_i);
   repeat{
