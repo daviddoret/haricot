@@ -30,6 +30,12 @@ bnum <- R6Class(
     get_bit = function(bit_position){
       return(self$logical_vector[bit_position]);
     },
+    get_first_bit = function(){
+      return(self$get_bit(1));
+    },
+    get_last_bit = function(){
+      return(self$get_bit(self$get_dimension()));
+    },
     get_dimension = function() {
       return(length(self$logical_vector));
     },

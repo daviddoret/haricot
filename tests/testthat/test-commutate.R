@@ -3,7 +3,7 @@ library(testthat);
 
 context("commutate");
 
-test_that('commutate: test 01', {
+test_that('commutate: basic test', {
 
   #browser();
 
@@ -21,47 +21,43 @@ test_that('commutate: test 01', {
 
   });
 
-test_that('commutate: random sampling', {
+test_that('commutate: commute random truth tables on small input dimensions', {
 
   #browser();
 
-  for(i in 1:6){
-
-  # Pick random dimension
-  d1 <- sample(x = 1:8, size = 1, replace = TRUE);
+  for(dim_i in 0:3){
 
   # Populate 2 random truth tables
-  a0 <- algo_tt$new(d1, 1)$do_randomize_outputs();
-  a1 <- algo_tt$new(d1, 1)$do_randomize_outputs();
-
-  # Pick a random input value with one extrabit
-  random_input <- bnum$new(dim = d1)$randomize();
-
-  # Pick a random switch decision
-  random_decision <- sample(x = 0:1, size = 1, replace = TRUE);
-
-  # Get the solution from the normal approach
-  solution <- NA;
-  if(random_decision == 0){
-    solution <- a0$exec(random_input);
-  } else {
-    solution <- a1$exec(random_input);
-  }
+  a0 <- algo_tt$new(dim_i, 1)$do_randomize_outputs();
+  a1 <- algo_tt$new(dim_i, 1)$do_randomize_outputs();
 
   # Setup the switch
   commutated <- commutate(a0, a1);
 
-  raw <- as.logical(c(random_input$get_logical_vector(), random_decision));
-  switch_input <- bnum$new(input = raw);
+  # Iterate through all possible input values
+  input <- bnum$new(dim = dim_i);
+  repeat{
 
-  switch_solution <- commutated$exec(switch_input);
+    # Compare the output of the original 0 algo,
+    # with the output of the commutated algo.
+    input_with_0 <- concat_bnum(input, bnum$new("0"));
+    expect_true(equal_bnum(
+      a0$exec(input),
+      commutated$exec(input_with_0)));
 
-  expect_true(equal_bnum(solution, switch_solution));
+    # Compare the output of the original 1 algo,
+    # with the output of the commutated algo.
+    input_with_1 <- concat_bnum(input, bnum$new("1"));
+    expect_true(equal_bnum(
+      a1$exec(input),
+      commutated$exec(input_with_1)));
 
-  #algo_switch$plot();
-
-  }
-
+    input$do_increment();
+    if(input$get_equal_0()){
+      break;
+      };
+    };
+  };
 });
 
 
