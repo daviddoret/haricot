@@ -129,18 +129,10 @@ Useful to populate truth tables in ROxygen2 tabular format with sinew for packag
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Function style:</span>
-<span class='no'>a1</span> <span class='kw'>&lt;-</span> <span class='no'>algo_tt</span>$<span class='fu'>new</span>(<span class='kw'>input_dimension</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>output_dimension</span> <span class='kw'>=</span> <span class='fl'>3</span>);
-<span class='fu'>convert_algo_tt_to_character_dataframe</span>(<span class='no'>a1</span>);</div><div class='output co'>#&gt;    input output
-#&gt; 00    00    000
-#&gt; 10    10    000
-#&gt; 01    01    000
-#&gt; 11    11    000</div><div class='input'>
+<span class='no'>a1</span> <span class='kw'>&lt;-</span> <span class='no'>algo_tt</span>$<span class='fu'>new</span>(<span class='kw'>dim_i</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>dim_o</span> <span class='kw'>=</span> <span class='fl'>3</span>);
+<span class='fu'>convert_algo_tt_to_character_dataframe</span>(<span class='no'>a1</span>);</div><div class='output co'>#&gt; <span class='error'>Error in data.frame(input = input, output = output): arguments imply differing number of rows: 0, 4</span></div><div class='input'>
 <span class='co'># R6 method style:</span>
-<span class='no'>a1</span>$<span class='fu'>convert_to_character_dataframe</span>();</div><div class='output co'>#&gt;    input output
-#&gt; 00    00    000
-#&gt; 10    10    000
-#&gt; 01    01    000
-#&gt; 11    11    000</div><div class='input'>
+<span class='no'>a1</span>$<span class='fu'>convert_to_character_dataframe</span>();</div><div class='output co'>#&gt; <span class='error'>Error in data.frame(input = input, output = output): arguments imply differing number of rows: 0, 4</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

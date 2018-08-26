@@ -5,13 +5,8 @@ context("atomize");
 
 test_that('atomize: test 01', {
 
-  #browser();
-
-  # Pick a random input dimension
-  dim_i <- sample(x = 2:1, size = 1, replace = TRUE);
-
-  # Pick a random output dimension
-  dim_o <- sample(x = 2:1, size = 1, replace = TRUE);
+  for(dim_i in 0:3){
+    for(dim_o in 1:3){
 
   # Create a truth table algorithm of desired dimensions
   truthtable_algo <- algo_tt$new(dim_i = dim_i, dim_o = dim_o);
@@ -32,5 +27,6 @@ test_that('atomize: test 01', {
       break;
     }
   };
-
+    }
+    }
   });

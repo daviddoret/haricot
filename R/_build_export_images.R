@@ -47,6 +47,9 @@ build_export_figures <- function(){
   export_figure("algo_or_graph", algo_not$new()$plot);
   export_figure("algo_xnor_graph", algo_not$new()$plot);
 
+  truthtable <- algo_tt$new(8,8)$do_randomize_outputs();
+  dag <- atomize(truthtable);
+  export_figure("algo_8_8", dag$plot);
 
   }
 

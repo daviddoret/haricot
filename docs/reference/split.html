@@ -141,7 +141,7 @@
 <span class='co'># Pick a random output dimension</span>
 <span class='no'>dim_o</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>6</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>);
 <span class='co'># Create a truth table algorithm of desired dimensions</span>
-<span class='no'>truthtable_algo</span> <span class='kw'>&lt;-</span> <span class='no'>algo_tt</span>$<span class='fu'>new</span>(<span class='kw'>input_dimension</span> <span class='kw'>=</span> <span class='no'>dim_i</span>, <span class='kw'>output_dimension</span> <span class='kw'>=</span> <span class='no'>dim_o</span>);
+<span class='no'>truthtable_algo</span> <span class='kw'>&lt;-</span> <span class='no'>algo_tt</span>$<span class='fu'>new</span>(<span class='kw'>dim_i</span> <span class='kw'>=</span> <span class='no'>dim_i</span>, <span class='kw'>dim_o</span> <span class='kw'>=</span> <span class='no'>dim_o</span>);
 <span class='co'># Randomize the truth table outputs, we end up with a random deterministic algorithm</span>
 <span class='no'>truthtable_algo</span>$<span class='fu'>do_randomize_outputs</span>();</div><div class='output co'>#&gt; 00 &gt; 00111
 #&gt; 10 &gt; 10111

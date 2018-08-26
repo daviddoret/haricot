@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot the igraph of a algo_composite — plot_algo_composite • haricot</title>
+<title>atomize — atomize • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Plot the igraph of a algo_composite — plot_algo_composite" />
+<meta property="og:title" content="atomize — atomize" />
 
-<meta property="og:description" content="Plot the igraph of a algo_composite with adequate style, etc." />
+<meta property="og:description" content="This transformation takes a composite or truth table in input, 
+and returns a composite algorithm with equivalent logic,
+that is only composed of atomic elements (NANDs and bit constants)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -92,40 +94,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot the igraph of a algo_composite</h1>
+    <h1>atomize</h1>
     
-    <div class="hidden name"><code>plot_algo_composite.Rd</code></div>
+    <div class="hidden name"><code>atomize.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Plot the igraph of a algo_composite with adequate style, etc.</p>
+    <p>This transformation takes a composite or truth table in input, <br />
+and returns a composite algorithm with equivalent logic,
+that is only composed of atomic elements (NANDs and bit constants).</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>plot_algo_composite</span>(<span class='no'>algo</span>, <span class='kw'>interactive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>atomize</span>(<span class='no'>algo</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>algo</th>
-      <td><p>A composite algorithm (algo_composite).</p></td>
+      <td><p>The original algorithm (R6 Class algo_base)</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>For future usage.</p></td>
+      <td><p>For future usage</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A plotted network graph.</p>
+    <p>A composite algorithm (R6 Class algo_composite)</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>a1</span> <span class='kw'>&lt;-</span> <span class='no'>algo_xnor</span>$<span class='fu'>new</span>();
-<span class='fu'>plot_algo_composite</span>(<span class='no'>a1</span>);</div><div class='img'><img src='plot_algo_composite-1.png' alt='' width='700' height='433' /></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='no'>...</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): '...' used in an incorrect context</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

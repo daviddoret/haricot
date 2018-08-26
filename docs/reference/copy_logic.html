@@ -130,15 +130,15 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># R function style:</span>
 <span class='no'>a1</span> <span class='kw'>&lt;-</span> <span class='no'>algo_xnor</span>$<span class='fu'>new</span>();
-<span class='no'>a2</span> <span class='kw'>&lt;-</span> <span class='no'>algo_composite</span>$<span class='fu'>new</span>(<span class='kw'>input_dimension</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>output_dimension</span> <span class='kw'>=</span> <span class='fl'>1</span>);
+<span class='no'>a2</span> <span class='kw'>&lt;-</span> <span class='no'>algo_composite</span>$<span class='fu'>new</span>(<span class='kw'>dim_i</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>dim_o</span> <span class='kw'>=</span> <span class='fl'>1</span>);
 <span class='fu'>copy_logic</span>(<span class='no'>a1</span>, <span class='no'>a2</span>);
 <span class='no'>a2</span>$<span class='fu'>plot</span>();</div><div class='img'><img src='copy_logic-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># R6 method style with copy from:</span>
-<span class='no'>a3</span> <span class='kw'>&lt;-</span> <span class='no'>algo_composite</span>$<span class='fu'>new</span>(<span class='kw'>input_dimension</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>output_dimension</span> <span class='kw'>=</span> <span class='fl'>1</span>);
+<span class='no'>a3</span> <span class='kw'>&lt;-</span> <span class='no'>algo_composite</span>$<span class='fu'>new</span>(<span class='kw'>dim_i</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>dim_o</span> <span class='kw'>=</span> <span class='fl'>1</span>);
 <span class='no'>a3</span>$<span class='fu'>copy_logic_from</span>(<span class='no'>a1</span>);
 <span class='no'>a3</span>$<span class='fu'>plot</span>();</div><div class='img'><img src='copy_logic-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># R6 method style with copy to:</span>
-<span class='no'>a4</span> <span class='kw'>&lt;-</span> <span class='no'>algo_composite</span>$<span class='fu'>new</span>(<span class='kw'>input_dimension</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>output_dimension</span> <span class='kw'>=</span> <span class='fl'>1</span>);
+<span class='no'>a4</span> <span class='kw'>&lt;-</span> <span class='no'>algo_composite</span>$<span class='fu'>new</span>(<span class='kw'>dim_i</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>dim_o</span> <span class='kw'>=</span> <span class='fl'>1</span>);
 <span class='no'>a1</span>$<span class='fu'>copy_logic_to</span>(<span class='no'>a4</span>);
 <span class='no'>a4</span>$<span class='fu'>plot</span>();</div><div class='img'><img src='copy_logic-3.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
