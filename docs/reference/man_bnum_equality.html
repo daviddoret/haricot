@@ -131,11 +131,30 @@ Formally: <br />
 $$\forall i \in \mathbb{N}^+ , (a,b) \in \mathbb{B}_{i} : a=b \iff |a| = |b|, \forall j \in [1,...,i] , a_{i} = b_{i}$$
 <p>A consequence of this definition of equality is that 2 modular binary numbers may be mapped to the same natural number and not be considered equal.<br />
 For instance: <br /></p>
+    <h3>Transforming truth tables into DAG</h3>
+    I'll provide more details as soon as I have a moment to document this. <br />
+But haricot has now a logically neutral transformation,
+that takes an arbitrary truth table algorithm as input,
+and transforms it into a DAG algorithm.
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>equal_bnum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1101"</span>), <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"110"</span>));</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>equal_bnum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1101"</span>), <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1100"</span>));</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>equal_bnum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1101"</span>), <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1101"</span>));</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>equal_bnum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"000"</span>), <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"0000"</span>));</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>equal_bnum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"000"</span>), <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"000"</span>));</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-</div></pre>
+<span class='co'># Create a random truth table algorithm with input dimension 8 and output dimension 8:</span>
+<span class='no'>truthtable</span> <span class='kw'>&lt;-</span> <span class='no'>algo_tt</span>$<span class='fu'>new</span>(<span class='fl'>8</span>,<span class='fl'>8</span>)$<span class='fu'>do_randomize_outputs</span>();
+<span class='co'># Display the upper part of the truth table in the console:</span>
+<span class='fu'>cat</span>(<span class='fu'>substr</span>(<span class='no'>truthtable</span>$<span class='fu'>get_prettystring</span>(),<span class='fl'>1</span>,<span class='fl'>200</span>));</div><div class='output co'>#&gt; 00000000 &gt; 10010000
+#&gt; 10000000 &gt; 10000111
+#&gt; 01000000 &gt; 11101000
+#&gt; 11000000 &gt; 10101111
+#&gt; 00100000 &gt; 01010000
+#&gt; 10100000 &gt; 10110001
+#&gt; 01100000 &gt; 00101101
+#&gt; 11100000 &gt; 11000100
+#&gt; 00010000 &gt; 10100011
+#&gt; 10010000 &gt; 10011100</div><div class='input'><span class='co'># Transform the truth table to a DAG algorithm:</span>
+<span class='no'>dag</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='atomize.html'>atomize</a></span>(<span class='no'>truthtable</span>);
+<span class='co'>#</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

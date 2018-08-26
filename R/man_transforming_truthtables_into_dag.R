@@ -4,9 +4,8 @@
 #' I'll provide more details as soon as I have a moment to document this. \cr
 #' But haricot has now a logically neutral transformation,
 #' that takes an arbitrary truth table algorithm as input,
-#' and transforms it into a DAG algorithm. \cr
-#' \cr
-#' \cr
+#' and transforms it into a DAG algorithm.}
+#'
 #' @examples
 #' # Create a random truth table algorithm with input dimension 8 and output dimension 8:
 #' truthtable <- algo_tt$new(8,8)$do_randomize_outputs();
@@ -14,6 +13,7 @@
 #' cat(substr(truthtable$get_prettystring(),1,200));
 #' # Transform the truth table to a DAG algorithm:
 #' dag <- atomize(truthtable);
+#' #
 #'
 #' @name man_bnum_equality
 NULL;

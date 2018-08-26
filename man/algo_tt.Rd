@@ -19,14 +19,21 @@ Row index position = 2 ^ N --> Input = binum of value 2 ^ N - 1.
 }
 \examples{
 # A basic example.
-t1 <- algo_tt$new(dim_i = 2, dim_o = 2);
-t1$set_output(input = "01", output = "11");
+t1 <- algo_tt$new(2, 2);
+t1$set_output("01", "11");
 t1$exec("01");
+plot_algo_tt_inside(t1);
 
 # Design a constant (ie input dimension = 0) algorithm of output dimension 3.
-t2 <- algo_tt$new(dim_i = 0, dim_o = 3);
+t2 <- algo_tt$new(0, 3);
 t2$set_output(input = "", output = "101");
 t2$exec("");
+plot_algo_tt_inside(t2);
+
+# Design a random truth table and plot it.
+t3 <- algo_tt$new(4,8):
+t3$do_randomize_outputs();
+plot_algo_tt_inside(t3);
 
 }
 \keyword{datasets}

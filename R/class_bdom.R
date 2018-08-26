@@ -48,7 +48,10 @@ bdom <- R6Class(
       return(nrow(self$logical_matrix));
     },
     get_logical_matrix = function() {
-      return(self$logical_matrix);
+      return(
+        matrix(self$logical_matrix,
+               ncol = self$get_dimension(),
+               nrow = self$get_length()));
     },
     get_prettystring = function() {
       # Take a logical matrix reprensenting a truthtable and returns a "pretty" string representation.
