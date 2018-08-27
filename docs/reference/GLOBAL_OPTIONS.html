@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Return a globally unique identifier for nodes. — get_node_guid • haricot</title>
+<title>get_opt — GLOBAL_OPTIONS • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,11 @@
 
 
 
-<meta property="og:title" content="Return a globally unique identifier for nodes. — get_node_guid" />
+<meta property="og:title" content="get_opt — GLOBAL_OPTIONS" />
 
-<meta property="og:description" content="To enhance readability, it is desirable to provide a specific algo_id value for nodes.
-But when none are provided, default globally unique identifiers will be used instead." />
+<meta property="og:description" content="Set an option setting. 
+By default it will be a globally defined setting. 
+But package users may tweak their preferences by passing new settings in ..." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -93,37 +94,47 @@ But when none are provided, default globally unique identifiers will be used ins
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Return a globally unique identifier for nodes.</h1>
+    <h1>get_opt</h1>
     
-    <div class="hidden name"><code>get_node_guid.Rd</code></div>
+    <div class="hidden name"><code>GLOBAL_OPTIONS.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>To enhance readability, it is desirable to provide a specific <code>algo_id</code> value for nodes.
-But when none are provided, default globally unique identifiers will be used instead.</p>
+    <p>Set an option setting. <br />
+By default it will be a globally defined setting. <br />
+But package users may tweak their preferences by passing new settings in ...</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_node_guid</span>()</pre>
-        
+    <pre class="usage"><span class='fu'>GLOBAL_OPTIONS</span>(<span class='no'>...</span>, <span class='kw'>.__defaults</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.__reset</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>...</th>
+      <td><p>Overwrite package global option values with custom values.</p></td>
+    </tr>
+    <tr>
+      <th>o</th>
+      <td><p>The unique name of the option to be retrieve (character)</p></td>
+    </tr>
+    </table>
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A globally unique node identifier (character)</p>
+    <p>The option setting value.</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_node_guid</span>();</div><div class='output co'>#&gt; [1] "b993417a-aa3f-11e8-93c0-c15317e8dc15"</div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>

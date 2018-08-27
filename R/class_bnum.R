@@ -1,6 +1,27 @@
 require(R6);
 require(futile.logger);
 
+#' bnum (R6 class)
+#'
+#' @description The class implementation of the binary number concept. \cr
+#'
+#' @examples # Construction from character string
+#' n1 <- bnum$new("0101111000");
+#' n1$plot();
+#'
+#' # Construction from logical vector
+#' n2 <- bnum$new(c(TRUE,FALSE,FALSE,TRUE));
+#' n2$plot();
+#'
+#' # Construction with dimension, defaulting to 0
+#' n3 <- bnum$new(dim = 5);
+#' n3$plot();
+#'
+#' @param input (conditional) An initialization value (character | logical vector)
+#' @param dim (conditional) The desired dimension of the binary number (integer)
+#' @param ... For future usage.
+#' @return An object instance of class bnum.
+#' @export
 bnum <- R6Class(
   "bnum",
   public = list(
@@ -74,6 +95,9 @@ bnum <- R6Class(
     },
     format = function(){
       return(self$get_prettystring());
+    },
+    plot = function(...){
+      plot_bnum(self, ...);
     },
     print = function(){
       print(self$get_prettystring());

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Return a globally unique identifier for nodes. — get_node_guid • haricot</title>
+<title>plot_bnum — plot_bnum • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="Return a globally unique identifier for nodes. — get_node_guid" />
+<meta property="og:title" content="plot_bnum — plot_bnum" />
 
-<meta property="og:description" content="To enhance readability, it is desirable to provide a specific algo_id value for nodes.
-But when none are provided, default globally unique identifiers will be used instead." />
+<meta property="og:description" content="Generate a visualization of a binary number,
+following the general look and feel of the haricot package." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -93,32 +93,55 @@ But when none are provided, default globally unique identifiers will be used ins
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Return a globally unique identifier for nodes.</h1>
+    <h1>plot_bnum</h1>
     
-    <div class="hidden name"><code>get_node_guid.Rd</code></div>
+    <div class="hidden name"><code>plot_bnum.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>To enhance readability, it is desirable to provide a specific <code>algo_id</code> value for nodes.
-But when none are provided, default globally unique identifiers will be used instead.</p>
+    <p>Generate a visualization of a binary number,
+following the general look and feel of the haricot package.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_node_guid</span>()</pre>
-        
+    <pre class="usage"><span class='fu'>plot_bnum</span>(<span class='no'>n</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>n</th>
+      <td><p>The binary number to be plotted.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>For future usage.</p></td>
+    </tr>
+    </table>
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A globally unique node identifier (character)</p>
+    <p>A plotted binary number.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_node_guid</span>();</div><div class='output co'>#&gt; [1] "b993417a-aa3f-11e8-93c0-c15317e8dc15"</div><div class='input'>
-</div></pre>
+    <pre class="examples"><div class='input'># R function style:
+n <- bnum$new("1010111000");;
+plot_bnum(n);
+
+# R6 class method style:
+n$plot();
+
+</div><div class='output co'>#&gt; <span class='error'>Error: &lt;text&gt;:2:29: unexpected ';'</span>
+#&gt; <span class='error'>1: # R function style:</span>
+#&gt; <span class='error'>2: n &lt;- bnum$new("1010111000");;</span>
+#&gt; <span class='error'>                               ^</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
       

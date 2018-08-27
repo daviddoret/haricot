@@ -55,6 +55,9 @@ algo_tt <- R6Class(
     exec = function(input = NULL, ...) {
       return(exec_algo_tt(self, input, ...));
     },
+    plot_inside = function(...) {
+      plot_algo_tt_inside(self, ...);
+    },
     convert_to_character_dataframe = function(...){
       return(convert_algo_tt_to_character_dataframe(self, ...));
     },
