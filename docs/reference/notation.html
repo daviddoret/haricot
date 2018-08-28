@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Notation — notation • haricot</title>
+<title>Binary Domain — notation • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,12 @@
 
 
 
-<meta property="og:title" content="Notation — notation" />
+<meta property="og:title" content="Binary Domain — notation" />
 
-<meta property="og:description" content="The following notation conventions are used:" />
+<meta property="og:description" content="A binary domain is an ordered set 
+of all possible combinations of binary numbers 
+within a given dimension.
+The following notation conventions are used:" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -92,18 +95,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Notation</h1>
+    <h1>Binary Domain</h1>
     
     <div class="hidden name"><code>notation.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The following notation conventions are used:</p>
+    <p>A binary domain is an ordered set <br />
+of all possible combinations of binary numbers <br />
+within a given dimension.</p>
+<p>The following notation conventions are used:</p>
     
     </div>
 
         
+    <h2 class="hasAnchor" id="formal-notation"><a class="anchor" href="#formal-notation"></a>Formal Notation</h2>
+
+    
+    <ul>
+<li><p>\(\mathbb{B} \): The set of all modular binary numbers.</p></li>
+<li><p>\(\mathbb{B}_{1} = {0,1} \): The set of all modular binary numbers of dimension 1.</p></li>
+<li><p>\(\mathbb{B}_{2} = {00,10,01,11} \): The set of all modular binary numbers of dimension 2.</p></li>
+<li><p>\(\mathbb{B}_{i} = {00...i,10...i,...} \): The set of all modular binary numbers of dimension i.</p></li>
+</ul>
+    
+    <h2 class="hasAnchor" id="visual-representations"><a class="anchor" href="#visual-representations"></a>Visual Representations</h2>
+
+    
+    <p>Modular binary numbers are usually expressed as a sequence of "0" and "1" bits with the left-most bit being the least significant bit.
+<img src='figures/bdom_1.png' alt='Visual representation of a binary number of dimension 1' />
+<img src='figures/bdom_2.png' alt='Visual representation of a binary number of dimension 2' />
+<img src='figures/bdom_3.png' alt='Visual representation of a binary number of dimension 3' />
+<img src='figures/bdom_4.png' alt='Visual representation of a binary number of dimension 4' />
+<img src='figures/bdom_5.png' alt='Visual representation of a binary number of dimension 5' />
+<img src='figures/bdom_6.png' alt='Visual representation of a binary number of dimension 6' /></p>
+    
     <h2 class="hasAnchor" id="sets"><a class="anchor" href="#sets"></a>Sets</h2>
 
     
@@ -188,6 +215,10 @@ Examples:</p><ul>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
+      <li><a href="#formal-notation">Formal Notation</a></li>
+
+      <li><a href="#visual-representations">Visual Representations</a></li>
+
       <li><a href="#sets">Sets</a></li>
 
       <li><a href="#modular-binary-number-constants">Modular Binary Number Constants</a></li>

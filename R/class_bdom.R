@@ -20,7 +20,7 @@ require(R6);
 #' @return An object instance of R6 class \code{bdom}.
 #' @export
 bdom <- R6Class(
-  "Modular Binary Domain",
+  "bdom",
   public = list(
     # Private Members
     dimension = NULL,
@@ -60,6 +60,9 @@ bdom <- R6Class(
       col <- apply(mat, 1, paste, collapse = "");
       pas <- paste(col, collapse = "\n");
       return(pas);
+    },
+    plot = function(...){
+      plot_bdom(self, ...);
     },
     print = function(){
       cat(self$get_prettystring());
