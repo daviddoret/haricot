@@ -1,7 +1,7 @@
 require(R6);
 #' bdom (R6 class)
 #'
-#' @description \code{bdom} is an R6 implementation of the modular binary domain concept.
+#' \code{bdom} is the R6 class implementation of the \code{\link[man_modular_binary_domain]{modular binary domain}} concept.
 #'
 #' @section References:
 #' \itemize{

@@ -32,7 +32,7 @@
 
 <meta property="og:title" content="Modular binary domain — def_modular_binary_domain" />
 
-<meta property="og:description" content="In the context of this package, a modular binary domain of dimension \(d\) and noted \(\mathbb{B}_{d}\) is defined as the ordered set of all possible modular binary numbers of size \(d\)." />
+<meta property="og:description" content="Modular binary domain" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,22 +99,52 @@
 
     <div class="ref-description">
     
-    <p>In the context of this package, a modular binary domain of dimension \(d\) and noted \(\mathbb{B}_{d}\) is defined as the ordered set of all possible modular binary numbers of size \(d\).</p>
+    <p>Modular binary domain</p>
     
     </div>
 
         
-    <h2 class="hasAnchor" id="notation"><a class="anchor" href="#notation"></a>Notation</h2>
+    <h2 class="hasAnchor" id="definition"><a class="anchor" href="#definition"></a>Definition</h2>
 
     
-    <p>A modular binary domain of dimension \(d\) is noted:\(\mathbb{B}_{d}\).</p>
+    <p>A modular binary domain of a given dimension is defined as the ordered set of all possible combinations of modular binary number values in that dimension. <br />
+The modular binary domain (i.e. not mentioning a particular dimension) is defined as the super set of all modular binary domains in all possible dimensions. <br /></p>
     
-    <h2 class="hasAnchor" id="samples"><a class="anchor" href="#samples"></a>Samples</h2>
+    <h2 class="hasAnchor" id="code-implementation"><a class="anchor" href="#code-implementation"></a>Code implementation</h2>
 
     
-    <p>$$\mathbb{B}_{1} = \left\{0,1\right\}$$
-$$\mathbb{B}_{2} = \left\{00,10,01,11\right\}$$
-$$\mathbb{B}_{3} = \left\{000,100,010,110,001,101,011,111\right\}$$</p>
+    <p>This concept is implemented by the <code><a href='bdom.html'>bdom</a></code> R6 class.</p>
+    
+    <h2 class="hasAnchor" id="formal-notation"><a class="anchor" href="#formal-notation"></a>Formal notation</h2>
+
+    
+    <p>A modular binary domain of dimension \(d\) is noted:\(\mathbb{B}_{d}\). <br />
+<br />
+<strong>Samples</strong> <br /></p><ul>
+<li><p>\(\mathbb{B} \): The modular binary domain superset.</p></li>
+<li><p>\(\mathbb{B}_{1} = \left\{0,1\right\} \): The modular binary domain of dimension 1.</p></li>
+<li><p>\(\mathbb{B}_{2} = \left\{00,10,01,11\right\} \): The modular binary domain of dimension 2.</p></li>
+<li><p>\(\mathbb{B}_{3} = \left\{000,100,010,110,001,101,011,111\right\} \): The modular binary domain of dimension 3.</p></li>
+<li><p>\(\mathbb{B}_{i} = \left\{00...i,10...i,...\right\} \): The modular binary domain of dimension i.</p></li>
+</ul>
+    
+    <h2 class="hasAnchor" id="visual-representations"><a class="anchor" href="#visual-representations"></a>Visual Representations</h2>
+
+    
+    <p>Modular binary domains may be visually represented as vertical list of modular binary numbers. <br />
+The x axis (or columns) correspond to the respective bits of the module binary numbers: \(b_{1}, b_{2}, b_{3}, ...\). <br />
+The y axis (or rows) correspond to the position of the modular binary number in the domain ordered by ascending order, that is equal to the integer value of that modular binary number. <br />
+<img src='figures/bdom_1.png' alt='Visual representation of a binary number of dimension 1' />
+<img src='figures/bdom_2.png' alt='Visual representation of a binary number of dimension 2' />
+<img src='figures/bdom_3.png' alt='Visual representation of a binary number of dimension 3' />
+<img src='figures/bdom_4.png' alt='Visual representation of a binary number of dimension 4' />
+<img src='figures/bdom_5.png' alt='Visual representation of a binary number of dimension 5' />
+<img src='figures/bdom_6.png' alt='Visual representation of a binary number of dimension 6' /></p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    
+    <p>Modular binary number</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -126,9 +156,15 @@ $$\mathbb{B}_{3} = \left\{000,100,010,110,001,101,011,111\right\}$$</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
-      <li><a href="#notation">Notation</a></li>
+      <li><a href="#definition">Definition</a></li>
 
-      <li><a href="#samples">Samples</a></li>
+      <li><a href="#code-implementation">Code implementation</a></li>
+
+      <li><a href="#formal-notation">Formal notation</a></li>
+
+      <li><a href="#visual-representations">Visual Representations</a></li>
+
+      <li><a href="#see-also">See also</a></li>
 
       <li><a href="#see-also">See also</a></li>
           </ul>

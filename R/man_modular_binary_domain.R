@@ -1,14 +1,37 @@
 #' Modular binary domain
 #'
-#' In the context of this package, a modular binary domain of dimension \eqn{d} and noted \eqn{\mathbb{B}_{d}} is defined as the ordered set of all possible modular binary numbers of size \eqn{d}.
+#' @section Definition:
+#' A modular binary domain of a given dimension is defined as the ordered set of all possible combinations of modular binary number values in that dimension. \cr
+#' The modular binary domain (i.e. not mentioning a particular dimension) is defined as the super set of all modular binary domains in all possible dimensions. \cr
 #'
-#' @section Notation:
-#' A modular binary domain of dimension \eqn{d} is noted:\eqn{\mathbb{B}_{d}}.
+#' @section Code implementation:
+#' This concept is implemented by the \code{\link{bdom}} R6 class.
 #'
-#' @section Samples:
-#' \deqn{\mathbb{B}_{1} = \left\{0,1\right\}}
-#' \deqn{\mathbb{B}_{2} = \left\{00,10,01,11\right\}}
-#' \deqn{\mathbb{B}_{3} = \left\{000,100,010,110,001,101,011,111\right\}}
+#' @section Formal notation:
+#' A modular binary domain of dimension \eqn{d} is noted:\eqn{\mathbb{B}_{d}}. \cr
+#' \cr
+#' \strong{Samples} \cr
+#' \itemize{
+#' \item{ \eqn{\mathbb{B} }: The modular binary domain superset. }
+#' \item{ \eqn{\mathbb{B}_{1} = \left\{0,1\right\} }: The modular binary domain of dimension 1. }
+#' \item{ \eqn{\mathbb{B}_{2} = \left\{00,10,01,11\right\} }: The modular binary domain of dimension 2. }
+#' \item{ \eqn{\mathbb{B}_{3} = \left\{000,100,010,110,001,101,011,111\right\} }: The modular binary domain of dimension 3. }
+#' \item{ \eqn{\mathbb{B}_{i} = \left\{00...i,10...i,...\right\} }: The modular binary domain of dimension i. }
+#' }
+#'
+#' @section Visual Representations:
+#' Modular binary domains may be visually represented as vertical list of modular binary numbers. \cr
+#' The x axis (or columns) correspond to the respective bits of the module binary numbers: \eqn{b_{1}, b_{2}, b_{3}, ...}. \cr
+#' The y axis (or rows) correspond to the position of the modular binary number in the domain ordered by ascending order, that is equal to the integer value of that modular binary number. \cr
+#' {\figure{bdom_1.png}{Visual representation of a binary number of dimension 1}}
+#' {\figure{bdom_2.png}{Visual representation of a binary number of dimension 2}}
+#' {\figure{bdom_3.png}{Visual representation of a binary number of dimension 3}}
+#' {\figure{bdom_4.png}{Visual representation of a binary number of dimension 4}}
+#' {\figure{bdom_5.png}{Visual representation of a binary number of dimension 5}}
+#' {\figure{bdom_6.png}{Visual representation of a binary number of dimension 6}}
+#'
+#' @section See also:
+#' \link[=man_modular_binary_number]{Modular binary number}
 #'
 #' @name def_modular_binary_domain
 #' @family binaries
