@@ -11,7 +11,7 @@
 #' @param n1 A modular binary number (logical vector, character vector, bnum)
 #' @param n2 A modular binary number (logical vector, character vector, bnum)
 #' @return Returns TRUE if n1 and n2 are equal, FALSE otherwise (logical vector of length 1)
-#' @rdname man_bnum_equality
+#' @rdname bnum_equality
 #' @export
 equal_bnum <- function(n1, n2){
   n1_binum <- convert_any_to_bnum(n1);

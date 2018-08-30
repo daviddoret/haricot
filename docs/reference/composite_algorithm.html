@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Return a globally unique identifier for nodes. — get_node_guid • haricot</title>
+<title>Composite algorithm — composite_algorithm • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,29 @@
 
 
 
-<meta property="og:title" content="Return a globally unique identifier for nodes. — get_node_guid" />
+<meta property="og:title" content="Composite algorithm — composite_algorithm" />
 
-<meta property="og:description" content="To enhance readability, it is desirable to provide a specific algo_id value for nodes.
-But when none are provided, default globally unique identifiers will be used instead." />
+<meta property="og:description" content="In the context of this package, a composite algorithm is defined as: 
+A set of component algorithms,
+A directed acyclic graph,
+The following constraints:
+the dag vertices are of the following types
+a set of 0-n composite input bits vertices, noted \(b_{0}, b_{1}\)
+a set of 1-n composite output bits vertices
+a set of 0-n composant algorithm vertices
+a set of 0-n composant input bit vertices
+a set of 0-n composant output bit vertices
+composite input bit vertices can only be linked to:
+- composite algorithm input bit vertices
+- composite output bit vertices
+composite output bit vertices cannot be linked, they are the final vertices
+composant algorithm vertices can only be linked to:
+- composant output bit vertices
+composant input bit vertices can only be linked to:
+- composant algorithm vertices
+composnat output bit vertices can only be linked to:
+- composant input bit vertices
+- composite output bit vertices" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -93,37 +112,55 @@ But when none are provided, default globally unique identifiers will be used ins
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Return a globally unique identifier for nodes.</h1>
+    <h1>Composite algorithm</h1>
     
-    <div class="hidden name"><code>get_node_guid.Rd</code></div>
+    <div class="hidden name"><code>composite_algorithm.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>To enhance readability, it is desirable to provide a specific <code>algo_id</code> value for nodes.
-But when none are provided, default globally unique identifiers will be used instead.</p>
+    <p>In the context of this package, a composite algorithm is defined as: <br />
+A set of component algorithms,
+A directed acyclic graph,
+The following constraints:
+the dag vertices are of the following types
+a set of 0-n composite input bits vertices, noted \(b_{0}, b_{1}\)
+a set of 1-n composite output bits vertices
+a set of 0-n composant algorithm vertices
+a set of 0-n composant input bit vertices
+a set of 0-n composant output bit vertices
+composite input bit vertices can only be linked to:
+- composite algorithm input bit vertices
+- composite output bit vertices
+composite output bit vertices cannot be linked, they are the final vertices
+composant algorithm vertices can only be linked to:
+- composant output bit vertices
+composant input bit vertices can only be linked to:
+- composant algorithm vertices
+composnat output bit vertices can only be linked to:
+- composant input bit vertices
+- composite output bit vertices</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_node_guid</span>()</pre>
         
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>A globally unique node identifier (character)</p>
+    
+    <ul>
+<li><p><a href='algo_composite.html'>algo_composite</a> R6 class}
+}
+}</p></li>
+</ul>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_node_guid</span>();</div><div class='output co'>#&gt; [1] "e622e040-abc7-11e8-9cac-ad9c13579a08"</div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#references">References</a></li>
+          </ul>
 
   </div>
 </div>

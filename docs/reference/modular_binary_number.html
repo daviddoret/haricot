@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Return a globally unique identifier for nodes. — get_node_guid • haricot</title>
+<title>Modular binary number — modular_binary_number • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,9 @@
 
 
 
-<meta property="og:title" content="Return a globally unique identifier for nodes. — get_node_guid" />
+<meta property="og:title" content="Modular binary number — modular_binary_number" />
 
-<meta property="og:description" content="To enhance readability, it is desirable to provide a specific algo_id value for nodes.
-But when none are provided, default globally unique identifiers will be used instead." />
+<meta property="og:description" content="In the context of this package, a modular binary number of dimension \(i\) and noted \(n_{d}\) is defined as an ordered set of \(d\) bits." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -93,37 +92,49 @@ But when none are provided, default globally unique identifiers will be used ins
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Return a globally unique identifier for nodes.</h1>
+    <h1>Modular binary number</h1>
     
-    <div class="hidden name"><code>get_node_guid.Rd</code></div>
+    <div class="hidden name"><code>modular_binary_number.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>To enhance readability, it is desirable to provide a specific <code>algo_id</code> value for nodes.
-But when none are provided, default globally unique identifiers will be used instead.</p>
+    <p>In the context of this package, a modular binary number of dimension \(i\) and noted \(n_{d}\) is defined as an ordered set of \(d\) bits.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_node_guid</span>()</pre>
         
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="notation"><a class="anchor" href="#notation"></a>Notation</h2>
 
-    <p>A globally unique node identifier (character)</p>
+    
+    <p>A modular binary number of dimension \(d\) is noted:\(n_{d}\).</p>
+    
+    <h2 class="hasAnchor" id="samples"><a class="anchor" href="#samples"></a>Samples</h2>
+
+    
+    <p>$$a_{4} \in \mathbb{B}_{4}$$
+$$a_{4} = \left\{0,1,0,1\right\}$$
+$$b_{6} \in \mathbb{B}_{6}$$
+$$b_{6} = \left\{0,0,0,0,0,0\right\}$$
+$$c_{3} \in \mathbb{B}_{3}$$
+$$c_{3} = \left\{1,1,0\right\}$$</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other binaries: <code><a href='modular_binary_domain.html'>modular_binary_domain</a></code></p></div>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_node_guid</span>();</div><div class='output co'>#&gt; [1] "e622e040-abc7-11e8-9cac-ad9c13579a08"</div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#notation">Notation</a></li>
+
+      <li><a href="#samples">Samples</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+          </ul>
 
   </div>
 </div>

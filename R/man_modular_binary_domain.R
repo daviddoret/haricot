@@ -31,8 +31,9 @@
 #' {\figure{bdom_6.png}{Visual representation of a binary number of dimension 6}}
 #'
 #' @section See also:
-#' \link[=man_modular_binary_number]{Modular binary number}
+#' \link[=modular_binary_number]{Modular binary number}
+#' \link[=bdom]{bdom R6 class}
 #'
-#' @name def_modular_binary_domain
+#' @name modular_binary_domain
 #' @family binaries
 NULL;

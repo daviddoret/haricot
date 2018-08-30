@@ -9,5 +9,5 @@
 #' For instance: \cr
 #'
 #'
-#' @name man_bnum_equality
+#' @name bnum_equality
 NULL;

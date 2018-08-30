@@ -17,12 +17,12 @@ bdom
 An object instance of R6 class \code{bdom}.
 }
 \description{
-\code{bdom} is the R6 class implementation of the \code{\link[man_modular_binary_domain]{modular binary domain}} concept.
+\code{bdom} is the R6 class implementation of the \link[modular_binary_domain]{modular binary domain} concept.
 }
 \section{References}{
 
 \itemize{
-\item{Modular binary domain (\link{def_modular_binary_domain})}
+\item{\link[modular_binary_domain]{modular binary domain}}
 }
 }
 

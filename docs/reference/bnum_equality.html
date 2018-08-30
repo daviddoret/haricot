@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Return a globally unique identifier for nodes. — get_node_guid • haricot</title>
+<title>equal_bnum — equal_bnum • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,9 @@
 
 
 
-<meta property="og:title" content="Return a globally unique identifier for nodes. — get_node_guid" />
+<meta property="og:title" content="equal_bnum — equal_bnum" />
 
-<meta property="og:description" content="To enhance readability, it is desirable to provide a specific algo_id value for nodes.
-But when none are provided, default globally unique identifiers will be used instead." />
+<meta property="og:description" content="Tells us if two bnum objects are equal." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -93,34 +92,59 @@ But when none are provided, default globally unique identifiers will be used ins
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Return a globally unique identifier for nodes.</h1>
+    <h1>equal_bnum</h1>
     
-    <div class="hidden name"><code>get_node_guid.Rd</code></div>
+    <div class="hidden name"><code>bnum_equality.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>To enhance readability, it is desirable to provide a specific <code>algo_id</code> value for nodes.
-But when none are provided, default globally unique identifiers will be used instead.</p>
+    <p>Tells us if two bnum objects are equal.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_node_guid</span>()</pre>
-        
+    <pre class="usage"><span class='fu'>equal_bnum</span>(<span class='no'>n1</span>, <span class='no'>n2</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>n1</th>
+      <td><p>A modular binary number (logical vector, character vector, bnum)</p></td>
+    </tr>
+    <tr>
+      <th>n2</th>
+      <td><p>A modular binary number (logical vector, character vector, bnum)</p></td>
+    </tr>
+    </table>
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A globally unique node identifier (character)</p>
+    <p>Returns TRUE if n1 and n2 are equal, FALSE otherwise (logical vector of length 1)</p>
+    
+    <h2 class="hasAnchor" id="theory"><a class="anchor" href="#theory"></a>Theory</h2>
+
+    
+    <h3>Equality of Modular Binary Numbers</h3>
+    In the context of this package, two modular binary numbers are equal if and only if they have identical dimensions and all their corresponding bits are equal. <br />
+Formally: <br />
+$$\forall i \in \mathbb{N}^+ , (a,b) \in \mathbb{B}_{i} : a=b \iff |a| = |b|, \forall j \in [1,...,i] , a_{i} = b_{i}$$
+<p>A consequence of this definition of equality is that 2 modular binary numbers may be mapped to the same natural number and not be considered equal.<br />
+For instance: <br /></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_node_guid</span>();</div><div class='output co'>#&gt; [1] "e622e040-abc7-11e8-9cac-ad9c13579a08"</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>equal_bnum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1101"</span>), <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"110"</span>));</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>equal_bnum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1101"</span>), <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1100"</span>));</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>equal_bnum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1101"</span>), <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"1101"</span>));</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>equal_bnum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"000"</span>), <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"0000"</span>));</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>equal_bnum</span>(<span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"000"</span>), <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='st'>"000"</span>));</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#theory">Theory</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

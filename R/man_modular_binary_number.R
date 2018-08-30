@@ -13,6 +13,6 @@
 #' \deqn{c_{3} \in \mathbb{B}_{3}}
 #' \deqn{c_{3} = \left\{1,1,0\right\}}
 #'
-#' @name def_modular_binary_number
+#' @name modular_binary_number
 #' @family binaries
 NULL;

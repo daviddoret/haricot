@@ -1,6 +1,5 @@
-#' @section Theory:
+#' Transformation: truth tables to DAG
 #'
-#' \subsection{Transforming truth tables into DAG}{
 #' I'll provide more details as soon as I have a moment to document this. \cr
 #' But haricot has now a logically neutral transformation,
 #' that takes an arbitrary truth table algorithm as input,
@@ -15,5 +14,5 @@
 #' dag <- atomize(truthtable);
 #' #
 #'
-#' @name man_bnum_equality
+#' @name transform_truthtables_into_dag
 NULL;

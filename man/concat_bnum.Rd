@@ -18,7 +18,7 @@ Concatenates modular binary numbers.
 \section{References}{
 
 \itemize{
-\item{Concatenation of modular binary numbers (\link{def_concatenation_modular_binary_numbers})}
+\item{Concatenation of modular binary numbers (\link{concatenation_modular_binary_numbers})}
 }
 }
 
@@ -39,6 +39,6 @@ print(n5);
 
 }
 \seealso{
-Other concatenations: \code{\link{def_concatenation_modular_binary_numbers}}
+Other concatenations: \code{\link{concatenation_modular_binary_numbers}}
 }
 \concept{concatenations}

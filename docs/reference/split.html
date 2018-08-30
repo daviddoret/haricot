@@ -143,78 +143,30 @@
 <span class='co'># Create a truth table algorithm of desired dimensions</span>
 <span class='no'>truthtable_algo</span> <span class='kw'>&lt;-</span> <span class='no'>algo_tt</span>$<span class='fu'>new</span>(<span class='kw'>dim_i</span> <span class='kw'>=</span> <span class='no'>dim_i</span>, <span class='kw'>dim_o</span> <span class='kw'>=</span> <span class='no'>dim_o</span>);
 <span class='co'># Randomize the truth table outputs, we end up with a random deterministic algorithm</span>
-<span class='no'>truthtable_algo</span>$<span class='fu'>do_randomize_outputs</span>();</div><div class='output co'>#&gt; 000000 &gt; 11
-#&gt; 100000 &gt; 00
-#&gt; 010000 &gt; 10
-#&gt; 110000 &gt; 10
-#&gt; 001000 &gt; 10
-#&gt; 101000 &gt; 10
-#&gt; 011000 &gt; 11
-#&gt; 111000 &gt; 00
-#&gt; 000100 &gt; 01
-#&gt; 100100 &gt; 11
-#&gt; 010100 &gt; 01
-#&gt; 110100 &gt; 01
-#&gt; 001100 &gt; 11
-#&gt; 101100 &gt; 10
-#&gt; 011100 &gt; 11
-#&gt; 111100 &gt; 00
-#&gt; 000010 &gt; 00
-#&gt; 100010 &gt; 11
-#&gt; 010010 &gt; 10
-#&gt; 110010 &gt; 01
-#&gt; 001010 &gt; 01
-#&gt; 101010 &gt; 11
-#&gt; 011010 &gt; 10
-#&gt; 111010 &gt; 01
-#&gt; 000110 &gt; 01
-#&gt; 100110 &gt; 10
-#&gt; 010110 &gt; 11
-#&gt; 110110 &gt; 00
-#&gt; 001110 &gt; 00
-#&gt; 101110 &gt; 11
-#&gt; 011110 &gt; 11
-#&gt; 111110 &gt; 10
-#&gt; 000001 &gt; 01
-#&gt; 100001 &gt; 00
-#&gt; 010001 &gt; 01
-#&gt; 110001 &gt; 00
-#&gt; 001001 &gt; 00
-#&gt; 101001 &gt; 00
-#&gt; 011001 &gt; 11
-#&gt; 111001 &gt; 00
-#&gt; 000101 &gt; 01
-#&gt; 100101 &gt; 10
-#&gt; 010101 &gt; 00
-#&gt; 110101 &gt; 11
-#&gt; 001101 &gt; 00
-#&gt; 101101 &gt; 11
-#&gt; 011101 &gt; 10
-#&gt; 111101 &gt; 00
-#&gt; 000011 &gt; 10
-#&gt; 100011 &gt; 11
-#&gt; 010011 &gt; 00
-#&gt; 110011 &gt; 10
-#&gt; 001011 &gt; 00
-#&gt; 101011 &gt; 11
-#&gt; 011011 &gt; 10
-#&gt; 111011 &gt; 00
-#&gt; 000111 &gt; 10
-#&gt; 100111 &gt; 00
-#&gt; 010111 &gt; 01
-#&gt; 110111 &gt; 00
-#&gt; 001111 &gt; 01
-#&gt; 101111 &gt; 00
-#&gt; 011111 &gt; 00
-#&gt; 111111 &gt; 01 </div><div class='input'><span class='co'># Split the random truth table algorithm and retrieve the resulting composite algorithm</span>
+<span class='no'>truthtable_algo</span>$<span class='fu'>do_randomize_outputs</span>();</div><div class='output co'>#&gt; 0000 &gt; 10
+#&gt; 1000 &gt; 11
+#&gt; 0100 &gt; 00
+#&gt; 1100 &gt; 10
+#&gt; 0010 &gt; 00
+#&gt; 1010 &gt; 11
+#&gt; 0110 &gt; 01
+#&gt; 1110 &gt; 01
+#&gt; 0001 &gt; 00
+#&gt; 1001 &gt; 11
+#&gt; 0101 &gt; 10
+#&gt; 1101 &gt; 01
+#&gt; 0011 &gt; 11
+#&gt; 1011 &gt; 00
+#&gt; 0111 &gt; 10
+#&gt; 1111 &gt; 00 </div><div class='input'><span class='co'># Split the random truth table algorithm and retrieve the resulting composite algorithm</span>
 <span class='no'>splitted_algo</span> <span class='kw'>&lt;-</span> <span class='fu'>split</span>(<span class='no'>truthtable_algo</span>);
 <span class='kw'>for</span>(<span class='no'>test_counter</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>3</span>){
    <span class='co'># Pick a random input value</span>
    <span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='kw'>dim</span> <span class='kw'>=</span> <span class='no'>dim_i</span>)$<span class='fu'>randomize</span>();
    <span class='fu'>print</span>(<span class='fu'>paste0</span>(<span class='st'>"Input: "</span>, <span class='no'>n</span>$<span class='fu'>format</span>(), <span class='st'>", output of truth table algo: "</span>, <span class='no'>truthtable_algo</span>$<span class='fu'>exec</span>(<span class='no'>n</span>)$<span class='fu'>format</span>(), <span class='st'>", output of splitted algo: "</span>, <span class='no'>splitted_algo</span>$<span class='fu'>exec</span>(<span class='no'>n</span>)$<span class='fu'>format</span>()));
-}</div><div class='output co'>#&gt; [1] "Input: 001000, output of truth table algo: 10, output of splitted algo: 10"
-#&gt; [1] "Input: 101110, output of truth table algo: 11, output of splitted algo: 11"
-#&gt; [1] "Input: 100111, output of truth table algo: 00, output of splitted algo: 00"</div><div class='input'><span class='co'># Plot the original algo</span>
+}</div><div class='output co'>#&gt; [1] "Input: 0001, output of truth table algo: 00, output of splitted algo: 00"
+#&gt; [1] "Input: 0001, output of truth table algo: 00, output of splitted algo: 00"
+#&gt; [1] "Input: 1010, output of truth table algo: 11, output of splitted algo: 11"</div><div class='input'><span class='co'># Plot the original algo</span>
 <span class='no'>truthtable_algo</span>$<span class='fu'>plot</span>();</div><div class='img'><img src='split-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># Plot the splitted algo</span>
 <span class='no'>splitted_algo</span>$<span class='fu'>plot</span>();</div><div class='img'><img src='split-2.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>

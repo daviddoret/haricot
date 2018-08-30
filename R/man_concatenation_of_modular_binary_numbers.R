@@ -15,6 +15,6 @@
 #' \deqn{ 01 & 1010 = 011010 }
 #' \deqn{ 000 & 00 = 00000 }
 #'
-#' @name def_concatenation_modular_binary_numbers
+#' @name concatenation_modular_binary_numbers
 #' @family concatenations
 NULL;

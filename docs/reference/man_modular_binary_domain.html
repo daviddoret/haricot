@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function: concat_bnum — concat_bnum • haricot</title>
+<title>Modular binary domain — man_modular_binary_domain • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Function: concat_bnum — concat_bnum" />
+<meta property="og:title" content="Modular binary domain — man_modular_binary_domain" />
 
-<meta property="og:description" content="Concatenates modular binary numbers." />
+<meta property="og:description" content="Modular binary domain" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -92,76 +92,83 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function: concat_bnum</h1>
+    <h1>Modular binary domain</h1>
     
-    <div class="hidden name"><code>concat_bnum.Rd</code></div>
+    <div class="hidden name"><code>man_modular_binary_domain.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Concatenates modular binary numbers.</p>
+    <p>Modular binary domain</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>concat_bnum</span>(<span class='no'>...</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>...</th>
-      <td><p>Modular binary numbers (bnum)</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>The result of the concatenation</p>
-    
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+        
+    <h2 class="hasAnchor" id="definition"><a class="anchor" href="#definition"></a>Definition</h2>
 
     
-    <ul>
-<li><p>Concatenation of modular binary numbers (<a href='concatenation_modular_binary_numbers.html'>concatenation_modular_binary_numbers</a>)</p></li>
+    <p>A modular binary domain of a given dimension is defined as the ordered set of all possible combinations of modular binary number values in that dimension. <br />
+The modular binary domain (i.e. not mentioning a particular dimension) is defined as the super set of all modular binary domains in all possible dimensions. <br /></p>
+    
+    <h2 class="hasAnchor" id="code-implementation"><a class="anchor" href="#code-implementation"></a>Code implementation</h2>
+
+    
+    <p>This concept is implemented by the <code><a href='bdom.html'>bdom</a></code> R6 class.</p>
+    
+    <h2 class="hasAnchor" id="formal-notation"><a class="anchor" href="#formal-notation"></a>Formal notation</h2>
+
+    
+    <p>A modular binary domain of dimension \(d\) is noted:\(\mathbb{B}_{d}\). <br />
+<br />
+<strong>Samples</strong> <br /></p><ul>
+<li><p>\(\mathbb{B} \): The modular binary domain superset.</p></li>
+<li><p>\(\mathbb{B}_{1} = \left\{0,1\right\} \): The modular binary domain of dimension 1.</p></li>
+<li><p>\(\mathbb{B}_{2} = \left\{00,10,01,11\right\} \): The modular binary domain of dimension 2.</p></li>
+<li><p>\(\mathbb{B}_{3} = \left\{000,100,010,110,001,101,011,111\right\} \): The modular binary domain of dimension 3.</p></li>
+<li><p>\(\mathbb{B}_{i} = \left\{00...i,10...i,...\right\} \): The modular binary domain of dimension i.</p></li>
 </ul>
+    
+    <h2 class="hasAnchor" id="visual-representations"><a class="anchor" href="#visual-representations"></a>Visual Representations</h2>
+
+    
+    <p>Modular binary domains may be visually represented as vertical list of modular binary numbers. <br />
+The x axis (or columns) correspond to the respective bits of the module binary numbers: \(b_{1}, b_{2}, b_{3}, ...\). <br />
+The y axis (or rows) correspond to the position of the modular binary number in the domain ordered by ascending order, that is equal to the integer value of that modular binary number. <br />
+<img src='figures/bdom_1.png' alt='Visual representation of a binary number of dimension 1' />
+<img src='figures/bdom_2.png' alt='Visual representation of a binary number of dimension 2' />
+<img src='figures/bdom_3.png' alt='Visual representation of a binary number of dimension 3' />
+<img src='figures/bdom_4.png' alt='Visual representation of a binary number of dimension 4' />
+<img src='figures/bdom_5.png' alt='Visual representation of a binary number of dimension 5' />
+<img src='figures/bdom_6.png' alt='Visual representation of a binary number of dimension 6' /></p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other concatenations: <code><a href='concatenation_modular_binary_numbers.html'>concatenation_modular_binary_numbers</a></code></p></div>
+    
+    <p>Modular binary number
+bdom R6 class</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other binaries: <code><a href='def_modular_binary_number.html'>def_modular_binary_number</a></code></p></div>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>Function style:
-n1 <- bnum$new("0101");
-n2 <- bnum("11000");
-n3 <- concat_bnum(n1, n2);
-print(n3);
-
-R6 method style:
-n4 <- n1$concat_with(n2);
-print(n4);
-
-Infix operator style:
-n5 <- n1 %concat% n2;
-print(n5);
-
-</div><div class='output co'>#&gt; <span class='error'>Error: &lt;text&gt;:1:10: unexpected symbol</span>
-#&gt; <span class='error'>1: Function style</span>
-#&gt; <span class='error'>             ^</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#definition">Definition</a></li>
 
-      <li><a href="#references">References</a></li>
+      <li><a href="#code-implementation">Code implementation</a></li>
+
+      <li><a href="#formal-notation">Formal notation</a></li>
+
+      <li><a href="#visual-representations">Visual Representations</a></li>
 
       <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+
+      <li><a href="#see-also">See also</a></li>
+          </ul>
 
   </div>
 </div>

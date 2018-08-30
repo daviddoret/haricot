@@ -4,7 +4,7 @@
 #'
 #' @section References:
 #' \itemize{
-#' \item{Concatenation of modular binary numbers (\link{def_concatenation_modular_binary_numbers})}
+#' \item{Concatenation of modular binary numbers (\link{concatenation_modular_binary_numbers})}
 #' }
 #'
 #' @examples Function style:
