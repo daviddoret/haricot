@@ -31,6 +31,21 @@ from_json = function(json, instance = NULL, ...) {
     o$set_label(j$label);
   };
 
+  # There are classes inherited from algo_composite
+  # that implement dynamically their internal logic
+  # and make their internal logic read-only
+  # (e.g. algo_1010).
+  # In such situations, the internal logic should NOT be deJSONified.
+  # For this reason, we only manage here top algo_composite classes.
+  # WARNING: I could find a statement in the documentation stating
+  # that top class must be in position 1, but it is. This could break
+  # in future versions of R and/or R6.
+  if(j$classes[1] == "algo_composite"){
+    stop("IMPLEMENT COMPONENTES");
+    stop("IMPLEMENT VERTICES");
+    stop("IMPLEMENT EDGES");
+  };
+
   if(any(j$classes == "algo_tt")){
     # NOTE 1: Matrix are converted to vectors during JSONification.
     # But this is not an issue because the truth table dimensions are known
