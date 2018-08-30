@@ -1,0 +1,55 @@
+require(testthat);
+require(rjson);
+
+context("json");
+
+test_that('algo_nand', {
+
+  a1 <- algo_nand$new(label = "test1");
+  json <- to_json(a1);
+  a2 <- from_json(json);
+
+  # Test key properties.
+  expect_equal(a1$get_algo_id(), a2$get_algo_id());
+  expect_equal(a1$get_label(), a2$get_label());
+  expect_equal(a1$get_dim_i(), a2$get_dim_i());
+  expect_equal(a1$get_dim_o(), a2$get_dim_o());
+
+  # The JSON re-exportation must be equal to the original.
+  expect_equal(a1$to_json(), a2$to_json());
+
+});
+
+test_that('algo_0', {
+
+  a1 <- algo_0$new(label = "test1");
+  json <- to_json(a1);
+  a2 <- from_json(json);
+
+  # Test key properties.
+  expect_equal(a1$get_algo_id(), a2$get_algo_id());
+  expect_equal(a1$get_label(), a2$get_label());
+  expect_equal(a1$get_dim_i(), a2$get_dim_i());
+  expect_equal(a1$get_dim_o(), a2$get_dim_o());
+
+  # The JSON re-exportation must be equal to the original.
+  expect_equal(a1$to_json(), a2$to_json());
+
+});
+
+test_that('algo_1', {
+
+  a1 <- algo_1$new(label = "test1");
+  json <- to_json(a1);
+  a2 <- from_json(json);
+
+  # Test key properties.
+  expect_equal(a1$get_algo_id(), a2$get_algo_id());
+  expect_equal(a1$get_label(), a2$get_label());
+  expect_equal(a1$get_dim_i(), a2$get_dim_i());
+  expect_equal(a1$get_dim_o(), a2$get_dim_o());
+
+  # The JSON re-exportation must be equal to the original.
+  expect_equal(a1$to_json(), a2$to_json());
+
+});

@@ -55,6 +55,11 @@ algo_base <- R6Class(
     do_randomize_outputs = function() {
       stop("This method is abstract, please implement it in the subclass.");
     },
+    from_json = function(json, ...){
+      from_json(json, self, ...);
+      # Chaining.
+      return(self);
+    },
     get_dim_i = function() {
       return(private$dim_i);
     },
@@ -69,7 +74,7 @@ algo_base <- R6Class(
       stop("This method is abstract, please implement it in the subclass.");
     },
     get_label = function(){
-      return(paste0(private$label, " (", private$algo_id, ")"));
+      return(paste0(private$label));
     },
     get_algo_id = function(){
       return(private$algo_id);
@@ -80,9 +85,6 @@ algo_base <- R6Class(
     get_prettystring = function(){
       stop("This method is abstract, please implement it in the subclass.");
     },
-    print = function(){
-      cat(self$get_prettystring(), "\n");
-    },
     is_constant = function(){
       if(self$get_dim_i() == 0){
         # By definition, an algorithm
@@ -92,6 +94,18 @@ algo_base <- R6Class(
       } else {
         return(FALSE);
       }
+    },
+    print = function(){
+      cat(self$get_prettystring(), "\n");
+    },
+    set_algo_id = function(id, ...){
+      private$algo_id <- id;
+    },
+    set_label = function(label, ...){
+      private$label <- label;
+    },
+    to_json = function(...){
+      return(to_json(self, ...));
     }
   )
 )

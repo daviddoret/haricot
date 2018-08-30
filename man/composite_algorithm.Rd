@@ -29,7 +29,7 @@ composnat output bit vertices can only be linked to:
 \section{References}{
 
 \itemize{
-\item{\code\link{algo_composite} R6 class}
+\item{\code{\link{algo_composite}} R6 class}
 }
 }
 

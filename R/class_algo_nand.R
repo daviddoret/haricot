@@ -47,32 +47,13 @@ algo_nand <- R6Class(
       plot_algo_base(self);
     },
     do_randomize_outputs = function() {
-      stop("This method is abstract, please implement it in the subclass.");
-    },
-    get_dim_i = function() {
-      return(private$dim_i);
-    },
-    get_input_size = function() {
-      # Returns the number of different input values.
-      return(2 ^ self$get_dim_i());
+      stop("Not supported, the logic of this class is read-only");
     },
     get_inverse = function() {
-      stop("This method is abstract, please implement it in the subclass.");
-    },
-    get_label = function(){
-      return(private$label);
-    },
-    get_algo_id = function(){
-      return(private$algo_id);
-    },
-    get_dim_o = function() {
-      return(private$dim_o);
+      stop("Not supported, the logic of this class is read-only");
     },
     get_prettystring = function(){
       return("nand");
-    },
-    print = function(){
-      cat(self$get_prettystring(), "\n");
     }
   )
 )
