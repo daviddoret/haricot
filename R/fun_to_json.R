@@ -22,6 +22,16 @@ to_json = function(o, ...) {
     j$is_atomic <- o$get_is_atomic();
   };
 
+  if(is(o, "algo_tt")){
+    # NOTE 1: Matrix are converted to vectors during JSONification.
+    # But this is not an issue because the truth table dimensions are known
+    # from the dim_i and dim_o attributes.
+    # NOTE 2: In the JSON, we expressly convert the matrix to integer
+    # in order to get 0s and 1s instead of TRUEs and FALSEs.
+    # This makes the JSON more readable and compact.
+    j$logical_matrix <- as.integer(o$get_logical_matrix());
+  }
+
   json <- rjson::toJSON(j);
 
   return(json);

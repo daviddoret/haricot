@@ -31,6 +31,20 @@ from_json = function(json, instance = NULL, ...) {
     o$set_label(j$label);
   };
 
+  if(any(j$classes == "algo_tt")){
+    # NOTE 1: Matrix are converted to vectors during JSONification.
+    # But this is not an issue because the truth table dimensions are known
+    # from the dim_i and dim_o attributes.
+    # NOTE 2: In the JSON, we expressly convert the matrix to integer
+    # in order to get 0s and 1s instead of TRUEs and FALSEs.
+    # This makes the JSON more readable and compact.
+    m <- matrix(
+      as.logical(j$logical_matrix),
+      ncol = j$dim_o,
+      nrow = 2 ^ j$dim_i);
+    o$set_logical_matrix(m);
+  };
+
   return(o);
 
 };

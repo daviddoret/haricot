@@ -1,6 +1,7 @@
 require(R6);
 require(rlang);
 require(igraph);
+require(futile.logger);
 
 #' algo_base (R6 class)
 #'
@@ -100,6 +101,18 @@ algo_base <- R6Class(
     },
     set_algo_id = function(id, ...){
       private$algo_id <- id;
+    },
+    set_dim_i = function(dim_i, ...){
+      # Not all algo classes are input resizable.
+      # If a class is input resizable, this method must be re-implemented.
+      flog.error("This algo class is not input resizable");
+      stop("");
+    },
+    set_dim_o = function(dim_o, ...){
+      # Not all algo classes are output resizable.
+      # If a class is output resizable, this method must be re-implemented.
+      flog.error("This class output is not output resizable");
+      stop("");
     },
     set_label = function(label, ...){
       private$label <- label;

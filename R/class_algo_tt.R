@@ -1,5 +1,6 @@
 require(R6);
 require(uuid);
+require(futile.logger);
 
 #' algo_tt
 #'
@@ -36,8 +37,8 @@ algo_tt <- R6Class(
     logical_matrix = NULL),
   public = list(
     initialize = function(
-      dim_i,
-      dim_o,
+      dim_i = 0, # Arbitrary default dimension. Required to simplify from_json().
+      dim_o = 1, # Arbitrary default dimension. Required to simplify from_json().
       algo_id = NULL,
       label = NULL,
       ...) {
@@ -148,12 +149,12 @@ algo_tt <- R6Class(
     },
     set_logical_matrix = function(logical_matrix){
       if(ncol(logical_matrix) != self$get_dim_o()){
-        flog.error("set_logical_matrix: wrong nrow");
-        stop();
+        flog.warn("set_logical_matrix: output resized");
+        private$dim_o <- ncol(logical_matrix);
       };
       if(nrow(logical_matrix) != 2 ^ self$get_dim_i()){
-        flog.error("set_logical_matrix: wrong ncol");
-        stop();
+        flog.warn("set_logical_matrix: input resized");
+        private$dim_i <- log2(nrow(logical_matrix));
       };
       # The explicit matrix conversion below is necessary
       # because when the matrix is for example of size 1-by-1, 1-by-x or x-by-1,
