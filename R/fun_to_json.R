@@ -33,6 +33,11 @@ to_json = function(o, ...) {
   # that top class must be in position 1, but it is. This could break
   # in future versions of R and/or R6.
   if(is(o, "algo_composite")){
+    # Composite algorithms are resizable,
+    # hence we need to store the input and output dimensions of the algo.
+    j$dim_i <- o$get_dim_i();
+    j$dim_i <- o$get_dim_i();
+    # Components.
     j_comps <- list();
     for(i in 1 : o$get_component_count()){
       comp <- o$get_components()[[i]];
@@ -47,16 +52,22 @@ to_json = function(o, ...) {
     j$components <- j_comps;
     # NOTE: It is not necessary to JSONify the vertices,
     # because these can be re-inflated from the components list.
-    o_edges <- E(o$get_dag());
-    j_edges <- c();
+    # Edges.
+    # We must filter the edges that are manually set,
+    # and exclude the "system" edges that are mechanically
+    # linking the input/output bits to their algo.
+    filter <- E(o$get_dag())$source_bit != NOBIT_PREFIX &
+      E(o$get_dag())$target_bit != NOBIT_PREFIX;
+    o_edges <- E(o$get_dag())[filter];
+    j_edges <- list();
     for(i in 1 : length(o_edges)){
       je <- list();
-      je$source_node <- o_edges[i]$source_node;
+      je$source_algo_id <- o_edges[i]$source_algo_id;
       je$source_bit <- o_edges[i]$source_bit;
-      je$target_node <- o_edges[i]$target_node;
+      je$target_algo_id <- o_edges[i]$target_algo_id;
       je$target_bit <- o_edges[i]$target_bit;
+      j_edges[[i]] <- je;
     };
-    j_edges <- c(j_edges, je);
     j$edges <- j_edges;
   };
 

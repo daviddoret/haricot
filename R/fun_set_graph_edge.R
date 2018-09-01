@@ -14,30 +14,49 @@
 #' @export
 set_graph_edge = function(
   composite,
-  source_node,
+  source_algo,
   source_bit,
-  target_node,
+  target_algo,
   target_bit,
   ...){
 
   if(!is(composite, "algo_composite")){
     stop("Composite is not of class algo_composite");
-  }
+  };
 
-  if(is_missing(source_node)){
+  if(is.null(source_algo)){
     # If the component is not specified,
     # we assume the intention is to work directly
     # on the input and output bits of the current node.
-    source_node <- composite;
-  }
-  if(is_missing(target_node)){
+    source_algo <- composite;
+  };
+
+  if(is.null(target_algo)){
     # If the component is not specified,
     # we assume the intention is to work directly
     # on the input and output bits of the current node.
-    target_node <- composite;
-  }
-  source_algo_id <- source_node$get_algo_id();
-  target_algo_id <- target_node$get_algo_id();
+    target_algo <- composite;
+  };
+
+  source_algo_id <- NULL;
+  if(is(source_algo, "algo_base")){
+    source_algo_id <- source_algo$get_algo_id();
+  } else if(is.character(source_algo)){
+    source_algo_id <- source_algo;
+  } else {
+    flog.error("source_algo unsupported class");
+    stop();
+  };
+
+  target_algo_id <- NULL;
+  if(is(target_algo, "algo_base")){
+    target_algo_id <- target_algo$get_algo_id();
+  } else if(is.character(target_algo)){
+    target_algo_id <- target_algo;
+  } else {
+    flog.error("target_algo unsupported class");
+    stop();
+  };
 
   source_name <- paste0(source_algo_id, NAMESPACE_SEPARATOR, source_bit);
   target_name <- paste0(target_algo_id, NAMESPACE_SEPARATOR, target_bit);

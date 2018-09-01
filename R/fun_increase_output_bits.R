@@ -30,17 +30,12 @@ increase_output_bits = function(algo, n = NULL, ...) {
   }
 
   previous_dim_o <- algo$get_dim_o();
-  flog.info("previous_dim_o: %s", previous_dim_o);
   new_dim_o <- previous_dim_o + n;
-  flog.info("new_dim_o: %s", new_dim_o);
 
   # Add the corresponding vertices in the DAG.
   bit_numbers <- (previous_dim_o + 1) : new_dim_o;
-  flog.info("bit_numbers: %s", paste0(bit_numbers, sep = "", collapse = ","));
   bit_names <- baptize_algo_bit(OUTPUT_PREFIX, bit_numbers);
-  flog.info("bit_names: %s", paste0(bit_names, sep = "", collapse = ","));
   vertices_names <- paste0(algo$get_algo_id(), NAMESPACE_SEPARATOR, bit_names);
-  flog.info("vertices_names: %s", paste0(vertices_names, sep = "", collapse = ","));
   dag <- algo$get_dag();
   dag <- dag %>%
     add_vertices(

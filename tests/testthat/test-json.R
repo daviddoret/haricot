@@ -75,9 +75,39 @@ test_that('algo_tt', {
 
 });
 
+test_that('algo_composite simple', {
+
+  a1 <- algo_composite$new(label = "test1", dim_i = 1, dim_o = 1);
+
+  # Invert the first input bit.
+  not1 <- a1$add_nand(a1, "i1", a1, "i1");
+
+  # Pipe the final output.
+  a1$set_dag_edge(not1, "o1", a1, "o1");
+
+  json <- to_json(a1);
+  cat(json);
+  a2 <- from_json(json);
+
+  # Test key properties.
+  expect_equal(a1$get_algo_id(), a2$get_algo_id());
+  expect_equal(a1$get_label(), a2$get_label());
+  expect_equal(a1$get_dim_i(), a2$get_dim_i());
+  expect_equal(a1$get_dim_o(), a2$get_dim_o());
+
+  # The JSON re-exportation must be equal to the original.
+  expect_equal(a1$to_json(), a2$to_json());
+
+  # Executing the unJSONifed algo must yield identical result
+  # from executing the original algo.
+  expect_equal(a1$exec("0"), a2$exec("0"));
+  expect_equal(a1$exec("1"), a2$exec("1"));
+
+});
+
 test_that('algo_composite', {
 
-  a1 <- algo_composite$new(label = "test1");
+  a1 <- algo_composite$new(label = "test1", dim_i = 2, dim_o = 1);
 
   # Invert the first input bit.
   nand1 <- a1$add_nand(a1, "i1", a1, "i1");
@@ -92,6 +122,7 @@ test_that('algo_composite', {
   a1$set_dag_edge(nand3, "o1", a1, "o1");
 
   json <- to_json(a1);
+  cat(json);
   a2 <- from_json(json);
 
   # Test key properties.
@@ -102,5 +133,12 @@ test_that('algo_composite', {
 
   # The JSON re-exportation must be equal to the original.
   expect_equal(a1$to_json(), a2$to_json());
+
+  # Executing the unJSONifed algo must yield identical result
+  # from executing the original algo.
+  expect_equal(a1$exec("00"), a2$exec("00"));
+  expect_equal(a1$exec("10"), a2$exec("10"));
+  expect_equal(a1$exec("01"), a2$exec("01"));
+  expect_equal(a1$exec("11"), a2$exec("11"));
 
 });

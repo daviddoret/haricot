@@ -18,10 +18,14 @@ from_json = function(json, instance = NULL, ...) {
   # WARNING: I assume that class in position 1 is the top class in the hierarchy,
   # but I couldn't find this expressly documented.
   top_class <- j$classes[1];
+  algo_id <- j$algo_id;
 
   # WARNING: This is susceptible to code injection.
   if(is.null(o)){
-    r <- paste0("function(){return(", top_class, "$new());};");
+    r <- paste0(
+      "function(){return(",
+      top_class,
+      "$new());};");
     f <- eval(parse(text = r));
     o <- f();
   };
@@ -41,21 +45,34 @@ from_json = function(json, instance = NULL, ...) {
   # that top class must be in position 1, but it is. This could break
   # in future versions of R and/or R6.
   if(j$classes[1] == "algo_composite"){
+    dim_i <- j$dim_i;
+    dim_o <- j$dim_o;
+    o$set_dim_i(dim_i);
+    o$set_dim_o(dim_o);
     for(component_object in j$components){
       # Re-encode in JSON the component.
       component_json <- rjson::toJSON(component_object);
+      flog.info(component_json);
       # Recursively call from_json() on the component JSON.
       component_algo <- from_json(component_json);
       # Set the component on the newly inflated algo composite.
       # This will mechanically re-insufflate the vertices in the DAG.
       o$set_component(component_algo);
     };
+    flog.info("length(j$edges): %s", length(j$edges));
     for(edge_object in j$edges){
+
+      flog.info("j$edges(%s, %s, %s, %s)",
+                edge_object$source_algo_id,
+                edge_object$source_bit,
+                edge_object$target_algo_id,
+                edge_object$target_bit);
+
       # Reset the original edges.
-      o$set_edge(
-        edge_object$source_node,
-        edge_object_source_bit,
-        edge_object$target_node,
+      o$set_dag_edge(
+        edge_object$source_algo_id,
+        edge_object$source_bit,
+        edge_object$target_algo_id,
         edge_object$target_bit);
     };
   };

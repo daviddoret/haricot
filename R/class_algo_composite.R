@@ -20,44 +20,24 @@ algo_composite <- R6Class(
   public = list(
     # Constructor
     initialize = function(
-      dim_i = get_open(DEFAULT_DIM_I),
-      dim_o = get_open(DEFAULT_DIM_O),
+      dim_i = get_opt("DEFAULT_DIM_I", ...),
+      dim_o = get_opt("DEFAULT_DIM_O", ...),
       algo_id = NULL,
       label = NULL,
       ...) {
       # Call the super class constructor
       super$initialize(
-        dim_i = dim_i,
-        dim_o = dim_o,
+        dim_i = 0, # We start from 0 and let set_dim_i() redo the work in sync with the DAG.
+        dim_o = 0, # We start from 0 and let set_dim_o() redo the work in sync with the DAG.
         algo_id = algo_id,
         label = label,
         ...);
       private$components <- list();
 
       # WARNING: NEARLY REDUNDANT CODE WITH convert_algo_base_to_igraph
-      private$dag <- make_empty_graph(directed = TRUE) %>%
-        add_vertices(
-          nv = self$get_dim_i(),
-          bit = paste0(INPUT_PREFIX, 1:self$get_dim_i()),
-          color = "#ccffe5",
-          label = paste0(INPUT_PREFIX, 1:self$get_dim_i()),
-          name = paste0(self$get_algo_id(), NAMESPACE_SEPARATOR, paste0(INPUT_PREFIX, 1:self$get_dim_i())),
-          algo_id = self$get_algo_id(),
-          push_execution_value = list(), # A vector of pushed execution values.
-          shape = "circle",
-          size = 10,
-          type = "inputbit") %>%
-        add_vertices(
-          nv = self$get_dim_o(),
-          bit = paste0(OUTPUT_PREFIX, 1:self$get_dim_o()),
-          color = "#cce5ff",
-          label = paste0(OUTPUT_PREFIX, 1:self$get_dim_o()),
-          name = paste0(self$get_algo_id(),NAMESPACE_SEPARATOR,paste0(OUTPUT_PREFIX, 1:self$get_dim_o())),
-          algo_id = self$get_algo_id(),
-          push_execution_value = list(), # A vector of pushed execution values.
-          shape = "circle",
-          size = 10,
-          type = "outputbit");
+      private$dag <- make_empty_graph(directed = TRUE);
+      self$set_dim_i(dim_i);
+      self$set_dim_o(dim_o);
     },
     # Shortcut method to quickly add atomic NANDs.
     add_nand = function(
@@ -121,20 +101,50 @@ algo_composite <- R6Class(
     increase_output_bits = function(n = NULL, ...){increase_output_bits(self, n, ...);},
     plot = function(interactive = FALSE, ...) {plot_algo_composite(self, interactive, ...);},
     remove_component = function(component, ...){remove_component(self, component, ...);},
+    set_algo_id = function(algo_id, ...){
+      # This is messy, we must find and replace
+      # all occurrences of the algo_id in the dag.
+      # RISK: If we add a new attribute in the dag
+      # that contains the algo_id, we will need to adapt
+      # this function.
+      # LIMITATION: We don't yet have a function
+      # that is able to reset the algo_id of a
+      # component algo in a composite, because the
+      # component is referenced in the parent edges
+      # and vertices.
+      # RISK: If an unaware user would force non-GUID
+      # IDs, find and replace operations may lead
+      # to unwanted results.
+      old_algo_id <- self$get_algo_id();
+      # Find & replace the old algo_id in all vertices.
+      dag <- self$get_dag();
+      dag <- set_vertex_attr(graph = dag, name = "name", value = gsub(old_algo_id, algo_id, V(dag)$name));
+      dag <- set_vertex_attr(graph = dag, name = "algo_id", value = gsub(old_algo_id, algo_id, V(dag)$algo_id));
+      # Find & replace the old algo_id in all edges.
+      dag <- set_edge_attr(graph = dag, name = "algo_id", value = gsub(old_algo_id, algo_id, E(dag)$algo_id));
+      dag <- set_edge_attr(graph = dag, name = "source_algo_id", value = gsub(old_algo_id, algo_id, E(dag)$source_algo_id));
+      dag <- set_edge_attr(graph = dag, name = "target_algo_id", value = gsub(old_algo_id, algo_id, E(dag)$target_algo_id));
+      # Reset the dag.
+      self$set_dag(dag);
+      # Call the super class to reset the algo_id property.
+      super$set_algo_id(algo_id, ...);
+      # Function chaining.
+      return(self);
+    },
     set_component = function(node, ...){set_component(self, node, ...);},
     set_components = function(nodes, ...){private$components <- nodes;},
     set_dag = function(graph, ...){private$dag <- graph;},
     set_dag_edge = function(
-      source_node = NULL,
+      source_algo,
       source_bit,
-      target_node = NULL,
+      target_algo,
       target_bit,
       ...){
       set_graph_edge(
         self,
-        source_node,
+        source_algo,
         source_bit,
-        target_node,
+        target_algo,
         target_bit,
         ...);
     },

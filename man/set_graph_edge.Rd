@@ -4,21 +4,21 @@
 \alias{set_graph_edge}
 \title{Function: set_graph_edge}
 \usage{
-set_graph_edge(composite, source_node, source_bit, target_node, target_bit,
+set_graph_edge(composite, source_algo, source_bit, target_algo, target_bit,
   ...)
 }
 \arguments{
 \item{composite}{The algorithm composite whose inner graph we want to manipulate (algo_composite).}
 
-\item{source_node}{The source algorithm of the directed edge (algo_base or algo_id as character).}
-
 \item{source_bit}{The source bit of the directed edge (bit identifier as character).}
-
-\item{target_node}{The taget algorithm of the directed edge (algo_base or algo_id as character).}
 
 \item{target_bit}{The target bit of the directed edge (bit identifier as character).}
 
 \item{...}{Complementary parameters.}
+
+\item{source_node}{The source algorithm of the directed edge (algo_base or algo_id as character).}
+
+\item{target_node}{The taget algorithm of the directed edge (algo_base or algo_id as character).}
 }
 \value{
 The composite algorithm with the updated graph (algo_composite).
