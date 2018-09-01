@@ -15,23 +15,7 @@ algo_composite <- R6Class(
   inherit = algo_base,
   private = list(
     components = NULL,
-    dag = NULL,
-    add_input_bit_vertices = function(pos_start, pos_end){
-      self$set_dag(
-        self$get_dag() %>%
-          add_vertices(
-            nv = pos_end - pos_start,
-            bit = paste0(INPUT_PREFIX, pos_start : pos_end),
-            color = "#ccffe5",
-            label = paste0(INPUT_PREFIX, pos_start : pos_end),
-            name = paste0(self$get_algo_id(), NAMESPACE_SEPARATOR, paste0(INPUT_PREFIX, pos_start : pos_end)),
-            algo_id = self$get_algo_id(),
-            push_execution_value = list(), # A vector of pushed execution values.
-            shape = "circle",
-            size = 10,
-            type = "inputbit")
-      );
-    }
+    dag = NULL
   ),
   public = list(
     # Constructor
@@ -75,6 +59,37 @@ algo_composite <- R6Class(
           size = 10,
           type = "outputbit");
     },
+    increase_input_bits = function(number, ...){
+      if(is.null(number)){
+        number <- 1;
+      };
+      # TODO: Check that number is an integer strictly > 0.
+
+      previous_dim_i <- self$get_dim_i();
+      new_dim_i <- previous_dim_i + number;
+
+      # Add the corresponding vertices in the DAG.
+      bit_numbers <- (previous_dim_i + 1) : new_dim_i;
+      bit_names <- baptize_algo_bit(INPUT_PREFIX, bit_numbers);
+      vertices_names <- paste0(self$get_algo_id(), NAMESPACE_SEPARATOR, bit_names);
+      dag <- self$get_dag();
+      dag <- dag %>%
+        add_vertices(
+          nv = length(bit_numbers),
+          bit = bit_names,
+          color = "#ccffe5",
+          label = bit_names,
+          name = vertices_names,
+          algo_id = self$get_algo_id(),
+          push_execution_value = list(), # A vector of pushed execution values.
+          shape = "circle",
+          size = 10,
+          type = "inputbit");
+      self$set_dag(dag);
+
+      # Adapt the input dimension property.
+      private$dim_i <- new_dim_i;
+    },
     # Shortcut method to quickly add atomic NANDs.
     add_nand = function(
       source_1_node = NULL,
@@ -108,9 +123,6 @@ algo_composite <- R6Class(
     exec = function(input = NULL, ...) {
       #log(obj = self, method = "exec", input = input, ...);
       return(exec_algo_composite(algo = self, input = input, ...));
-    },
-    get_dag = function(){
-      return(private$dag);
     },
     get_component_count = function(){
       return(length(private$components));
@@ -167,13 +179,14 @@ algo_composite <- R6Class(
     },
     set_dim_i = function(dim_i, ...){
       previous_dim_i <- self$get_dim_i();
-      private$dim_i <- dim_i;
       if(previous_dim_i < dim_i){
         # We must add new input bit vertices.
-        self$add_input_bit_vertices(previous_dim_i + 1, dim_i);
+        flog.info("set_dim_i: increase input dimension");
+        self$increase_input_bits(number = dim_i - previous_dim_i);
       }
       if(previous_dim_i > dim_i){
         # We must remove input bit vertices.
+        flog.info("set_dim_i: decrease input dimension");
         stop("NOT IMPLEMENTED YET");
       }
     },
@@ -182,6 +195,7 @@ algo_composite <- R6Class(
       private$dim_o <- dim_o;
       if(previous_dim_o < dim_o){
         # We must add new output bit vertices.
+        self$add_output_bit_vertices(previous_dim_o + 1, dim_o);
       };
       if(previous_dim_o > dim_o){
         # We must remove output bit vertices.
