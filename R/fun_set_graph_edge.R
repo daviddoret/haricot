@@ -42,7 +42,7 @@ set_graph_edge = function(
   source_name <- paste0(source_algo_id, NAMESPACE_SEPARATOR, source_bit);
   target_name <- paste0(target_algo_id, NAMESPACE_SEPARATOR, target_bit);
 
-  log(fun = "set_graph_edge", composite = composite$get_label(), source_name = source_name, target_name = target_name, ...);
+  flog.debug(fun = "set_graph_edge", composite = composite$get_label(), source_name = source_name, target_name = target_name, ...);
 
   g <- composite$get_dag();
 

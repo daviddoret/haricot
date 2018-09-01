@@ -59,37 +59,6 @@ algo_composite <- R6Class(
           size = 10,
           type = "outputbit");
     },
-    increase_input_bits = function(number, ...){
-      if(is.null(number)){
-        number <- 1;
-      };
-      # TODO: Check that number is an integer strictly > 0.
-
-      previous_dim_i <- self$get_dim_i();
-      new_dim_i <- previous_dim_i + number;
-
-      # Add the corresponding vertices in the DAG.
-      bit_numbers <- (previous_dim_i + 1) : new_dim_i;
-      bit_names <- baptize_algo_bit(INPUT_PREFIX, bit_numbers);
-      vertices_names <- paste0(self$get_algo_id(), NAMESPACE_SEPARATOR, bit_names);
-      dag <- self$get_dag();
-      dag <- dag %>%
-        add_vertices(
-          nv = length(bit_numbers),
-          bit = bit_names,
-          color = "#ccffe5",
-          label = bit_names,
-          name = vertices_names,
-          algo_id = self$get_algo_id(),
-          push_execution_value = list(), # A vector of pushed execution values.
-          shape = "circle",
-          size = 10,
-          type = "inputbit");
-      self$set_dag(dag);
-
-      # Adapt the input dimension property.
-      private$dim_i <- new_dim_i;
-    },
     # Shortcut method to quickly add atomic NANDs.
     add_nand = function(
       source_1_node = NULL,
@@ -148,6 +117,12 @@ algo_composite <- R6Class(
       # TODO: Enrich this with a nice representation of the algo inner logic.
       return(super$get_label());
     },
+    increase_input_bits = function(n = NULL, ...){
+      increase_input_bits(self, n, ...);
+    },
+    increase_output_bits = function(n = NULL, ...){
+      increase_output_bits(self, n, ...);
+    },
     plot = function(interactive = FALSE, ...) {
       plot_algo_composite(self, interactive, ...);
     },
@@ -177,30 +152,38 @@ algo_composite <- R6Class(
         target_bit,
         ...);
     },
-    set_dim_i = function(dim_i, ...){
+    set_dim_i = function(n, ...){
       previous_dim_i <- self$get_dim_i();
-      if(previous_dim_i < dim_i){
+      if(previous_dim_i < n){
         # We must add new input bit vertices.
-        flog.info("set_dim_i: increase input dimension");
-        self$increase_input_bits(number = dim_i - previous_dim_i);
+        increase_by <- n - previous_dim_i;
+        flog.info("set_dim_i: increase input dimension by %s", increase_by);
+        self$increase_input_bits(increase_by, ...);
       }
-      if(previous_dim_i > dim_i){
+      if(previous_dim_i > n){
         # We must remove input bit vertices.
         flog.info("set_dim_i: decrease input dimension");
         stop("NOT IMPLEMENTED YET");
       }
     },
-    set_dim_o = function(dim_o, ...){
+    system_set_dim_i = function(n, ...){
+      private$dim_i <- n;
+    },
+    set_dim_o = function(n, ...){
       previous_dim_o <- self$get_dim_o();
-      private$dim_o <- dim_o;
-      if(previous_dim_o < dim_o){
-        # We must add new output bit vertices.
-        self$add_output_bit_vertices(previous_dim_o + 1, dim_o);
+      private$dim_o <- n;
+      if(previous_dim_o < n){
+        increase_by <- n - previous_dim_o;
+        flog.info("set_dim_i: increase output dimension by %s", increase_by);
+        self$increase_output_bits(increase_by, ...);
       };
-      if(previous_dim_o > dim_o){
+      if(previous_dim_o > n){
         # We must remove output bit vertices.
         stop("NOT IMPLEMENTED YET");
       };
+    },
+    system_set_dim_o = function(n, ...){
+      private$dim_o <- n;
     },
     substitute = function(original, substitute, ...){
       substitute(self, original, substitute, ...);

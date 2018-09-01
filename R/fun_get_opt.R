@@ -13,7 +13,15 @@ GLOBAL_OPTIONS = options_manager(
   BIT_0_COLOR = "#cccce0",
   BIT_1_COLOR = "#9999e0",
   DEFAULT_DIM_I = 0, # Arbitrary default dimension. Required to simplify from_json().
-  DEFAULT_DIM_O = 1 # Arbitrary default dimension. Required to simplify from_json().
+  DEFAULT_DIM_O = 1, # Arbitrary default dimension. Required to simplify from_json().
+  VERTIX_INPUTBIT_BGCOLOR = "#ccffe5",
+  VERTIX_INPUTBIT_SHAPE = "circle",
+  VERTIX_INPUTBIT_SIZE = 10,
+  VERTIX_INPUTBIT_TYPE = "inputbit",
+  VERTIX_OUTPUTBIT_BGCOLOR = "#cce5ff",
+  VERTIX_OUTPUTBIT_SHAPE = "circle",
+  VERTIX_OUTPUTBIT_SIZE = 10,
+  VERTIX_OUTPUTBIT_TYPE = "outputbit"
 );
 get_opt <- function(o, ...){
   # protect against the use of reserved words.
