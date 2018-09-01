@@ -14,6 +14,7 @@ JSON
 }
 \description{
 Convert an object from a haricot class to JSON.
+Principle: the JSON produced should not contain more information than necessary to re-insufflate the object.
 }
 \examples{
 ...

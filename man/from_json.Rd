@@ -15,7 +15,7 @@ from_json(json, instance = NULL, ...)
 The object instance (R6 class)
 }
 \description{
-Convert a JSON export of a haricot class to an instance object of that class.
+Convert a JSON export of a haricot class to an instance object of that class. \cr
 }
 \examples{
 ...

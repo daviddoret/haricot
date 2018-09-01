@@ -2,6 +2,7 @@ require(rjson);
 #' to_json
 #'
 #' @description Convert an object from a haricot class to JSON.
+#' Principle: the JSON produced should not contain more information than necessary to re-insufflate the object.
 #'
 #' @examples ...
 #'
@@ -35,6 +36,7 @@ to_json = function(o, ...) {
     j_comps <- list();
     for(i in 1 : o$get_component_count()){
       comp <- o$get_components()[[i]];
+      # Recursively call to_json() on the component.
       j_comp <- comp$to_json();
       # We unJSONify the result
       # to avoid that the later JSONification processing
@@ -43,8 +45,19 @@ to_json = function(o, ...) {
       j_comps[[comp$get_algo_id()]] <- o_comp;
     }
     j$components <- j_comps;
-    stop("IMPLEMENT VERTICES");
-    stop("IMPLEMENT EDGES");
+    # NOTE: It is not necessary to JSONify the vertices,
+    # because these can be re-inflated from the components list.
+    o_edges <- E(o$get_dag());
+    j_edges <- c();
+    for(i in 1 : length(o_edges)){
+      je <- list();
+      je$source_node <- o_edges[i]$source_node;
+      je$source_bit <- o_edges[i]$source_bit;
+      je$target_node <- o_edges[i]$target_node;
+      je$target_bit <- o_edges[i]$target_bit;
+    };
+    j_edges <- c(j_edges, je);
+    j$edges <- j_edges;
   };
 
   if(is(o, "algo_tt")){

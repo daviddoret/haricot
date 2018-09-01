@@ -37,8 +37,8 @@ algo_tt <- R6Class(
     logical_matrix = NULL),
   public = list(
     initialize = function(
-      dim_i = 0, # Arbitrary default dimension. Required to simplify from_json().
-      dim_o = 1, # Arbitrary default dimension. Required to simplify from_json().
+      dim_i = get_open(DEFAULT_DIM_I),
+      dim_o = get_open(DEFAULT_DIM_O),
       algo_id = NULL,
       label = NULL,
       ...) {

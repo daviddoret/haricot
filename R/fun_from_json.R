@@ -1,7 +1,7 @@
 require(rjson);
 #' from_json
 #'
-#' @description Convert a JSON export of a haricot class to an instance object of that class.
+#' @description Convert a JSON export of a haricot class to an instance object of that class. \cr
 #'
 #' @examples ...
 #'
@@ -41,9 +41,23 @@ from_json = function(json, instance = NULL, ...) {
   # that top class must be in position 1, but it is. This could break
   # in future versions of R and/or R6.
   if(j$classes[1] == "algo_composite"){
-    stop("IMPLEMENT COMPONENTES");
-    stop("IMPLEMENT VERTICES");
-    stop("IMPLEMENT EDGES");
+    for(component_object in j$components){
+      # Re-encode in JSON the component.
+      component_json <- rjson::toJSON(component_object);
+      # Recursively call from_json() on the component JSON.
+      component_algo <- from_json(component_json);
+      # Set the component on the newly inflated algo composite.
+      # This will mechanically re-insufflate the vertices in the DAG.
+      o$set_component(component_algo);
+    };
+    for(edge_object in j$edges){
+      # Reset the original edges.
+      o$set_edge(
+        edge_object$source_node,
+        edge_object_source_bit,
+        edge_object$target_node,
+        edge_object$target_bit);
+    };
   };
 
   if(any(j$classes == "algo_tt")){

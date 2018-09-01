@@ -11,7 +11,9 @@ require(settings);
 #' @export
 GLOBAL_OPTIONS = options_manager(
   BIT_0_COLOR = "#cccce0",
-  BIT_1_COLOR = "#9999e0"
+  BIT_1_COLOR = "#9999e0",
+  DEFAULT_DIM_I = 0, # Arbitrary default dimension. Required to simplify from_json().
+  DEFAULT_DIM_O = 1 # Arbitrary default dimension. Required to simplify from_json().
 );
 get_opt <- function(o, ...){
   # protect against the use of reserved words.
