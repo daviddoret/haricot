@@ -117,27 +117,13 @@ algo_composite <- R6Class(
       # TODO: Enrich this with a nice representation of the algo inner logic.
       return(super$get_label());
     },
-    increase_input_bits = function(n = NULL, ...){
-      increase_input_bits(self, n, ...);
-    },
-    increase_output_bits = function(n = NULL, ...){
-      increase_output_bits(self, n, ...);
-    },
-    plot = function(interactive = FALSE, ...) {
-      plot_algo_composite(self, interactive, ...);
-    },
-    remove_component = function(component, ...){
-      remove_component(self, component, ...);
-    },
-    set_component = function(node, ...){
-      set_component(self, node, ...);
-    },
-    set_components = function(nodes, ...){
-      private$components <- nodes;
-    },
-    set_dag = function(graph, ...){
-      private$dag <- graph;
-    },
+    increase_input_bits = function(n = NULL, ...){increase_input_bits(self, n, ...);},
+    increase_output_bits = function(n = NULL, ...){increase_output_bits(self, n, ...);},
+    plot = function(interactive = FALSE, ...) {plot_algo_composite(self, interactive, ...);},
+    remove_component = function(component, ...){remove_component(self, component, ...);},
+    set_component = function(node, ...){set_component(self, node, ...);},
+    set_components = function(nodes, ...){private$components <- nodes;},
+    set_dag = function(graph, ...){private$dag <- graph;},
     set_dag_edge = function(
       source_node = NULL,
       source_bit,
@@ -171,10 +157,9 @@ algo_composite <- R6Class(
     },
     set_dim_o = function(n, ...){
       previous_dim_o <- self$get_dim_o();
-      private$dim_o <- n;
       if(previous_dim_o < n){
         increase_by <- n - previous_dim_o;
-        flog.info("set_dim_i: increase output dimension by %s", increase_by);
+        flog.info("set_dim_o: increase output dimension by %s", increase_by);
         self$increase_output_bits(increase_by, ...);
       };
       if(previous_dim_o > n){
