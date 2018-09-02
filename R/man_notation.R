@@ -65,6 +65,13 @@
 #' \item{ \eqn{a_{1}.o_{1} \rightarrow a_{2}.i_{1}}: The edge linking the output bit 1 of algo 1 to input bit 1 of algo 2. }
 #' }
 #'
+#' @section Component predecessors and successors:
+#' To reference predecessors and successors of algorithm components, we use:
+#' \itemize{
+#' \item{ \eqn{N^{-}(x)}: The immediate predecessors of x. }
+#' \item{ \eqn{N^{+}(x)}: The immediate successors of x. }
+#' }
+#'
 #' @section Dimension:
 #' \itemize{
 #' \item{ \eqn{dim(n)}: The dimension of n. }

@@ -143,30 +143,52 @@
 <span class='co'># Create a truth table algorithm of desired dimensions</span>
 <span class='no'>truthtable_algo</span> <span class='kw'>&lt;-</span> <span class='no'>algo_tt</span>$<span class='fu'>new</span>(<span class='kw'>dim_i</span> <span class='kw'>=</span> <span class='no'>dim_i</span>, <span class='kw'>dim_o</span> <span class='kw'>=</span> <span class='no'>dim_o</span>);
 <span class='co'># Randomize the truth table outputs, we end up with a random deterministic algorithm</span>
-<span class='no'>truthtable_algo</span>$<span class='fu'>do_randomize_outputs</span>();</div><div class='output co'>#&gt; 0000 &gt; 10
-#&gt; 1000 &gt; 11
-#&gt; 0100 &gt; 00
-#&gt; 1100 &gt; 10
-#&gt; 0010 &gt; 00
-#&gt; 1010 &gt; 11
-#&gt; 0110 &gt; 01
-#&gt; 1110 &gt; 01
-#&gt; 0001 &gt; 00
-#&gt; 1001 &gt; 11
-#&gt; 0101 &gt; 10
-#&gt; 1101 &gt; 01
-#&gt; 0011 &gt; 11
-#&gt; 1011 &gt; 00
-#&gt; 0111 &gt; 10
-#&gt; 1111 &gt; 00 </div><div class='input'><span class='co'># Split the random truth table algorithm and retrieve the resulting composite algorithm</span>
-<span class='no'>splitted_algo</span> <span class='kw'>&lt;-</span> <span class='fu'>split</span>(<span class='no'>truthtable_algo</span>);
-<span class='kw'>for</span>(<span class='no'>test_counter</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>3</span>){
+<span class='no'>truthtable_algo</span>$<span class='fu'>do_randomize_outputs</span>();</div><div class='output co'>#&gt; 000 &gt; 11000
+#&gt; 100 &gt; 10100
+#&gt; 010 &gt; 11111
+#&gt; 110 &gt; 10001
+#&gt; 001 &gt; 10010
+#&gt; 101 &gt; 10001
+#&gt; 011 &gt; 10000
+#&gt; 111 &gt; 00110 </div><div class='input'><span class='co'># Split the random truth table algorithm and retrieve the resulting composite algorithm</span>
+<span class='no'>splitted_algo</span> <span class='kw'>&lt;-</span> <span class='fu'>split</span>(<span class='no'>truthtable_algo</span>);</div><div class='output co'>#&gt; INFO [2018-09-02 19:49:10] set_dim_i: increase input dimension by 3
+#&gt; INFO [2018-09-02 19:49:10] set_dim_o: increase output dimension by 5
+#&gt; INFO [2018-09-02 19:49:10] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-02 19:49:10] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-02 19:49:10] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-02 19:49:10] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-02 19:49:10] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-02 19:49:10] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-02 19:49:10] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-02 19:49:10] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-02 19:49:10] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-02 19:49:10] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-02 19:49:11] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-02 19:49:11] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-02 19:49:11] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-02 19:49:11] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-02 19:49:11] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-02 19:49:11] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-02 19:49:11] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-02 19:49:11] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-02 19:49:11] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-02 19:49:11] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-02 19:49:11] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-02 19:49:11] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-02 19:49:11] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-02 19:49:11] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-02 19:49:11] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-02 19:49:11] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-02 19:49:11] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-02 19:49:11] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-02 19:49:11] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-02 19:49:11] set_dim_o: increase output dimension by 1</div><div class='input'><span class='kw'>for</span>(<span class='no'>test_counter</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>3</span>){
    <span class='co'># Pick a random input value</span>
    <span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='kw'>dim</span> <span class='kw'>=</span> <span class='no'>dim_i</span>)$<span class='fu'>randomize</span>();
    <span class='fu'>print</span>(<span class='fu'>paste0</span>(<span class='st'>"Input: "</span>, <span class='no'>n</span>$<span class='fu'>format</span>(), <span class='st'>", output of truth table algo: "</span>, <span class='no'>truthtable_algo</span>$<span class='fu'>exec</span>(<span class='no'>n</span>)$<span class='fu'>format</span>(), <span class='st'>", output of splitted algo: "</span>, <span class='no'>splitted_algo</span>$<span class='fu'>exec</span>(<span class='no'>n</span>)$<span class='fu'>format</span>()));
-}</div><div class='output co'>#&gt; [1] "Input: 0001, output of truth table algo: 00, output of splitted algo: 00"
-#&gt; [1] "Input: 0001, output of truth table algo: 00, output of splitted algo: 00"
-#&gt; [1] "Input: 1010, output of truth table algo: 11, output of splitted algo: 11"</div><div class='input'><span class='co'># Plot the original algo</span>
+}</div><div class='output co'>#&gt; [1] "Input: 111, output of truth table algo: 00110, output of splitted algo: 00110"
+#&gt; [1] "Input: 000, output of truth table algo: 11000, output of splitted algo: 11000"
+#&gt; [1] "Input: 101, output of truth table algo: 10001, output of splitted algo: 10001"</div><div class='input'><span class='co'># Plot the original algo</span>
 <span class='no'>truthtable_algo</span>$<span class='fu'>plot</span>();</div><div class='img'><img src='split-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># Plot the splitted algo</span>
 <span class='no'>splitted_algo</span>$<span class='fu'>plot</span>();</div><div class='img'><img src='split-2.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>

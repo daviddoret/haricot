@@ -81,6 +81,15 @@ To reference components of algorithm composites, we use the dot notation:
 }
 }
 
+\section{Component predecessors and successors}{
+
+To reference predecessors and successors of algorithm components, we use:
+\itemize{
+\item{ \eqn{N^{-}(x)}: The immediate predecessors of x. }
+\item{ \eqn{N^{+}(x)}: The immediate successors of x. }
+}
+}
+
 \section{Dimension}{
 
 \itemize{

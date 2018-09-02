@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function: set_graph_edge — set_graph_edge • haricot</title>
+<title>increase_output_bits — increase_output_bits • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Function: set_graph_edge — set_graph_edge" />
+<meta property="og:title" content="increase_output_bits — increase_output_bits" />
 
-<meta property="og:description" content="Set a graph edge in a composite algorithm." />
+<meta property="og:description" content="Increase the number of output bits in a composite algorithm." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -92,56 +92,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function: set_graph_edge</h1>
+    <h1>increase_output_bits</h1>
     
-    <div class="hidden name"><code>set_graph_edge.Rd</code></div>
+    <div class="hidden name"><code>increase_output_bits.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Set a graph edge in a composite algorithm.</p>
+    <p>Increase the number of output bits in a composite algorithm.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>set_graph_edge</span>(<span class='no'>composite</span>, <span class='no'>source_algo</span>, <span class='no'>source_bit</span>, <span class='no'>target_algo</span>, <span class='no'>target_bit</span>,
-  <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>increase_output_bits</span>(<span class='no'>algo</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>composite</th>
-      <td><p>The algorithm composite whose inner graph we want to manipulate (algo_composite).</p></td>
+      <th>algo</th>
+      <td><p>A composite algorithm (R6 Class algo_composite)</p></td>
     </tr>
     <tr>
-      <th>source_bit</th>
-      <td><p>The source bit of the directed edge (bit identifier as character).</p></td>
-    </tr>
-    <tr>
-      <th>target_bit</th>
-      <td><p>The target bit of the directed edge (bit identifier as character).</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Complementary parameters.</p></td>
-    </tr>
-    <tr>
-      <th>source_node</th>
-      <td><p>The source algorithm of the directed edge (algo_base or algo_id as character).</p></td>
-    </tr>
-    <tr>
-      <th>target_node</th>
-      <td><p>The taget algorithm of the directed edge (algo_base or algo_id as character).</p></td>
+      <th>n</th>
+      <td><p>(conditional, default = 1) The number of output bits to be added (integer)</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The composite algorithm with the updated graph (algo_composite).</p>
+    <p>The composite algorithm (for function chaining)</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>...</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): '...' used in an incorrect context</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'># R function style:</span>
+<span class='no'>a1</span> <span class='kw'>&lt;-</span> <span class='no'>algo_composite</span>$<span class='fu'>new</span>(<span class='fl'>3</span>,<span class='fl'>5</span>);</div><div class='output co'>#&gt; INFO [2018-09-02 19:49:08] set_dim_i: increase input dimension by 3
+#&gt; INFO [2018-09-02 19:49:08] set_dim_o: increase output dimension by 5</div><div class='input'><span class='fu'>increase_output_bits</span>(<span class='no'>a1</span>, <span class='fl'>2</span>);</div><div class='output co'>#&gt; algo </div><div class='input'>
+<span class='co'># R6 method style:</span>
+<span class='no'>a2</span> <span class='kw'>&lt;-</span> <span class='no'>algo_composite</span>$<span class='fu'>new</span>(<span class='fl'>3</span>,<span class='fl'>5</span>);</div><div class='output co'>#&gt; INFO [2018-09-02 19:49:08] set_dim_i: increase input dimension by 3
+#&gt; INFO [2018-09-02 19:49:08] set_dim_o: increase output dimension by 5</div><div class='input'><span class='no'>a2</span>$<span class='fu'>increase_output_bits</span>(<span class='fl'>2</span>);</div><div class='output co'>#&gt; algo </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

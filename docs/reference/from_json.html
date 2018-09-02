@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function: set_graph_edge — set_graph_edge • haricot</title>
+<title>from_json — from_json • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Function: set_graph_edge — set_graph_edge" />
+<meta property="og:title" content="from_json — from_json" />
 
-<meta property="og:description" content="Set a graph edge in a composite algorithm." />
+<meta property="og:description" content="Convert a JSON export of a haricot class to an instance object of that class. " />
 <meta name="twitter:card" content="summary" />
 
 
@@ -92,52 +92,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function: set_graph_edge</h1>
+    <h1>from_json</h1>
     
-    <div class="hidden name"><code>set_graph_edge.Rd</code></div>
+    <div class="hidden name"><code>from_json.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Set a graph edge in a composite algorithm.</p>
+    <p>Convert a JSON export of a haricot class to an instance object of that class. <br /></p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>set_graph_edge</span>(<span class='no'>composite</span>, <span class='no'>source_algo</span>, <span class='no'>source_bit</span>, <span class='no'>target_algo</span>, <span class='no'>target_bit</span>,
-  <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>from_json</span>(<span class='no'>json</span>, <span class='kw'>instance</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>composite</th>
-      <td><p>The algorithm composite whose inner graph we want to manipulate (algo_composite).</p></td>
+      <th>json</th>
+      <td><p>The exported haricot JSON (json / character).</p></td>
     </tr>
     <tr>
-      <th>source_bit</th>
-      <td><p>The source bit of the directed edge (bit identifier as character).</p></td>
-    </tr>
-    <tr>
-      <th>target_bit</th>
-      <td><p>The target bit of the directed edge (bit identifier as character).</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Complementary parameters.</p></td>
-    </tr>
-    <tr>
-      <th>source_node</th>
-      <td><p>The source algorithm of the directed edge (algo_base or algo_id as character).</p></td>
-    </tr>
-    <tr>
-      <th>target_node</th>
-      <td><p>The taget algorithm of the directed edge (algo_base or algo_id as character).</p></td>
+      <th>instance</th>
+      <td><p>(Conditional) The target object. If missing or null, a new object will be created (R6 class instance).</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The composite algorithm with the updated graph (algo_composite).</p>
+    <p>The object instance (R6 class)</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

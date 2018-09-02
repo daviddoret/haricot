@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function: set_graph_edge — set_graph_edge • haricot</title>
+<title>get_component_depth — get_component_depth • haricot</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,32 @@
 
 
 
-<meta property="og:title" content="Function: set_graph_edge — set_graph_edge" />
+<meta property="og:title" content="get_component_depth — get_component_depth" />
 
-<meta property="og:description" content="Set a graph edge in a composite algorithm." />
+<meta property="og:description" content="Returns the depth of a component in a composite algorithm. 
+
+Definition 
+The depth of a component is equal to: 
+1 if the component is a constant (ie it has no predecessors),
+2 if the component is only directly linked to its parent composite,
+the maximal depth of its predecessors + 1 otherwise.
+
+Formula 
+$$
+depth(x)=\begin{cases}
+1, &amp;amp; \text{if}\ |N^{-}(x)| = 0 \\
+2, &amp;amp; \text{if}\ \forall y \in N^{-}(x), y = composite(x) \\
+max(depth(N^{-}(x)))+1, &amp;amp; \text{otherwise}
+\end{cases}
+$$
+Note 
+In the haricot package, when we plot a composite algorithm,
+we plot the input bits and output bits as vertices.
+This representation is interesting because it shows the bit-level
+interfaces between components.
+But the depth concept does not consider input bits and output bits,
+and only consider components as single units (the algorithm and its surrounding bits).
+The reason for this is to account for the algorithmic complexity or size, rather than the detailed bit mechanics." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -92,52 +115,58 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function: set_graph_edge</h1>
+    <h1>get_component_depth</h1>
     
-    <div class="hidden name"><code>set_graph_edge.Rd</code></div>
+    <div class="hidden name"><code>get_component_depth.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Set a graph edge in a composite algorithm.</p>
+    <p>Returns the depth of a component in a composite algorithm. <br />
+<br />
+<strong>Definition</strong> <br />
+The depth of a component is equal to: <br /></p><ul>
+<li><p>1 if the component is a constant (ie it has no predecessors),</p></li>
+<li><p>2 if the component is only directly linked to its parent composite,</p></li>
+<li><p>the maximal depth of its predecessors + 1 otherwise.</p></li>
+</ul><p><br />
+<strong>Formula</strong> <br />
+$$
+depth(x)=\begin{cases}
+1, &amp; \text{if}\ |N^{-}(x)| = 0 \\
+2, &amp; \text{if}\ \forall y \in N^{-}(x), y = composite(x) \\
+max(depth(N^{-}(x)))+1, &amp; \text{otherwise}
+\end{cases}
+$$
+<strong>Note</strong> <br />
+In the haricot package, when we plot a composite algorithm,
+we plot the input bits and output bits as vertices.
+This representation is interesting because it shows the bit-level
+interfaces between components.
+But the depth concept does not consider input bits and output bits,
+and only consider components as single units (the algorithm and its surrounding bits).
+The reason for this is to account for the algorithmic complexity or size, rather than the detailed bit mechanics.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>set_graph_edge</span>(<span class='no'>composite</span>, <span class='no'>source_algo</span>, <span class='no'>source_bit</span>, <span class='no'>target_algo</span>, <span class='no'>target_bit</span>,
-  <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>get_component_depth</span>(<span class='no'>composite</span>, <span class='no'>component</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>composite</th>
-      <td><p>The algorithm composite whose inner graph we want to manipulate (algo_composite).</p></td>
+      <td><p>The composite within which we want to measure the depth of a component (R6 class algo_composite).</p></td>
     </tr>
     <tr>
-      <th>source_bit</th>
-      <td><p>The source bit of the directed edge (bit identifier as character).</p></td>
-    </tr>
-    <tr>
-      <th>target_bit</th>
-      <td><p>The target bit of the directed edge (bit identifier as character).</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Complementary parameters.</p></td>
-    </tr>
-    <tr>
-      <th>source_node</th>
-      <td><p>The source algorithm of the directed edge (algo_base or algo_id as character).</p></td>
-    </tr>
-    <tr>
-      <th>target_node</th>
-      <td><p>The taget algorithm of the directed edge (algo_base or algo_id as character).</p></td>
+      <th>component</th>
+      <td><p>The component algorithm that must be part of the composite and whose depth we would like to know (R6 class algo_base | character vector of the component ID).</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The composite algorithm with the updated graph (algo_composite).</p>
+    <p>The depth of the component (integer).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
