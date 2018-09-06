@@ -4,15 +4,15 @@
 \alias{convert_int_to_logical_vector}
 \title{Convert a native R integer value into a logical vector representation.}
 \usage{
-convert_int_to_logical_vector(i, size)
+convert_int_to_logical_vector(i = NULL, dim = NULL, ...)
 }
 \arguments{
 \item{i}{An integer (integer)}
 
-\item{size}{The size (length) of the logical vector (integer)}
+\item{dim}{(conditional) The size (length) of the logical vector (integer)}
 }
 \value{
-The logical vector (logical)
+The logical vector (logical vector)
 }
 \description{
 In this package, we often use logical vectors to represent modulo integer values.

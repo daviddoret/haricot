@@ -33,10 +33,10 @@ bnum <- R6Class(
       ...) {
       if(is.null(input) & !is.null(dim)){
         self$logical_vector <- rep(FALSE, dim);
-      } else if(!is.null(input) & is.null(dim)){
-        self$logical_vector <- convert_any_to_logical_vector(input);
+      } else if(!is.logical(input)){
+        self$logical_vector <- input;
       } else {
-        flog.error("bnum constructor not yet supported, sorry");
+        self$logical_vector <- convert_any_to_logical_vector(input, dim, ...);
       }
     },
     convert_to_character = function(){
@@ -51,24 +51,23 @@ bnum <- R6Class(
     get_bit = function(bit_position){
       return(self$logical_vector[bit_position]);
     },
-    get_first_bit = function(){
-      return(self$get_bit(1));
-    },
-    get_last_bit = function(){
-      return(self$get_bit(self$get_dimension()));
-    },
     get_dimension = function() {
       return(length(self$logical_vector));
     },
     get_equal_0 = function() {
       return(!any(self$logical_vector));
     },
+    get_first_bit = function(){
+      return(self$get_bit(1));
+    },
+    get_last_bit = function(){
+      return(self$get_bit(self$get_dimension()));
+    },
     get_logical_vector = function() {
       return(self$logical_vector);
     },
     get_prettystring = function() {
       return(paste(as.numeric(self$logical_vector), collapse=""));
-      #return(self$convert_to_character());
     },
     do_increment = function(){
       # do_increment is a function that adds 1 to a "binary number".
