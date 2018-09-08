@@ -4,18 +4,18 @@
 \alias{convert_bset_to_character_vector}
 \title{convert_bset_to_character_vector}
 \usage{
-convert_bset_to_character_vector(binary_domain, ...)
+convert_bset_to_character_vector(binary_set, ...)
 }
 \arguments{
-\item{binary_domain}{A binary domain (R6 Class bset)}
+\item{binary_set}{A binary set (R6 Class bset)}
 
 \item{...}{For future usage}
 }
 \value{
-A vector where each item correspond to a binary number of the binary domain (character vector)
+A vector where each item correspond to a binary number of the binary set (character vector)
 }
 \description{
-Takes a binary domain a returns a vector of character representations.
+Takes a binary set a returns a vector of character representations.
 }
 \examples{
 # R function style:

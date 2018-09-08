@@ -5,6 +5,8 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+require(haricot);
+require(ggplot2);
 ```
 
 ## Notation
@@ -13,41 +15,60 @@ $$\mathbb{B}^{d}$$
 
 ## Definition
 
-A *modular binary set* is an ordered set of all *modular binary numbers* within a given dimension.  
-It is named "binary" because in the context of the *haricot* package we primarily work with the base-2 representation of numbers, and its size is defined as 2 to the power of its dimension.  
-It is named "modular" because in the context of the *haricot* package,  functions are defined with *modular binary set* ranges.  
+A *modular binary set* is basically an ordered set of all *modular binary numbers* within a given dimension.  
+It is named "binary" because - in the context of the *haricot* package - we primarily work with the base-2 representation of numbers, and its size is defined as 2 to the power of its dimension.  
+It is named "modular" because - in the context of the *haricot* package -  arithmetic operations on *modular binary numbers* wrap around upon reaching its maximal value that is the last element of the *modular binary set*, as with *modular arithmetic*.
 
 ## Formal Definition
 
 Let the *modular binary set dimension* \eqn{d} be a natural number greater than 0: $d \in \mathbb{N}, d > 0$.  
-A *modular binary set* of dimension $d$, noted $\mathbb{B}^{d}$, is defined as the Cartesian product $B_{1} \times B_{2} \times ... \times B{d}$.  
+A *modular binary set* of dimension $d$, noted $\mathbb{B}^{d}$, is defined as the Cartesian product $B_{1} \times B_{2} \times ... \times B{d}$. 
+TODO: ADD HERE MODULO SUB-DEFINITION
 
-## Implementation
+## R Implementation
 
-This concept is implemented by the \code{\link{bdom}} R6 class.
+This concept is implemented in R by the \code{\link{bdom}} R6 class.
 
-A modular binary domain of dimension \eqn{d} is noted:\eqn{\mathbb{B}_{d}}. \cr
-\cr
-\strong{Samples} \cr
-\itemize{
-\item{ \eqn{\mathbb{B} }: The modular binary domain superset. }
-\item{ \eqn{\mathbb{B}_{1} = \left\{0,1\right\} }: The modular binary domain of dimension 1. }
-\item{ \eqn{\mathbb{B}_{2} = \left\{00,10,01,11\right\} }: The modular binary domain of dimension 2. }
-\item{ \eqn{\mathbb{B}_{3} = \left\{000,100,010,110,001,101,011,111\right\} }: The modular binary domain of dimension 3. }
-\item{ \eqn{\mathbb{B}_{i} = \left\{00...i,10...i,...\right\} }: The modular binary domain of dimension i. }
-}
+## Samples
+
+$$\mathbb{B}^{1} = (0,1)$$
+
+$$\mathbb{B}^{2} = (00,10,01,11)$$
+$$\mathbb{B}^{3} = (000,100,010,110,001,101,011,111)$$
+
+$$\mathbb{B}^{d} = (00 \ldots i,10\ldots i, \ldots )$$
 
 ## Visual Representations
-Modular binary domains may be visually represented as vertical list of modular binary numbers. \cr
-The x axis (or columns) correspond to the respective bits of the module binary numbers: \eqn{b_{1}, b_{2}, b_{3}, ...}. \cr
-The y axis (or rows) correspond to the position of the modular binary number in the domain ordered by ascending order, that is equal to the integer value of that modular binary number. \cr
-{\figure{bdom_1.png}{Visual representation of a binary number of dimension 1}}
-{\figure{bdom_2.png}{Visual representation of a binary number of dimension 2}}
-{\figure{bdom_3.png}{Visual representation of a binary number of dimension 3}}
-{\figure{bdom_4.png}{Visual representation of a binary number of dimension 4}}
-{\figure{bdom_5.png}{Visual representation of a binary number of dimension 5}}
-{\figure{bdom_6.png}{Visual representation of a binary number of dimension 6}}
 
-## See also
-\link[=modular_binary_number]{Modular binary number}
-\link[=bdom]{bdom R6 class}
+Modular binary sets may be visually represented as vertical list of modular binary numbers.  
+The x axis (or columns) correspond to the respective bits of the module binary numbers: $(b_{1}, b_{2}, b_{3}, \ldots)$.  
+The y axis (or rows) correspond to the position of the modular binary number in the set ordered by ascending order, this position being equal to the integer value of that modular binary number - 1.
+
+```{r}
+bset$new(1)$plot();
+```
+
+```{r}
+bset$new(2)$plot();
+```
+
+```{r}
+bset$new(3)$plot();
+```
+
+```{r}
+bset$new(4)$plot();
+```
+
+```{r}
+bset$new(5)$plot();
+```
+
+```{r}
+bset$new(6)$plot();
+```
+
+## See Also
+
+* [Modular Binary Number](modular_binary_number.html)
+* [Modular Binary Set 1](modular_binary_set_1.html)

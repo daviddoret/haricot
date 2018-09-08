@@ -7,7 +7,7 @@
 plot_bset(d, ...)
 }
 \arguments{
-\item{d}{The binary domain to be plotted (R6 class bset).}
+\item{d}{The binary set to be plotted (R6 class bset).}
 
 \item{...}{For future usage.}
 }
@@ -15,7 +15,7 @@ plot_bset(d, ...)
 A plotted binary number.
 }
 \description{
-Generate a visualization of a binary domain,
+Generate a visualization of a binary set,
 following the general look and feel of the haricot package.
 }
 \examples{

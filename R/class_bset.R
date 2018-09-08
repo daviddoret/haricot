@@ -1,11 +1,12 @@
 require(R6);
+require(ggplot2);
 #' bset (R6 class)
 #'
-#' \code{bset} is the R6 class implementation of the \link[modular_binary_domain]{modular binary domain} concept.
+#' \code{bset} is the R6 class implementation of the \link[modular_binary_set]{modular binary set} concept.
 #'
 #' @section References:
 #' \itemize{
-#' \item{\link[modular_binary_domain]{modular binary domain}}
+#' \item{\link[modular_binary_set]{modular binary set}}
 #' }
 #'
 #' @examples bd1 <- bset$new(1);
@@ -15,7 +16,7 @@ require(R6);
 #' bd3 <- bset$new(3);
 #' print(bd3);
 #'
-#' @param dimension The dimension of the modular binary domain. (integer)
+#' @param dimension The dimension of the modular binary set. (integer)
 #' @param ... For future usage.
 #' @return An object instance of R6 class \code{bset}.
 #' @export

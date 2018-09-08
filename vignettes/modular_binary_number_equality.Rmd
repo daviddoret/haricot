@@ -1,0 +1,37 @@
+---
+title: "Modular Binary Number: Equality"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Definition
+
+In the context of the *haricot* package, two modular binary numbers are equal if and only if they have identical dimensions and all their corresponding bits are equal.  
+
+# Formal definition
+
+$$\forall B_{a},B_{b} \in \mathbb{B}^{d}, B_{a} = B_{b} \Leftrightarrow \forall i \in [1,...,d], B_{a}[i] = B_{b}[i]$$
+It follows from this definition that if two *modular binary numbers* are equal, they are iso-dimensional.
+
+$$ \forall B_{a},B_{b} \in \mathbb{B}, B_{a} = B_{b} \Leftrightarrow , dim(B_{a}) = dim(B_{b}) $$
+
+## Inequality of modular binary numbers for equal mapped integers
+
+A consequence of this definition of equality is that 2 modular binary numbers may be unequal but be mapped to the same natural number. 
+
+$$\forall B_{a},B_{b} \in \mathbb{B}, int(B_{a}) = int(B_{b}) \nRightarrow B_{a} = B_{b}$$
+
+Example:
+
+$$b0000 \neq b00 \land int(b0000) = int(b00)$$
+
+## Inequality
+
+TODO: COMPLETE HERE
+
+## See also
+
+* Modular binary number

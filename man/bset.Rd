@@ -9,7 +9,7 @@
 bset
 }
 \arguments{
-\item{dimension}{The dimension of the modular binary domain. (integer)}
+\item{dimension}{The dimension of the modular binary set. (integer)}
 
 \item{...}{For future usage.}
 }
@@ -17,12 +17,12 @@ bset
 An object instance of R6 class \code{bset}.
 }
 \description{
-\code{bset} is the R6 class implementation of the \link[modular_binary_domain]{modular binary domain} concept.
+\code{bset} is the R6 class implementation of the \link[modular_binary_set]{modular binary set} concept.
 }
 \section{References}{
 
 \itemize{
-\item{\link[modular_binary_domain]{modular binary domain}}
+\item{\link[modular_binary_set]{modular binary set}}
 }
 }
 

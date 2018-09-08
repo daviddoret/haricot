@@ -4,7 +4,7 @@ require(futile.logger);
 require(ggplot2);
 #' plot_bset
 #'
-#' @description Generate a visualization of a binary domain,
+#' @description Generate a visualization of a binary set,
 #' following the general look and feel of the haricot package.
 #'
 #' @examples # R function style:
@@ -14,7 +14,7 @@ require(ggplot2);
 #' # R6 class method style:
 #' d$plot();
 #'
-#' @param d The binary domain to be plotted (R6 class bset).
+#' @param d The binary set to be plotted (R6 class bset).
 #' @param ... For future usage.
 #' @return A plotted binary number.
 #' @export

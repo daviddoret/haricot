@@ -168,8 +168,8 @@ algo_tt <- R6Class(
 
       # Name rows
       # Build a vector of character binary representations
-      binary_domain <- bset$new(dimension = self$get_dim_i());
-      rownames(private$logical_matrix) <- binary_domain$convert_to_character_vector();
+      binary_set <- bset$new(dimension = self$get_dim_i());
+      rownames(private$logical_matrix) <- binary_set$convert_to_character_vector();
     },
     set_output = function(input, output){
       input_logical_vector <- convert_any_to_logical_vector(input);
