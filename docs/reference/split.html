@@ -96,6 +96,9 @@
       <a href="../articles/modulo_binary_set.html">Modular Binary Set</a>
     </li>
     <li>
+      <a href="../articles/switching.html">Switching algorithms</a>
+    </li>
+    <li>
       <a href="../articles/transformations.html">Transformations</a>
     </li>
     <li>
@@ -177,38 +180,38 @@
 #&gt; 101 &gt; 10001
 #&gt; 011 &gt; 10000
 #&gt; 111 &gt; 00110 </div><div class='input'><span class='co'># Split the random truth table algorithm and retrieve the resulting composite algorithm</span>
-<span class='no'>splitted_algo</span> <span class='kw'>&lt;-</span> <span class='fu'>split</span>(<span class='no'>truthtable_algo</span>);</div><div class='output co'>#&gt; INFO [2018-09-08 08:32:08] set_dim_i: increase input dimension by 3
-#&gt; INFO [2018-09-08 08:32:08] set_dim_o: increase output dimension by 5
-#&gt; INFO [2018-09-08 08:32:08] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:08] set_dim_o: increase output dimension by 1
-#&gt; INFO [2018-09-08 08:32:08] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:08] set_dim_o: increase output dimension by 1
-#&gt; INFO [2018-09-08 08:32:08] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:08] set_dim_o: increase output dimension by 1
-#&gt; INFO [2018-09-08 08:32:08] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:08] set_dim_o: increase output dimension by 1
-#&gt; INFO [2018-09-08 08:32:08] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:08] set_dim_o: increase output dimension by 1
-#&gt; INFO [2018-09-08 08:32:08] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:08] set_dim_o: increase output dimension by 1
-#&gt; INFO [2018-09-08 08:32:08] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:08] set_dim_o: increase output dimension by 1
-#&gt; INFO [2018-09-08 08:32:09] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:09] set_dim_o: increase output dimension by 1
-#&gt; INFO [2018-09-08 08:32:09] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:09] set_dim_o: increase output dimension by 1
-#&gt; INFO [2018-09-08 08:32:09] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:09] set_dim_o: increase output dimension by 1
-#&gt; INFO [2018-09-08 08:32:09] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:09] set_dim_o: increase output dimension by 1
-#&gt; INFO [2018-09-08 08:32:09] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:09] set_dim_o: increase output dimension by 1
-#&gt; INFO [2018-09-08 08:32:09] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:09] set_dim_o: increase output dimension by 1
-#&gt; INFO [2018-09-08 08:32:09] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:09] set_dim_o: increase output dimension by 1
-#&gt; INFO [2018-09-08 08:32:09] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:09] set_dim_o: increase output dimension by 1</div><div class='input'><span class='kw'>for</span>(<span class='no'>test_counter</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>3</span>){
+<span class='no'>splitted_algo</span> <span class='kw'>&lt;-</span> <span class='fu'>split</span>(<span class='no'>truthtable_algo</span>);</div><div class='output co'>#&gt; INFO [2018-09-08 22:03:39] set_dim_i: increase input dimension by 3
+#&gt; INFO [2018-09-08 22:03:39] set_dim_o: increase output dimension by 5
+#&gt; INFO [2018-09-08 22:03:39] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:39] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-08 22:03:39] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:39] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-08 22:03:39] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:39] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-08 22:03:39] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:39] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-08 22:03:39] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:39] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-08 22:03:40] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:40] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-08 22:03:40] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:40] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-08 22:03:40] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:40] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-08 22:03:40] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:40] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-08 22:03:40] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:40] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-08 22:03:40] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:40] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-08 22:03:40] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:40] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-08 22:03:41] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:41] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-08 22:03:41] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:41] set_dim_o: increase output dimension by 1
+#&gt; INFO [2018-09-08 22:03:41] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:41] set_dim_o: increase output dimension by 1</div><div class='input'><span class='kw'>for</span>(<span class='no'>test_counter</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>3</span>){
    <span class='co'># Pick a random input value</span>
    <span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='no'>bnum</span>$<span class='fu'>new</span>(<span class='kw'>dim</span> <span class='kw'>=</span> <span class='no'>dim_i</span>)$<span class='fu'>randomize</span>();
    <span class='fu'>print</span>(<span class='fu'>paste0</span>(<span class='st'>"Input: "</span>, <span class='no'>n</span>$<span class='fu'>format</span>(), <span class='st'>", output of truth table algo: "</span>, <span class='no'>truthtable_algo</span>$<span class='fu'>exec</span>(<span class='no'>n</span>)$<span class='fu'>format</span>(), <span class='st'>", output of splitted algo: "</span>, <span class='no'>splitted_algo</span>$<span class='fu'>exec</span>(<span class='no'>n</span>)$<span class='fu'>format</span>()));

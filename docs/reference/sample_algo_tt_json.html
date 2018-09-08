@@ -96,6 +96,9 @@
       <a href="../articles/modulo_binary_set.html">Modular Binary Set</a>
     </li>
     <li>
+      <a href="../articles/switching.html">Switching algorithms</a>
+    </li>
+    <li>
       <a href="../articles/transformations.html">Transformations</a>
     </li>
     <li>
@@ -144,8 +147,8 @@
     <pre class="examples"><div class='input'><span class='co'># Load the sample data</span>
 <span class='fu'>data</span>(<span class='no'>sample_algo_tt_json</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"haricot"</span>);
 <span class='fu'>print</span>(<span class='kw pkg'>haricot</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/haricot/topics/sample_algo_tt_json'>sample_algo_tt_json</a></span>);</div><div class='output co'>#&gt; [1] "{\"classes\":[\"algo_tt\",\"algo_base\",\"R6\"],\"dim_i\":4,\"dim_o\":7,\"algo_id\":\"44bf16ca-b1e3-11e8-90aa-ab10f0a27345\",\"label\":\"algo\",\"is_atomic\":false,\"logical_matrix\":[0,1,0,0,0,0,0,0,0,1,1,1,0,0,0,1,1,1,0,0,1,1,1,1,0,0,0,1,0,0,1,1,1,1,1,1,0,0,0,1,1,0,0,0,0,0,0,1,0,1,1,1,0,1,0,0,1,0,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,0,1,0,1,0,1,1,0,0,1,0,0,1,1,0,1,0,0,0,1,0,1,1,0,1,1,1,0,1,1,0,1,0,1,0,1,1,0,1]}"</div><div class='input'><span class='no'>a1</span> <span class='kw'>&lt;-</span> <span class='no'>algo_tt</span>$<span class='fu'>new</span>();
-<span class='no'>a1</span>$<span class='fu'><a href='from_json.html'>from_json</a></span>(<span class='kw pkg'>haricot</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/haricot/topics/sample_algo_tt_json'>sample_algo_tt_json</a></span>);</div><div class='output co'>#&gt; WARN [2018-09-08 08:32:07] set_logical_matrix: output resized
-#&gt; WARN [2018-09-08 08:32:07] set_logical_matrix: input resized</div><div class='output co'>#&gt; 0000 &gt; 0110000
+<span class='no'>a1</span>$<span class='fu'><a href='from_json.html'>from_json</a></span>(<span class='kw pkg'>haricot</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/haricot/topics/sample_algo_tt_json'>sample_algo_tt_json</a></span>);</div><div class='output co'>#&gt; WARN [2018-09-08 22:03:38] set_logical_matrix: output resized
+#&gt; WARN [2018-09-08 22:03:38] set_logical_matrix: input resized</div><div class='output co'>#&gt; 0000 &gt; 0110000
 #&gt; 1000 &gt; 1111001
 #&gt; 0100 &gt; 0011011
 #&gt; 1100 &gt; 0011101

@@ -96,6 +96,9 @@
       <a href="../articles/modulo_binary_set.html">Modular Binary Set</a>
     </li>
     <li>
+      <a href="../articles/switching.html">Switching algorithms</a>
+    </li>
+    <li>
       <a href="../articles/transformations.html">Transformations</a>
     </li>
     <li>
@@ -159,11 +162,11 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># R function style:</span>
-<span class='no'>a1</span> <span class='kw'>&lt;-</span> <span class='no'>algo_xnor</span>$<span class='fu'>new</span>();</div><div class='output co'>#&gt; INFO [2018-09-08 08:32:02] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:02] set_dim_o: increase output dimension by 1</div><div class='input'><span class='fu'>print</span>(<span class='no'>a1</span>$<span class='fu'>get_algo_id</span>());</div><div class='output co'>#&gt; [1] "e5a098e0-b330-11e8-84c4-c5440f4dbe51"</div><div class='input'><span class='fu'>do_change_id_algo_composite</span>(<span class='no'>a1</span>, <span class='st'>"a_stupid_id"</span>);</div><div class='output co'>#&gt; <span class='error'>Error in do_change_id_algo_composite(a1, "a_stupid_id"): COMPLETE IMPLEMENTATION</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>a1</span>$<span class='fu'>get_algo_id</span>());</div><div class='output co'>#&gt; [1] "e5a098e0-b330-11e8-84c4-c5440f4dbe51"</div><div class='input'>
+<span class='no'>a1</span> <span class='kw'>&lt;-</span> <span class='no'>algo_xnor</span>$<span class='fu'>new</span>();</div><div class='output co'>#&gt; INFO [2018-09-08 22:03:33] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:33] set_dim_o: increase output dimension by 1</div><div class='input'><span class='fu'>print</span>(<span class='no'>a1</span>$<span class='fu'>get_algo_id</span>());</div><div class='output co'>#&gt; [1] "438449cc-b3a2-11e8-a79a-9ba785282043"</div><div class='input'><span class='fu'>do_change_id_algo_composite</span>(<span class='no'>a1</span>, <span class='st'>"a_stupid_id"</span>);</div><div class='output co'>#&gt; <span class='error'>Error in do_change_id_algo_composite(a1, "a_stupid_id"): COMPLETE IMPLEMENTATION</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>a1</span>$<span class='fu'>get_algo_id</span>());</div><div class='output co'>#&gt; [1] "438449cc-b3a2-11e8-a79a-9ba785282043"</div><div class='input'>
 <span class='co'># R6 method style:</span>
-<span class='no'>a2</span> <span class='kw'>&lt;-</span> <span class='no'>algo_xnor</span>$<span class='fu'>new</span>();</div><div class='output co'>#&gt; INFO [2018-09-08 08:32:02] set_dim_i: increase input dimension by 2
-#&gt; INFO [2018-09-08 08:32:02] set_dim_o: increase output dimension by 1</div><div class='input'><span class='fu'>print</span>(<span class='no'>a2</span>$<span class='fu'>get_algo_id</span>());</div><div class='output co'>#&gt; [1] "e5b42c52-b330-11e8-84c4-c5440f4dbe51"</div><div class='input'><span class='no'>a2</span>$<span class='fu'>do_change_id</span>(<span class='st'>"another_stupid_id"</span>);</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): attempt to apply non-function</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>a2</span>$<span class='fu'>get_algo_id</span>());</div><div class='output co'>#&gt; [1] "e5b42c52-b330-11e8-84c4-c5440f4dbe51"</div><div class='input'>
+<span class='no'>a2</span> <span class='kw'>&lt;-</span> <span class='no'>algo_xnor</span>$<span class='fu'>new</span>();</div><div class='output co'>#&gt; INFO [2018-09-08 22:03:33] set_dim_i: increase input dimension by 2
+#&gt; INFO [2018-09-08 22:03:33] set_dim_o: increase output dimension by 1</div><div class='input'><span class='fu'>print</span>(<span class='no'>a2</span>$<span class='fu'>get_algo_id</span>());</div><div class='output co'>#&gt; [1] "43a226f4-b3a2-11e8-a79a-9ba785282043"</div><div class='input'><span class='no'>a2</span>$<span class='fu'>do_change_id</span>(<span class='st'>"another_stupid_id"</span>);</div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): attempt to apply non-function</span></div><div class='input'><span class='fu'>print</span>(<span class='no'>a2</span>$<span class='fu'>get_algo_id</span>());</div><div class='output co'>#&gt; [1] "43a226f4-b3a2-11e8-a79a-9ba785282043"</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

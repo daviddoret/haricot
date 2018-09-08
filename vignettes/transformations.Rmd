@@ -43,3 +43,7 @@ A transformation is considered iso-logical if and only if the truthtable of its 
 $$ \mathcal{T} \in \mathbb{T}_{iso-logical} \Longleftrightarrow \forall A \in domain(\mathcal{T}),B \in domain(A): A(B)=(\mathcal{T}(A))(B) $$
 It follows from this definition that all iso-logical transformations are iso-dimensional:
 $$\mathbb{T}_{iso-logical} \subset \mathbb{T}_{iso-dim}$$
+
+## Transformations implemented in the *haricot* package
+
+* [Switching](switching.html)

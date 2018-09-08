@@ -1,0 +1,62 @@
+---
+title: "Switching algorithms"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Definition
+
+In the context of the *haricot* package, we define a *binary switch* transformation that takes two iso-dimensional algorithms and returns a new iso-output-dimensional algorithm that contains the two original algorithms with a supplementary input bit that discriminates between these two.  
+
+## Class
+
+[Transformation](transformations.html)
+  
+## Notation
+
+$$ \mathcal{T}_{switch} $$
+
+## Application with truthtable algorithms
+
+Viewed from the perspective of truthtables, it is the same as putting the truthtables of the two input algorithms on top of each other.  
+
+## Application with NAND-based DAG algorithms
+
+Viewed from the perspective of a NAND-based DAG algorithm, it is the same as creating a new algorithm that contains the graphs of the two input algorithms and adding an input bit $b$ with some graph circuitry such that:  
+* if $b$ = 0, the output of the first input algorithm is used,
+* if $b$ = 1, the output of the second input algorithm is used.
+
+## Example truthtable algorithms
+
+$$ Let A_{a} \in \mathbb{A}^{\mathbb{B}^2 \rightarrow \mathbb{B}^3} = \left [ \begin{array}{lll}
+  010\\
+  101\\
+  111\\
+  000\\
+\end{array} \right ] $$
+
+$$ Let A_{b} \in \mathbb{A}^{\mathbb{B}^2 \rightarrow \mathbb{B}^3} =  \left [ \begin{array}{lll}
+  110\\
+  011\\
+  001\\
+  100\\
+\end{array} \right ] $$
+
+$$Then, \mathcal{T}_{switch}(A_{a},A_{b}) \in \mathbb{A}^{\mathbb{B}^3 \rightarrow \mathbb{B}^3} = \left [ \begin{array}{lll}
+  010\\
+  101\\
+  111\\
+  000\\
+  110\\
+  011\\
+  001\\
+  100\\
+\end{array} \right ] $$
+
+## See also
+
+* commutate
+* unswitching_algorithms

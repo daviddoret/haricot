@@ -64,6 +64,9 @@
       <a href="../articles/modulo_binary_set.html">Modular Binary Set</a>
     </li>
     <li>
+      <a href="../articles/switching.html">Switching algorithms</a>
+    </li>
+    <li>
       <a href="../articles/transformations.html">Transformations</a>
     </li>
     <li>
@@ -100,12 +103,14 @@
 <div id="notation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#notation" class="anchor"></a>Notation</h2>
-
+<p><span class="math display">\[\mathbb{B}^{d}\]</span></p>
 </div>
 <div id="definition" class="section level2">
 <h2 class="hasAnchor">
 <a href="#definition" class="anchor"></a>Definition</h2>
-<p>A <em>modular binary set</em> is basically an ordered set of all <em>modular binary numbers</em> within a given dimension. It is named “binary” because in the context of the <em>haricot</em> package we primarily work with the base-2 representation of numbers, and its size is defined as 2 to the power of its dimension. It is named “modular” because in the context of the <em>haricot</em> package, functions are defined with <em>modular binary set</em> ranges.</p>
+<p>A <em>modular binary set</em> is an ordered set of all <em>modular binary numbers</em> within a given dimension.<br>
+It is named “binary” because in the context of the <em>haricot</em> package we primarily work with the base-2 representation of numbers, and its size is defined as 2 to the power of its dimension.<br>
+It is named “modular” because in the context of the <em>haricot</em> package, functions are defined with <em>modular binary set</em> ranges.</p>
 </div>
 <div id="formal-definition" class="section level2">
 <h2 class="hasAnchor">
@@ -117,15 +122,17 @@ A <em>modular binary set</em> of dimension <span class="math inline">\(d\)</span
 <h2 class="hasAnchor">
 <a href="#implementation" class="anchor"></a>Implementation</h2>
 <p>This concept is implemented by the  R6 class.</p>
-<p>#’ A modular binary domain of dimension  is noted:.  #’  #’   #’  #’ #’ <span class="citation">@section</span> Visual Representations: #’ Modular binary domains may be visually represented as vertical list of modular binary numbers.  #’ The x axis (or columns) correspond to the respective bits of the module binary numbers: .  #’ The y axis (or rows) correspond to the position of the modular binary number in the domain ordered by ascending order, that is equal to the integer value of that modular binary number.  #’ {} #’ {} #’ {} #’ {} #’ {} #’ {} #’ #’ <span class="citation">@section</span> See also: #’  #’  #’ #’ <span class="citation">@name</span> modular_binary_domain #’ <span class="citation">@family</span> binaries NULL;</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">summary</span>(cars)</a></code></pre></div>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
+<p>A modular binary domain of dimension  is noted:.     </p>
+</div>
+<div id="visual-representations" class="section level2">
+<h2 class="hasAnchor">
+<a href="#visual-representations" class="anchor"></a>Visual Representations</h2>
+<p>Modular binary domains may be visually represented as vertical list of modular binary numbers.  The x axis (or columns) correspond to the respective bits of the module binary numbers: .  The y axis (or rows) correspond to the position of the modular binary number in the domain ordered by ascending order, that is equal to the integer value of that modular binary number. </p>
+</div>
+<div id="see-also" class="section level2">
+<h2 class="hasAnchor">
+<a href="#see-also" class="anchor"></a>See also</h2>
+
 </div>
   </div>
 
@@ -138,6 +145,8 @@ A <em>modular binary set</em> of dimension <span class="math inline">\(d\)</span
       <li><a href="#definition">Definition</a></li>
       <li><a href="#formal-definition">Formal Definition</a></li>
       <li><a href="#implementation">Implementation</a></li>
+      <li><a href="#visual-representations">Visual Representations</a></li>
+      <li><a href="#see-also">See also</a></li>
       </ul>
 </div>
       </div>
