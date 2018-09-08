@@ -1,5 +1,5 @@
 require(igraph);
-require(RColorBrewer)
+require(RColorBrewer);
 #' Plot the igraph of a algo_base
 #'
 #' @description Plot the igraph of a algo_base with adequate style, etc.

@@ -1,0 +1,22 @@
+---
+title: "Modular Binary Set 1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Notation
+
+$$ \mathbb{B}^{1} $$
+
+## Definition
+
+The *modular binary set 1* noted $ \mathbb{B}^{1} $ is defined as the ordered set of the two numbers 0 and 1, 0 being followed by 1. To designate 0 and 1 we will use the word *bit*.
+
+## Formal Definition
+
+$$ \mathbb{B}^{1} = (0,1) $$
+Let $+:\mathbb{B}^{1} \to \mathbb{B}^{1}$ be the function defined by the equation $ x + y = x2
+TODO: MOntrer une définition complète de l'addition.

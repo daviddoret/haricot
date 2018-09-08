@@ -10,6 +10,8 @@ from_json(json, instance = NULL, ...)
 \item{json}{The exported haricot JSON (json / character).}
 
 \item{instance}{(Conditional) The target object. If missing or null, a new object will be created (R6 class instance).}
+
+\item{...}{For future use.}
 }
 \value{
 The object instance (R6 class)

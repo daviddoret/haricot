@@ -1,19 +1,32 @@
-#' Convert a native R integer value into a logical vector representation.
+require(futile.logger);
+#' convert_int_to_logical_vector
 #'
-#' In this package, we often use logical vectors to represent modulo integer values.
-#' In this context, we use a binary representation where the least significant bit is on the left (at vector index position 1).
-#' This function takes a native R integer value and converts it into such a logical vector.
+#' Convert a native R integer value into a binary number materialized by an R logical vector. \cr
+#' See \code{\link[modular_binary_number]{modular binary number}} for a definition of binary number. \cr
+#' See \code{\link{convert_any_to_logical_vector}} for the type generic equivalent function. \cr
+#' Open question: should this function provide support for vectors of integers? If yes, what should it return? A matrix? \cr
 #'
 #' @examples # R function style:
-#' convert_int_to_logical_vector(i, size);
+#' convert_int_to_logical_vector(137, 9);
 #'
-#' @param i An integer (integer)
+#' @param i A natural number (integer)
 #' @param dim (conditional) The size (length) of the logical vector (integer)
 #' @return The logical vector (logical vector)
 #' @export
 convert_int_to_logical_vector <- function(i = NULL, dim = NULL, ...){
   # Default NULL to 0.
-  if(is.null(i)) { i <- 0; };
+  if(is.null(i)) {
+    flog.info("convert_int_to_logical_vector: i was NULL, default to 0");
+    i <- 0;
+  };
+  if(!is.integer(i)){
+    flog.error("convert_int_to_logical_vector: i is not integer");
+    stop("");
+  };
+  if(i < 0){
+    flog.error("convert_int_to_logical_vector: i is negative");
+    stop("");
+  };
 
   i_logical <- NULL;
   if(i == 0){

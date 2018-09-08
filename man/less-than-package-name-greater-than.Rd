@@ -4,7 +4,7 @@
 \name{<package-name>}
 \alias{<package-name>}
 \alias{<package-name>-package}
-\title{haricot}
+\title{haricot: a package for programmatically composing, analysing, visualizing and executing algorithms}
 \description{
 Amateur research work on algorithms. This package helps: \itemize{
 \item compose,
@@ -12,7 +12,8 @@ Amateur research work on algorithms. This package helps: \itemize{
 \item execute,
 \item analyse,
 \item optimize
-\item and visualize }
+\item and visualize
+}
 ... algorithmic graphs.
 }
 \details{

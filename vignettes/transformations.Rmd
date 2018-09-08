@@ -1,0 +1,45 @@
+---
+title: "Transformations"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Definition
+
+In the context of the *haricot* package, we define a *transformation* as a process that receives some defined *input* and returns *algorithms* as *output*. 
+
+## Notation
+
+Notation | Definition
+---------|-----------
+$\mathbb{T}$ | The set of all transformations.
+$\mathbb{T}^{d \rightarrow r}$ | The subset of transformations that transform elements from domain $d$ to range $r$.
+$\mathbb{T}^{\rightarrow \mathbb{A}}$ | The subset of transformations that transform things into algorithms.
+$\mathbb{T}^{\mathbb{A} \rightarrow \mathbb{A}}$ | The subset of transformations that transform algorithms into algorithms.
+$\mathbb{T}^{\mathbb{A}^{\mathbb{B},\mathbb{B}} \rightarrow \mathbb{A}^{\mathbb{B},\mathbb{B}}}$. | The subset of transformations that transform modular binary algorithms into modular binary algorithms.
+$\mathbb{T}^{\mathbb{A}^{\mathbb{B}^{a},\mathbb{B}^{b}} \rightarrow \mathbb{A}^{\mathbb{B}^{c},\mathbb{B}^{d}}}$ | The subset of transformations that transform modular binary algorithms of given dimensions $a$,$b$ to modular binary algorithms of given dimensions $c$,$d$.
+$\mathcal{T}$ | The variable notation for transformations. 
+$\mathcal{T}_{something}$ | Subscript notation may be used to distinguish between multiple transformations.  
+
+## Iso-dimensional transformations
+
+A transformation is considered iso-dimensional if and only if the dimensions of the transformed algorithms are equal to the dimensions of the original algorithms it transformed.
+$$ \mathcal{T} \in \mathbb{T}_{iso-dim} \Longleftrightarrow \forall A \in domain(\mathcal{T}): dim_{i}(A)=dim_{i}(\mathcal{T}(A)),dim_{o}(A)=dim_{o}(\mathcal{T}(A)) $$
+
+### Iso-input-dimensional transformations
+
+$$ \mathcal{T} \in \mathbb{T}_{iso-dim_{i}} \Longleftrightarrow \forall A \in domain(\mathcal{T}): dim_{i}(A)=dim_{i}(\mathcal{T}(A)) $$
+
+### Iso-output-dimensional transformations
+
+$$ \mathcal{T} \in \mathbb{T}_{iso-dim_{o}} \Longleftrightarrow \forall A \in domain(\mathcal{T}): dim_{o}(A)=dim_{o}(\mathcal{T}(A)) $$
+
+## Iso-logical transformations
+
+A transformation is considered iso-logical if and only if the truthtable of its transformed algorithms is equal to the truthtable of the original algorithms it transformed. Put differently, the original and transformed algorithms return identical values.  
+$$ \mathcal{T} \in \mathbb{T}_{iso-logical} \Longleftrightarrow \forall A \in domain(\mathcal{T}),B \in domain(A): A(B)=(\mathcal{T}(A))(B) $$
+It follows from this definition that all iso-logical transformations are iso-dimensional:
+$$\mathbb{T}_{iso-logical} \subset \mathbb{T}_{iso-dim}$$

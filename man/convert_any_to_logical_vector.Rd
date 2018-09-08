@@ -10,6 +10,8 @@ convert_any_to_logical_vector(input = NULL, dim = NULL, ...)
 \item{input}{An object or scalar (any supported class)}
 
 \item{dim}{(conditional) A fixed dimension for the resulting binary number (integer)}
+
+\item{...}{For future use}
 }
 \value{
 The resulting binary number represented as a logical vector (logical vector)

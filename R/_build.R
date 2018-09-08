@@ -1,38 +1,13 @@
+require(pkgdown);
+rebuild_package <- function(...){
 
-#library(devtools)
-#document()
-#compileAttributes()
-#someotherscript()
-#build()
+  devtools::document(roclets=c('rd', 'collate', 'namespace', 'vignette'));
+  pkgdown::build_site();
 
-# DESCRIPTION
-#desc::desc_add_author(
-#  given = "David",
-#  family = "DORET",
-#  email = "david.doret@me.com",
-#  role = "aut",
-#  comment = NULL, file = NAMESPACE_SEPARATOR, normalize = FALSE)
-#desc::desc_add_author(
-#  given = "David",
-#  family = "DORET",
-#  email = "david.doret@me.com",
-#  role = "cph",
-#  comment = NULL, file = NAMESPACE_SEPARATOR, normalize = FALSE)
-#desc::desc_add_author(
-#  given = "David",
-#  family = "DORET",
-#  email = "david.doret@me.com",
-#  role = "cre",
-#  comment = NULL, file = NAMESPACE_SEPARATOR, normalize = FALSE)
+  command <- "Rcmd.exe INSTALL --preclean --no-multiarch --with-keep.source haricot";
+  system(command);
 
+  devtools::load_all(".");
 
-# HTML DOCUMENTATION
-#
-# Install release version from CRAN
-#install.packages("pkgdown")
-# Install development version from GitHub
-# devtools::install_github("r-lib/pkgdown")
-# library(pkgdown)
-# pkgdown::build_site()
-
+  };
 

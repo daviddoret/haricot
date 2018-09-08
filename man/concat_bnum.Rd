@@ -38,7 +38,4 @@ n5 <- n1 \%concat\% n2;
 print(n5);
 
 }
-\seealso{
-Other concatenations: \code{\link{concatenation_modular_binary_numbers}}
-}
 \concept{concatenations}

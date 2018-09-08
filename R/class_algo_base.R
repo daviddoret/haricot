@@ -34,7 +34,9 @@ algo_base <- R6Class(
       # Store private members
       private$dim_i <- dim_i;
       private$dim_o <- dim_o;
-      if(is.null(algo_id)){ algo_id <- get_node_guid(); }
+      if(is.null(algo_id)){
+        algo_id <- get_node_guid();
+        }
       private$algo_id <- algo_id;
       if(is.null(label)){ label <- "algo"; }
       private$label <- label;

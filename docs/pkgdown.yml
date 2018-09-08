@@ -1,5 +1,12 @@
 pandoc: 2.2.2.1
 pkgdown: 1.1.0
 pkgdown_sha: ~
-articles: []
+articles:
+  modular_binary_number: modular_binary_number.html
+  modular_binary_set: modular_binary_set.html
+  modular_binary_set_1: modular_binary_set_1.html
+  modulo_binary_set: modulo_binary_set.html
+  transformations: transformations.html
+  transformation_truthtable_to_dag: transformation_truthtable_to_dag.html
+  truthtable_algorithm: truthtable_algorithm.html
 

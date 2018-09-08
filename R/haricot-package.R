@@ -1,4 +1,4 @@
-#' haricot
+#' haricot: a package for programmatically composing, analysing, visualizing and executing algorithms
 #'
 #' Amateur research work on algorithms. This package helps: \itemize{
 #' \item compose,
@@ -6,7 +6,8 @@
 #' \item execute,
 #' \item analyse,
 #' \item optimize
-#' \item and visualize }
+#' \item and visualize
+#' }
 #' ... algorithmic graphs.
 #'
 #' Its key objects are:

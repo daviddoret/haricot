@@ -47,7 +47,4 @@ truthtable_algo$plot();
 splitted_algo$plot();
 
 }
-\seealso{
-Other transformations: \code{\link{splitting_truth_tables}}
-}
 \concept{transformations}

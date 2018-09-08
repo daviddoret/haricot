@@ -1,13 +1,31 @@
-#' Modular binary domain
-#'
-#' @section Definition:
-#' A modular binary domain of a given dimension is defined as the ordered set of all possible combinations of modular binary number values in that dimension. \cr
-#' The modular binary domain (i.e. not mentioning a particular dimension) is defined as the super set of all modular binary domains in all possible dimensions. \cr
-#'
-#' @section Code implementation:
-#' This concept is implemented by the \code{\link{bdom}} R6 class.
-#'
-#' @section Formal notation:
+---
+title: "Modular Binary Set"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Notation
+
+\beqn{\mathbb{B}^{d}}
+
+## Definition
+
+A *modular binary set* is basically an ordered set of all *modular binary numbers* within a given dimension. 
+It is named "binary" because in the context of the *haricot* package we primarily work with the base-2 representation of numbers, and its size is defined as 2 to the power of its dimension.
+It is named "modular" because in the context of the *haricot* package,  functions are defined with *modular binary set* ranges.
+
+## Formal Definition
+
+Let the *modular binary set dimension* \eqn{d} be a natural number greater than 0: $d \in \mathbb{N}, d > 0$.  
+A *modular binary set* of dimension $d$, noted $\mathbb{B}^{d}$, is defined as the Cartesian product $B_{1} \times B_{2} \times ... \times B{d}$.  
+
+## Implementation
+
+This concept is implemented by the \code{\link{bdom}} R6 class.
+
 #' A modular binary domain of dimension \eqn{d} is noted:\eqn{\mathbb{B}_{d}}. \cr
 #' \cr
 #' \strong{Samples} \cr
@@ -37,3 +55,8 @@
 #' @name modular_binary_domain
 #' @family binaries
 NULL;
+
+
+```{r cars}
+summary(cars)
+```

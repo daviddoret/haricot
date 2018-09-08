@@ -47,12 +47,12 @@ build_export_figures <- function(){
   export_figure("algo_or_graph", algo_not$new()$plot);
   export_figure("algo_xnor_graph", algo_not$new()$plot);
 
-  export_figure("bdom_1", bdom$new(1)$plot);
-  export_figure("bdom_2", bdom$new(2)$plot);
-  export_figure("bdom_3", bdom$new(3)$plot);
-  export_figure("bdom_4", bdom$new(4)$plot);
-  export_figure("bdom_5", bdom$new(5)$plot);
-  export_figure("bdom_6", bdom$new(6)$plot);
+  export_figure("bset_1", bset$new(1)$plot);
+  export_figure("bset_2", bset$new(2)$plot);
+  export_figure("bset_3", bset$new(3)$plot);
+  export_figure("bset_4", bset$new(4)$plot);
+  export_figure("bset_5", bset$new(5)$plot);
+  export_figure("bset_6", bset$new(6)$plot);
 
 
   truthtable <- algo_tt$new(8,8)$do_randomize_outputs();

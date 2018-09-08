@@ -23,7 +23,7 @@ plot_algo_tt_inside <- function(algo, interactive = FALSE, ...){
 
   # Prepare the input data for ggplot processing.
   prepare_input_data <- function(algo){
-    i <- bdom$new(dim = algo$get_dim_i())$get_logical_matrix();
+    i <- bset$new(dim = algo$get_dim_i())$get_logical_matrix();
     # Initializes the data.frame with the first column.
     input_data <- data.frame(
       g = "Input",

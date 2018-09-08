@@ -2,7 +2,7 @@
 % Please edit documentation in R/fun_get_node_guid.R
 \name{get_node_guid}
 \alias{get_node_guid}
-\title{Return a globally unique identifier for nodes.}
+\title{get_node_guid}
 \usage{
 get_node_guid()
 }
@@ -10,8 +10,7 @@ get_node_guid()
 A globally unique node identifier (character)
 }
 \description{
-To enhance readability, it is desirable to provide a specific \code{algo_id} value for nodes.
-But when none are provided, default globally unique identifiers will be used instead.
+Return a pseudo-random globally unique identifier for nodes. \cr
 }
 \examples{
 get_node_guid();

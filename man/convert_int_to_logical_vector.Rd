@@ -2,12 +2,12 @@
 % Please edit documentation in R/fun_convert_int_to_logical_vector.R
 \name{convert_int_to_logical_vector}
 \alias{convert_int_to_logical_vector}
-\title{Convert a native R integer value into a logical vector representation.}
+\title{convert_int_to_logical_vector}
 \usage{
 convert_int_to_logical_vector(i = NULL, dim = NULL, ...)
 }
 \arguments{
-\item{i}{An integer (integer)}
+\item{i}{A natural number (integer)}
 
 \item{dim}{(conditional) The size (length) of the logical vector (integer)}
 }
@@ -15,12 +15,13 @@ convert_int_to_logical_vector(i = NULL, dim = NULL, ...)
 The logical vector (logical vector)
 }
 \description{
-In this package, we often use logical vectors to represent modulo integer values.
-In this context, we use a binary representation where the least significant bit is on the left (at vector index position 1).
-This function takes a native R integer value and converts it into such a logical vector.
+Convert a native R integer value into a binary number materialized by an R logical vector. \cr
+See \code{\link[modular_binary_number]{modular binary number}} for a definition of binary number. \cr
+See \code{\link{convert_any_to_logical_vector}} for the type generic equivalent function. \cr
+Open question: should this function provide support for vectors of integers? If yes, what should it return? A matrix? \cr
 }
 \examples{
 # R function style:
-convert_int_to_logical_vector(i, size);
+convert_int_to_logical_vector(137, 9);
 
 }

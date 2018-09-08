@@ -1,0 +1,42 @@
+---
+title: "Modular Binary Number"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Notation
+
+A *modular binary number* of dimension $d$ is noted $(b_{1},b_{2}, \ldots ,b_{d})$, where $b_{1},b_{2},...,b_{d} \in \mathbb{B}^{1}$. For the sake of simplicity, the simplified notation $b_{1}b_{2} \ldots b_{d}$ without the parenthesis and comma separators can be used.  
+Variables representing *modular binary numbers* may be noted $B^{d}$ with dimension $d \in \mathbb{N}, d > 0$. When several variables are used, subscript notation may be used and noted $B^{d}_{i}$.  
+
+## Definition
+
+In the context of the *haricot* package, a *modular binary number* of dimension $d$ noted $B^{d}$ is defined as an ordered set of $d$ elements of $\mathbb{B}^1$. By definition, $B^{d} \in \mathbb{B}^{d}$.
+
+## Formal Definition
+
+Let the modular binary number dimension $d$ be a natural number greater than 0: $d \in \mathbb{N}, d > 0$.  
+Let $B_{d}$ be an ordered *n*-tuple set $(b_{1}, b_{2}, ..., b_{d})$ where $b_{1}, b_{2}, ..., b_{d} \in \mathbb{B}^{1}$.  
+To designate such *n*-tuples, we will use the word *modular binary number*.  
+The *modular* property will be defined later.  
+
+## Samples
+
+$$ B^{1} = 0, B^{1} \in \mathbb{B}_{4} $$
+
+$$ B^{1} = 1, B^{1} \in \mathbb{B}_{4} $$
+
+
+$$ B^{4} = 0000, B^{4} \in \mathbb{B}_{4} $$
+$$ B^{4} = 1010, B^{4} \in \mathbb{B}_{4} $$
+$$ B^{6} = 000011, B^{6} \in \mathbb{B}_{6} $$
+$$ B^{6} = 101010, B^{6} \in \mathbb{B}_{6} $$
+$$ B^{9} = 111000111, B^{9} \in \mathbb{B}_{9} $$
+
+## Mapping of modular binary numbers to the natural numbers
+
+Modular binary numbers can be TODO: COMPLETE THIS. 
+Because *binary numbers* can be mapped to a subset of the natural numbers, we may also partially define *modular binary numbers* as \eqn{\mathbb{B}^{d} = \left\{ n | n \in \mathbb{N}, 0 <= n <= (2^{d})-1 \right\}}.  

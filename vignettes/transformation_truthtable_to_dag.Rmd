@@ -1,0 +1,44 @@
+---
+title: "Transformation of truthtables into NAND-based DAG algorithms"
+author: "David DORET"
+date: "September 6, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Transformation of truthtables into NAND-based DAG algorithms
+
+#' Transformation: truth tables to DAG
+#'
+#' I'll provide more details as soon as I have a moment to document this. \cr
+#' But haricot has now a logically neutral transformation,
+#' that takes an arbitrary truth table algorithm as input,
+#' and transforms it into a DAG algorithm.
+#'
+#' @examples
+#' # Create a random truth table algorithm with input dimension 8 and output dimension 8:
+#' truthtable <- algo_tt$new(8,8)$do_randomize_outputs();
+#' # Display the upper part of the truth table in the console:
+#' cat(substr(truthtable$get_prettystring(),1,200));
+#' # Transform the truth table to a DAG algorithm:
+#' dag <- atomize(truthtable);
+#' #
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

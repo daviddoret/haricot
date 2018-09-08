@@ -129,7 +129,7 @@ algo_tt <- R6Class(
       output_character_vector <- apply(output_integer_matrix, 1, paste, collapse = "");
       output_character_vector
 
-      domain <- bdom$new(self$get_dim_i());
+      domain <- bset$new(self$get_dim_i());
 
       input_integer_vector <- as.numeric(domain$get_logical_matrix());
       input_integer_matrix <- matrix(input_integer_vector, nrow = self$get_input_size());
@@ -168,7 +168,7 @@ algo_tt <- R6Class(
 
       # Name rows
       # Build a vector of character binary representations
-      binary_domain <- bdom$new(dimension = self$get_dim_i());
+      binary_domain <- bset$new(dimension = self$get_dim_i());
       rownames(private$logical_matrix) <- binary_domain$convert_to_character_vector();
     },
     set_output = function(input, output){

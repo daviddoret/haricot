@@ -10,6 +10,8 @@ convert_int_to_bnum(i = NULL, dim = NULL, ...)
 \item{i}{An integer (integer)}
 
 \item{dim}{The dimension of the binary number (integer)}
+
+\item{...}{For future use}
 }
 \value{
 The resulting binary number (R6 class bnum)

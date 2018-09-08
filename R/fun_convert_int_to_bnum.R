@@ -7,7 +7,7 @@
 #'
 #' @param i An integer (integer)
 #' @param dim The dimension of the binary number (integer)
-#' @param ...
+#' @param ... For future use
 #' @return The resulting binary number (R6 class bnum)
 #' @export
 convert_int_to_bnum <- function(i = NULL, dim = NULL, ...){

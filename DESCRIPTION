@@ -1,7 +1,7 @@
 Package: haricot
 Type: Package
 Title: Algorithm Composition, Manipulation And Analysis
-Version: 0.1.0
+Version: 0.2.0
 Author: David DORET
 Maintainer: David DORET <david.doret@me.com>
 Description: Amateur research work in algorithm composition, manipulation and analysis. This package makes it possible to:    - compose algorithms programmatically from:        - Truth tables,        - NAND atomic function,        - derived logical gates,        - complex graphs built from the above building blocks,    - manipulate algorithms with flexibility,    - analyse algorithms properties and visualize algorithms graphs.

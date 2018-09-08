@@ -8,6 +8,8 @@ to_json(o, ...)
 }
 \arguments{
 \item{o}{An object from one of the haricot package R6 classes (R6 Class)}
+
+\item{...}{For future use.}
 }
 \value{
 JSON

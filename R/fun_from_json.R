@@ -1,13 +1,13 @@
 require(rjson);
 #' from_json
 #'
-#' @description Convert a JSON export of a haricot class to an instance object of that class. \cr
+#' Convert a JSON export of a haricot class to an instance object of that class. \cr
 #'
 #' @examples ...
 #'
 #' @param json The exported haricot JSON (json / character).
 #' @param instance (Conditional) The target object. If missing or null, a new object will be created (R6 class instance).
-#' @param ...
+#' @param ... For future use.
 #' @return The object instance (R6 class)
 #' @export
 from_json = function(json, instance = NULL, ...) {

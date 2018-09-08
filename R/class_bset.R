@@ -1,26 +1,26 @@
 require(R6);
-#' bdom (R6 class)
+#' bset (R6 class)
 #'
-#' \code{bdom} is the R6 class implementation of the \link[modular_binary_domain]{modular binary domain} concept.
+#' \code{bset} is the R6 class implementation of the \link[modular_binary_domain]{modular binary domain} concept.
 #'
 #' @section References:
 #' \itemize{
 #' \item{\link[modular_binary_domain]{modular binary domain}}
 #' }
 #'
-#' @examples bd1 <- bdom$new(1);
+#' @examples bd1 <- bset$new(1);
 #' print(bd1);
-#' bd2 <- bdom$new(2);
+#' bd2 <- bset$new(2);
 #' print(bd2);
-#' bd3 <- bdom$new(3);
+#' bd3 <- bset$new(3);
 #' print(bd3);
 #'
 #' @param dimension The dimension of the modular binary domain. (integer)
 #' @param ... For future usage.
-#' @return An object instance of R6 class \code{bdom}.
+#' @return An object instance of R6 class \code{bset}.
 #' @export
-bdom <- R6Class(
-  "bdom",
+bset <- R6Class(
+  "bset",
   public = list(
     # Private Members
     dimension = NULL,
@@ -39,7 +39,7 @@ bdom <- R6Class(
       rownames(self$logical_matrix) <- self$convert_to_character_vector();
     },
     convert_to_character_vector = function(...){
-      return(convert_bdom_to_character_vector(self, ...));
+      return(convert_bset_to_character_vector(self, ...));
     },
     get_dimension = function() {
       return(self$dimension);
@@ -62,7 +62,7 @@ bdom <- R6Class(
       return(pas);
     },
     plot = function(...){
-      plot_bdom(self, ...);
+      plot_bset(self, ...);
     },
     print = function(){
       cat(self$get_prettystring());

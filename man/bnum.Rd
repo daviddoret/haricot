@@ -19,7 +19,7 @@ bnum
 An object instance of class bnum.
 }
 \description{
-The class implementation of the binary number concept. \cr
+The R6 class implementation of the \emph{\href{../articles/modular_binary_number.html}{modular binary number}} concept.
 }
 \examples{
 # Construction from character string

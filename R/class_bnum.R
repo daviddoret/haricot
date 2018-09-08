@@ -3,7 +3,7 @@ require(futile.logger);
 
 #' bnum (R6 class)
 #'
-#' @description The class implementation of the binary number concept. \cr
+#' The R6 class implementation of the \emph{\href{../articles/modular_binary_number.html}{modular binary number}} concept.
 #'
 #' @examples # Construction from character string
 #' n1 <- bnum$new("0101111000");
@@ -71,7 +71,7 @@ bnum <- R6Class(
     },
     do_increment = function(){
       # do_increment is a function that adds 1 to a "binary number".
-      # because we use modulo arithmetic, if all bit values are equal to 1 and we increment_binum,
+      # because we use modular arithmetic, if all bit values are equal to 1 and we increment_binum,
       # we should end with all 0s.
       # here, we define the left most bit as the least significant bit.
       index <- 1;
@@ -87,7 +87,7 @@ bnum <- R6Class(
       }
       # If the incrementation failed here,
       # we end up with all 0s.
-      # This is intentional as we are using modulo arithmetic.
+      # This is intentional as we are using modular arithmetic.
 
       # Chaining.
       return(self);

@@ -11,7 +11,7 @@ require(futile.logger);
 #'
 #' @param input An object or scalar (any supported class)
 #' @param dim (conditional) A fixed dimension for the resulting binary number (integer)
-#' @param ...
+#' @param ... For future use
 #' @return The resulting binary number represented as a logical vector (logical vector)
 #' @export
 convert_any_to_logical_vector <- function(input = NULL, dim = NULL, ...){

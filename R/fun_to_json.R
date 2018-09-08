@@ -1,13 +1,13 @@
 require(rjson);
 #' to_json
 #'
-#' @description Convert an object from a haricot class to JSON.
+#' Convert an object from a haricot class to JSON.
 #' Principle: the JSON produced should not contain more information than necessary to re-insufflate the object.
 #'
 #' @examples ...
 #'
 #' @param o An object from one of the haricot package R6 classes (R6 Class)
-#' @param ...
+#' @param ... For future use.
 #' @return JSON
 #' @export
 to_json = function(o, ...) {

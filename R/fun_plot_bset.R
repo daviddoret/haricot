@@ -2,26 +2,26 @@ require(igraph);
 require(RColorBrewer);
 require(futile.logger);
 require(ggplot2);
-#' plot_bdom
+#' plot_bset
 #'
 #' @description Generate a visualization of a binary domain,
 #' following the general look and feel of the haricot package.
 #'
 #' @examples # R function style:
-#' d <- bdom$new(3);
-#' plot_bdom(d);
+#' d <- bset$new(3);
+#' plot_bset(d);
 #'
 #' # R6 class method style:
 #' d$plot();
 #'
-#' @param d The binary domain to be plotted (R6 class bdom).
+#' @param d The binary domain to be plotted (R6 class bset).
 #' @param ... For future usage.
 #' @return A plotted binary number.
 #' @export
-plot_bdom <- function(d, ...){
+plot_bset <- function(d, ...){
 
-  if(!is(d, "bdom")){
-    flog.error("plot_bdom: d is not of bdom type");
+  if(!is(d, "bset")){
+    flog.error("plot_bset: d is not of bset type");
     stop();
   };
 
